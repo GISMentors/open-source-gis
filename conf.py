@@ -63,3 +63,6 @@ sys.path.append(os.path.join('..', 'sphinx-template'))
 from conf_base import *
 
 todo_include_todos = False
+
+extensions = [ 'sphinx.ext.extlinks', 'sphinx.ext.todo', 'video', 'notes',
+'sphinx.ext.pngmath', 'sphinx.ext.mathjax']

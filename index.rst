@@ -1,10 +1,12 @@
+################################
 Úvod do nástrojů Open Source GIS
-================================
+################################
 Tento kurz obsahuje základní přehled nástrojů Open Source GIS a vše potřebné,
 abyste mohli začít pracovat s nástroji GIS v českém (a slovenském) prostředí.
 
+*****
 Obsah
-=====
+*****
 
 .. toctree::
    :maxdepth: 2
