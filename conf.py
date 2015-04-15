@@ -3,11 +3,14 @@
 import sys
 import os
 
+sys.path.append(os.path.join('..', 'sphinx-template'))
+from utils import get_month_year, get_year
+
 # -- General configuration ------------------------------------------------
 
 # General information about the project.
-project = u'Školení GRASS GIS'
-copyright = u'2014 by Martin Landa a Jáchym Čepický (GISMentors)'
+project = u'Školení Open Source GIS'
+copyright = u'2014-%d by Martin Landa a Jáchym Čepický (GISMentors)' % get_year()
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
