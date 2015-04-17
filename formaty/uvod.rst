@@ -41,6 +41,11 @@ Velikost hrany rastrové buňky určuje tzv. *prostorové rozlišení*
 rastrové mapy. Tím je dána polohovou přesnost - celá rastrová buňka
 reprezentuje hodnotu, která se nachází v jejím ideálním středu.
 
+.. figure:: images/raster-res.png
+   :width: 175px
+
+   Prostorové rozlišení rastrových dat
+
 Atributy rastrových dat
 -----------------------
 
@@ -70,6 +75,11 @@ Vektorová data
 geometrických elementů, reprezentující fenomény reálného světa jako
 diskrétní prvky. Prvky jsou podle svého charakteru reprezentovány jako
 *bod*, *linie* nebo *polygon*.
+
+.. figure:: images/vektor.png
+   :class: middle
+        
+   Vektorové prvky - bod, linie a polygon
 
 .. note:: V anglické literatuře je "vektorový prvek" označován jako *feature*.
     Slovo "feature" je pak tradičně do češtiny překládáno jako "charakteristický
@@ -187,8 +197,14 @@ převládá takový přístup, že data jsou uložena v *netopologickém*
 formátu (jako tzv. jednoduché prvky - *simple features*) a topologické
 charakteristiky jsou počítány na vyžádání.
 
-.. note:: `GRASS GIS <http://grass.osgeo.org>`_ naopak data vždy ukládá v topologickém formátu.
+.. note:: `GRASS GIS <http://grass.osgeo.org>`_ naopak data vždy
+          ukládá v topologickém formátu.
 
+          
+.. figure:: images/area-1-2.png
+
+   Ukázka topologického datové modelu
+   
 Nejsou-li data tzv. *topologicky čistá*, obsahují různě závažné *chyby
 topologie*. Např. společná hranice dvou parcel není stejná, ale každá parcela má
 lehce posunuté hraniční lomové body a tudíž dochází v některých místech k
@@ -221,6 +237,14 @@ veličina (plocha, délka, ...).
 V závislosti na prostorovém rozlišení se ztrácí přesnost vektorových dat a je
 nahrazena rozlišením rastrových dat. Data od určitého zvětšení vypadají
 "rozkostičkovaně".
+
+.. figure:: images/vect2rast-1.png
+
+   Příklad rasterizace (příprava)
+
+.. figure:: images/vect2rast-2.png
+
+   Příklad rasterizace (výsledek)
 
 Vektorizace
 -----------
