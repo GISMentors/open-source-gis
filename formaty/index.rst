@@ -1,13 +1,10 @@
-**************
-Datové formáty
-**************
+****************
+Reprezentace dat
+****************
 
 Jak již bylo uvedeno v :doc:`úvodní kapitole <../uvod>` GIS programy
 modelují fenomény reálného světa pomocí dvou základních reprezentací
-dat:
-
-* **Rastrová**
-* **Vektorová**
+dat **rastrovou** a **vektorovou**.
 
 Data lze mezi těmito reprezentacemi lze, za přijmutí určité ztráty
 informace, volně převádět.
