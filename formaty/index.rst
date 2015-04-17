@@ -2,17 +2,20 @@
 Datové formáty
 **************
 
-Programy GIS modelují objekty reálného světa pomocí dvou základních forem dat:
+Jak již bylo uvedeno v :doc:`úvodní kapitole <../uvod>` GIS programy
+modelují fenomény reálného světa pomocí dvou základních reprezentací
+dat:
 
-* Rastrových dat
-* Vektorových dat
+* **Rastrová**
+* **Vektorová**
 
-Mezi těmito formáty lze, za přijmutí určité ztráty informace, volně převádět.
+Data lze mezi těmito reprezentacemi lze, za přijmutí určité ztráty
+informace, volně převádět.
 
 .. toctree::
    :maxdepth: 2
 
-    uvod
-    rastr
-    vektor
-    prevody
+   uvod
+   rastr
+   vektor
+   prevody

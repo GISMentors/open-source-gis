@@ -1,8 +1,8 @@
 ################################
 Úvod do nástrojů Open Source GIS
 ################################
-Tento kurz obsahuje základní přehled nástrojů Open Source GIS a vše potřebné,
-abyste mohli začít pracovat s nástroji GIS v českém (a slovenském) prostředí.
+Tento kurz obsahuje základní přehled nástrojů :wikipedia:`Open Source` :wikipedia:`GIS` a vše potřebné,
+abyste mohli začít pracovat s volně dostupnými nástroji GIS v českém (a slovenském) prostředí.
 
 *****
 Obsah
@@ -37,8 +37,8 @@ Autoři
 
 Za `GISMentors <http://www.gismentors.eu/>`_:
 
-* Jáchym Čepický ``<jachym.cepicky opengeolabs.cz>``
-* Martin Landa ``<martin.landa opengeolabs.cz>``
+* `Jáchym Čepický <http://www.gismentors.cz/mentors/cepicky>`_ ``<jachym.cepicky opengeolabs.cz>``
+* `Martin Landa <http://www.gismentors.cz/mentors/landa>`_ ``<martin.landa opengeolabs.cz>``
     
 .. only:: latex
 
