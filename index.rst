@@ -4,7 +4,7 @@
 Tento kurz obsahuje základní přehled nástrojů :wikipedia:`Open Source` :wikipedia:`GIS` a vše potřebné,
 abyste mohli začít pracovat s volně dostupnými nástroji GIS v českém (a slovenském) prostředí.
 
-.. warning:: Pracovní verze školení, která je aktuálně ve vývoji!
+.. warning:: :red:`Pracovní verze školení, která je aktuálně ve vývoji!`
    
 *****
 Obsah
