@@ -34,16 +34,35 @@ jsou přidána metadata určující jeho polohu a souřadnicový systém.
     Pokud se soubor *worldfile* jmenuje stejně jako soubor TIFF a má koncovku
     `tfw`, tak jej většina GIS automaticky použijí. Příklad: `dmt.tif, dmt.tfw`.
 
-    Obdobně můžeme *worldfile* použít pro formáty JPG (`.jgw`) a někdy PNG (`.pgw`).
+    Obdobně můžeme *worldfile* použít pro formáty JPG (`.jgw`) a někdy PNG
 
-Float ....
+Některé speciality formátu GeoTIFF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-overviews 
+Číselné formáty
+    Formát GeoTIFF umožňuje uložit data v celočíselné podobě nebo jako čísla s
+    plovoucí desetinnou čárkou.
 
-metadata
+Interní maska a hodnota NODATA
+    Do souboru GeoTIFF lze uložit interní masku hodnot, označující místa, která
+    "nemají být vidět".
+    
+    GeoTIFF umožňuje nastavit zapsat hodnotu "žádná data" - na tomto místě je
+    mapa prázdná.
 
-color
+Přehledové mapy
+    GeoTIFF umožňuje vytvářet vnitřní přehledové mapky
 
-compression
+Barvy a kanály
+    Většina prohlížečů se snaží interpretovat data v GDAL jako tři barevné
+    kanály. GeoTIFF umožňuje zapsat více kanálová data (ne pouze 3), s čímž se
+    prohlížečky obrázků smiřují jen těžko. Obsahuje-li soubor GeoTIFF 3 pásma s
+    hodnotami 0-255, je výsledek většinou očekávatelný.
 
-.. todo:: doplnit
+Vnitřní komprese
+    Data ve formátu GeoTIFF mohou být vnitřně komprimována některou z metod či
+    knihoven. Kromě běžného ZIP lze použít např. i kompresi JPEG. Výsledný rastrový
+    soubor je pak fyzicky menší, než pokoušeli-li bychom se soubor bez vnitřní
+    komprese zkomprimovat externím algoritmem. Více na toto téma píše např.
+    `Paul Ramsey ve svém blogu
+    <http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html>`_.
