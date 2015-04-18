@@ -30,6 +30,6 @@ SQL databáze `SQLite <http://sqlite.org>`_.
 Prostorové NoSQL databáze
 =========================
 
-.. figure:: images/nosql-plm.jpg
+.. figure:: images/nosql-plm.png
 
 CouchDB, Cassandra, ...
