@@ -1,3 +1,5 @@
+.. _gdal-prevody-formaty:
+
 =====================================
 Knihovna GDAL pro převod mezi formáty
 =====================================

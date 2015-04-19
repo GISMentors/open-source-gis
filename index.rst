@@ -18,8 +18,8 @@ Obsah
    formaty/index
    databaze/index
    standardy/index
-   servery/index
-   desktopy/index
+   server/index
+   desktop/index
    web/index
    python/index
 

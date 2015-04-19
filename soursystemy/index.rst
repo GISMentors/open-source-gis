@@ -311,14 +311,4 @@ Knihovna GDAL
 
 Celé datové sady umožňuje transformovat mezi jednotlivými
 souřadnicovými systémy knihovna `GDAL <http://gdal.org>`_, resp. její
-nástroje.
-
-gdalinfo a ogrinfo
-------------------
-
-.. todo::
-
-gdalwarp a ogr2ogr
-------------------
-
-.. todo::
+nástroje. Viz část :ref:`gdal-prevody-formaty`.
