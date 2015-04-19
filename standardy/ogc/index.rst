@@ -34,27 +34,44 @@ specifikaci `Web Service Common <http://www.opengeospatial.org/standards/common>
 Ta popisuje zejména XML kódování metadat dalších webových služeb a některé
 společné charakteristiky (např. definici hraničnícho BoundingBoxu, ...).
 
-.. _ogc-wms:
+Snad všechy standardy podporují více typů dotazů z klienta na server (tzv.
+*requerstů*). Základním dotazem je vždy dotaz *GetCapabilities* - server v
+odpovědi zformátované jako dokument XML vrátí metadata o serveru, jeho
+provozovateli a dostupných službách. Další dotazy jsou již pro každou službu
+jiné.
 
-OGC Wab Map Service - WMS
--------------------------
-`WMS <http://opengeospatial.org/standards/wms>`_ je asi nejrozšířenější
-standard. WMS slouží k popisu toho, jakým způsobem požaduje klient po serveru
-vygenerovat mapový náhled z dat uložených (z pohledu klienta) na serveru.
-Kartografii mapy lze do určité míry ovlivnit, vstupní data nikoliv.
+U většiny dotazů je potřeba specifikovat i verzi standardu, podle kterého se
+klient se serverem mají "domluvit". Tento parametr není ale u GetCapabilities
+requestu povinný.
 
-WMS definuje 3 typy *requestů* na server od klienta:
+Formát requstu vypadá pro všechny služby např. následovně::
 
-* GetCapabilities
-* GetMap
-* Nepovinný GetFeatureInfo
+    http://foo.bar/cgi-bin/service?service=WMS&request=GetCapabilities&version=1.3.0
+                                  ^         ^                 ^               ^
+                                  |         |                 |               |
+    Adresa serveru a služby ------+         |                 |               |
+    Specifikace  požadované služby ---------+                 |               |
+    Specifikace requestu -------------------------------------+               |
+    Případné další parametry (zde jako příklad verze standardu) --------------+
 
-WMTS
-WFS
-WCS
-WPS
-GML
-KML
-SOS
-CS-W
-SimpleFeature
+Tento způsob zápisu se nazývá Key-Value-Pair (KVP), posílá parametry přímo jako
+součást URL. Parametry dotazu začínají za znakem `?` a jednotlivé parametry jsou
+od sebe oděleny znakem `&`.
+
+
+
+Nejdůležitější standardy OGC rozebereme v dalších částech:
+
+.. toctree::
+    :maxdepth: 1
+
+    wms
+    wmts
+    wfs
+    wcs
+    wps
+    gml
+    kml
+    sos
+    cs-w
+    simplefeature

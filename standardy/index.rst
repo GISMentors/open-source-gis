@@ -1,3 +1,5 @@
+.. _standardy-gis:
+
 ***************
 Standardy v GIS
 ***************
@@ -91,8 +93,8 @@ následujícího schematu
 
    epsg
    iso
-   ogc
+   ogc/index
    inspire
    csn
    osgeo
-   firmy-mapbox-esri
+   firmy
