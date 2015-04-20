@@ -3,54 +3,64 @@ Vektorové formáty
 =================
 Mezi nejčastěji používané vektorové formáty v GIS patří 
 
-* ESRI :wikipedia:`Shapefile`
+* Esri :wikipedia:`Shapefile`
 * :wikipedia:`KML`
 * :wikipedia-en:`GML`
 * :wikipedia-en:`GeoJSON`
 
-Formát, který by si zasloužil větší pozornost je :wikipedia-en:`OGC GeoPackage`
+Formát, který by si zasloužil větší pozornost je :wikipedia-en:`OGC GeoPackage`.
 
 Vektorová data se také tradičně ukládají do prostorových databází (popsaných v
-další části).
+:doc:`další části <../databaze/index>`).
 
 .. tip:: Více informace na školení :skoleni:`GeoPython <geopython>`.
 
-Formát ESRI Shapefile
+Formát Esri Shapefile
 ---------------------
 
-Formát ESRI Shapefile je tradičně nejpoužívanějším formátem pro vektorová data.
+Formát Esri Shapefile je tradičně nejpoužívanějším formátem pro vektorová data.
 Tento systém je dnes již zastaralý, nicméně pro některé jednodušší typy dat
 stále dostačující. Je podporován prakticky všemi nástroji GIS a ve své době se
-stal prakticky oborovým standardem. Důvodem je, že firma ESRI uvolnila
+stal prakticky oborovým standardem. Důvodem je, že firma Esri uvolnila
 dokumentaci k tomuto formátu a jeho licence nezakazuje jeho implementaci v
 software, který by se mohl označit za konkureční.
 
-Data jsou uložena ve třech souborech, lišících se od sebe navzájem koncovkou:
+Data jsou uložena (minimálně) ve třech souborech, lišících se od sebe navzájem koncovkou:
 
-* \*.shp - geometrie (shape)
-* \*.dbf - atributy (databáze)
-* \*.shx - propojení geometrie a atributů (index)
+* ``*.shp`` - geometrie (shape)
+* ``*.dbf`` - atributy (databáze)
+* ``*.shx`` - propojení geometrie a atributů (index)
 
-Data jsou uložena v tepologické formě - každá plocha má svou vlastní hranici.
+Data jsou uložena v netopologické formě, tj. například společná
+hranice dvou polygonů je uložena dvakrát, jednou jako součást prvního
+polygonu a podruhé jako součást druhého polygonu.
 
-Důvody proč dnes již ESRI Shapefile nepoužívat
+.. note:: Souborů tvořící datovou vrstvu v tomto formátu může být
+          potencionálně víc, např. soubor s koncovkou ``*.prj``
+          obsahující informace o souřadnicovém systému ve formě Esri
+          WKT, ``*.cfg`` s informací o kódování atributových dat a
+          další.
+          
+Důvody proč dnes již Esri Shapefile nepoužívat
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Z dnešního pohledu obsahuje formát Shapefile tato slabá místa:
+Z dnešního pohledu obsahuje formát Shapefile několik slabých míst:
 
-* data nejsou uložena v jednom souboru, ale hned ve trojici (shp+shx+dbf). Různé
+* data nejsou uložena v jednom souboru, ale hned ve minimálně trojici (*shp+shx+dbf*). Různé
   softwarové produkty si navíc přidávají vlastní metadatové soubory, které
   nejsou součástí specifikace tohoto formátu.
 * Názvy atributů jsou omezeny pouze na deset znaků.
-* Data neobsahují informaci o znakové sadě, což vede k problémům při automatické
-  konverzi dat a používání na více operačních systémech.
+* Data neobsahují informaci o znakové sadě (některé softwary tuto
+  informaci zapisují do souboru s příponou ``*.cfg``, ale je to spíše
+  vyjímka), což vede k problémům při automatické konverzi dat a
+  používání na různých operačních systémech.
 * Velikost souborů je maximálně 2GB.
 * Neumožňuje ukládat topologické informace o vzájemných vztazích mezi prvky
   geodat.
 * Každý soubor SHP umožňuje ukládat pouze jeden typ geometrie (bod,
   linie, polygon)
-* neumožňuje uložit stromovou strukturu dat
+* Neumožňuje uložit stromovou strukturu dat
 
-Důvody proč se ESRI Shapefile stále používá
+Důvody proč se Esri Shapefile stále používá
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Je podporován prakticky všemy softwary
 
@@ -66,7 +76,7 @@ Bývá často podporován moderními GPS přijímači. V minulosti býval nasazo
 webových mapových aplikacích, protože je v porovnání s GML menší a obsahuje
 zmíněnou informaci o vizualizaci jednotlivých prvků geodat. Ačkoliv byl v době
 před cca 3 lety tento formát populární, dnes je často nahrazován formátem
-GeoJSON.
+:ref:`GeoJSON <geojson>`.
 
 Formát GML
 ----------
@@ -83,6 +93,8 @@ komplikovanější stromovou strukturu. Díky tomu, že je postaven na XML, je j
 strojové zpracování jednoduché i běžnými systémy, například pomocí transformace
 XSLT.
 
+.. _geojson:
+
 Formáty GeoJSON a TopoJSON
 --------------------------
 Populárními formáty se v poslední době stávají formáty odvozené z formátu JSON,
@@ -92,7 +104,7 @@ zápis, což je výhodné při přenosech v prostředí Internetu. Stejně jako 
 využití formátů odvozených z XML, je i zde je možné zabezpečit správnost
 struktury dat to pomocí schémat.
 
-JSON je velice přívětivý k netypovým programovacím jazykům, je srozumitelný
+:wikipedia-en:`JSON` je velice přívětivý k netypovým programovacím jazykům, je srozumitelný
 prostým lidským okem. Souřadnicový systém není v těchto formátech jak
 specifikovat, předpokládá se, že se jedná o WGS 84. Data lze libovolným způsobem
 zanořovat a větvit.

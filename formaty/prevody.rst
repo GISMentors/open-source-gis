@@ -4,21 +4,23 @@
 Knihovna GDAL pro převod mezi formáty
 =====================================
 
-Programátorská knihovna `GDAL <http://gdal.org>`_ se stará o práci s množstvím
-`rastrových <http://gdal.org/formats_list.html>`_ i `vektorových
-<http://gdal.org/ogr_formats.html>`_ formátů používaných v GIS. GDAL je využíván
-celou řadou dalších programů ja základní knihovna (GRASS GIS, QGIS, ...),
-dokonce i v produktu ArcGIS.
+Programátorská knihovna `GDAL <http://gdal.org>`_ se stará o práci s
+množstvím `rastrových <http://gdal.org/formats_list.html>`_ i
+`vektorových <http://gdal.org/ogr_formats.html>`_ formátů používaných
+v GIS. GDAL je využíván celou řadou dalších programů jako základní
+knihovna (`GRASS GIS <http://grass.osgeo.org>`_, `QGIS
+<http://qgis.org>`_, ...), dokonce i v proprietárním produktu `ArcGIS
+<http://www.arcgis.com>`_.
 
-.. note:: V dřívějšich verzích byla tato knihovna rozdělena na část GDAL,
-    pracující s rastrovými daty a OGR, pracující s vektory. Dnes se však obě
-    větve sloučily. Stále však můžete narazit na označení části pro práci s
-    vektory jako *OGR*.
+.. note:: V dřívějšich verzích byla tato knihovna rozdělena na dvě
+    části. GDAL pracující s rastrovými daty a OGR pro vektorová
+    data. Ve verzi 2.0 byly tyto dvě větve sloučeny. Stále však můžete
+    narazit na označení části pro práci s vektory jako *OGR*.
 
-Knihovna je šířena s několika binárními konzolovými programy, které můžeme
+Knihovna je šířena s několika konzolovými programy, které můžeme
 použít na celou řadu operací. Detailnější práci s knihovnou z pohledu
-programátora rozebíráme v části věnované programovacímu jazyku `Python z pohledu
-GIS <http://training.gismentors.eu/geopython/>`_.
+programátora rozebíráme v části věnované programovacímu jazyku
+:skoleni:`Python z pohledu GIS <geopython/>`.
 
 Příkazy pro práci s rastrovými daty
 -----------------------------------
@@ -29,13 +31,16 @@ http://www.gdal.org/gdal_utilities.html a http://www.gdal.org/ogr_utilities.html
 
 gdalinfo
 ^^^^^^^^
-Příkaz `gdalinfo <http://www.gdal.org/gdalinfo.html>`_ umožňuje zobrazit některá metadat o rastrových souborech
+Příkaz `gdalinfo <http://www.gdal.org/gdalinfo.html>`_ umožňuje zobrazit některá metadat rastrových dat
 
-.. notecmd:: zobrazení metadat z rastrového souboru:
+.. notecmd:: Zobrazení metadat z rastrového souboru
 
     .. code-block:: bash
 
-        gdalinfo lsat7_2002_nir.tiff
+       gdalinfo lsat7_2002_nir.tiff
+
+    ::
+      
         Driver: GTiff/GeoTIFF
         Files: lsat7_2002_nir.tiff
         Size is 1287, 831
@@ -76,17 +81,23 @@ Příkaz `gdalinfo <http://www.gdal.org/gdalinfo.html>`_ umožňuje zobrazit ně
 
 gdalsrsinfo
 ^^^^^^^^^^^
-Pokud vám stačí pouze informace o použité projekci, zjistíte ji pomocí příkazu
-`gdalsrsinfo <http://www.gdal.org/gdalsrsinfo.html>`_, který vrátí definici
-souř. systému rastru ve formátu Proj4, ale  tzv. well known text (WKT)
 
-.. notecmd:: zobrazení informace o souř. systému
+Pokud vám stačí pouze informace o použitém souřadnicovém systému, tak
+stačí použít příkaz `gdalsrsinfo
+<http://www.gdal.org/gdalsrsinfo.html>`_, který vrátí definici
+souřadnicového systému rastru ve formátu knihovny :program:`Proj4` a v
+tzv. Well Known Text (WKT) notaci:
+
+.. notecmd:: Zobrazení informace o souřadnicovém systému
 
     .. code-block:: bash
 
-        gdalsrsinfo lsat7_2002_nir.tiff
+       gdalsrsinfo lsat7_2002_nir.tiff
 
-        PROJ.4 : '+proj=lcc +lat_1=36.16666666666666 +lat_2=34.33333333333334 +lat_0=33.75 +lon_0=-79 +x_0=609601.22 +y_0=0 +datum=NAD83 +units=m +no_defs '
+    ::
+      
+       PROJ.4 : '+proj=lcc +lat_1=36.16666666666666 +lat_2=34.33333333333334 +lat_0=33.75 +lon_0=-79
+        +x_0=609601.22 +y_0=0 +datum=NAD83 +units=m +no_defs '
 
         OGC WKT :
         PROJCS["Lambert Conformal Conic",
@@ -111,17 +122,19 @@ souř. systému rastru ve formátu Proj4, ale  tzv. well known text (WKT)
 gdalwarp
 ^^^^^^^^
 Asi nejpoužívanější příkaz je `gdalwarp <http://www.gdal.org/gdalwarp.html>`_.
-Tento příkaz má dvě funkce: práce se souř. systémy rastrových map a jejich
+Tento příkaz má dvě funkce: práce se souřadnicovými systémy rastrových dat a jejich
 transformace mezi jednotlivými formáty.
 
 Podporované formáty zjistíte pomocí parametru `--formats`:
 
-.. notecmd:: podporované formáty knihovny gdal
+.. notecmd:: Podporované formáty knihovny gdal
 
     .. code-block:: bash
         
         gdalwarp --formats
 
+    ::
+                       
         Supported Formats:
           VRT (rw+v): Virtual Raster
           GTiff (rw+vs): GeoTIFF
@@ -140,16 +153,16 @@ Podporované formáty zjistíte pomocí parametru `--formats`:
           SDTS (rov): SDTS Raster
           ...
 
-Syntaxe programu `gdalwarp` (i u tohoto programu funguje parametr `--help` a
-určitě se podívejte na manuálovou stránku programu `man gdalarp`) je
-následující::
+Syntaxe programu :program:`gdalwarp` (i u tohoto programu funguje
+parametr :option:`--help` a určitě se podívejte na manuálovou stránku
+programu ``man gdalarp``) je následující::
 
     gdalwarp [PŘEPÍNAČE A VOLBY] zdrojový_soubor výstupní_soubor
 
 Transformace rastru ve formátu GeoTIFF do formátu Windows Bitmap při zachování
-souř.  systému vypadá následovně:
+souřadnicového  systému vypadá následovně:
 
-.. notecmd:: transformace GDAL z GeoTIFF do BMP
+.. notecmd:: Transformace GDAL z GeoTIFF do BMP
 
     .. code-block:: bash
 
@@ -160,8 +173,9 @@ souř.  systému vypadá následovně:
         data type (Float32), only Byte supported by the format.
 
     Vidíme, že formát BMP nepodporuje zdrojová data - číslo s plovoucí
-    desetinnou čárkou. Musíme proto upravit i tento parametr (samozřejmě tak
-    přijdeme o podrobné hodnoty).
+    desetinnou čárkou. Datový typ nastavíme pomocí parametru
+    :option:`-type` (samozřejmě tak přijdeme o hodnoty mimo rozsah
+    tohoto datového typu).
 
     .. code-block:: bash
 
@@ -175,14 +189,12 @@ souř.  systému vypadá následovně:
 
     Výsledný obrázek převodu rastrové mapy na formát BMP
 
-Příkazem `gdalinfo` můžeme ověřit, že data neobsahují informaci o souř. systému
+.. note:: Vedle souboru `lsat7_2002_nir.bmp` vytvořil GDAL také souboru
+   `lsat7_2002_nir.bmp.aux.xml` obsahující metadata, mimo jiné i informace o
+   souřadnicovém systému. Pokud tento soubor smažete nebo změníte jeho jméno, dostanete
+   následující výstup, tj. bez informace o souřadnicovém systému.
 
-.. note:: Vedle souboru lsat7_2002_nir.bmp vytvořil také souboru
-    lsat7_2002_nir.bmp.aux.xml obsahující metadata, mimo jiné i informace o
-    souř. systému. Pokud tento soubor smažete nebo změníte jeho jméno, dostanete
-    následující výstup.
-
-.. notecmd:: Ověření výsledného souboru pomocí gdalinfo
+   .. notecmd:: Ověření výsledného souboru pomocí gdalinfo
 
     .. code-block:: bash
 
@@ -202,20 +214,20 @@ Příkazem `gdalinfo` můžeme ověřit, že data neobsahují informaci o souř.
         Band 2 Block=1287x1 Type=Byte, ColorInterp=Green
         Band 3 Block=1287x1 Type=Byte, ColorInterp=Blue
 
-Dalším obvyklým krokem je transformace při změně souř. systému (v našem případě
+Dalším obvyklým krokem je transformace při změně souřadnicového systému (v našem případě
 zůstane vstupní formát GeoTIFF zachován i na výstupu). Při transformacích můžeme
-použít 2 parametry pro popis souř. systémů ve vztahu ke vstupní resp. výstupní
+použít 2 parametry pro popis souřadnicových systémů ve vztahu ke vstupní resp. výstupní
 rastrové mapě:
 
--s_srs
-    definice souř. systému vstupní mapy (source)
--t_srs
-    definice souř. systému výstupní mapy (target)
+:option:`-s_srs`
+    definice souř. systému vstupní dat (source)
+:option:`-t_srs`
+    definice souř. systému výstupní dat (target)
 
 Tyto parametry mají větší prioritu při zpracování vstupních dat, než případná
 metadata v těchto datech přítomná.
 
-.. notecmd:: Transformace souř. systému rastrové mapy
+.. notecmd:: Transformace rastrových dat do jiného souřadnicového systému
 
     V našem příkladu je zdrojový souř. systém známý, nastavíme pouze výchozí.
     Zápis souř. systému je totožný se zápisem pro knihovnu Proj4. My použijeme

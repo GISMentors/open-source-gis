@@ -39,30 +39,30 @@ jsou přidána metadata určující jeho polohu a souřadnicový systém.
 Některé speciality formátu GeoTIFF
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Číselné formáty
+**Číselné formáty**
     Formát GeoTIFF umožňuje uložit data v celočíselné podobě nebo jako čísla s
     plovoucí desetinnou čárkou.
 
-Interní maska a hodnota NODATA
+**Interní maska a hodnota NODATA**
     Do souboru GeoTIFF lze uložit interní masku hodnot, označující místa, která
     "nemají být vidět".
     
     GeoTIFF umožňuje nastavit zapsat hodnotu "žádná data" - na tomto místě je
     mapa prázdná.
 
-Přehledové mapy
+**Přehledové mapy**
     GeoTIFF umožňuje vytvářet vnitřní přehledové mapky
 
-Barvy a kanály
-    Většina prohlížečů se snaží interpretovat data v GDAL jako tři barevné
+**Barvy a kanály**
+    Většina prohlížečů se snaží interpretovat data v GeoTIFF jako tři barevné
     kanály. GeoTIFF umožňuje zapsat více kanálová data (ne pouze 3), s čímž se
     prohlížečky obrázků smiřují jen těžko. Obsahuje-li soubor GeoTIFF 3 pásma s
     hodnotami 0-255, je výsledek většinou očekávatelný.
 
-Vnitřní komprese
+**Vnitřní komprese**
     Data ve formátu GeoTIFF mohou být vnitřně komprimována některou z metod či
     knihoven. Kromě běžného ZIP lze použít např. i kompresi JPEG. Výsledný rastrový
-    soubor je pak fyzicky menší, než pokoušeli-li bychom se soubor bez vnitřní
+    soubor je pak fyzicky menší, než když bysme se pokoušeli soubor bez vnitřní
     komprese zkomprimovat externím algoritmem. Více na toto téma píše např.
     `Paul Ramsey ve svém blogu
     <http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html>`_.
