@@ -1,6 +1,6 @@
 .. _ogc-wmts:
 
-OGC Web Map Tiled Service - WTMS
+OGC Web Map Tiled Service - WMTS
 --------------------------------
 S příchodem `mapové aplikace firmy Google <http://maps.google.com>`_ se značně
 změnil přístup k servírování podkladových mapových kompozic. Uživatelé
