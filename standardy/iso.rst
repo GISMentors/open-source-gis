@@ -20,5 +20,5 @@ je OGC, např. `19136:2007 Geographic information -- Geography Markup Language
 (GML) <http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=32554&commid=54904>`_
 nebo `ISO 19142:2010 Geographic information -- Web Feature Service <http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=42136&commid=54904>`_.
 
-Mezi nejvíce odtazkované standardy v poslední době, především díky směrnici
-INSPIRE patří normy `ISO 19115-1:2014 Geographic information -- Metadata -- Part 1: Fundamentals <http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53798&commid=54904>`_ a `ISO 19119:2005 Geographic information -- Services <http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=39890&commid=54904>`_, zabývající se metadaty v oblasti prostorových dat a služeb.
+Mezi nejvíce odkazované standardy v poslední době, především díky směrnici
+INSPIRE, patří normy `ISO 19115-1:2014 Geographic information -- Metadata -- Part 1: Fundamentals <http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=53798&commid=54904>`_ a `ISO 19119:2005 Geographic information -- Services <http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=39890&commid=54904>`_ zabývající se metadaty v oblasti prostorových dat a služeb.

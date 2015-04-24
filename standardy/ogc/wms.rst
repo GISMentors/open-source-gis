@@ -5,46 +5,48 @@ OGC Web Map Service - WMS
 `WMS <http://opengeospatial.org/standards/wms>`_ je asi nejrozšířenější
 standard. WMS slouží k popisu toho, jakým způsobem požaduje klient po serveru
 vygenerovat mapový náhled z dat uložených (z pohledu klienta) na serveru.
-Kartografii mapy lze do určité míry ovlivnit, vstupní data nikoliv.
+Symbologii mapy lze do určité míry ovlivnit, vstupní data nikoliv.
 
-WMS definuje 3 typy *requestů* na server od klienta (většina slušeb funguje
+WMS definuje 3 typy *requestů* na server od klienta (většina služeb funguje
 podobně, proto se pokusíme WMS rozebrat podrobněji):
 
-* GetCapabilities
-* GetMap
-* Nepovinný GetFeatureInfo
+* **GetCapabilities**
+* **GetMap**
+* Nepovinný **GetFeatureInfo**
 
-.. _wms-capabilities:
+.. _ogc-wms-capabilities:
 
 WMS GetCapabilities
 ^^^^^^^^^^^^^^^^^^^
 Jako příklad zvolíme službu ČUZK, poskytující letecké snímky, dostupnou na
-adrese http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx
+adrese:
+
+http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx
 
 Tzv. `Capabilities` dokument dostaneme po zavolání requestu *GetCapabilities*:
 
 http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=GetCapabilities
 
-Opět se pokusíme tuto adresu více rozebrat::
+Pokusíme se výše uvednou :wikipedia:`URL` blíže rozebrat::
 
     http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=GetCapabilities
                                                            ^          ^                 ^
-    Adresa serveru ČUZK a služby s leteckým snímkem -------+          |                 |
+    Adresa serveru ČUZK se službou leteckým snímků --------+          |                 |
     Specifikace požadované služby OGC WMS ----------------------------+                 |
     Specifikace requestu GetCapabilities -----------------------------------------------+
 
 Po zadání této adresy do prohlížeče server ČUZK vrátí dokument XML s
-*Capabilitiers* - schopnostmi serveru. V případě OGC WMS má 2 části (první část
+*Capabilities* - schopnostmi serveru. V případě OGC WMS má 2 části (první část
 bývá pro všechny služby OGC OWS stejná nebo alespoň hodně podobná) - metadata
 serveru (v části *Service*) a informace o dostupných službách (*Capability*):
 
 .. code-block:: xml
-
+    
     <WMS_Capabilities xsi:schemaLocation="http://www.opengis.net/wms ....>
         <Service>
             <Name>WMS</Name>
             <Title>Prohlížecí služba WMS - Ortofoto</Title>
-            <Abstract>Prohlížecí služba WMS-ORTOFOTO je poskytována jako veřejná prohlížecí služba nad aktu...</Abstract>
+            <Abstract>Prohlížecí služba WMS-ORTOFOTO je poskytována jako veřejná ...</Abstract>
             ...
             <ContactInformation>
             ...
@@ -68,7 +70,7 @@ serveru (v části *Service*) a informace o dostupných službách (*Capability*
 Service
 """""""
 V části dokumentu označené jako *Service* jsou uloženy metadata služby. Její
-*jméno*, *titulek* a širší popis *abstrakt*. Dále zde nalezneme kontaktní
+*jméno*, *titulek* a širší popis, tzv. *abstrakt*. Dále zde nalezneme kontaktní
 informace na provozovatele služby, informace o poplatcích a omezeních přístupu.
 
 Capability
@@ -85,7 +87,8 @@ za příhodné a elegantní řešení).
 
 Layer
 """""
-Podíváme se blíže na část `Layer`
+
+Podíváme se blíže na část `Layer`:
 
 .. code-block:: xml
     
@@ -101,9 +104,13 @@ Podíváme se blíže na část `Layer`
         <CRS>EPSG:4326</CRS>
         <CRS>EPSG:3857</CRS>
         ...
-        <BoundingBox CRS="EPSG:5514" minx="-950003.17502118601" miny="-1250003.1750036045" maxx="-399990.47499578597" maxy="-899996.82499090442" resx="6.3500127000253999" resy="-6.3500127000253999"/>
-        <BoundingBox CRS="EPSG:4326" miny="11.214011580382529" minx="47.964914601259672" maxy="19.407662623095131" maxx="51.691664934538636"/>
-        <BoundingBox CRS="EPSG:3857" minx="1248338.0588780562" miny="6101019.8582439059" maxx="2160451.1206905982" maxy="6744565.3811490489"/>
+        <BoundingBox CRS="EPSG:5514" minx="-950003.17502118601" miny="-1250003.1750036045"
+         maxx="-399990.47499578597" maxy="-899996.82499090442"
+         resx="6.3500127000253999" resy="-6.3500127000253999"/>
+        <BoundingBox CRS="EPSG:4326" miny="11.214011580382529" minx="47.964914601259672"
+         maxy="19.407662623095131" maxx="51.691664934538636"/>
+        <BoundingBox CRS="EPSG:3857" minx="1248338.0588780562" miny="6101019.8582439059"
+         maxx="2160451.1206905982" maxy="6744565.3811490489"/>
         ...
         <Attribution>
             <Title>© Český úřad zeměměřický a katastrální</Title>
@@ -119,7 +126,7 @@ Podíváme se blíže na část `Layer`
             <Title>Default</Title>
             <LegendURL width="20" height="15">
             <Format>image/png</Format>
-            <OnlineResource xlink:href="http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/service.svc/static/f/?url=cvRUdcV2CPFS0o8h5ybhxX6qEmzygaSiEtM9cmnqmf0aheaOd03QaWtixWLnm8KfxF2JRJSNQObGSKgtEvQU3g%3d%3d=lang=eng" xlink:type="simple"/>
+            <OnlineResource xlink:href="http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/..." xlink:type="simple"/>
             </LegendURL>
         </Style>
         <MinScaleDenominator>2.5253813613805272</MinScaleDenominator>
@@ -129,12 +136,12 @@ Podíváme se blíže na část `Layer`
 
 Každá vrstva je identifikovaná svým jménem (*Name*), má nadpis (*Title*) a může
 mít širší popis (*Abstract*). Za klíčovými slovy následuje seznam podporovaných
-souř. systémů. Některé servery podporují ve výchozím nastavení "všechny", což
+souřadnicových systémů. Některé servery podporují ve výchozím nastavení "všechny", což
 značně komplikuje parserování podobných odpovědí.
 
-V další části lze dohledat hraniční souřadnice dat *BoundingBox*, *Attribution*
-pak obsahuje informce o licenci a copyrightu. Některé vrstvy nabízejí více
-možností, jak zobrazit legendu (*Style*). Nakonec následují inforace o
+V další části lze dohledat hraniční souřadnice dat *BoundingBox*. *Attribution*
+pak obsahuje informace o licenci a copyrightu. Některé vrstvy nabízejí více
+možností, např. jak zobrazit symbologii (*Style*). Nakonec následují inforace o
 měřítcích, ve kterých se bude daná vrstva renderovat.
 
 WMS GetMap
@@ -144,7 +151,7 @@ program) sestavit request *GetMap*, který vrátí mapu. WMS server vrací mapu 
 základě dotazu, ve kterém musí být specifikováno:
 
 * Identifikátor vrstev
-* Souř. systém
+* Souřadnicový systém
 * Hraniční souřadnice požadovaného výřezu
 * Velikost obrázku
 * Formát obrázku
@@ -178,16 +185,16 @@ http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=Get
 
 .. figure:: images/wms_ortofoto.jpg
     
-    Letecký snímek stažený ze služby OGC WMS ze serverů ČUZK, `Zdroj <http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=GetMap&version=1.3.0&layers=GR_ORTFOTORGB&format=image/jpeg&width=800&height=600&bbox=50.5,14.0,50.8,14.3&crs=epsg:4326&styles=>`_
+    Letecký snímek stažený ze služby OGC WMS ze serverů ČUZK
 
 .. note:: Všiměte si, že hraniční souřadnice jsou zadány ve formě `miny, minx,
-    maxy, maxx` - cože je v rozporu s obecně platným zápisem párů souřadnic `[x, y]`. 
+    maxy, maxx` - což je v rozporu s obecně platným zápisem párů souřadnic `[x, y]`. 
 
     To je způsobeno tím, že ve standardu WMS verze 1.3.0, se dbá na pořadí
-    souřadnic, *jak jsou definovány v souřadicovém systému*. Systém WGS84
+    souřadnic, *jak jsou definovány v souřadnicovém systému*. Systém WGS84
     preferuje zápis v pořadí Y, X. Stejně tak např. INSPIREm předepsaný
     ETRS (:epsg:`3035`). To samé by mohlo platit pro systém S-JTSK
-    (`epsg:5514`), v praxi se ale pořadí os souřadnic `[x, y]` zachovává.
+    (:epsg:`5514`), v praxi se ale pořadí os souřadnic `[x, y]` zachovává.
 
     Jak lze tušit, způsobuje tato nekonzistence množství problémů v komunikaci
     mezi servery klienty, i vzhledem k tomu, že ve starších verzích standardu
@@ -195,8 +202,9 @@ http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=Get
 
 WMS GetFeatureInfo
 ^^^^^^^^^^^^^^^^^^
+
 Pokud to daná vrstva na daném serveru podporuje, je možné se dotázat na hodnotu
-pixelu na daných souřadnicích. To je-li to možné, se dozvíme z atributu
+pixelu na daných souřadnicích. Zda-li je to možné, se dozvíme z atributu
 `queryable` u každé vrstvy. V případě této služby, není žádná vrstva
 dotazovatelná, ale zdá se, že služba nabízející databázi ZABAGED takovou
 dotazovatelnou vrstvu obsahuje:
@@ -223,8 +231,8 @@ http://geoportal.cuzk.cz/WMS_ZABAGED_PUB/WMService.aspx?SERVICE=WMS&VERSION=1.3.
     </Layer>
     ...
 
-*GetFeatureInfo* request potřebuje stejné parametry jako potřeje *GetMap*
-request a k tomu ještě následující hodnoty:
+*GetFeatureInfo* request vyžaduje stejné parametry jako *GetMap*
+a k tomu ještě následující hodnoty:
 
 * `request=GetFeatureInfo` hodnota parametru `request` je samozřejmě změněna
 * `QUERY_LAYERS=GL_CA010` vrstvy o které se zajímáme
@@ -235,16 +243,20 @@ http://geoportal.cuzk.cz/WMS_ZABAGED_PUB/WMService.aspx?SERVICE=WMS&VERSION=1.3.
 
 Odpověď ze serveru:
 
-+---------------------+
-| Vrstevnice základní |
-+======+==============+
-|ID    | 24358813     |
-+------+--------------+
-|MAPNO | 133221       |
-+------+--------------+
-|VYSKA | 408          |
-+------+--------------+
+.. table::
+   :class: border
+        
+   +---------------------+
+   | Vrstevnice základní |
+   +======+==============+
+   |ID    | 24358813     |
+   +------+--------------+
+   |MAPNO | 133221       |
+   +------+--------------+
+   |VYSKA | 408          |
+   +------+--------------+
 
-.. note:: Dotaz byl poskládán pomocí programu QGIS. Odhadovat BBOX vrstvy a
-    souřadnice obrázku samozřejmě lze (po dopočítání rozlišení pixelu), ale
+.. note:: Dotaz byl poskládán pomocí programu `QGIS
+    <http://www.qgis.org>`_. Odhadovat BBOX vrstvy a souřadnice
+    obrázku samozřejmě lze (po dopočítání rozlišení pixelu), ale
     pomocí již napsaného software je to přesnější.

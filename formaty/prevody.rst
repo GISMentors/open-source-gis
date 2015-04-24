@@ -119,6 +119,8 @@ tzv. Well Known Text (WKT) notaci:
             UNIT["metre",1,
                 AUTHORITY["EPSG","9001"]]]
 
+.. _gdalwarp:
+                
 gdalwarp
 ^^^^^^^^
 Asi nejpoužívanější příkaz je `gdalwarp <http://www.gdal.org/gdalwarp.html>`_.
@@ -229,9 +231,11 @@ metadata v těchto datech přítomná.
 
 .. notecmd:: Transformace rastrových dat do jiného souřadnicového systému
 
-    V našem příkladu je zdrojový souř. systém známý, nastavíme pouze výchozí.
-    Zápis souř. systému je totožný se zápisem pro knihovnu Proj4. My použijeme
-    kód 4326 z databáze EPSG, což nám dá požadovaný souř. systém WGS84.
+    Souřadnicový systém vstupních dat je známý, v našem příkladě
+    nastavíme pouze souřadnicový systém pro výstupní data.  Zápis
+    souřadnicového systému je totožný se zápisem pro knihovnu
+    :program:`Proj.4`. My použijeme kód :epsg:`4326`, což je
+    souřadnicový systém WGS84.
 
     .. code-block:: bash
 
@@ -243,27 +247,28 @@ metadata v těchto datech přítomná.
 
 .. figure:: images/lsat7_2002_nir-wgs84.png
 
-    Výsledný obrázek převodu rastrové mapy na formát GeoTIFF do souř. systému
-    WGS84
+    Výsledek převodu rastrových dat do souřadnicového systému WGS84
 
 gdaltransform
 ^^^^^^^^^^^^^
-Funguje podobně jako program `cs2cs` knihovny Proj4. Transformuje souřadnice
-mezi souř. systémy.
+
+Funguje podobně jako program :ref:`cs2cs` knihovny Proj4, tj. transformuje
+souřadnice mezi souřadnicovými systémy.
 
 gdal_translate
 ^^^^^^^^^^^^^^
-Převádí rastrová data mezi různými formáty. Na rozdíl od `gdalwarp` neumožňuje
-změnit i souř. systém výsledné mapy. Umožňuje ale nastavit souř. systém
-výstupních dat pomocí parametru
 
-* -a_srs - assign coordinage reference system
+Převádí rastrová data mezi různými formáty. Na rozdíl od
+:ref:`gdalwarp` neumožňuje data transformovat do jiného souřadnicového
+systému. Lze ale nastavit souřadnicový systém výstupních dat pomocí
+parametru :option:`-a_srs` (kdy nechodází k transformaci dat, ale
+pouze nastavení souřadnicového systému do metadat výstupního souboru).
 
 gdaldem
 ^^^^^^^
+
 Nástroj `gdaldem <http://www.gdal.org/gdaldem.html>`_ vám pomůže zanalyzovat a
-vizualizovat digitální modely reliéfu (DEM). Ze vstupního rastrového souboru
-DMT, lze vygenerovat
+vizualizovat digitální modely reliéfu (DMR). Ze vstupního DMR lze vygenerovat
 
 * Stínovaný reliéf
 * Mapu sklonu svahu
@@ -271,7 +276,7 @@ DMT, lze vygenerovat
 * Barevný reliéf
 * a další ...
 
-.. notecmd:: Vytvoření mapy stínového reliéfu ze vstupního rastrového souboru.
+.. notecmd:: Vytvoření mapy stínového reliéfu ze vstupního rastrového souboru
 
     Zdroj dat: http://freegis.fsv.cvut.cz/gwiki/FreeGeoDataCZ
 
@@ -279,16 +284,15 @@ DMT, lze vygenerovat
 
         gdaldem hillshade dem_srtm.tiff hillshade.tiff
 
-        0...10...20...30...40...50...60...70...80...90...100 - done.
-
 .. figure:: images/hillshade.png
 
     Mapa stínovaného reliéfu vytvořená pomocí utility `gdaldem`
 
 gdallocationinfo
 ^^^^^^^^^^^^^^^^
-Nástroj `gdallocationinfo <http://www.gdal.org/gdallocationinfo.html>`_ umožňuje
-ptát se na hodnoty rastrových dat na daných souřadnicích
+
+Nástroj `gdallocationinfo <http://www.gdal.org/gdallocationinfo.html>`_ se umožňuje
+ptát se na hodnoty rastrových dat o daných rastrových souřadnicích.
 
 .. notecmd:: Dotaz na hodnotu rastru podle souřadnic
 
@@ -296,6 +300,8 @@ ptát se na hodnoty rastrových dat na daných souřadnicích
 
         gdallocationinfo lsat7_2002_nir-wgs84.tiff 15 50
 
+    ::
+      
         Report:
           Location: (15P,50L)
           Band 1:
@@ -307,15 +313,20 @@ ptát se na hodnoty rastrových dat na daných souřadnicích
 
 gdalmanage
 ^^^^^^^^^^
+
 Program `gdalmanage <http://www.gdal.org/gdalmanage.html>`_ umožňuje práci s
 rastrovými soubory na úrovni operačního systému, jejich identifikaci,
 přejmenování, mazání a kopírování.
 
-.. notecmd:: Obsah mého pracovního adresáře vypadá z pohledu GDAL následovně
+.. notecmd:: Použití
 
-    .. code-block:: bash
+   Obsah pracovního adresáře může vypadat z pohledu GDAL následovně:
+
+   .. code-block:: bash
         
-        gdalmanage identify *
+      gdalmanage identify *
+
+   ::
 
         dem_srtm.tiff: GTiff
         hillshade.bmp: BMP
@@ -328,16 +339,18 @@ přejmenování, mazání a kopírování.
         lsat7_2002_nir-wgs84.png: PNG
         lsat7_2002_nir-wgs84.tiff: GTiff
 
-`gdalmanage` se postará o případné změny a mazání více souborových formátů
-(např. `*.tfw` soubory).
+:program:`gdalmanage` lze použít pro případné změny a mazání více
+souborových formátů (např. `*.tfw` soubory).
 
 gdaladdo
 ^^^^^^^^
-Nástroj `gdaladdo <http://www.gdal.org/gdaladdo.html>`_ umožňuje pracovat s
-tzv. pyramidami -- zmenšenými kopiemi rastrových dat přímo uvnitř nebo externě
-rastrového souboru. Ve výsledku bude práce s rastrem u malých měřítek výrazně
-rychlejší - vznikne v podstatě prostorový index rastrových dat (používá např.
-QGIS pro zobrazování rastrů).
+
+Nástroj `gdaladdo <http://www.gdal.org/gdaladdo.html>`_ umožňuje
+pracovat s tzv. pyramidami -- zmenšenými kopiemi rastrových dat
+uložených přímo uvnitř anebo externě rastrového souboru. Ve výsledku
+bude práce s rastrem u malých měřítek výrazně rychlejší - vznikne v
+podstatě prostorový index rastrových dat (používá např.  QGIS pro
+zobrazování rastrů).
 
 .. notecmd:: Vytvoření přehledových pyramid rastrového souboru
 
@@ -358,7 +371,8 @@ QGIS pro zobrazování rastrů).
 
 gdal_contour
 ^^^^^^^^^^^^
-`Gdal_contour <http://www.gdal.org/gdal_contour.html>`_
+
+Nástoj `gdal_contour <http://www.gdal.org/gdal_contour.html>`_
 vytvoří vektorové vrstevnice ze vstupního digitálního modelu reliéfu
 
 .. notecmd:: Vytvoření vrstevnic
@@ -367,20 +381,20 @@ vytvoří vektorové vrstevnice ze vstupního digitálního modelu reliéfu
 
         gdal_contour -a elev dem_srtm.tiff vrstevnice.shp -i 10.0
 
-        0...10...20...30...40...50...60...70...80...90...100 - done.
-
 .. figure:: images/vrstevnice.png
 
     Získané (a obarvené) vrstevnice
 
 gdal_rasterize
 ^^^^^^^^^^^^^^
-Podle návodu `gdal_rasterize <http://www.gdal.org/gdal_rasterize.html>`_
-"vypálí" vektorovou geometrii do rastrového souboru
 
-.. notecmd:: Převod vektorových vrstevnic na rastrovou mapu
+Nástroj `gdal_rasterize <http://www.gdal.org/gdal_rasterize.html>`_
+provede :ref:`rasterizaci <rasterizace>` vektorových dat (tj. převede
+data z vektorové reprezentace do rastru).
 
-    Výstupní formát BMP, rozlišení 10m
+.. notecmd:: Převod vektorových vrstevnic na rastrová data
+
+    Výstupní formát BMP, prostorové rozlišení 10m
 
     .. code-block:: bash
 
@@ -393,21 +407,24 @@ okolo každého rastrového souboru. Tento prostorový index lze pak použít do
 dalších operací v prostředí GDAL, stejně tak jako vrstvu v programu `MapServer
 <http://mapserver.org>`_.
 
+Příkazy pro práci s vektorovými daty
+------------------------------------
 
 ogrinfo
 ^^^^^^^
-Sesterským programem k `gdalinfo` je `ogrinfo` - vypíše dostupné informace o
-vektorových mapách.
+
+Sesterským programem ke :program:`gdalinfo` je :program:`ogrinfo` -
+vypíše dostupné informace o vektorových datech.
 
 .. note:: OGR pracuje na abstraktním datovém modelu
 
-    * Zdroj (data source)
-        * Vrstva (layer)
-            * Vektorový objekt (feature)
+    * *Zdroj* (data source)
+        * *Vrstva* (layer)
+            * *Vektorový objekt* (feature)
 
     kde
 
-    * Zdrojem může být soubor nebo prostorová databáze
+    * Zdrojem může být soubor, adresář nebo prostorová databáze
     * Vrstvou může být tabulka v databázi nebo vlastní data v souboru
 
     Jsou-li data uložena v souboru, bývá název souboru a název vrstvy totožný.
@@ -417,11 +434,14 @@ vektorových mapách.
     zdrojům, z nichž některé umožňují do zdroje (souboru, databáze, ...) uložit
     více dat (vrstev, tabulek) a jiné ne.
 
+    Podrobnější informace o datovém modulu knihovny GDAL najdete ve
+    školení :skoleni:`GeoPython`.
+
 .. notecmd:: Dotaz na metadata vektorového souboru
 
-    Necháme si vypsat informace o souboru `vrstevnice.shp`, pokud vynecháme
-    parametr `-so` (summary only), vypíší se informace o každém vektorovém
-    prvku:
+    Necháme si vypsat informace o souboru `vrstevnice.shp` (pokud
+    vynecháme parametr `-so` (summary only), vypíší se informace o
+    každém vektorovém prvku):
 
     .. code-block:: bash
 
@@ -453,9 +473,10 @@ vektorových mapách.
         ID: Integer (8.0)
         elev: Real (12.3)
 
-    Vidíme, že vektorová mapa je v souř. systému S-JTSK, hraniční souřadnice
-    jsou (-904049.056059, -1227170.827189) - (-431499.549460, -935327.979496) a
-    má 2 atributy: ID a elev (obsahující výšku nad mořem každé vrstevnice).
+    Vidíme, že vektorová data jsou v souřadnicovém systému S-JTSK,
+    hraniční souřadnice jsou (-904049.056059, -1227170.827189) -
+    (-431499.549460, -935327.979496) a atributová tabulka má 2
+    atributy: `ID` a `elev` (obsahující výšku nad mořem každé vrstevnice).
     Jedná se o soubor s liniovou geometrií.
 
 
@@ -468,14 +489,16 @@ odkazem do adresářové struktury.
 
 ogrlineref
 ^^^^^^^^^^
-`ogrlineref <http://www.gdal.org/ogrlineref.html>`_ slouží k tvorbě souboru
-obsahujícím segmenty zvláštních délek a získávat jejich souřadnice, vzdálenosti
-atd., to vše v lineární referenční síti.
+
+`ogrlineref <http://www.gdal.org/ogrlineref.html>`_ slouží k tvorbě
+souboru obsahujícím segmenty o daných délek. Umožňuje získávat jejich
+souřadnice, vzdálenosti, staničení atd., to vše v lineární referenční síti.
 
 ogr2ogr
 ^^^^^^^
-Stejně jako `gdalwarp` lze použít pro převody rastrových souborů, lze `ogr2ogr
-<http://www.gdal.org/ogr2ogr.html>`_ použít pro transformaci vektorových dat.
+
+Nástroj `ogr2ogr <http://www.gdal.org/ogr2ogr.html>`_ je obdobou
+rastrového :ref:`gdalwarp`, který umožňuje transformaci vektorových dat.
 
 Obecná syntaxe je::
 
@@ -498,26 +521,28 @@ Stejně jako u `gdalwarp`, můžete podporované formáty vypsat pomocí paramet
       -> "DGN" (read/write)
       ...
 
-Pro práci se souř. systémy opět můžeme použít některý z následujících parametrů:
+Pro práci se souřadnicovými systémy opět můžeme použít některý z následujících parametrů:
 
-* -a_srs - přiřadí informaci o souř. systému výstupnímu souboru
-* -t_srs - souř. systém výstupních dat
-* -s_srs - nastaví souř. systém vstupních dat
+* :option:`-a_srs` - přiřadí informaci o souřadnicovém systému do metadat výstupnímu souboru
+* :option:`-t_srs` - provode transformaci dat do souřadnicového systému výstupních dat
+* :option:`-s_srs` - nastaví souřadnicový systém vstupních dat
 
 Tyto parametry jsou kompatibilní se zápisem pro knihovnu Proj4.
 
-.. notecmd:: Převod souboru vrstevnic ve formátu ESRI Shapefile na formát KML
+.. notecmd:: Převod souboru vrstevnic ve formátu Esri Shapefile na formát KML
 
     .. code-block:: bash
 
         ogr2ogr -f KML -t_srs epsg:4326 vrstevnice.kml vrstevnice.shp
 
-    Výsledný soubor můžeme zkontrolovat pomocí `ogrinfo`
+    Výsledný soubor můžeme zkontrolovat pomocí :program:`ogrinfo`:
 
     .. code-block:: bash
         
         ogrinfo vrstevnice.kml vrstevnice -so
 
+    ::
+      
         INFO: Open of `vrstevnice.kml'
               using driver `LIBKML' successful.
 

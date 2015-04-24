@@ -4,4 +4,4 @@
 GeoPython
 *********
 
-Samostatné školení: http://training.gismentors.eu/geopython/
+Samostatné školení: :skoleni:`GeoPython <geopython>`.

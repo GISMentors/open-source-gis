@@ -226,6 +226,8 @@ Většina pokročilích GIS obsahují nástroje pro *čištění topologie*.
 Převod dat
 ==========
 
+.. _rasterizace:
+   
 Rasterizace
 -----------
 

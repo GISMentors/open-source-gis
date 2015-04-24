@@ -10,7 +10,7 @@ from utils import get_month_year, get_year
 
 # General information about the project.
 project = u'Školení Open Source GIS'
-copyright = u'2014-%d by Martin Landa a Jáchym Čepický (GISMentors)' % get_year()
+copyright = u'2014-%d by Jáchym Čepický a Martin Landa (GISMentors)' % get_year()
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -68,4 +68,4 @@ from conf_base import *
 todo_include_todos = True
 
 extensions = [ 'sphinx.ext.extlinks', 'sphinx.ext.todo', 'video', 'notes',
-'sphinx.ext.pngmath', 'sphinx.ext.mathjax']
+               'sphinx.ext.pngmath', 'sphinx.ext.mathjax' ]

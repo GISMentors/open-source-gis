@@ -6,22 +6,22 @@ Standardy v GIS
 
 GIS jako obor se etabloval v 80. letech 20 století. Za tu dobu se v praxi
 prosadila celá řada oborových *de-facto* standardů (standardy prosazené tržní
-silou, ale formálně nepotvrzené). Jako příklad můžeme zmínit ESRI
+silou, ale formálně nepotvrzené). Jako příklad můžeme zmínit Esri
 :wikipedia:`Shapefile` nebo v poslední době populární Google :wikipedia:`KML`.
 
-V roce 1992 bylo ve Spojených státech amerických založeno sdružení *Open GRASS
-Foundation (OGF)*. Cílem sdružení bylo mimo jiné i hledání koncensu při hledání
-společných řešení v rámci komunity uživatelů softwaru GRASS. Většina řešení se
-však točila okolo softwaru GRASS a také proto bylo v roce 1994 formováno
-konzorcium Open GIS, dnes nazývané `Open Geospatial Consortium
-<http://opengeospatial.org>`_ s cílem hledat způsoby, jakými by mohly systémy
-komunikovat prostřednictvím počítačových sítí, pokud by využívali otevřených
-rozhraní definovaných v rámci "Open Geodata Interoperability Specification"
-(OGIS).
+V roce 1992 bylo ve Spojených státech amerických založeno sdružení
+*Open GRASS Foundation (OGF)*. Cílem sdružení bylo mimo jiné i hledání
+koncensu při řešení společných problémů v rámci komunity uživatelů
+softwaru :skoleni:`GRASS <grass-gis-zacatecnik>`. Na základech OGF v
+roce 1994 bylo formováno konzorcium Open GIS, dnes nazývané `Open
+Geospatial Consortium <http://opengeospatial.org>`_ s cílem hledat
+způsoby, jakými by mohly systémy komunikovat prostřednictvím
+počítačových sítí, pokud by využívali otevřených rozhraní definovaných
+v rámci "Open Geodata Interoperability Specification" (OGIS).
 
-Open Geospatial Consortium bylo založilo v roce 1994 devět členů. V roce 2015 má
-sdružení na 500 členů (komerčních firem, veřejných institucí, univerzit i
-jednotlivců). 
+Open GIS konzorcium bylo založilo v roce 1994 devěti členy. V roce
+2015 má jeho nástupce OGC na 500 členů (komerčních firem,
+veřejných institucí, univerzit i jednotlivců).
 
 Dnes OGC poskytuje více jako 35 implementačních standardů, které jsou *volně
 dostupné* a adresují různé výzvy ve vztahu k prostorovým datům.
@@ -38,8 +38,8 @@ brzy zjistíte, že standardy jsou
 * vždy *nevyhovující* vašemu problému, který chcete aktuálně řešit
 * vždy *zbytečně komplikované*, stačilo by to přeci udělat daleko jednodušeji.
 
-Jak si všiml již autor komixu `XKCD <http://xkcd.com>`_, každý si myslí, že umí
-vytvořit lepší standard, než je ten stávající
+*Toho si všiml i autor komixu* `XKCD <http://xkcd.com>`_, *každý si myslí, že umí
+vytvořit lepší standard, než je ten stávající:*
 
 .. figure:: images/standards.png
 
@@ -48,19 +48,35 @@ vytvořit lepší standard, než je ten stávající
 Standardy však každému oboru přinášejí několik pozitivních aspektů (jsou-li
 uplatňovány dobře):
 
-* komunikace mezi softwary
-* sdílení mezi softwary
-* nahraditelnost a zastupitelnost softwarových řešení
+* komunikaci mezi softwary,
+* sdílení mezi softwary,
+* nahraditelnost a zastupitelnost softwarových řešení.
 
-jedním slovem nám standardy zajišťují **interoperabilitu** v rámci oboru.
+Jedním slovem nám standardy zajišťují **interoperabilitu** v rámci oboru.
 
 Z pohledu otevřenosti a formálnosti můžeme oborové standardy zatřídit do
-následujícího schematu
+následujícího schematu:
 
-.. figure:: images/standardy-trideni.png
+::
 
-    Standardy z pohledu otevřenosti a způsobu jejich vzniku
+                                       de-jure
+                                          +
+                                          |
+                                          |
+                                          |
+                                          |
+                  zavřené +---------------+----------------+ otevřené
+                                          |
+                                          |
+                                          |
+                                          |
+                                          +
+                                       de-facto
 
+*Standardy z pohledu otevřenosti a způsobu jejich vzniku*
+
+.. todo:: aafigure
+          
 **Uzavřené de-facto standardy**
     Jsou asi nejméně vhodným příkladem následování. V oboru GIS se s těmito
     standardy příliš často nesetkáváme, jsou však známy případy de-facto
@@ -69,8 +85,8 @@ následujícího schematu
     být interoperabilní v softwarech třetích stran.
 
 **Otevřené de-facto standardy**
-    Příkladem takového standardu může být formát ESRI Shapefile. Ten nikdy nebyl
-    formalizován mimo firmu ESRI, ta ale nekladla žádné překážky v jeho
+    Příkladem takového standardu může být formát Esri Shapefile. Ten nikdy nebyl
+    formalizován mimo firmu Esri, ta ale nekladla žádné překážky v jeho
     implementaci v softwarech třetích stran. Formát se již dále nevyvíjí, takže
     brzdí inovace, interoperabilita je však zaručena dostatečně.
 
@@ -87,7 +103,8 @@ následujícího schematu
     nebrání jejich implementaci do softwarů různých stran, zároveň mohou být
     dále rozvíjeny. Příkladem těchto standardů jsou normy konzorcia OGC.
 
-
+**Další témata:**
+    
 .. toctree::
    :maxdepth: 2
 

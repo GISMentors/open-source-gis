@@ -2,26 +2,25 @@
 
 OGC Web Map Tiled Service - WMTS
 --------------------------------
+
 S příchodem `mapové aplikace firmy Google <http://maps.google.com>`_ se značně
 změnil přístup k servírování podkladových mapových kompozic. Uživatelé
 pochopili, že pro více-méně statická data (jako jsou letecké snímky či
 topografická mapa, atd.) je možné přegenerovat výslednou mapu do formy dlaždic,
 ty pak lze ze serveru odbavovat relativně rychle. Cenou za rychlost je omezení
-nabízených souř. systémů (pro každý nabízený se musí vyrobit a udržovat celá
+nabízených souřadnicových systémů (pro každý nabízený se musí vyrobit a udržovat celá
 dlaždicová cache zvlášť) a omezení dostupných měřítek na předem připravené
 kroky.
 
 Odpovědí na tuto potřebu je specifikace `OGC WMTS
 <http://opengeospatial.org/standards/wmts>`_. Ta umožňuje definovat dostupné
-dlaždicové cache pro různá měřítka a souř. systémy.
-
-.. _wms-capabilities:
+dlaždicové cache pro různá měřítka a souřadnicové systémy.
 
 WMTS GetCapabilities
 ^^^^^^^^^^^^^^^^^^^^
 
-Podobně jako o :ref:`wms-capabilities`, má request *GetCapabilities* i služba
-WMTS. Otestujeme ji opět na serverech ČUZK:
+Podobně jako u :ref:`ogc-wms-capabilities`, má request *GetCapabilities* i služba
+WMTS. Otestujeme ji opět na serverech ČÚZK:
 
 http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=getcapabilities
 
@@ -51,7 +50,7 @@ ServiceIdenitication
     ...
     <ows:ServiceIdentification>
         <ows:Title>Prohlížecí služba WMTS - Ortofoto ČR</ows:Title>
-        <ows:Abstract>Prohlížecí služba WMTS-ORTOFOTO-P je poskytována jako veřejná prohlížecí služba nad daty ortofota České republiky. Data jsou z důvodu optimalizace rychlosti služby poskytována formou mapových dlaždic. Služba pokrývá daty ortofota celý použitelný měřítkový rozsah, tj. včetně malých měřítek.</ows:Abstract>
+        <ows:Abstract>Prohlížecí služba WMTS-ORTOFOTO-P je poskytována ...</ows:Abstract>
         <ows:Keywords>
         <ows:Keyword>WMTS</ows:Keyword>
         <ows:Keyword>OTDF</ows:Keyword>
@@ -63,7 +62,7 @@ ServiceIdenitication
     </ows:ServiceIdentification>
     ...
 
-Vidíme, že služba je podobně jako u WMS (a dalších služeb) identifikovaná svým
+Vidíme, že služba je podobně jako u WMS (a dalších služeb) dána svým
 identifikátorem (*Name*), nadpisem, abstraktem, klíčovými slovy, dostupnými
 verzemi, informacemi o poplatcích a licenci.
 
@@ -97,7 +96,7 @@ ServiceProvider
         </ows:ServiceProvider>
         ...
 
-Část ServiceProvider poskytuje adresu a další kontaktní informace na
+Část *ServiceProvider* poskytuje adresu a další kontaktní informace na
 poskytovatele.
 
 OperationsMetadata
@@ -128,15 +127,15 @@ OperationsMetadata
         </ows:Operation>
     </ows:OperationsMetadata>
 
-OperationsMetadata popisuje adresy URL pro jednotlivé operace (requesty). Vidět
-můžeme detailní informace pro GetCapabilities request a GetTile request.
+*OperationsMetadata* popisuje adresy URL pro jednotlivé operace (requesty). Vidět
+můžeme detailní informace pro *GetCapabilities* a *GetTile* request.
 
 Contents
 """"""""
 
 Vlastní obsah služby budeme muset opět popsat po částech. Nejprve začínáme
-seznamem dostupných vrstev, jejich názvem, titulkem, abstraktem, hraničními
-souřadnicemi
+seznamem dostupných vrstev, jejich názvem, titulkem, abstraktem a hraničními
+souřadnicemi.
 
 .. code-block:: xml
 
@@ -158,7 +157,7 @@ souřadnicemi
 
 
 Každá vrstva odkazuje pomocí "Linků" na tzv *MatrixSet* připravené schema
-dlaždic. Pro každé měřítko a souřadnicový systém specifikuje, od jakého-do
+dlaždic. Pro každé měřítko a souřadnicový systém specifikuje, od jakého do
 jakého sloupečku a řádku v matici dlaždic jsou data přítomy:
 
 .. code-block:: xml
@@ -186,8 +185,8 @@ jakého sloupečku a řádku v matici dlaždic jsou data přítomy:
             </TileMatrixSetLink>
         </Layer>
 
-Po seznamu vrstev následuje seznam tzv. *MatrixSetů* - připravench schemat
-dlaždicové cache. V našem příkladu si to ukážeme na jednom schematu - S-JTSK
+Po seznamu vrstev následuje seznam tzv. *MatrixSetů* - připravených schemat
+dlaždicové cache. V našem příkladu si to ukážeme na jednom schematu - S-JTSK:
 
 .. code-block:: xml
 
