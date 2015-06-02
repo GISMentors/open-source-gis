@@ -6,6 +6,12 @@ Server GIS
 
 .. warning:: :red:`Obsahuje pouze osnovu kapitoly`
 
+.. toctree::
+   :maxdepth: 1
+
+   mapserver
+
+
 MapServer
 =========
 
@@ -14,6 +20,8 @@ MapServer
 * MapScript
 * MapCache
 * TinyOWS
+
+Více viz :ref:`mapserver`.
 
 GeoServer
 =========
@@ -55,3 +63,5 @@ CS-W
 ----
 * GeoNetwork Open Source http://geonetwork-opensource.org/
 * PyCSW http://pycsw.org/
+
+
