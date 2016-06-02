@@ -5,7 +5,7 @@ Souřadnicové systémy
 ********************
 
 :wikipedia:`Mapové zobrazení` (**kartografické zobrazení**) je způsob, kterým
-se převádí zobrazení povrchu Země (či jiného nebeského tělesa) z dvojrozměrného
+se převádí zobrazení povrchu Země (či jiného nebeského tělesa) z trojrozměrného
 zakřiveného povrchu referenčního elipsoidu či koule do roviny. Výsledek takového
 geometrického či početního postupu nazýváme *mapa*.
 
@@ -13,15 +13,15 @@ Protože povrch koule či elipsoidu není rozvinutelný do roviny (stejně jako 
 do roviny bez deformace rozvinout oloupanou slupku pomeranče), je zapotřebí
 jej převést na povrch geometrického objektu, jehož povrch do roviny
 rozvinutelný je. Takovými objekty jsou válec, kužel a samozřejmě také rovinná
-plocha sama. Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové zkreslení části
-obsažených informací. Ve výsledném rovinném zobrazení nemohou být současně
-zachovány všechny hlavní údaje – délky, úhly a plochy – vždy dochází ke
+plocha sama. Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové 
+zkreslení části obsažených informací. Ve výsledném rovinném zobrazení nemohou být 
+současně zachovány všechny hlavní údaje – délky, úhly a plochy – vždy dochází ke
 zkreslení některého z nich (případně všech). Proto byla postupem času vyvinuta
-řada kartografických zobrazení, z nichž každé klade důraz na jiný z důležitých údajů.
-Při vytváření map malých území (do několika set km²) je zkreslení téměř
+řada kartografických zobrazení, z nichž každé klade důraz na jiný z důležitých 
+údajů. Při vytváření map malých území (do několika set km²) je zkreslení téměř
 zanedbatelné, je-li však třeba zachytit na mapě větší oblast (kraj, stát,
-světadíl, oceán či celou Zemi), je nutné pečlivě volit kartografické zobrazení tak, aby
-odpovídalo účelu mapy.
+světadíl, oceán či celou Zemi), je nutné pečlivě volit kartografické zobrazení 
+tak, aby odpovídalo účelu mapy.
 
 .. figure:: ../images/Tissot_world_from_space.png
    :class: small
@@ -48,14 +48,14 @@ Z uvedeného vyplývá, že můžeme kartografického zobrazení rozdělit na
 základě charakteru zkreslení do několika skupin:
 
 * **délkojevná** (ekvidistantní) – nezkreslují vzdálenosti podél
-  určitého systému čar (netýká se všech délek)
+  určitého systému čar (netýká se všech délek),
 * **plochojevná** (ekvivalentní) – zachovávají poměry ploch, silně
-  jsou však zkresleny úhly
+  jsou však zkresleny úhly,
 * **úhlojevná** (konformní) – věrně zachycují úhly, ale silně
-  zkreslují plochy
+  zkreslují plochy,
 * **vyrovnávací** (kompenzační) – kompromisní zobrazení s mírným
   zkreslením úhlů i ploch; do této kategorie lze počítat i mnohá
-  zobrazení délkojevná
+  zobrazení délkojevná.
 
 .. figure:: ../images/Netzentwuerfe.png
     :class: middle
@@ -67,13 +67,13 @@ základě charakteru zkreslení do několika skupin:
 Křovákovo zobrazení (S-JTSK)
 ============================
 
-Nejpoužívanější soouřadnicový systém v ČR **Systém jednotné
+Nejpoužívanější souřadnicový systém v ČR **Systém jednotné
 trigonometrické sítě katastrální** (`S-JTSK
 <http://freegis.fsv.cvut.cz/gwiki/S-JTSK>`_) používá tzv. Křovákovo
 zobrazení. Křovákovo zobrazení je konformní kuželové zobrazení v
 obecné poloze, které v roce 1922 navrhl Ing. Josef Křovák.
-Transformace souřadnic :math:`\varphi,\lambda` na pravoúhlé :math:`X,
-Y` se provádí v několika krocích. Nejprve je provedeno Gaussovo
+Transformace souřadnic :math:`\varphi,\lambda` na pravoúhlé :math:`x, y` 
+se provádí v několika krocích. Nejprve je provedeno Gaussovo
 konformní zobrazení Besselova elipsoidu na kouli a poté konformní
 zobrazení na kuželovou plochu obecně položenou.
 
@@ -84,9 +84,16 @@ zobrazení na kuželovou plochu obecně položenou.
     <http://freegis.fsv.cvut.cz/gwiki/S-JTSK>`_)
 
 Česká republika leží celá ve třetím kvadrantu (první kvadrant
-geodetického souřadnicového systému, osa X směřuje dolů, osa Y do
-leva). V geografických informačních systémech se často používá forma
-převedená do matematického třetího kvadrantu, osy jsou potom prohozené
+geodetického souřadnicového systému, kladná osa :math:`x` směřuje dolů, kladná 
+osa :math:`y` do leva). 
+
+.. figure:: ../images/Krovakovo_zobrazeni_kroky.png
+    :class: middle
+
+    Transformace souřadnic v krocích.
+
+V geografických informačních systémech se často používá 
+forma převedená do matematického třetího kvadrantu, osy jsou potom prohozené
 a souřadnice záporné.
 
 Mercatorovo zobrazení
@@ -107,23 +114,23 @@ rovnoběžek směrem k pólům vzrůstá do nekonečna. Protože se válec po ce
 rovníku glóbu dotýká, je zobrazení rovníku délkojevné. Totéž už neplatí o
 ostatních rovnoběžkách, které jsou znázorněny jako úsečky stejné délky – čím
 blíže k pólům, tím je tedy zkreslení v délce (a ploše) větší. Proto nelze
-Mercatorovo zobrazení použít při tvorbě map polárních oblastí nad 86.
+Mercatorovo zobrazení použít při tvorbě map polárních oblastí nad 86. 
 stupeň zeměpisné šířky. Naopak v rovníkových oblastech, přibližně mezi 15.
 stupněm severní a jižní zeměpisné šířky, je délková a plošná nepřesnost vcelku
 zanedbatelná.
 
-Toto zobrazení se používá zejména na webových mapách (Google, Bing,
-:wikipedia:`OpenStreetMap`).
+Toto zobrazení se používá zejména na webových mapách (:wikipedia:`Google`, 
+:wikipedia:`Bing`, :wikipedia:`OpenStreetMap`).
 
-WGS 84
-======
+WGS84
+=====
 :wikipedia:`World Geodetic System` (zkratka WGS84) je světově uznávaný
 geodetický standard vydaný ministerstvem obrany USA v roce 1984, který definuje
 souřadnicový systém, referenční elipsoid pro geodézii a navigaci. Odchylky od
 referenčního elipsoidu pak popisují geoid EGM84. V roce 1996 byl rozšířen o
 zpřesněnou definici geoidu EGM96. Byl vytvořen na základě měření pozemních
 stanic družicového polohového systému TRANSIT a nahrazuje dřívější systémy
-WGS 60, WGS 66 a WGS 72.
+WGS60, WGS66 a WGS72.
 
 WGS-84 používá zeměpisné souřadnice. Polohu tedy určíme pomocí zeměpisné délky,
 šířky a výšky. Šírka nabývá 0°-90° na sever od rovníku a 0°-90° na jih od
@@ -132,20 +139,23 @@ rovníku. Délka pak nabývá hodnot 0°-180° na západ od nultého poledníku 
 Reference Meridian. Leží 5.31 úhlových vteřin východně od "Greenwich Prime
 Meridian".
 
-Souřadnicový systém WGS 84 dále používá i pravoúhlé souřadnice, které
+Souřadnicový systém WGS84 dále používá i pravoúhlé souřadnice, které
 jsou definovány pravotočivou kartézskou soustavou souřadnic se středem
-v těžišti Země (včetně moří a atmosféry). Kladná osa *x* směřuje k
-průsečíku nultého poledníku a rovníku, kladná osa *z* k severnímu pólu a
-kladná osa *y* je na obě předchozí kolmá ve směru doleva (90° východní
+v těžišti Země (včetně moří a atmosféry). Kladná osa :math:`X` směřuje k
+průsečíku nultého poledníku a rovníku, kladná osa :math:`Z` k severnímu pólu a
+kladná osa :math:`Y` je na obě předchozí kolmá ve směru doleva (90° východní
 délky a 0° šířky), tvoří tak pravotočivou soustavu souřadnic.
 
-ETRS
-====
+ETRS89
+======
 
-:wikipedia-en:`ETRS-89 <European Terrestrial Reference System 1989>`
+:wikipedia-en:`ETRS89 <European Terrestrial Reference System 1989>`
 (European Terrestrial Reference System 1989) je evropský terestický
 systém, ve kterém je Euroasijská deska jako celek považována za
-statickou.
+statickou. Modelová rychlost desky je definována modelem NNR-NUVEL1A.
+Jde o systém, jehož počátek leží v těžišti hmot Země, včetně hmot oceánů 
+a atmosféry. Systém je definován jako geocentrický, ekvatoriální, terestrický 
+s konvenční Greenwich orientací. 
 
 EPSG
 ====
@@ -174,21 +184,33 @@ Významné kódy EPSG
 ------------------
 
 :epsg:`5514`
-    S-JTSK, Křovákovo zobrazení, záporné souřadnice
+    systém S-JTSK, východ **X** / sever **Y** (S-JTSK / Krovak East North), 
+    definováno od nultého poledníku Greenwiche, záporné souřadnice
+
+:epsg:`5513`
+    systém S-JTSK, jih **X** / západ **Y** (S-JTSK / Krovak), 
+    definováno od nultého poledníku Greenwiche, kladné souřadnice
 
 :epsg:`4326`
-    WGS84, souřadnicový systém používaný mimo jiné v zařízeních GPS
+    WGS84, souřadnicový systém používaný mimo jiné v zařízeních GPS, 
+    použito zobrazení geografickými souřadnicemi(také geografická projekce, 
+    nebo geographic 2D)
 
 :epsg:`3857`
-    Sférické Mercatorovo zobrazení, používaný např. Google Map, Bing Maps, OpenStreetMap
+    Sférické Mercatorovo zobrazení, používaný např. Google Maps, Bing Maps, 
+    OpenStreetMap
 
 Kódy, se kterými se také můžete setkat:
 ---------------------------------------
 
 :epsg:`2065`
     Křovákovo zobrazení, odvozené od Ferrova poledníku, kladné souřadnice.
-    Někdy se chybně využívá jako ekvivalent *Křovák-GIS* :epsg:`5514`. Tyto systémy však
-    nejsou ekvivaletní a tento kód by se takto používat *neměl*.
+    Někdy se chybně využívá jako ekvivalent *Křovák-GIS* :epsg:`5514`. Tyto 
+    systémy však nejsou ekvivaletní a tento kód by se takto používat *neměl*.
+
+:epsg:`5221`
+    Křovákovo zobrazení (S-JTSK / Krovak East North), odvozené od Ferrova 
+    poledníku, záporné souřadnice.
 
 :epsg:`102067`
     Kód využívaný v softwarech firmy ESRI, často přejímaný do jiných softwarů.
@@ -203,6 +225,17 @@ Kódy, se kterými se také můžete setkat:
 `a další ... <http://epsg.io>`_
     EPSG:2003 EPSG:2004 EPSG:2005 EPSG:2006 EPSG:2007 EPSG:2008 EPSG:2009 EPSG:2010 EPSG:2011 EPSG:2012 EPSG:2013 EPSG:2014 EPSG:2015 EPSG:2016 EPSG:2017 EPSG:2018 EPSG:2019 EPSG:2020 EPSG:2021 EPSG:2022 EPSG:2023 EPSG:2024 EPSG:2025 EPSG:2026 EPSG:2027 EPSG:2028 EPSG:2029 EPSG:2030 EPSG:2031 EPSG:2032 EPSG:2033 EPSG:2034 EPSG:2035 EPSG:2036 EPSG:2037 EPSG:2038 EPSG:2039 EPSG:2040 EPSG:2041 EPSG:2042 EPSG:2043 EPSG:2044 EPSG:2045 EPSG:2046 EPSG:2047 EPSG:2048 EPSG:2049 EPSG:2050 EPSG:2051 EPSG:2052 EPSG:2053 EPSG:2054 EPSG:2055 EPSG:2056 EPSG:2057 EPSG:2058 EPSG:2059 EPSG:2060 EPSG:2061 EPSG:2062 EPSG:2063 EPSG:2064 EPSG:2065 EPSG:2066 EPSG:2067 EPSG:2068 EPSG:2069 EPSG:2070 EPSG:2071 EPSG:2072 EPSG:2073 EPSG:2074 EPSG:2075 EPSG:2076 EPSG:2077 EPSG:2078 EPSG:2079 EPSG:2080 EPSG:2081 EPSG:2082 EPSG:2083 EPSG:2084 EPSG:2085 EPSG:2086 EPSG:2087 EPSG:2088 EPSG:2089 EPSG:2090 EPSG:2091 EPSG:2092 EPSG:2093 EPSG:2094 EPSG:2095 EPSG:2096 EPSG:2097 EPSG:2098 EPSG:2099 EPSG:2100 EPSG:2101 EPSG:2102 EPSG:2103 EPSG:2104 EPSG:2105 EPSG:2106 EPSG:2107 ...
 
+.. note:: V oblasti užití dat v geografických informačních systémech není 
+    užíván EPSG 2065 S-JTSK/Krovak s kladnými 
+    souřadnicemi v pořadí x, y - South, West, který naopak užívají geodeti pro 
+    měření v terénu a zobrazují pak ve svých měřických výstupech kladné 
+    souřadnice y, x. Pokud však tento výstup použiji přímo jako zdroj pro GIS 
+    aplikaci či mapovou službu, data se nezobrazí správně, neboť aplikace jsou 
+    naprogramovány na užití Křovákovy projekce se zápornými souřadnicemi. 
+
+    Vztah mezi souřadnicemi „záporného“ X ,Y a „kladného“ x,y Křováka 
+    (tedy mezi EPSG 5514 a EPSG 2065) je tento: **X = -y a Y = -x**.
+
 Jak poznat v jakém souřadnicovém systému jsou data
 ==================================================
 
@@ -212,16 +245,16 @@ souřadnicová systém čistě z hodnot souřadnic (omezíme se na České
 republiky, lze ale vztáhnout na celý svět):
 
 WGS84 - :epsg:`4326`
-    Kladná čísla nabývající hodnot 11 až 20 ve směru osy `x` a 
-    47 až 52 ve směru osy `y`.
+    Kladná čísla nabývající hodnot 11 až 20 ve směru osy :math:`x` a 
+    47 až 52 ve směru osy :math:`y`.
 
 S-JTSK - :epsg:`5514`
     Souřadnice jsou záporné a nabývají hodnot -925000 až -400646 v
-    ose `x` a -1444353 až -920000 v ose `y`
+    ose :math:`x` a -1444353 až -920000 v ose :math:`y`
 
 Mercator - :epsg:`3857`
-     Kladné souřadnice s hodnotamy `x` mezi 129295 až 1817312 a osy `y`
-     6185018 až 6709371.
+     Kladné souřadnice s hodnotami :math:`x` mezi 129295 až 1817312 a osy 
+     :math:`y` 6185018 až 6709371.
 
 .. figure:: ../images/map_projections.png
     :class: middle
@@ -249,7 +282,7 @@ užitečné nástroje v příkazové řádce.
 
 cs2cs
 -----
-Provádí transformaci mezi jednotlivými souřacnicovými systémy. 
+Provádí transformaci mezi jednotlivými souřadnicovými systémy. 
 
 .. notecmd:: Použití 
 
@@ -311,4 +344,4 @@ Knihovna GDAL
 
 Celé datové sady umožňuje transformovat mezi jednotlivými
 souřadnicovými systémy knihovna `GDAL <http://gdal.org>`_, resp. její
-nástroje. Viz část :ref:`gdal-prevody-formaty`.
+nástroje viz část :ref:`gdal-prevody-formaty`.

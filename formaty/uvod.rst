@@ -86,7 +86,7 @@ diskrétní prvky. Prvky jsou podle svého charakteru reprezentovány jako
     rys", vlastnost objektu.
 
     Aby zmatení bylo dokonalé, v českých normách je anglické "feature" ve
-    významnu vektorového objektu v GIS překládáno jako "vzhled jevu".
+    významu vektorového objektu v GIS překládáno jako "vzhled jevu".
 
     Závěr: narazíte-li v anglické literatuře na slovo *feature* nebo v čekých
     normách na *vzhled jevu*, vždy se jedná o "vektorový objekt v GIS s
@@ -134,7 +134,7 @@ databázový server (např. PostgreSQL).
     :class: middle
 
     Mapa velkoplošných chráněných území spolu s atributy uloženými v
-    databázi (zdroj : `AOPK OGC WFS Server
+    databázi (zdroj: `AOPK OGC WFS Server
     <https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer>`_)
 
 Geometrická a atributová složka bývají obvykle uloženy zvlášť a navzájem

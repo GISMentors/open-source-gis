@@ -20,12 +20,12 @@ lze pak využít například při evidenci katastru nemovitostí, předpovídán
 počasí, určování záplavových zón řek, výběru vhodné lokace pro čistírnu
 odpadních vod, plánování výstavby silnic, krizové řízení apod.
 
-GIS se skládá z
+GIS se skládá z:
 
- * Hardwaru
- * Softwaru
- * Dat
- * Pracovnícků (operátorů a uživatelů)
+ * hardwaru,
+ * softwaru,
+ * dat,
+ * pracovnícků (operátorů a uživatelů).
   
 
 Geodata, geoprvky
@@ -35,10 +35,10 @@ GIS pracuje s prostorovými daty, tzv. *geodaty*. Geodata se skládají z
 jednotlivých (geo)prvků. Každý *geoprvek* představuje model fenoménu
 reálného světa. Geoprvek je tvořen dvěma základními složkami:
 
-* *geometrickou* (informaci o tvaru, umístění na zemském povrchu)
-* *popisnou, atributovou* (nejčastěji popisné vlastnosti každého prvku)
+* *geometrickou* (informaci o tvaru, umístění na zemském povrchu),
+* *popisnou, atributovou* (nejčastěji popisné vlastnosti každého prvku).
 
-Další složky popisují *topologii*, *dynamiku* prvku.
+Další složky popisují *topologii*, případně *dynamiku* prvku.
   
 Datový model
 ------------
@@ -47,10 +47,9 @@ Jak již bylo řečeno -- pomocí nástrojů GIS vytváříme modely objektů
 (fenoménů) reálného světa. Rozlišuje dvě základní reprezentace dat:
 
 **Rastrový formát**
-
     Představuje nejčastěji uspořádanou matici hodnot (buňek), které
     označujeme jako pixely. Buňky mohou být 3D, pak hovoříme o
-    tzv. voxelech (volume pixel)
+    tzv. voxelech (volume pixel).
 
 **Vektorový formát**
     Prvek je popsán nejčastěji svým obrysem pomocí párů (ve 3D tripletů)
@@ -67,11 +66,11 @@ nejčastěji modeluje pomocí vektorového reprezentace dat.
 Proč Open Source
 ----------------
 :wikipedia:`Otevřený software` (open source) je počítačový software, jehož licence
-umožňuje
+umožňuje:
 
-* Studovat zdrojový kód
-* Měnit zdrojový kód
-* Zdrojový kód dále distribuovat
+* studovat zdrojový kód,
+* měnit zdrojový kód,
+* zdrojový kód dále distribuovat.
 
 Open Source není business model, ale *vývojový model*. Způsob práce se software
 předurčuje, jakým způsobem probíhá komunikace mezi vývojáři a mezi uživateli a

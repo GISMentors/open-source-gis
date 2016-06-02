@@ -11,7 +11,7 @@ dat **rastrovou** a **vektorovou**.
    Ukázka vizualizace rastrových (digitální model terénu) a
    vektorových dat (vrstevnice a výškové kóty)
 
-Data lze mezi těmito reprezentacemi lze, za přijmutí určité ztráty
+Data lze mezi těmito reprezentacemi, za přijmutí určité ztráty
 informace, volně převádět.
 
 .. toctree::
