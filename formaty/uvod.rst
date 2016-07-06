@@ -111,7 +111,8 @@ objekty, jako ideální reprezentace nějakého fenoménu:
    Ukázka vektorových dat *bod*, *linie* a *polygony*.
 
 Vektorová data jsou většinou uložena ve formě uspořádaných dvojic souřadnic X,Y.
-Linie a plocha je zapsána pomocí množiny těchto uspořádaných dvojic definující jejich lomové body. Přesnost
+Linie a plocha je zapsána pomocí množiny těchto uspořádaných dvojic definující 
+jejich lomové body. Přesnost
 takto zadaných souřadnic tak může být teoreticky nekonečná (co umožní počítačové
 systémy).
 
@@ -148,7 +149,7 @@ uložení atributů databázový systém, je možné s daty dále pracovat jako
 .. note:: Některé softwary (např. databázový systém PostGIS nebo
     souborová databáze SpatialLite) ukládají geometrickou složku dat jako *jeden z atributů*
     vektorového prvku. Data jsou uspořádána do klasické databázové tabulky,
-    geometrie je pouze další atributů - geometrie tak není od atributů nijak
+    geometrie je pouze další atribut - geometrie tak není od atributů nijak
     oddělena.
 
     Příklad: Výpis parcel s jejich identifikátorem, parcelním číslem a

@@ -63,7 +63,7 @@ pod.) se nejčastěji modelují pomocí rastrové reprezentace dat.
 nejčastěji modeluje pomocí vektorového reprezentace dat.
 
 
-Proč Open Source
+Proč open source
 ----------------
 :wikipedia:`Otevřený software` (open source) je počítačový software, jehož licence
 umožňuje:
@@ -72,7 +72,7 @@ umožňuje:
 * měnit zdrojový kód,
 * zdrojový kód dále distribuovat.
 
-Open Source není business model, ale *vývojový model*. Způsob práce se software
+Open source není business model, ale *vývojový model*. Způsob práce se software
 předurčuje, jakým způsobem probíhá komunikace mezi vývojáři a mezi uživateli a
 vývojáři. 
 
