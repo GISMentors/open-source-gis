@@ -20,6 +20,14 @@ lze pak využít například při evidenci katastru nemovitostí, předpovídán
 počasí, určování záplavových zón řek, výběru vhodné lokace pro čistírnu
 odpadních vod, plánování výstavby silnic, krizové řízení apod.
 
+Prostorově orientované informační systémy shromažďují a zpracovávají data,
+poskytují informace a poznatky vázané k místu svého vzniku a k místu svého
+použití (angl. spatial data, spatial information). Vyvinuli se z map středních 
+a malých měřítek. Obecně kladou nižší požadavky na podrobnost a polohovou 
+přesnost, naproti tomu vysoké požadavky na aktuálnost dat. 
+Využívají data z digitální fotogrammetrie a DPZ, geografické průzkumy, analýzy 
+a statistiky.
+
 GIS se skládá z:
 
  * hardwaru,
@@ -27,6 +35,12 @@ GIS se skládá z:
  * dat,
  * pracovnícků (operátorů a uživatelů).
   
+.. _gis-slozeni:
+      
+.. figure:: ./images/gis-slozeni.svg
+   :width: 400px
+    
+   Hlavní složky GIS.
 
 Geodata, geoprvky
 -----------------
