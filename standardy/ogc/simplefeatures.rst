@@ -1,0 +1,5 @@
+.. _simplefeatures:
+
+Simple Features
+---------------
+

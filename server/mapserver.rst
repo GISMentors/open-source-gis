@@ -5,7 +5,7 @@ MapServer
 
 .. warning:: :red:`Kapitola je ve výstabě`
 
-`MapServer <http://mapserver.org>`_ je jeden z nejstarších programů sloužících k
+`MapServer <http://mapserver.org>`__ je jeden z nejstarších programů sloužících k
 distirbuci prostorových dat. Původně byl vývoj financován NASA a odehrával se
 primárně na University of Minnesota (ve starší literatuře se o něm hovoří jako o
 UMN MapServer).
@@ -19,7 +19,7 @@ provádět některé operace
 * TinyOWS
 
 Konzolové nástroje pro MapServer
--------------------------------
+--------------------------------
 
 Většina nástrojů pracuje se vstupním konfiguračním souborem `Mapfile`, případně
 se vstupním souborem `ESRI Shapefile`.

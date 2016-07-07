@@ -1,8 +1,8 @@
 Úvod
 ====
 
-Úvodní kapitola nastiňuje motivaci, proč pracovat s nástroji open source GIS. Dále poskytuje
-přehled zdrojů, odkazy na komunitní skupiny světové i lokální.
+Úvodní kapitola nastiňuje motivaci, proč pracovat s nástroji open source GIS. 
+Dále poskytuje přehled zdrojů, odkazy na komunitní skupiny světové i lokální.
 
 Proč GIS
 --------

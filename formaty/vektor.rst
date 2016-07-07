@@ -109,7 +109,7 @@ prostým lidským okem. Souřadnicový systém není v těchto formátech jak
 specifikovat, předpokládá se, že se jedná o WGS 84. Data lze libovolným způsobem
 zanořovat a větvit.
 
-`GeoJSON <http://geojson.org>`_ je využíván u webových služeb pro svůj malý
+`GeoJSON <http://geojson.org>`__ je využíván u webových služeb pro svůj malý
 objem a jednoduchost. Je méně náročný na zpracování, což je vhodné zejména u
 webových prohlížečů. U uživatelů mimo svět GIS je oblíbený, protože jeho
 strukturu je možné rychle pochopit a připravit vlastní parser.

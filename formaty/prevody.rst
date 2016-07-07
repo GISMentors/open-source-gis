@@ -123,7 +123,7 @@ tzv. Well Known Text (WKT) notaci:
                 
 gdalwarp
 ^^^^^^^^
-Asi nejpoužívanější příkaz je `gdalwarp <http://www.gdal.org/gdalwarp.html>`_.
+Asi nejpoužívanější příkaz je `gdalwarp <http://www.gdal.org/gdalwarp.html>`__.
 Tento příkaz má dvě funkce: práce se souřadnicovými systémy rastrových dat a jejich
 transformace mezi jednotlivými formáty.
 

@@ -4,7 +4,7 @@
 Open Geospatial Consortium - OGC
 ================================
 
-`OGC <http://opengeospatial.org>`_ je mezinárodní standardizační organizace pro
+`OGC <http://opengeospatial.org>`__ je mezinárodní standardizační organizace pro
 oblast prostorových dat a služeb, která funguje na relativně otevřené bázi
 (poplatky za členství nejsou nijak přemrštěné). Standardy jsou vyvíjeny v rámci
 relativně otevřeného procesu. Po svém schválení jsou bez omezení
@@ -72,4 +72,4 @@ Nejdůležitější standardy OGC rozebereme v dalších částech:
     kml
     sos
     cs-w
-    simplefeature
+    simplefeatures
