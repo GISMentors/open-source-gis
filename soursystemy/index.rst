@@ -12,10 +12,27 @@ geometrického či početního postupu nazýváme *mapa*.
 Protože povrch koule či elipsoidu není rozvinutelný do roviny (stejně jako nelze
 do roviny bez deformace rozvinout oloupanou slupku pomeranče), je zapotřebí
 jej převést na povrch geometrického objektu, jehož povrch do roviny
-rozvinutelný je. Takovými objekty jsou válec, kužel a samozřejmě také rovinná
-plocha sama. Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové 
+rozvinutelný je (jednoduchá zobrazení). Takovými objekty jsou válec, kužel 
+a samozřejmě také rovinná plocha sama. Nejčastěji používaná zobrazování jsou 
+jednoduchá zobrazení azimutální, kuželová a válcová. 
+
+Mapová zobrazení podle polohy osy zobrazovací plochy může být *normální* 
+(pólová) – osa válce nebo kužele je totožná s osou glóbu nebo se zobrazovací 
+rovina dotýká glóbu na jednom pólu, *příčná* (transverzální, rovníková) – osa 
+válce nebo kužele leží v rovině rovníku nebo se zobrazovací rovina dotýká 
+glóbu na rovníku a *obecná* (šikmá) – osa válce nebo kužele prochází středem 
+glóbu, ale nesplývá s jeho osou ani neleží na rovníku nebo se zobrazovací 
+rovina dotýká glóbu v libovolném bodě mezi pólem a rovníkem.
+
+.. figure:: images/jednoducha-zobrazeni.gif
+   :class: small
+   
+   Přehled jednoduchých kartografických zobrazení spolu s polohou zobrazovací 
+   plochy (zdroj: `Geodetické a kartografické základy <http://transformace.webst.fd.cvut.cz/Iframe/Basics_iframe.htm>`_). 
+
+Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové 
 zkreslení části obsažených informací. Ve výsledném rovinném zobrazení nemohou být 
-současně zachovány všechny hlavní údaje – délky, úhly a plochy – vždy dochází ke
+současně zachovány všechny hlavní údaje jako délky, úhly a plochy. Vždy dochází ke
 zkreslení některého z nich (případně všech). Proto byla postupem času vyvinuta
 řada kartografických zobrazení, z nichž každé klade důraz na jiný z důležitých 
 údajů. Při vytváření map malých území (do několika set km²) je zkreslení téměř
@@ -23,7 +40,7 @@ zanedbatelné, je-li však třeba zachytit na mapě větší oblast (kraj, stát
 světadíl, oceán či celou Zemi), je nutné pečlivě volit kartografické zobrazení 
 tak, aby odpovídalo účelu mapy.
 
-.. figure:: ../images/Tissot_world_from_space.png
+.. figure:: ./images/tissot_world_from_space.png
    :class: small
    
    Kontrolní kruhy rozmístěné pravidelně na povrchu Země (zdroj:
@@ -31,14 +48,14 @@ tak, aby odpovídalo účelu mapy.
 
 .. _ukazka-mercator:
       
-.. figure:: ../images/Tissot_mercator.png
+.. figure:: ./images/tissot_mercator.png
    :width: 400px
     
    Ukázka Mercatorova kartografické zobrazení. Všimněte si výrazného
    zkreslení vzdáleností v oblasti pólů (zdroj: :wikipedia:`wikipedia
    <Mapové zobrazení>`)
 
-.. figure:: ../images/Tissot_robinson.png
+.. figure:: ./images/tissot_robinson.png
    :width: 500px
    
    Další možné zobrazení, všimněte si výrazného zkreslení úhlů v
@@ -57,7 +74,7 @@ základě charakteru zkreslení do několika skupin:
   zkreslením úhlů i ploch; do této kategorie lze počítat i mnohá
   zobrazení délkojevná.
 
-.. figure:: ../images/Netzentwuerfe.png
+.. figure:: ./images/netzentwuerfe.png
     :class: middle
 
     Příklady kartografických zobrazení podle vzhledu zobrazovací
@@ -67,30 +84,35 @@ základě charakteru zkreslení do několika skupin:
 Křovákovo zobrazení (S-JTSK)
 ============================
 
-Nejpoužívanější souřadnicový systém v ČR **Systém jednotné
+Nejpoužívanější souřadnicový systém v České republice **Systém jednotné
 trigonometrické sítě katastrální** (`S-JTSK
 <http://freegis.fsv.cvut.cz/gwiki/S-JTSK>`_) používá tzv. Křovákovo
-zobrazení. Křovákovo zobrazení je konformní kuželové zobrazení v
+zobrazení. Křovákovo zobrazení je dvojité konformní kuželové zobrazení v
 obecné poloze, které v roce 1922 navrhl Ing. Josef Křovák.
-Transformace souřadnic :math:`\varphi,\lambda` na pravoúhlé :math:`x, y` 
-se provádí v několika krocích. Nejprve je provedeno Gaussovo
-konformní zobrazení Besselova elipsoidu na kouli a poté konformní
-zobrazení na kuželovou plochu obecně položenou.
 
-.. figure:: ../images/Krovakovo_zobrazeni.png
+.. figure:: ./images/krovakovo_zobrazeni.png
     :width: 400px
 
     Křovákovo zobrazení (zdroj: `Portál FreeGIS
     <http://freegis.fsv.cvut.cz/gwiki/S-JTSK>`_)
 
+Transformace elipsoidických souřadnic :math:`\varphi,\lambda` na pravoúhlé 
+rovinné souřadnice :math:`x, y` 
+se provádí ve čtyřech krocích. Spočívá ze zobrazení elipsoidu na kulovou plochu, 
+z transformace zeměpisných sférických souřadnic na sférické kartografické 
+souřadnice na kulové ploše, ze zmenšení kulové plochy 
+(kvůli zmenšení zkreslení z + 24 cm na +14 cm) a její konformního zobrazení 
+na dotykový kužel v obecné poloze a nakonec z rozvinutí plochy dotykového kužele 
+do roviny.
 Česká republika leží celá ve třetím kvadrantu (první kvadrant
 geodetického souřadnicového systému, kladná osa :math:`x` směřuje dolů, kladná 
 osa :math:`y` do leva). 
 
-.. figure:: ../images/Krovakovo_zobrazeni_kroky.png
+.. figure:: ./images/krovakovo_zobrazeni_kroky.png
     :class: middle
 
-    Transformace souřadnic v krocích.
+    Transformace souřadnic v krocích - elipsoidické, sférické, kartografické, 
+    polární a rovinné souřadnice S-JTSK (zdroj: podle `SAŽP <http://www.sazp.sk/slovak/struktura/ceev/DPZ/EDU/c002.htm>`_).
 
 V geografických informačních systémech se často používá 
 forma převedená do matematického třetího kvadrantu, osy jsou potom prohozené
@@ -137,7 +159,7 @@ WGS84 používá zeměpisné souřadnice. Polohu tedy určíme pomocí zeměpisn
 rovníku. Délka pak nabývá hodnot 0°-180° na západ od nultého poledníku a 0°-
 180° na východ od nultého poledníku. Nultým poledníkem ve WGS84 je 
 :wikipedia:`IERS Reference Meridian`. Leží 5.31 úhlových vteřin východně od 
-"Greenwich Prime Meridian".
+:wikipedia:`Prime meridian (Greenwich)`.
 
 Souřadnicový systém WGS84 dále používá i pravoúhlé souřadnice, které
 jsou definovány pravotočivou kartézskou soustavou souřadnic se středem
@@ -145,6 +167,11 @@ v těžišti Země (včetně moří a atmosféry). Kladná osa :math:`x` směřu
 průsečíku nultého poledníku a rovníku, kladná osa :math:`z` k severnímu pólu a
 kladná osa :math:`y` je na obě předchozí kolmá ve směru doleva (90° východní
 délky a 0° šířky), tvoří tak pravotočivou soustavu souřadnic.
+
+.. figure:: ./images/wgs84-xyz.png
+    :class: small
+
+    Pravoúhlé souřadnice bodu M v systéme WGS84 (zdroj: `Royal Observatory of Belgium <http://gnss.be/systems_tutorial.php>`_).
 
 ETRS89
 ======
@@ -258,7 +285,7 @@ Mercator - :epsg:`3857`
      Kladné souřadnice s hodnotami :math:`x` mezi 129295 až 1817312 a osy 
      :math:`y` 6185018 až 6709371.
 
-.. figure:: ../images/map_projections.png
+.. figure:: ./images/map_projections.png
     :class: middle
 
     Řekni jaké zobrazení používáš a já ti povím, jaký jsi (zdroj:
@@ -336,9 +363,8 @@ naopak.
 
 proj a invproj
 --------------
-Provádí transformaci souřadnicových systému z/do systému WGS-84.
-
-Funguje podobně jako :ref:`cs2cs`, který ale umí transformovat mezi
+Provádí transformaci souřadnicových systému z/do systému WGS-84. Funguje 
+podobně jako :ref:`cs2cs`, který ale umí transformovat mezi
 libovolnými souřadnicovými systémy.
 
 Knihovna GDAL
