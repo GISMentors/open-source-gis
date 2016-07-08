@@ -78,7 +78,6 @@ rozšíření v různých směrech prostoru:
 
 .. table::
    :class: border
-   :align: center
         
    +----------------------------------------------+
    |                  Dimenze objektů             |
@@ -127,11 +126,12 @@ pod.) se nejčastěji modelují pomocí rastrové reprezentace dat.
 Proč open source
 ----------------
 :wikipedia:`Otevřený software` (open source) je počítačový software, jehož licence
-umožňuje:
+podle definice z `Nadace svobodného software <https://www.gnu.org/philosophy/free-sw.en.html>`_ umožňuje:
 
-* studovat zdrojový kód,
-* měnit zdrojový kód,
-* zdrojový kód dále distribuovat.
+* **Freedom 0**: spouštět program jakýmkoli způsobem pro jakýkoliv účel,
+* **Freedom 1**: modifikovat program, aby co nejlépe vyhovoval uživateli (pomoci sobě),
+* **Freedom 2**: distribuovat kopie programu (pomoci přátelům),
+* **Freedom 3**: publikovat dokonalejší verzi i pro ostatní (pomoci vybudovat komunitu).
 
 Open source není business model, ale *vývojový model*. Způsob práce se software
 předurčuje, jakým způsobem probíhá komunikace mezi vývojáři a mezi uživateli a
@@ -142,13 +142,13 @@ Komunita
 --------
 
 U dobrých open source projektů existuje silná a zdravá komunita vývojářů a
-uživatelů. Rozhodovací procesy jsou otevřené a dokumentovatelé. Ta je často 
+uživatelů. Rozhodovací procesy jsou otevřené a dokumentovatelé. KOmunita je často 
 prvním místem podpory, kterou může uživatel nebo začínající
 vývojář dostat. Často se řeší problémy a otázky, které by jinak zůstaly skryty. 
 Organizují se konference, code sprinty, project steering committy, problémy 
 se řeší na mailing listech, IRC a podobně. 
 
-Další výhodou open source projektů, že 
+Další výhodou open source projektů je, že 
 v případě jakýchkoliv problémů je odezva poměrně rychlá - hodně očí hodně najde. 
 Malé týmy pracují na menších projektech a hledají propojení většinou postavené 
 na standardech. Tato spojení se dějí spíše náhodně než plánovaně. 
@@ -166,13 +166,21 @@ software. Cena za software není součástí plnění.
 OSGeo.org
 ---------
 
-`Open Source Geospatial Foundation <http://osgeo.org>`_ je ve Spojených státech amerických
-registrovaná nezisková organizace, která se stará o podporu open source software projektů
-zaměřených na práci s prostorovými daty. Podpora je právní, infrastrukturní i technická.
+`Open Source Geospatial Foundation <http://osgeo.org>`_ je ve Spojených státech 
+amerických registrovaná nezisková organizace, která se stará o podporu open source 
+software projektů zaměřených na práci s prostorovými daty. Podpora je právní, 
+infrastrukturní i technická.
 Většina nejrozšířenějších projektů je registrována jako tzv. *OSGeo Projekt*, což
 znamená že prošly inkubační fází, která garantuje určitou kvalitu software,
 zrojový kód nezatížený patentovými spory a dostatečně velkou a zdravou komunitu
 okolo projektu.
+
+.. _osgeo-logo:
+      
+.. figure:: ./images/osgeo-logo.png
+   :class: small
+    
+   Standardní plnobarevné verze loga Open Source Geospatial Foundation.
 
 OSGeo.cz
 --------
@@ -180,3 +188,10 @@ OSGeo.cz
 `Spolek Otevřená GeoInfrastruktura <http://osgeo.cz>`_ je český registrovaný
 spolek, který se stará o podporu otevřeného software pro GIS a otevřených
 prostorových dat v České republice.
+
+.. _osgeo-cz-logo:
+      
+.. figure:: ./images/osgeo-cz-logo.png
+   :class: small
+    
+   Spolek Otevřená GeoInfrastruktura České republiky.
