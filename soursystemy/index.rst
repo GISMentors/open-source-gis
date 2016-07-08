@@ -111,8 +111,8 @@ osa :math:`y` do leva).
 .. figure:: ./images/krovakovo_zobrazeni_kroky.png
     :class: middle
 
-    Transformace souřadnic v krocích - elipsoidické, sférické, kartografické, 
-    polární a rovinné souřadnice S-JTSK (zdroj: podle `SAŽP <http://www.sazp.sk/slovak/struktura/ceev/DPZ/EDU/c002.htm>`_).
+    Transformace v krocích - elipsoidické, sférické, kartografické, 
+    polární a rovinné souřadnice (zdroj: podle `SAŽP <http://www.sazp.sk/slovak/struktura/ceev/DPZ/EDU/c002.htm>`_).
 
 V geografických informačních systémech se často používá 
 forma převedená do matematického třetího kvadrantu, osy jsou potom prohozené
@@ -147,12 +147,17 @@ Toto zobrazení se používá zejména na webových mapách (:wikipedia:`Google`
 WGS84
 =====
 :wikipedia:`World Geodetic System` (zkratka WGS84) je světově uznávaný
-geodetický standard vydaný ministerstvem obrany USA v roce 1984, který definuje
-souřadnicový systém, referenční elipsoid pro geodézii a navigaci. Odchylky od
+geodetický standard vydaný ministerstvem obrany USA v roce 1984. 
+Jedná se o geocentrický pravoúhlý pravotočivý systém pevně spojený se Zemí.
+Definuje souřadnicový systém a referenční elipsoid WGS84 pro geodézii a navigaci. 
+Odchylky od
 referenčního elipsoidu pak popisují geoid EGM84. V roce 1996 byl rozšířen o
 zpřesněnou definici geoidu EGM96. Byl vytvořen na základě měření pozemních
 stanic družicového polohového systému TRANSIT a nahrazuje dřívější systémy
 WGS60, WGS66 a WGS72.
+
+Tento systém je spojen s reálnou Zemí prostřednictvím souboru přesných
+souřadnic WGS84 pozemních stanic kontrolního segmentu GPS.
 
 WGS84 používá zeměpisné souřadnice. Polohu tedy určíme pomocí zeměpisné délky,
 šířky a výšky. Šírka nabývá 0°-90° na sever od rovníku a 0°-90° na jih od
@@ -169,9 +174,10 @@ kladná osa :math:`y` je na obě předchozí kolmá ve směru doleva (90° vých
 délky a 0° šířky), tvoří tak pravotočivou soustavu souřadnic.
 
 .. figure:: ./images/wgs84-xyz.png
-    :class: small
+    :class: middle
 
-    Pravoúhlé souřadnice bodu M v systéme WGS84 (zdroj: `Royal Observatory of Belgium <http://gnss.be/systems_tutorial.php>`_).
+    Referenční systém a pravoúhlé souřadnice bodu M v systéme WGS84 
+    (zdroj: `Royal Observatory of Belgium <http://gnss.be/systems_tutorial.php>`_).
 
 ETRS89
 ======
@@ -179,10 +185,22 @@ ETRS89
 :wikipedia-en:`ETRS89 <European Terrestrial Reference System 1989>`
 (European Terrestrial Reference System 1989) je evropský terestický
 systém, ve kterém je Euroasijská deska jako celek považována za
-statickou. Modelová rychlost desky je definována modelem NNR-NUVEL1A.
+statickou. Modelová rychlost desky je definována modelem *NNR-NUVEL1A*.
+
 Jde o systém, jehož počátek leží v těžišti hmot Země, včetně hmot oceánů 
-a atmosféry. Systém je definován jako geocentrický, ekvatoriální, terestrický 
-s konvenční Greenwich orientací. 
+a atmosféry. Referenčním elipsoidem je elipsoid *GRS80* (Geodetic Reference
+System 1980), který je svými parametry velice blízký elipsoidu WGS84. 
+Systém je definován jako geocentrický (centrum v těžišti Země), ekvatoriální, 
+terestrický (pevně spojený se Zemí) s konvenční Greenwich orientací.
+Stejně jako WGS84 používá zeměpisné i pravoúhlé souřadnice.
+
+ETRS je tvořen referenčním rámcem ETRF (European Terrestrial Reference Frame) 
+a příslušnými algoritmy a konstantami. Je realizován souřadnicemi 
+stabilizovaných bodů na zemském povrchu. 
+
+Realizace referenčního rámce ETRF jsou 
+úzce vázány na realizace referenčního rámce ITRF, které „celosvětově“ 
+vznikají využitím dostupných technik kosmické geodézie, nejen GNSS.
 
 EPSG
 ====
