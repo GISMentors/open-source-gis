@@ -9,26 +9,22 @@ Proč GIS
 
 :wikipedia:`Geografický informační systém` (GIS) je na počítačích
 založený informační systém pro získávání, ukládání, analýzu a
-vizualizaci dat, která mají prostorový vztah k povrchu Země (hovoříme
-o geografických datech, zkráceně *geodatech*). Geodata, se kterými GIS
-pracuje, jsou definována svou *geometrií*, *topologií*, *atributy* a
-*dynamikou*.
+vizualizaci dat, která mají prostorový vztah k povrchu Země. Hovoříme
+o geografických datech, zkráceně *geodatech* (angl. spatial data, spatial 
+information). 
 
-GIS umožňuje vytvářet digitální modely části zemského povrchu
-pomocí dostupných softwarových a hardwarových prostředků. Takto vytvořený model
-lze pak využít například při evidenci katastru nemovitostí, předpovídání vývoje
-počasí, určování záplavových zón řek, výběru vhodné lokace pro čistírnu
-odpadních vod, plánování výstavby silnic, krizové řízení apod.
+Počátek geoinformačních technologií a vědního oboru geoinformatiky sahá do Kanady 
+a 60. let 20. století. Tu se přišlo na to, že úkoly jako například plánování 
+regionálniho rozvoja území jsou jako stvořené pro informační technologie, které 
+lze při správném používání podle správně zadaných algoritmů efektivně využít.
 
-Prostorově orientované informační systémy shromažďují a zpracovávají data,
-poskytují informace a poznatky vázané k místu svého vzniku a k místu svého
-použití (angl. spatial data, spatial information). Vyvinuli se z map středních 
-a malých měřítek. Obecně kladou nižší požadavky na podrobnost a polohovou 
-přesnost, naproti tomu vysoké požadavky na aktuálnost dat. 
-Využívají data z digitální fotogrammetrie a DPZ, geografické průzkumy, analýzy 
-a statistiky.
+Prostorově orientovaný informační systém shromažďuje a zpracováva data,
+poskytuje informace a poznatky vázané k místu svého vzniku a k místu svého
+použití. Vyvinul se z map středních a malých měřítek. Obecně klade nižší 
+požadavky na podrobnost a polohovou přesnost, naproti tomu vysoké požadavky 
+na aktuálnost dat. 
 
-GIS se skládá z:
+Možno říci, že GIS se skládá z:
 
  * hardwaru,
  * softwaru,
@@ -38,44 +34,95 @@ GIS se skládá z:
 .. _gis-slozeni:
       
 .. figure:: ./images/gis-slozeni.svg
-   :width: 400px
+   :class: middle
     
    Hlavní složky GIS.
+
+GIS využíva data z digitální fotogrammetrie a DPZ, geografické průzkumy, analýzy 
+a statistiky. Pomocí dostupných softwarových a hardwarových prostředků umožňuje 
+vytvářet digitální modely části zemského povrchu. Takto vytvořený model
+lze pak využít například při evidenci katastru nemovitostí, předpovídání vývoje
+počasí, určování záplavových zón řek, výběru vhodné lokace pro čistírnu
+odpadních vod, plánování výstavby silnic, krizové řízení apod.
 
 Geodata, geoprvky
 -----------------
 
-GIS pracuje s prostorovými daty, tzv. *geodaty*. Geodata se skládají z
-jednotlivých (geo)prvků. Každý *geoprvek* představuje model fenoménu
-reálného světa. Geoprvek je tvořen dvěma základními složkami:
+Jak bylo již zmíněno, GIS pracuje s prostorovými daty, tzv. *geodaty*. 
+Ty se skládají z jednotlivých (geo)prvků. Každý *geoprvek* představuje 
+model fenoménu reálného světa. Od jiných objektů ho je možné odlišit 
+na základě prostorové polohy, tematických charakteristik, polohových vztahů 
+k jiným geoprvkům a časových změn.
+
+Geoprvek je teda tvořen dvěma základními složkami:
 
 * *geometrickou* (informaci o tvaru, umístění na zemském povrchu),
 * *popisnou, atributovou* (nejčastěji popisné vlastnosti každého prvku).
 
-Další složky popisují *topologii*, případně *dynamiku* prvku.
+Další složky popisují tzv. *topologii* (vztah k jiným geoprvkům), případně *dynamiku* 
+(časové změny geoprvku).
+
+Reprezentace reálného světa se od té reálné liši, protože interpretace vždy 
+zahrnuje určitou míru abstrakce, která je pro zpracování v GIS nezbytná.
+
+.. _mira-abstrakce:
+      
+.. figure:: ./images/mira-abstrakce.png
+   :class: middle
+    
+   Digitální reprezentace reálného světa (zdroj: 
+   `GIS v regionálním rozvoji <https://is.mendelu.cz/eknihovna/opory/index.pl?opora=5784>`_).
+
+Důležitá je zejména prostorová dimenze objektů, která charakterizuje jeho 
+rozšíření v různých směrech prostoru:
+
+.. table::
+   :class: border
+   :align: center
+        
+   +----------------------------------------------+
+   |                  Dimenze objektů             |
+   +===========+=======+=======+=======+==========+
+   | **Modely**| **0D**|**1D** |**2D** |  **3D**  |
+   +-----------+-------+-------+-------+----------+
+   |geometrický|  bod  | linie | plocha|  těleso  |
+   +-----------+-------+-------+-------+----------+
+   |topologický| uzel  | hrana |polygon|polyhedron|
+   +-----------+-------+-------+-------+----------+
+   |dynamický  | čas                              |
+   +-----------+-------+-------+-------+----------+
   
 Datový model
 ------------
 
-Jak již bylo řečeno -- pomocí nástrojů GIS vytváříme modely objektů
-(fenoménů) reálného světa. Rozlišuje dvě základní reprezentace dat:
-
-**Rastrový formát**
-    Představuje nejčastěji uspořádanou matici hodnot (buňek), které
-    označujeme jako pixely. Buňky mohou být 3D, pak hovoříme o
-    tzv. voxelech (volume pixel).
+Jak již bylo řečeno, pomocí nástrojů GIS vytváříme modely objektů
+(fenoménů) reálného světa. Správně určit datovou strukturu (reprezentaci 
+v databázi) a navrhnout nejvhodnější kartografickou reprezentaci při jejich 
+vizualizaci je důležité. 
+Rozlišuje se dvě základní reprezentace dat:
 
 **Vektorový formát**
     Prvek je popsán nejčastěji svým obrysem pomocí párů (ve 3D tripletů)
     souřadnic lomových bodů. Nejčastěji si v rámci vektorového modelu vystačíme
     s body nebo liniemi a polygony.
 
-*Spojité* fenomény (nadmořská výška, srážková mapa, teplotní mapa a
-pod.) se nejčastěji modelují pomocí rastrové reprezentace dat.
+**Rastrový formát**
+    Představuje nejčastěji uspořádanou matici hodnot (buňek), které
+    označujeme jako pixely. Buňky mohou být 3D, pak hovoříme o
+    tzv. voxelech (volume pixel).
+
+.. _datovy-model:
+      
+.. figure:: ./images/datovy-model.png
+   :class: middle
+    
+   Vektorová a rastrová reprezentace objektů (podle Voženílek, 1998).
 
 *Diskrétní* fenomény  (katastr, uliční síť, mapa výskytu vorvaňů) se
 nejčastěji modeluje pomocí vektorového reprezentace dat.
 
+*Spojité* fenomény (nadmořská výška, srážková mapa, teplotní mapa a
+pod.) se nejčastěji modelují pomocí rastrové reprezentace dat.
 
 Proč open source
 ----------------
@@ -95,10 +142,18 @@ Komunita
 --------
 
 U dobrých open source projektů existuje silná a zdravá komunita vývojářů a
-uživatelů. Rozhodovací procesy jsou otevřené a dokumentovatelé. 
+uživatelů. Rozhodovací procesy jsou otevřené a dokumentovatelé. Ta je často 
+prvním místem podpory, kterou může uživatel nebo začínající
+vývojář dostat. Často se řeší problémy a otázky, které by jinak zůstaly skryty. 
+Organizují se konference, code sprinty, project steering committy, problémy 
+se řeší na mailing listech, IRC a podobně. 
 
-Komunita je často prvním místem podpory, kterou může uživatel nebo začínající
-vývojář dostat.
+Další výhodou open source projektů, že 
+v případě jakýchkoliv problémů je odezva poměrně rychlá - hodně očí hodně najde. 
+Malé týmy pracují na menších projektech a hledají propojení většinou postavené 
+na standardech. Tato spojení se dějí spíše náhodně než plánovaně. 
+V proprietárním GIS je to více začleněny do balíků a v případě, že se na něco 
+ve velkém designu zapomene, je to pak těžší dodělat.
 
 Způsob financování
 ------------------
