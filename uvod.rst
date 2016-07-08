@@ -126,7 +126,8 @@ pod.) se nejčastěji modelují pomocí rastrové reprezentace dat.
 Proč open source
 ----------------
 :wikipedia:`Otevřený software` (open source) je počítačový software, jehož licence
-podle definice z `Nadace svobodného software <https://www.gnu.org/philosophy/free-sw.en.html>`_ umožňuje:
+podle definice `FSF <https://www.gnu.org/philosophy/free-sw.en.html>`_ 
+(Free Software Foundation, resp. Nadace svobodného software) umožňuje:
 
 * **Freedom 0**: spouštět program jakýmkoli způsobem pro jakýkoliv účel,
 * **Freedom 1**: modifikovat program, aby co nejlépe vyhovoval uživateli (pomoci sobě),
@@ -187,7 +188,13 @@ OSGeo.cz
 
 `Spolek Otevřená GeoInfrastruktura <http://osgeo.cz>`_ je český registrovaný
 spolek, který se stará o podporu otevřeného software pro GIS a otevřených
-prostorových dat v České republice.
+prostorových dat v České republice. Základními cíli sdružení jsou zejména:
+
+* propagovat používání a vývoj nástrojů FOSS (Free and Open Source Software) 
+  pro geomatiku, geoinformatiku, geodézii a kartografii,
+* podporovat tvorbu, sdílení a publikování volně dostupných a otevřených dat 
+  a informací, zejména geodat, v souladu s obecně uznávanými standardy,
+* vyhledávat, aktivizovat a podporovat v České republice síly k naplňování těchto cílů.
 
 .. _osgeo-cz-logo:
       
