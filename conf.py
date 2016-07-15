@@ -24,7 +24,7 @@ release = '%s alpha' % version
 # -- Options for HTML output ----------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Skoleni-GRASS-GIS'
+htmlhelp_basename = 'skoleni-open-source-gis'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -37,7 +37,7 @@ html_title = project
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     ('index', '%s.tex' % htmlhelp_basename, project,
-     copyright, 'manual'),
+     u'GISMentors', u'manual'),
     ]
 
 # -- Options for manual page output ---------------------------------------

@@ -14,7 +14,7 @@ do roviny bez deformace rozvinout oloupanou slupku pomeranče), je zapotřebí
 jej převést na povrch geometrického objektu, jehož povrch do roviny
 rozvinutelný je (jednoduchá zobrazení). Takovými objekty jsou válec, kužel 
 a samozřejmě také rovinná plocha sama. Nejčastěji používaná zobrazování jsou 
-jednoduchá zobrazení azimutální, kuželová a válcová. 
+jednoduchá zobrazení azimutální, kuželová a válcová (:num:`#jednoducha-zobrazeni`). 
 
 Mapová zobrazení podle polohy osy zobrazovací plochy může být *normální* 
 (pólová) – osa válce nebo kužele je totožná s osou glóbu nebo se zobrazovací 
@@ -23,6 +23,8 @@ válce nebo kužele leží v rovině rovníku nebo se zobrazovací rovina dotýk
 glóbu na rovníku a *obecná* (šikmá) – osa válce nebo kužele prochází středem 
 glóbu, ale nesplývá s jeho osou ani neleží na rovníku nebo se zobrazovací 
 rovina dotýká glóbu v libovolném bodě mezi pólem a rovníkem.
+
+.. _j-zobrazeni:
 
 .. figure:: images/jednoducha-zobrazeni.gif
    :class: small
@@ -210,17 +212,16 @@ EPSG rozumí dataset spravovaný nástupnickou organizací The International
 Association of Oil & Gas producers (OGP).
 
 Dnes se pod EPSG rozumí databáze zemských elipsoidů, geodetických dat,
-zeměpisných a kartografických souřadnicových systémů, měrných jednotek a pod.
+zeměpisných a kartografických souřadnicových systémů, měrných jednotek a podobně.
 Každé kartografické zobrazení, resp. souřadnicový systém má dán jedinečný kód.
-Tento kód je celé nezáporné číslo vyjma nuly, které se nesmí opakovat. Například
-:epsg:`4326` vyjadřuje souřadnicový systém WGS84 o souřadnicích
+Tento kód je celé nezáporné číslo vyjma nuly, které se nesmí opakovat. 
+Například :epsg:`4326` vyjadřuje souřadnicový systém WGS84 o souřadnicích
 zeměpisné šířky a délky v celých stupních s Greenwichem jako nultým poledníkem.
 
 Databáze je podporována a rozšířena ve všech programech pracujících s
-geografickými daty.
-
-Oficiální stránka systému je http://epsg.org, transformaci lze zkoušet na
-http://www.epsg-registry.org/.
+geografickými daty. Oficiální stránka systému je 
+`www.epsg.org <http://epsg.org>`_, transformaci lze zkoušet na
+`www.epsg-registry.org <http://www.epsg-registry.org>`_.
 
 .. tip:: Nejnovější přehled včetně exportu do různých formátů naleznete na
          stránce http://epsg.io
@@ -242,7 +243,7 @@ Významné kódy EPSG
     nebo geographic 2D)
 
 :epsg:`3857`
-    Sférické Mercatorovo zobrazení, používaný např. Google Maps, Bing Maps, 
+    sférické Mercatorovo zobrazení, používaný např. Google Maps, Bing Maps, 
     OpenStreetMap
 
 Kódy, se kterými se také můžete setkat:
@@ -280,16 +281,16 @@ Kódy, se kterými se také můžete setkat:
     naprogramovány na užití Křovákovy projekce se zápornými souřadnicemi. 
 
     Vztah mezi souřadnicemi „záporného“ :math:`x`, :math:`y` a „kladného“ 
-    :math:`x`, :math:`y` Křováka 
-    (tedy mezi EPSG :epsg:`5514` a EPSG :epsg:`2065`) je tento: **x = -y a y = -x**.
+    :math:`x`, :math:`y` Křováka, tedy mezi EPSG :epsg:`5514` a EPSG 
+    :epsg:`2065`, je tento: **x = -y a y = -x**.
 
 Jak poznat v jakém souřadnicovém systému jsou data
 ==================================================
 
 Pokud není souřadnicový systém uveden v metadatech datové sady (viz
 :doc:`dále <../formaty/index>`), můžeme se pokusit uhodnout
-souřadnicová systém čistě z hodnot souřadnic (omezíme se na České
-republiky, lze ale vztáhnout na celý svět):
+souřadnicová systém čistě z hodnot souřadnic (omezíme se na Českú
+republiku, lze ale vztáhnout na celý svět):
 
 WGS84 - :epsg:`4326`
     Kladná čísla nabývající hodnot 11 až 20 ve směru osy :math:`x` a 
@@ -312,7 +313,7 @@ Mercator - :epsg:`3857`
 Knihovna Proj.4
 ===============
 
-`Proj.4 <https://trac.osgeo.org/proj/>`_ jedna ze základních knihoven
+`Proj.4 <https://trac.osgeo.org/proj/>`_ je jedna ze základních knihoven
 využívaných v mnoha open source GIS projektech jako `GRASS GIS
 <http://www.gismentors.cz/skoleni/grass-gis/>`_, `QGIS
 <http://www.gismentors.cz/skoleni/qgis/>`_, `PostGIS
@@ -323,7 +324,11 @@ klony v jazyce `JavaScript <http://proj4js.org/>`_, `PHP
 <https://github.com/jswhit/pyproj>`_ a dalších.
 
 Kromě možnosti používat tuto knihovnu z různých programů, existují i
-užitečné nástroje v příkazové řádce.
+užitečné nástroje v příkazové řádce:
+
+* :ref:`cs2cs <cs2cs>`
+* :ref:`geod a invgeod <geod-a-invgeod>`
+* :ref:`proj a invproj <proj-a-invproj>`
 
 .. _cs2cs:
 
@@ -358,7 +363,9 @@ Provádí transformaci mezi jednotlivými souřadnicovými systémy.
 
     .. note:: Z důvodu přesnějšího převodu používáme
               tzv. transformační parametry (``+towgs84``).
-      
+
+.. _geod-a-invgeod:
+     
 geod a invgeod
 --------------
 
@@ -378,6 +385,8 @@ naopak.
         EOF
 
         110d53'32.868"	-68d30'12.184"	270855.602
+
+.. _proj-a-invproj:
 
 proj a invproj
 --------------
