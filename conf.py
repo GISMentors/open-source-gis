@@ -68,4 +68,4 @@ from conf_base import *
 todo_include_todos = True
 
 extensions = [ 'sphinx.ext.extlinks', 'sphinx.ext.todo', 'video', 'notes',
-               'sphinx.ext.pngmath', 'sphinx.ext.mathjax' ]
+               'sphinx.ext.pngmath', 'sphinx.ext.mathjax']

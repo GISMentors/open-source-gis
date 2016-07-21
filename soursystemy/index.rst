@@ -14,7 +14,8 @@ do roviny bez deformace rozvinout oloupanou slupku pomeranče), je zapotřebí
 jej převést na povrch geometrického objektu, jehož povrch do roviny
 rozvinutelný je (jednoduchá zobrazení). Takovými objekty jsou válec, kužel 
 a samozřejmě také rovinná plocha sama. Nejčastěji používaná zobrazování jsou 
-jednoduchá zobrazení azimutální, kuželová a válcová (:num:`#jednoducha-zobrazeni`). 
+jednoduchá zobrazení azimutální, kuželová a válcová, viz 
+:ref:`ukázka <j-zobrazeni>`). 
 
 Mapová zobrazení podle polohy osy zobrazovací plochy může být *normální* 
 (pólová) – osa válce nebo kužele je totožná s osou glóbu nebo se zobrazovací 
@@ -116,9 +117,9 @@ osa :math:`y` do leva).
     Transformace v krocích - elipsoidické, sférické, kartografické, 
     polární a rovinné souřadnice (zdroj: podle `SAŽP <http://www.sazp.sk/slovak/struktura/ceev/DPZ/EDU/c002.htm>`_).
 
-V geografických informačních systémech se často používá 
-forma převedená do matematického třetího kvadrantu, osy jsou potom prohozené
-a souřadnice záporné.
+.. note:: V geografických informačních systémech se často používá 
+	  forma převedená do matematického třetího kvadrantu, osy jsou potom 
+	  prohozené a souřadnice záporné.
 
 Mercatorovo zobrazení
 =====================
@@ -126,25 +127,35 @@ Mercatorovo zobrazení
 Ve světě se momentálně jedná o asi nejrozšířenější zobrazení.
 :wikipedia:`Mercatorovo zobrazení` je druh *úhlojevného válcového*
 kartografického zobrazení, které navrhl roku 1569 vlámský kartograf
-:wikipedia:`Gerhard Mercator` (1512 – 1594). Používá se zejména na
-námořních a leteckých navigačních mapách, viz :ref:`ukázka výše
-<ukazka-mercator>`.
+:wikipedia:`Gerhard Mercator` (1512 – 1594). 
+Základem zobrazení je válec v normální poloze, tedy rovnoběžný se zemskou osou,
+dotýkající se glóbu na rovníku. 
 
-Základem zobrazení je válec v normální poloze (tedy rovnoběžný se zemskou osou),
-dotýkající se glóbu na rovníku. Po zobrazení povrchu koule na válec a po
-rozvinutí pláště válce do roviny vznikne pravoúhlá síť poledníků a rovnoběžek.
-Poledníky jsou zobrazeny ve stejných rozestupech, zatímco vzájemná vzdálenost
-rovnoběžek směrem k pólům vzrůstá do nekonečna. Protože se válec po celém obvodu
-rovníku glóbu dotýká, je zobrazení rovníku délkojevné. Totéž už neplatí o
-ostatních rovnoběžkách, které jsou znázorněny jako úsečky stejné délky – čím
-blíže k pólům, tím je tedy zkreslení v délce (a ploše) větší. Proto nelze
-Mercatorovo zobrazení použít při tvorbě map polárních oblastí nad 86. 
-stupeň zeměpisné šířky. Naopak v rovníkových oblastech, přibližně mezi 15.
-stupněm severní a jižní zeměpisné šířky, je délková a plošná nepřesnost vcelku
-zanedbatelná.
+.. _valec-normalni-poloha:
+      
+.. figure:: ./images/valec_normalni_poloha.png
+   :width: 200px
+    
+   Valec v normální poloze dotýkajíci se glóbu na rovníku 
+   (zdroj: `Geografická kartografie <https://web.natur.cuni.cz/~bayertom/Mmk/>`_)
 
-Toto zobrazení se používá zejména na webových mapách (:wikipedia:`Google`, 
-:wikipedia:`Bing`, :wikipedia:`OpenStreetMap`).
+Po zobrazení povrchu koule na válec a po
+rozvinutí pláště válce do roviny vznikne pravoúhlá síť poledníků a rovnoběžek, 
+viz :ref:`ukázka zobrazení <ukazka-mercator>`. Poledníky jsou zobrazeny ve stejných 
+rozestupech, zatímco vzájemná vzdálenost rovnoběžek směrem k pólům vzrůstá do 
+nekonečna. 
+
+Zobrazení na rovníku je délkojevné (dotyk válce a glóbu na rovníku). 
+Totéž už neplatí o ostatních rovnoběžkách znázorněnych jako úsečky 
+stejné délky – čím blíže k pólům, tím je zkreslení v délce (a ploše) větší. 
+Proto nelze Mercatorovo zobrazení použít při tvorbě map polárních oblastí nad 
+**86. stupeň** zeměpisné šířky. Naopak v rovníkových oblastech, přibližně mezi 
+**15. stupněm** severní a jižní zeměpisné šířky, je délková a plošná nepřesnost 
+vcelku zanedbatelná.
+
+Toto zobrazení se používá zejména na námořních, leteckých navigačních 
+a webových mapách jako :wikipedia:`Google`, :wikipedia:`Bing`, 
+:wikipedia:`OpenStreetMap`.
 
 WGS84
 =====

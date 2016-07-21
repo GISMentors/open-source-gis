@@ -1,3 +1,5 @@
+.. _rastrova-data:
+
 Rastrová data
 =============
 
@@ -67,6 +69,8 @@ informační tabulce, např.
    +----------------+---------------------+
 
 Další atributy nelze rastrovým datům přiřazovat.
+
+.. _vektorova-data:
 
 Vektorová data
 ==============

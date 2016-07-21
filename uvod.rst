@@ -10,19 +10,20 @@ Proč GIS
 :wikipedia:`Geografický informační systém` (GIS) je na počítačích
 založený informační systém pro získávání, ukládání, analýzu a
 vizualizaci dat, která mají prostorový vztah k povrchu Země. Hovoříme
-o geografických datech, zkráceně *geodatech* (angl. spatial data, spatial 
-information). 
+o geografických datech, zkráceně *geodatech* (angl. *spatial data*, *spatial 
+information*). 
 
 Počátek geoinformačních technologií a vědního oboru geoinformatiky sahá do Kanady 
 a 60. let 20. století. Tu se přišlo na to, že úkoly jako například plánování 
-regionálniho rozvoja území jsou jako stvořené pro informační technologie, které 
-lze při správném používání podle správně zadaných algoritmů efektivně využít.
+regionálniho rozvoja území jsou jako stvořené pro geografické informační 
+technologie, které lze při správném používání podle správně zadaných algoritmů 
+efektivně využít.
 
 Prostorově orientovaný informační systém shromažďuje a zpracováva data,
 poskytuje informace a poznatky vázané k místu svého vzniku a k místu svého
 použití. Vyvinul se z map středních a malých měřítek. Obecně klade nižší 
-požadavky na podrobnost a polohovou přesnost, naproti tomu vysoké požadavky 
-na aktuálnost dat. 
+požadavky na podrobnost a polohovou přesnost, naproti tomu je většinou 
+důležitá aktuálnost dat. 
 
 Možno říci, že GIS se skládá z:
 
@@ -43,7 +44,7 @@ a statistiky. Pomocí dostupných softwarových a hardwarových prostředků umo
 vytvářet digitální modely části zemského povrchu. Takto vytvořený model
 lze pak využít například při evidenci katastru nemovitostí, předpovídání vývoje
 počasí, určování záplavových zón řek, výběru vhodné lokace pro čistírnu
-odpadních vod, plánování výstavby silnic, krizové řízení apod.
+odpadních vod, plánování výstavby silnic, krizové řízení a podobně.
 
 Geodata, geoprvky
 -----------------
@@ -57,11 +58,10 @@ k jiným geoprvkům a časových změn.
 Geoprvek je teda tvořen dvěma základními složkami:
 
 * *geometrickou* (informaci o tvaru, umístění na zemském povrchu),
-* *popisnou, atributovou* (nejčastěji popisné vlastnosti každého prvku).
+* *popisnou* (nejčastěji popisné vlastnosti každého prvku, tzv. *atributy*).
 
-Další složky popisují tzv. *topologii* (vztah k jiným geoprvkům), případně *dynamiku* 
-(časové změny geoprvku).
-
+Další složky popisují tzv. *topologii* (vztah k jiným geoprvkům), 
+případně *dynamiku* (časové změny geoprvku).
 Reprezentace reálného světa se od té reálné liši, protože interpretace vždy 
 zahrnuje určitou míru abstrakce, která je pro zpracování v GIS nezbytná.
 
@@ -73,8 +73,9 @@ zahrnuje určitou míru abstrakce, která je pro zpracování v GIS nezbytná.
    Digitální reprezentace reálného světa (zdroj: 
    `GIS v regionálním rozvoji <https://is.mendelu.cz/eknihovna/opory/index.pl?opora=5784>`_).
 
-Důležitá je zejména prostorová dimenze objektů, která charakterizuje jeho 
-rozšíření v různých směrech prostoru:
+Důležitá je zejména prostorová *dimenze objektů*, která charakterizuje jeho 
+rozšíření v různých směrech prostoru. V GIS se můžeme setkat s následujícími 
+pojmy: 
 
 .. table::
    :class: border
@@ -91,14 +92,17 @@ rozšíření v různých směrech prostoru:
    |dynamický  | čas                              |
    +-----------+-------+-------+-------+----------+
   
+Bezrozměrné objekty (0D) mají polohu, ale ne délku nebo plochu. 
+Jednorozměné objekty (1D) mají konečnou délku, ale ne plochu a 2D objekty mají 
+konečnou plochu. 
+
 Datový model
 ------------
 
 Jak již bylo řečeno, pomocí nástrojů GIS vytváříme modely objektů
 (fenoménů) reálného světa. Správně určit datovou strukturu (reprezentaci 
 v databázi) a navrhnout nejvhodnější kartografickou reprezentaci při jejich 
-vizualizaci je důležité. 
-Rozlišuje se dvě základní reprezentace dat:
+vizualizaci je důležité. Rozlišuje se dvě základní reprezentace dat:
 
 **Vektorový formát**
     Prvek je popsán nejčastěji svým obrysem pomocí párů (ve 3D tripletů)
@@ -108,7 +112,7 @@ Rozlišuje se dvě základní reprezentace dat:
 **Rastrový formát**
     Představuje nejčastěji uspořádanou matici hodnot (buňek), které
     označujeme jako pixely. Buňky mohou být 3D, pak hovoříme o
-    tzv. voxelech (volume pixel).
+    tzv. *voxelech* (*volume pixel*).
 
 .. _datovy-model:
       
@@ -118,10 +122,10 @@ Rozlišuje se dvě základní reprezentace dat:
    Vektorová a rastrová reprezentace objektů (podle Voženílek, 1998).
 
 *Diskrétní* fenomény  (katastr, uliční síť, mapa výskytu vorvaňů) se
-nejčastěji modeluje pomocí vektorového reprezentace dat.
-
-*Spojité* fenomény (nadmořská výška, srážková mapa, teplotní mapa a
-pod.) se nejčastěji modelují pomocí rastrové reprezentace dat.
+nejčastěji modeluje pomocí vektorového reprezentace dat. *Spojité* fenomény 
+(nadmořská výška, srážková mapa, teplotní mapa a pod.) se nejčastěji modelují 
+pomocí rastrové reprezentace dat. Obě reprezentace jsou blíže popsány v částech 
+:ref:`vektorová <vektorova-data>` a :ref:`rastrová <rastrova-data>` data.
 
 Proč open source
 ----------------
@@ -179,9 +183,9 @@ okolo projektu.
 .. _osgeo-logo:
       
 .. figure:: ./images/osgeo-logo.png
-   :class: small
+   :width: 300px
     
-   Standardní plnobarevné verze loga Open Source Geospatial Foundation.
+   Logo Open Source Geospatial Foundation.
 
 OSGeo.cz
 --------
@@ -199,6 +203,6 @@ prostorových dat v České republice. Základními cíli sdružení jsou zejmé
 .. _osgeo-cz-logo:
       
 .. figure:: ./images/osgeo-cz-logo.png
-   :class: small
+   :width: 300px
     
    Spolek Otevřená GeoInfrastruktura České republiky.
