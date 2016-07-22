@@ -1,14 +1,10 @@
 ================
 Rastrové formáty
 ================
-Mezi nejčastěji používané rastrové formáty v GIS patří 
-
-* :wikipedia-en:`GeoTIFF`
-* :wikipedia-en:`JPEG`
-
+Mezi nejčastěji používané rastrové formáty v GIS patří :wikipedia-en:`GeoTIFF`
+a :wikipedia-en:`JPEG`.
 Zejména v prostředí webových prohlížečů se pak ještě sektáváme s formáty :wikipedia-en:`PNG <Portable Network Graphics>` a
 :wikipedia-en:`GIF`. Ty však nejsou pro geografická data příliš vhodné.
-
 Programátorská knihovna pro práci s rastrovými daty `GDAL <http://gdal.org>`_
 obsahuje v tuto chvíli podporu pro `140 rastrových formátů
 <http://gdal.org/formats_list.html>`_.

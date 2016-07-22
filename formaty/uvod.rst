@@ -26,21 +26,22 @@ celočíselné hodnoty (*integer*) nebo hodnoty s plovoucí desetinnou
    Příklad rastrové mřížky s hodnotami s plovoucí desetinnou čárkou
 
 Rastrová data jsou vhodná zejména pro reprezentaci *spojitých fenoménů*, jako je
+například:
 
-* Teplota vzduchu a vody
-* Výška nad mořem
-* Geologická data
-* Mapa srážek
-* Hustota povrchového odtoku
-* Letecké a družicové snímkování
+* teplota vzduchu a vody,
+* výška nad mořem,
+* geologická data,
+* mapa srážek,
+* hustota povrchového odtoku,
+* letecké a družicové snímkování,
 * ...
 
 .. figure:: images/slope.png
 
-    Mapa sklonu svahu v České republice
+    Mapa sklonu svahu v České republice jako příklad rastrové reprezentace.
 
 Velikost hrany rastrové buňky určuje tzv. *prostorové rozlišení*
-rastrové mapy. Tím je dána polohovou přesnost - celá rastrová buňka
+rastrové mapy. Tím je dána polohová přesnost. Celá rastrová buňka
 reprezentuje hodnotu, která se nachází v jejím ideálním středu.
 
 .. figure:: images/raster-res.png
@@ -53,7 +54,7 @@ Atributy rastrových dat
 
 Hodnota rastrové buňky může nést informaci sama o sobě (teplota,
 výška, ...) nebo může sloužit jako celočíselný klíč k přidružené
-informační tabulce, např.
+informační tabulce, například:
 
 .. table::
    :class: border
@@ -85,28 +86,26 @@ diskrétní prvky. Prvky jsou podle svého charakteru reprezentovány jako
         
    Vektorové prvky - bod, linie a polygon
 
-.. note:: V anglické literatuře je "vektorový prvek" označován jako *feature*.
-    Slovo "feature" je pak tradičně do češtiny překládáno jako "charakteristický
-    rys", vlastnost objektu.
-
-    Aby zmatení bylo dokonalé, v českých normách je anglické "feature" ve
-    významu vektorového objektu v GIS překládáno jako "vzhled jevu".
-
-    Závěr: narazíte-li v anglické literatuře na slovo *feature* nebo v čekých
-    normách na *vzhled jevu*, vždy se jedná o "vektorový objekt v GIS s
-    geometrií a atributy".
+.. note:: V anglické literatuře je *vektorový prvek* označován jako *feature*.
+    Slovo *feature* je pak tradičně do češtiny překládáno jako *charakteristický
+    rys*, resp. *vlastnost objektu*.
+    Aby zmatení bylo dokonalé, v českých normách je anglické *feature* ve
+    významu vektorového objektu v GIS překládáno jako *vzhled jevu*.
+    Závěr**: narazíte-li v anglické literatuře na slovo *feature* nebo v čekých
+    normách na *vzhled jevu*, vždy se jedná o **vektorový objekt** v GIS s
+    geometrií a atributy.
 
 Vektorová data jsou vhodná všude tam, kde se jedná o *diskrétní*
 objekty, jako ideální reprezentace nějakého fenoménu:
 
-* Výskyt jedince sledovaného druhu (bod)
-* Významný orientační prvek (bod)
-* Středová linie silnice, silniční síť (linie)
-* Průběh elektrického vedení (linie)
-* Říční síť, dráhy povrchového odtoku (linie)
-* Hranice parcel katastru nemovitostí (polygon)
-* Hranice vodních ploch (polygon)
-* Hranice půdního krytu (polygon)
+* výskyt jedince sledovaného druhu (bod),
+* významný orientační prvek (bod),
+* středová linie silnice, silniční síť (linie),
+* průběh elektrického vedení (linie),
+* říční síť, dráhy povrchového odtoku (linie),
+* hranice parcel katastru nemovitostí (polygon),
+* hranice vodních ploch (polygon),
+* hranice půdního krytu (polygon),
 * ...
 
 .. figure:: images/vector-model-sfa.png
@@ -114,17 +113,18 @@ objekty, jako ideální reprezentace nějakého fenoménu:
         
    Ukázka vektorových dat *bod*, *linie* a *polygony*.
 
-Vektorová data jsou většinou uložena ve formě uspořádaných dvojic souřadnic X,Y.
+Vektorová data jsou většinou uložena ve formě uspořádaných dvojic souřadnic 
+:math:`x, y`.
 Linie a plocha je zapsána pomocí množiny těchto uspořádaných dvojic definující 
 jejich lomové body. Přesnost
 takto zadaných souřadnic tak může být teoreticky nekonečná (co umožní počítačové
 systémy).
 
-Zvláštním případem jsou tzv. *multiprvky* (multipoints, multilinies,
-multipolygons) - vektorové objekty skládající se z více vzájemně
-nepropojených geometrických objektů (např. dálnice D8 je v úseku přes
+Zvláštním případem jsou tzv. *multiprvky* (angl. *multipoints, multilinies,
+multipolygons*). Jde o vektorové objekty skládající se z více vzájemně
+nepropojených geometrických objektů. Například dálnice D8 je v úseku přes
 České středohoří přerušena - lze ji tak reprezentovat jako objekt
-*multiline* sestávající se ze dvou liniových geometrických elementů).
+*multiline* sestávající se ze dvou liniových geometrických elementů.
 
 Atributy vektorových dat
 ------------------------
@@ -132,8 +132,8 @@ Atributy vektorových dat
 Kromě informace o *geometrických vlastnostech* prvků nesou vektorová data
 také popisnou informaci uloženou v *atributech*. Atributy
 jsou většinou zaznamenány do formy databázové tabulky. V závislosti na
-použitém software se jedná buď o souborý formát (např. DBF u formátu Esri Shapefile) nebo plnohodnotný
-databázový server (např. PostgreSQL).
+použitém software se jedná buď o souborý formát (například ``DBF`` u formátu 
+``Esri Shapefile``) nebo plnohodnotný databázový server (například ``PostgreSQL``).
 
 .. figure:: images/vector-attributes.png
     :class: middle
@@ -150,14 +150,12 @@ uložení atributů databázový systém, je možné s daty dále pracovat jako
 
 .. todo:: jako co?
 
-.. note:: Některé softwary (např. databázový systém PostGIS nebo
-    souborová databáze SpatialLite) ukládají geometrickou složku dat jako *jeden z atributů*
+.. note:: Některé softwary, například databázový systém PostGIS nebo souborová 
+    databáze SpatialLite, ukládají geometrickou složku dat jako *jeden z atributů*
     vektorového prvku. Data jsou uspořádána do klasické databázové tabulky,
     geometrie je pouze další atribut - geometrie tak není od atributů nijak
-    oddělena.
-
-    Příklad: Výpis parcel s jejich identifikátorem, parcelním číslem a
-    geometrií z databáze PostGIS:
+    oddělena. Příklad: výpis parcel s jejich identifikátorem, parcelním číslem 
+    a geometrií z databáze PostGIS:
     
     ::
           
@@ -189,21 +187,20 @@ Vektorová topologie
 ===================
 
 :wikipedia:`Topologie` je vlastnost geometrií vektorových dat, pomocí které lze
-určit vztahy mezi jednotlivými prvky. Pomocí topologie lze popsat charakteristiky dvou
-vektorových prvků jako
+určit vztahy mezi jednotlivými prvky. Pomocí topologie lze popsat charakteristiky dvou vektorových prvků jako:
 
-* Prvek *leží v* jiném prvku
-* Prvek *se kříží s* s jiným prvku
-* Prvek *je nalevo/napravo od* prvku
-* Prvek *je shodný* s prvkem
+* prvek *leží v* jiném prvku,
+* prvek *se kříží s* jiným prvku,
+* prvek *je nalevo/napravo od* prvku,
+* prvek *je shodný s* prvkem.
 
 Různé softwary a jejich formáty přistupují k topologii různě, dnes ale
 převládá takový přístup, že data jsou uložena v *netopologickém*
-formátu (jako tzv. jednoduché prvky - *simple features*) a topologické
+formátu jako tzv. *jednoduché prvky*, resp. *simple features* a topologické
 charakteristiky jsou počítány na vyžádání.
 
-.. note:: `GRASS GIS <http://grass.osgeo.org>`_ naopak data vždy
-          ukládá v topologickém formátu.
+.. note:: `GRASS GIS <http://grass.osgeo.org>`_ naopak data vždy ukládá 
+	  v topologickém formátu.
 
           
 .. figure:: images/area-1-2.png
@@ -211,22 +208,20 @@ charakteristiky jsou počítány na vyžádání.
    Ukázka topologického datové modelu
    
 Nejsou-li data tzv. *topologicky čistá*, obsahují různě závažné *chyby
-topologie*. Např. společná hranice dvou parcel není stejná, ale každá parcela má
-lehce posunuté hraniční lomové body a tudíž dochází v některých místech k
-nedotažení společné hranice, na jiných místech zase obě parcely do sebe
-zasahují.
-
-Dalšími chybami jsou nedotažení lomových bodů nebo naopak jejich přetažení.
+topologie*. Například společná hranice dvou parcel není stejná, ale každá 
+parcela má lehce posunuté hraniční lomové body a tudíž dochází v některých 
+místech k nedotažení společné hranice, na jiných místech zase obě parcely 
+do sebe zasahují. Dalšími chybami mohou být nedotažení lomových bodů nebo 
+naopak jejich přetažení. Většina pokročilích GIS obsahují nástroje pro 
+*čištění topologie*.
 
 .. figure:: images/overshoot.png
    :width: 400px
-        
+      
 .. figure:: images/v_clean_rmsa.png
    :class: small
 
-.. todo:: Dopnit zdroj
-                     
-Většina pokročilích GIS obsahují nástroje pro *čištění topologie*.
+   Zdroje: `Digitalisation de cartes vectorielles <https://grass.osgeo.org/gdp/grass5tutor/HTML_fr/c925.html>`_ a `GRASS GIS Manual <https://grass.osgeo.org/grass64/manuals/v.clean.html>`_
 
 Převod dat
 ==========
@@ -237,30 +232,35 @@ Rasterizace
 -----------
 
 Jak bylo napsáno výše, rastrovým pixelům můžeme přiřadit vždy pouze jeden
-atribut. Tímto atributem může být buď některý z číselných atributů (nebo číselná
-reprezentace textového atributu) vektorových objektů či nějaká geometrická
+atribut. Tímto atributem může být buď některý z číselných atributů nebo číselná
+reprezentace textového atributu vektorových objektů či nějaká geometrická
 veličina (plocha, délka, ...).
-
 V závislosti na prostorovém rozlišení se ztrácí přesnost vektorových dat a je
 nahrazena rozlišením rastrových dat. Data od určitého zvětšení vypadají
 "rozkostičkovaně".
 
 .. figure:: images/vect2rast-1.png
+   :class: small
 
    Příklad rasterizace (příprava)
 
 .. figure:: images/vect2rast-2.png
+   :class: small
 
    Příklad rasterizace (výsledek)
 
 Vektorizace
 -----------
 
-Protože buňky rastrové mapy obsahují pouze jednu číselnou hodnotu (případně
-je tato hodnota asociována s textovou informací), obsahuje u vektrových prvků 
+Protože buňky rastrové mapy obsahují pouze jednu číselnou hodnotu, případně
+je tato hodnota asociována s textovou informací, obsahuje u vektorových prvků 
 výsledná tabulka atributů pouze jeden sloupeček.
-
-V závislosti na zvoleném výstupním formátu dat - zda se jedná o data
-bodová, liniová nebo polygonová - se softwary pokouší ideální
+V závislosti na zvoleném výstupním formátu dat, zda se jedná o data
+bodová, liniová nebo polygonová, se softwary pokouší ideální
 aproximovat a vyhlazovat kostrbatý tvar prvků, který by nutně vzniknul
-při převodu rastrový buněk na liniové objekty.
+při převodu rastrových buněk na liniové objekty.
+
+.. figure:: images/rast2vect.jpg
+   :class: small
+
+   Příklad vektorizace (zdroj: `Open Source GIS in Windows <http://o-gis.blogspot.sk/2008/09/rasterization-and-vectorization.html>`_).
