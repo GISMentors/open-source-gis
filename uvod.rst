@@ -1,8 +1,8 @@
 Úvod
 ====
 
-Úvodní kapitola nastiňuje motivaci, proč pracovat s nástroji open source GIS. 
-Dále poskytuje přehled zdrojů, odkazy na komunitní skupiny světové i lokální.
+Úvodní kapitola nastiňuje motivaci, proč pracovat s nástroji open source GIS, 
+poskytuje přehled zdrojů, odkazy na komunitní skupiny světové i lokální.
 
 Proč GIS
 --------
@@ -10,7 +10,7 @@ Proč GIS
 :wikipedia:`Geografický informační systém` (GIS) je na počítačích
 založený informační systém pro získávání, ukládání, analýzu a
 vizualizaci dat, která mají prostorový vztah k povrchu Země. Hovoříme
-o geografických datech, zkráceně *geodatech* (angl. *spatial data*, *spatial 
+o geografických datech, zkráceně *geodatech* (*angl. spatial data*, *spatial 
 information*). 
 
 Počátek geoinformačních technologií a vědního oboru geoinformatiky sahá do Kanady 
@@ -93,8 +93,8 @@ pojmy:
    +-----------+-------+-------+-------+----------+
   
 Bezrozměrné objekty (0D) mají polohu, ale ne délku nebo plochu. 
-Jednorozměné objekty (1D) mají konečnou délku, ale ne plochu a 2D objekty mají 
-konečnou plochu. 
+Jednorozměné objekty (1D) mají konečnou délku, ale ne plochu a dvojrozměné 
+objekty (2D) mají konečnou plochu. 
 
 Datový model
 ------------
@@ -104,14 +104,14 @@ Jak již bylo řečeno, pomocí nástrojů GIS vytváříme modely objektů
 v databázi) a navrhnout nejvhodnější kartografickou reprezentaci při jejich 
 vizualizaci je důležité. Rozlišuje se dvě základní reprezentace dat:
 
-**Vektorový formát**
-    Prvek je popsán nejčastěji svým obrysem pomocí párů (ve 3D tripletů)
-    souřadnic lomových bodů. Nejčastěji si v rámci vektorového modelu vystačíme
-    s body nebo liniemi a polygony.
+**a) vektorový formát**
+    prvek je popsán nejčastěji svým obrysem pomocí párů (ve 3D tripletů)
+    souřadnic lomových bodů; nejčastěji si v rámci vektorového modelu vystačíme
+    s body nebo liniemi a polygony
 
-**Rastrový formát**
-    Představuje nejčastěji uspořádanou matici hodnot (buňek), které
-    označujeme jako pixely. Buňky mohou být 3D, pak hovoříme o
+**b) rastrový formát**
+    představuje nejčastěji uspořádanou matici hodnot (buňek), které
+    označujeme jako pixely; buňky mohou být 3D, pak hovoříme o
     tzv. *voxelech* (*volume pixel*).
 
 .. _datovy-model:
@@ -121,11 +121,11 @@ vizualizaci je důležité. Rozlišuje se dvě základní reprezentace dat:
     
    Vektorová a rastrová reprezentace objektů (podle Voženílek, 1998).
 
-*Diskrétní* fenomény  (katastr, uliční síť, mapa výskytu vorvaňů) se
-nejčastěji modeluje pomocí vektorového reprezentace dat. *Spojité* fenomény 
-(nadmořská výška, srážková mapa, teplotní mapa a pod.) se nejčastěji modelují 
-pomocí rastrové reprezentace dat. Obě reprezentace jsou blíže popsány v částech 
-:ref:`vektorová <vektorova-data>` a :ref:`rastrová <rastrova-data>` data.
+*Diskrétní fenomény* jako například katastr, uliční síť nebo mapa výskytu vorvaňů, 
+se nejčastěji modeluje pomocí vektorového reprezentace dat. *Spojité fenomény* 
+jako například nadmořská výška, srážková mapa, teplotní mapa a podobně, se nejčastěji 
+modelují pomocí rastrové reprezentace dat. Obě reprezentace jsou blíže popsány 
+v částech :ref:`vektorová <vektorova-data>` a :ref:`rastrová <rastrova-data>` data.
 
 Proč open source
 ----------------
@@ -133,12 +133,12 @@ Proč open source
 podle definice `FSF <https://www.gnu.org/philosophy/free-sw.en.html>`_ 
 (Free Software Foundation, resp. Nadace svobodného software) umožňuje:
 
-* **Freedom 0**: spouštět program jakýmkoli způsobem pro jakýkoliv účel,
-* **Freedom 1**: modifikovat program, aby co nejlépe vyhovoval uživateli (pomoci sobě),
-* **Freedom 2**: distribuovat kopie programu (pomoci přátelům),
-* **Freedom 3**: publikovat dokonalejší verzi i pro ostatní (pomoci vybudovat komunitu).
+* **freedom 0**: spouštět program jakýmkoli způsobem pro jakýkoliv účel,
+* **freedom 1**: modifikovat program, aby co nejlépe vyhovoval uživateli (pomoci sobě),
+* **freedom 2**: distribuovat kopie programu (pomoci přátelům),
+* **freedom 3**: publikovat dokonalejší verzi i pro ostatní (pomoci vybudovat komunitu).
 
-Open source není business model, ale *vývojový model*. Způsob práce se software
+Open source není business model, ale vývojový model. Způsob práce se software
 předurčuje, jakým způsobem probíhá komunikace mezi vývojáři a mezi uživateli a
 vývojáři. 
 
@@ -147,7 +147,7 @@ Komunita
 --------
 
 U dobrých open source projektů existuje silná a zdravá komunita vývojářů a
-uživatelů. Rozhodovací procesy jsou otevřené a dokumentovatelé. KOmunita je často 
+uživatelů. Rozhodovací procesy jsou otevřené a dokumentovatelé. Komunita je často 
 prvním místem podpory, kterou může uživatel nebo začínající
 vývojář dostat. Často se řeší problémy a otázky, které by jinak zůstaly skryty. 
 Organizují se konference, code sprinty, project steering committy, problémy 
@@ -163,7 +163,7 @@ ve velkém designu zapomene, je to pak těžší dodělat.
 Způsob financování
 ------------------
 
-Nic není zadarmo - ani práce vývojářů otevřeného software. Protože každý může
+Nic není zadarmo, ani práce vývojářů otevřeného software. Protože každý může
 získat zdrojový kód, nelze stavět podnikání na prodeji krabicových verzí. Business
 model je častěji stavěn na poskytování podpory, plnění určitých úloh pomocí open source
 software. Cena za software není součástí plnění.
@@ -183,7 +183,7 @@ okolo projektu.
 .. _osgeo-logo:
       
 .. figure:: ./images/osgeo-logo.png
-   :width: 300px
+   :width: 250px
     
    Logo Open Source Geospatial Foundation.
 

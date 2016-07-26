@@ -1,8 +1,9 @@
 ################################
 Úvod do nástrojů Open Source GIS
 ################################
-Tento kurz obsahuje základní přehled nástrojů :wikipedia:`Open Source` :wikipedia:`GIS` a vše potřebné,
-abyste mohli začít pracovat s volně dostupnými nástroji GIS v českém (a slovenském) prostředí.
+Tento kurz obsahuje základní přehled nástrojů :wikipedia:`open source` 
+:wikipedia:`GIS` a vše potřebné, abyste mohli začít pracovat s volně dostupnými 
+nástroji GIS v českém (a slovenském) prostředí.
 
 .. warning:: :red:`Pracovní verze školení, která je aktuálně ve vývoji!`
    
