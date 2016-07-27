@@ -27,3 +27,5 @@ S-JTSK - :epsg:`5514`
 
     Řekni jaké zobrazení používáš a já ti povím, jaký jsi (zdroj:
     https://xkcd.com/977/)
+
+.. tip:: Viz. také část :ref:`Knihovny <knihovny>`.

@@ -1,76 +1,3 @@
-.. _rastrova-data:
-
-Rastrová data
-=============
-
-**Rastrová data** (:wikipedia-en:`Raster data`) jsou strukturována nejčastěji do
-matice uspořádaných hodnot. Struktura matice je většinou pravidelná
-mrížka, teoreticky lze použít i hexagonální tvar. Jednotlivé buňky rastrové mapy
-se nazývají *pixely*.
-
-.. figure:: images/The_use_of_a_raster_data_structure_to_summarize_a_point_pattern.png
-
-    Reprezentace frekvence výskytu fenoménu reálného světa jako
-    rastrová data (zdroj: :wikipedia-en:`wikipedia <Raster data>`)
-
-Hodnoty jednotlivých rastrových buněk jsou většinou číselné - ať už
-celočíselné hodnoty (*integer*) nebo hodnoty s plovoucí desetinnou
-čárkou (*float*).
-
-.. figure:: images/rast-num.png
-
-   Příklad rastrové mřížky s celočíselnými hodnotami
-
-.. figure:: images/rast-num-float.png
-               
-   Příklad rastrové mřížky s hodnotami s plovoucí desetinnou čárkou
-
-Rastrová data jsou vhodná zejména pro reprezentaci *spojitých fenoménů*, jako je
-například:
-
-* teplota vzduchu a vody,
-* výška nad mořem,
-* geologická data,
-* mapa srážek,
-* hustota povrchového odtoku,
-* letecké a družicové snímkování,
-* ...
-
-.. figure:: images/slope.png
-
-    Mapa sklonu svahu v České republice jako příklad rastrové reprezentace.
-
-Velikost hrany rastrové buňky určuje tzv. *prostorové rozlišení*
-rastrové mapy. Tím je dána polohová přesnost. Celá rastrová buňka
-reprezentuje hodnotu, která se nachází v jejím ideálním středu.
-
-.. figure:: images/raster-res.png
-   :width: 175px
-
-   Prostorové rozlišení rastrových dat
-
-Atributy rastrových dat
------------------------
-
-Hodnota rastrové buňky může nést informaci sama o sobě (teplota,
-výška, ...) nebo může sloužit jako celočíselný klíč k přidružené
-informační tabulce, například:
-
-.. table::
-   :class: border
-           
-   +----------------+---------------------+
-   | Hodnota pixelu | Význam              |
-   +================+=====================+
-   | 1              | lehké půdy          |
-   +----------------+---------------------+
-   | 2              | středně zrnité půdy |
-   +----------------+---------------------+
-   | 3              | těžké půdy          |
-   +----------------+---------------------+
-
-Další atributy nelze rastrovým datům přiřazovat.
-
 .. _vektorova-data:
 
 Vektorová data
@@ -184,7 +111,7 @@ uložení atributů databázový systém, je možné s daty dále pracovat jako
           +------------+------------------------------------------------------+--------+
 
 Vektorová topologie
-===================
+-------------------
 
 :wikipedia:`Topologie` je vlastnost geometrií vektorových dat, pomocí které lze
 určit vztahy mezi jednotlivými prvky. Pomocí topologie lze popsat charakteristiky dvou vektorových prvků jako:

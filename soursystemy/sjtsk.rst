@@ -1,7 +1,7 @@
-.. _krovakovo-zobrazeni:
+.. _sjtsk:
 
-Křovákovo zobrazení (S-JTSK)
-============================
+S-JTSK
+======
 
 Nejpoužívanější souřadnicový systém v České republice `Systém Jednotné Trigonometrické Sítě Katastrální <http://freegis.fsv.cvut.cz/gwiki/S-JTSK>`_ 
 používá tzv. Křovákovo zobrazení. Jde o dvojité konformní kuželové zobrazení v

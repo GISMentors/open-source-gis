@@ -1,7 +1,7 @@
 .. _souradnice:
 
-Souřadnice
-==========
+Typy souřadnic
+==============
 
 Poloha bodu na referenční ploše je vyjádřena pomocí souřadnic. S uvažováním 
 trojrozměrného prostoru se v geodetické a kartografické praxi nejčastěji používají:

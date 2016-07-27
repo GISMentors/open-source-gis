@@ -1,6 +1,79 @@
-================
+.. _rastrova-data:
+
+Rastrová data
+=============
+
+**Rastrová data** (:wikipedia-en:`Raster data`) jsou strukturována nejčastěji do
+matice uspořádaných hodnot. Struktura matice je většinou pravidelná
+mrížka, teoreticky lze použít i hexagonální tvar. Jednotlivé buňky rastrové mapy
+se nazývají *pixely*.
+
+.. figure:: images/The_use_of_a_raster_data_structure_to_summarize_a_point_pattern.png
+
+    Reprezentace frekvence výskytu fenoménu reálného světa jako
+    rastrová data (zdroj: :wikipedia-en:`wikipedia <Raster data>`)
+
+Hodnoty jednotlivých rastrových buněk jsou většinou číselné - ať už
+celočíselné hodnoty (*integer*) nebo hodnoty s plovoucí desetinnou
+čárkou (*float*).
+
+.. figure:: images/rast-num.png
+
+   Příklad rastrové mřížky s celočíselnými hodnotami
+
+.. figure:: images/rast-num-float.png
+               
+   Příklad rastrové mřížky s hodnotami s plovoucí desetinnou čárkou
+
+Rastrová data jsou vhodná zejména pro reprezentaci *spojitých fenoménů*, jako je
+například:
+
+* teplota vzduchu a vody,
+* výška nad mořem,
+* geologická data,
+* mapa srážek,
+* hustota povrchového odtoku,
+* letecké a družicové snímkování,
+* ...
+
+.. figure:: images/slope.png
+
+    Mapa sklonu svahu v České republice jako příklad rastrové reprezentace.
+
+Velikost hrany rastrové buňky určuje tzv. *prostorové rozlišení*
+rastrové mapy. Tím je dána polohová přesnost. Celá rastrová buňka
+reprezentuje hodnotu, která se nachází v jejím ideálním středu.
+
+.. figure:: images/raster-res.png
+   :width: 175px
+
+   Prostorové rozlišení rastrových dat
+
+Atributy rastrových dat
+-----------------------
+
+Hodnota rastrové buňky může nést informaci sama o sobě (teplota,
+výška, ...) nebo může sloužit jako celočíselný klíč k přidružené
+informační tabulce, například:
+
+.. table::
+   :class: border
+           
+   +----------------+---------------------+
+   | Hodnota pixelu | Význam              |
+   +================+=====================+
+   | 1              | lehké půdy          |
+   +----------------+---------------------+
+   | 2              | středně zrnité půdy |
+   +----------------+---------------------+
+   | 3              | těžké půdy          |
+   +----------------+---------------------+
+
+Další atributy nelze rastrovým datům přiřazovat.
+
 Rastrové formáty
-================
+----------------
+
 Mezi nejčastěji používané rastrové formáty v GIS patří :wikipedia-en:`GeoTIFF`
 a :wikipedia-en:`JPEG`.
 Zejména v prostředí webových prohlížečů se pak ještě sektáváme s formáty :wikipedia-en:`PNG <Portable Network Graphics>` a
@@ -12,7 +85,7 @@ obsahuje v tuto chvíli podporu pro `140 rastrových formátů
 .. tip:: Více informace na školení :skoleni:`GeoPython <geopython>`.
 
 Formát GeoTIFF
---------------
+^^^^^^^^^^^^^^
 
 :wikipedia-en:`GeoTIFF` je tvořen v základu standardním formátem :wikipedia-en:`TIFF`, ke kterému
 jsou přidána metadata určující jeho polohu a souřadnicový systém. 
@@ -32,30 +105,29 @@ jsou přidána metadata určující jeho polohu a souřadnicový systém.
 
     Obdobně můžeme *worldfile* použít pro formáty JPG (`.jgw`) a někdy PNG
 
-Některé speciality formátu GeoTIFF
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Některé speciality formátu GeoTIFF**
 
-**Číselné formáty**
+*Číselné formáty*
     Formát GeoTIFF umožňuje uložit data v celočíselné podobě nebo jako čísla s
     plovoucí desetinnou čárkou.
 
-**Interní maska a hodnota NODATA**
+*Interní maska a hodnota NODATA*
     Do souboru GeoTIFF lze uložit interní masku hodnot, označující místa, která
     "nemají být vidět".
     
     GeoTIFF umožňuje nastavit zapsat hodnotu "žádná data" - na tomto místě je
     mapa prázdná.
 
-**Přehledové mapy**
+*Přehledové mapy*
     GeoTIFF umožňuje vytvářet vnitřní přehledové mapky
 
-**Barvy a kanály**
+*Barvy a kanály*
     Většina prohlížečů se snaží interpretovat data v GeoTIFF jako tři barevné
     kanály. GeoTIFF umožňuje zapsat více kanálová data (ne pouze 3), s čímž se
     prohlížečky obrázků smiřují jen těžko. Obsahuje-li soubor GeoTIFF 3 pásma s
     hodnotami 0-255, je výsledek většinou očekávatelný.
 
-**Vnitřní komprese**
+*Vnitřní komprese*
     Data ve formátu GeoTIFF mohou být vnitřně komprimována některou z metod či
     knihoven. Kromě běžného ZIP lze použít např. i kompresi JPEG. Výsledný rastrový
     soubor je pak fyzicky menší, než když bysme se pokoušeli soubor bez vnitřní

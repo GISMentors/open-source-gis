@@ -88,10 +88,9 @@ základě charakteru zkreslení do několika skupin:
    :maxdepth: 1
 
    souradnice
-   krovakovo-zobrazeni
+   sjtsk
    mercatorovo-zobrazeni
    wgs84
    etrs89
    epsg
    jak-poznat-ss-dat
-   knihovny

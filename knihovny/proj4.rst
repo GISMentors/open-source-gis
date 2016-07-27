@@ -1,54 +1,10 @@
-.. _knihovny:
-
-Knihovny
-========
-
-Knihovny jsou jedním z komponentů GIS. Obecně si komponenty lze představit 
-jako stavební bloky většího modulárního systému. Každý z těchto základních bloků 
-zajišťuje primárně určitou část celkové funkcionality, například vstup dat, 
-jejich následnou manipulaci, transformaci, analýzu, syntézu, vizualizaci a vytváření 
-výstupů. Přičemž z venku jsou jednotlivé části přístupné prostřednictvím 
-společného uživatelského prostředí. Většinou se jedná o uživatelsky komfortní 
-grafické prostředí se systémem voleb či nabídek, ale není vzácné ani ovládání v režimu 
-příkazového řádku. 
-
-* :ref:`Knihovna GDAL <knihovna-gdal>` (Geospatial Data Abstraction Library)
-* :ref:`Knihovna OGR <knihovna-ogr>` (Simple Feature Library)
-* :ref:`Knihovna Proj.4 <knihovna-proj4>` (Cartographic Projection Library) 
-
-.. _knihovna-gdal:
-
-Knihovna GDAL
--------------
-
-Knihovna `GDAL <http://gdal.org>`_, resp. její nástroje, viz. část 
-:ref:`gdal-prevody-formaty` umožňuje transformovat mezi jednotlivými
-souřadnicovými systémy celé datové sady.
-Je to knihovna překladů pro formáty rastrových geoprostorových dat, která je 
-šířena pod X/MIT typem Open Source licence konsorciem 
-:wikipedia:`Open Source Geospatial Foundation`. Jako knihovna přináší 
-tzv. single abstract data model pro aplikaci, která volá všechny podporované 
-formáty. Zároveň přichází s řadou užitečných utilit spouštěných z příkazového 
-řádku, sloužících pro převod dat a jejich zpracování. Příbuzná knihovna 
-:ref:`OGR <knihovna-ogr>` (existující jako podvětvi GDAL) poskytuje podobné 
-funkce pro snadné atributové vektorová data (zdroj: 
-`EnviroGeoPortál <http://geo.enviroportal.sk/infrastruktra/komponenty-gis>`_).
-
-.. _knihovna-ogr:
-
-Knihovna OGR
-^^^^^^^^^^^^
-
-OGR je open source knihovna (plus nástroje spouštěné z příkazového řádku) napsaná 
-v jazyce C++. Poskytuje přístup ke čtení, někdy i zápis k souborům vektorových 
-dat různých formátů. Je součástí :ref:`GDAL knihovny <knihovna-gdal>`.
-
 .. _knihovna-proj4:
 
 Knihovna Proj.4
 ---------------
 
-`Proj.4 <https://trac.osgeo.org/proj/>`_ je jedna ze základních knihoven
+`Proj.4 <https://trac.osgeo.org/proj/>`_ (Cartographic Projection Library) 
+je jedna ze základních knihoven
 využívaných v mnoha open source GIS projektech jako `GRASS GIS
 <http://www.gismentors.cz/skoleni/grass-gis/>`_, `QGIS
 <http://www.gismentors.cz/skoleni/qgis/>`_, `PostGIS
@@ -58,13 +14,15 @@ klony v jazyce `JavaScript <http://proj4js.org/>`_, `PHP
 (https://github.com/jachym/proj4php), `Python
 <https://github.com/jswhit/pyproj>`_ a dalších. Kromě možnosti používat tuto 
 knihovnu z různých programů, existují i užitečné nástroje v příkazové řádce, 
-například :ref:`cs2cs <cs2cs>`, :ref:`geod a invgeod <geod-a-invgeod>`, 
-:ref:`proj a invproj <proj-a-invproj>`.
+například 
+
+* :ref:`cs2cs <cs2cs>`, 
+* :ref:`geod a invgeod <geod-a-invgeod>`, 
+* :ref:`proj a invproj <proj-a-invproj>`.
 
 .. _cs2cs:
 
-cs2cs
-^^^^^
+**cs2cs**
 
 ... provádí transformaci mezi jednotlivými souřadnicovými systémy.
 
@@ -96,8 +54,7 @@ cs2cs
 
 .. _geod-a-invgeod:
 
-geod a invgeod
-^^^^^^^^^^^^^^
+**geod a invgeod**
 
 ... řeší tzv. základní geodetické `úlohy <http://gis.zcu.cz/studium/gen1/html/ch07s02.html>`_ 
 pro určení zeměpisní šířky a délky, při zadání výchozího bodu, azimutu, délky a naopak.
@@ -116,13 +73,8 @@ pro určení zeměpisní šířky a délky, při zadání výchozího bodu, azim
 
 .. _proj-a-invproj:
 
-proj a invproj
-^^^^^^^^^^^^^^
+**proj a invproj**
 
 ... provádí transformaci souřadnicových systému z/do systému WGS84; funguje 
 podobně jako :ref:`cs2cs`, který ale umí transformovat mezi libovolnými 
 souřadnicovými systémy.
-
-
-
-
