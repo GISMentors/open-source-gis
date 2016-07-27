@@ -1,8 +1,8 @@
 .. _csn:
 
-=========================
-Česká státní norma -- ČSN
-=========================
+===
+ČSN
+===
 
 .. warning:: :red:`Obsahuje pouze osnovu kapitoly`
 

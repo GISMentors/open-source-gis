@@ -30,6 +30,11 @@ Existuje mnoho užitešných příkazů pro práci s rastrovými (:ref:`gdalinfo
 :ref:`ogrtindex <ogrtindex>`, :ref:`ogrlineref <ogrlineref>`, 
 :ref:`ogr2ogr <ogr2ogr>`) daty.
 
+Zde si představíme pouze některé příkazy, které jsou distribuovány spolu s
+knihovnou GDAL. Úplný seznam naleznete na 
+`www.gdal.org/gdal_utilities.html <http://www.gdal.org/gdal_utilities.html>`_ 
+a `www.gdal.org/ogr_utilities.html <http://www.gdal.org/ogr_utilities.html>`_.
+
 Příkazy pro práci s rastrovými daty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -44,10 +49,6 @@ Příkazy pro práci s rastrovými daty
 * :ref:`gdaladdo <gdaladdo>`, 
 * :ref:`gdal_contour <gdal-contour>`,
 * :ref:`gdaltindex <gdaltindex>`.
-
-Zde si představíme pouze některé příkazy, které jsou distribuovány spolu s
-knihovnou GDAL. Úplný seznam naleznete na
-http://www.gdal.org/gdal_utilities.html a http://www.gdal.org/ogr_utilities.html
 
 .. _gdalinfo:
 

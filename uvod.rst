@@ -206,3 +206,5 @@ prostorových dat v České republice. Základními cíli sdružení jsou zejmé
    :width: 300px
     
    Spolek Otevřená GeoInfrastruktura České republiky.
+
+.. tip:: Viz. také část :ref:`OSGeo <osgeo-standardy>` - standardy.

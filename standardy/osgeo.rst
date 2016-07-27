@@ -1,8 +1,8 @@
 .. _osgeo-standardy:
 
-=========================================
-Open Source Geospatial Foundation - OSGeo
-=========================================
+=====
+OSGeo
+=====
 
 .. warning:: :red:`Obsahuje pouze osnovu kapitoly`
 
