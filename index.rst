@@ -33,15 +33,16 @@ Text školení je licencován pod `Creative Commons Attribution-ShareAlike 4.0 I
    :width: 110px
    :scale-latex: 100
               
-*Verze textu školení:* |release| (|today|)
+Verze textu školení: |release| (|today|)
 
 Autoři
 ------
 
 Za `GISMentors <http://www.gismentors.eu/>`_:
 
-* `Jáchym Čepický <http://www.gismentors.cz/mentors/cepicky>`_ ``<jachym.cepicky opengeolabs.cz>``
-* `Martin Landa <http://www.gismentors.cz/mentors/landa>`_ ``<martin.landa opengeolabs.cz>``
+* `Jáchym Čepický <http://www.gismentors.cz/mentors/cepicky>`_ 
+* `Martin Landa <http://www.gismentors.cz/mentors/landa>`_ 
+* `Ľudmila Furtkevičová <http://www.gismentors.cz/mentors/furtkevicova/>`_
     
 .. only:: latex
 

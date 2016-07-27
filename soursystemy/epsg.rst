@@ -46,8 +46,8 @@ Významné kódy EPSG
     systém S-JTSK, východ :math:`x` / sever :math:`y` (S-JTSK / Krovak East North), 
     definováno od nultého poledníku Greenwiche, záporné souřadnice
 
-Kódy, se kterými se také můžete setkat:
----------------------------------------
+Kódy, se kterými se také můžete setkat
+--------------------------------------
 
 :epsg:`2065`
     systém S-JTSK, jih :math:`x` / západ :math:`y` (S-JTSK / Krovak), 

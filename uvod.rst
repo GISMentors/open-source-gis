@@ -10,8 +10,8 @@ Proč GIS
 :wikipedia:`Geografický informační systém` (GIS) je na počítačích
 založený informační systém pro získávání, ukládání, analýzu a
 vizualizaci dat, která mají prostorový vztah k povrchu Země. Hovoříme
-o geografických datech, zkráceně *geodatech* (*angl. spatial data*, *spatial 
-information*). 
+o geografických datech, zkráceně *geodatech*, angl. *spatial data*, *spatial 
+information*. 
 
 Počátek geoinformačních technologií a vědního oboru geoinformatiky sahá do Kanady 
 a 60. let 20. století. Tu se přišlo na to, že úkoly jako například plánování 
