@@ -12,6 +12,8 @@ za přijmutí určité ztráty informace, volně převádět.
    Ukázka vizualizace rastrových (digitální model terénu) a
    vektorových dat (vrstevnice a výškové kóty)
 
+*Další témata:*
+
 .. toctree::
    :maxdepth: 2
 

@@ -84,8 +84,10 @@ základě charakteru zkreslení do několika skupin:
     Příklady kartografických zobrazení podle vzhledu zobrazovací
     plochy - azimutální, kuželová, válcová, ... (zdroj: :wikipedia:`Mapové zobrazení`).
 
+*Další témata:*
+
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    souradnice
    sjtsk

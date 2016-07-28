@@ -4,6 +4,8 @@
 Úvodní kapitola nastiňuje motivaci, proč pracovat s nástroji open source GIS, 
 poskytuje přehled zdrojů, odkazy na komunitní skupiny světové i lokální.
 
+.. _proc-gis:
+
 Proč GIS
 --------
 
@@ -45,6 +47,8 @@ vytvářet digitální modely části zemského povrchu. Takto vytvořený model
 lze pak využít například při evidenci katastru nemovitostí, předpovídání vývoje
 počasí, určování záplavových zón řek, výběru vhodné lokace pro čistírnu
 odpadních vod, plánování výstavby silnic, krizové řízení a podobně.
+
+.. _geodata-geoprvky:
 
 Geodata, geoprvky
 -----------------
