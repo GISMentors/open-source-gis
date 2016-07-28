@@ -1,15 +1,17 @@
+.. _epsg-standardy:
+
 ====
 EPSG 
 ====
 
-Dataset `EPSG <http://epsg.org>`_ (Geodetic Parameter Dataset) 
+Dataset `EPSG <http://epsg.org>`__ (Geodetic Parameter Dataset) 
 byl spravován původně konsorciem `International
 Association of Oil and Gas Producers <http://www.iogp.org/>`_. Jedná se o široce
 akceptovaný dataset šířený v databázích *MS Access*, *MySQL*, *PostgreSQL* a dalších.
 Je ale přítomen a především aktualizován ve všech softwarech v oboru GIS.
 
-V části :ref:`souřadnicové systému <sour-systemy>` se tímto datasetem zabýváme 
-podrobněji, viz. :ref:`EPSG <epsg>`. Proto zde
+V části :ref:`souřadnicové systémy <sour-systemy>` se tímto datasetem zabýváme 
+podrobněji, viz. :ref:`EPSG <ss-epsg>`. Proto zde
 pouze zopakujeme, že databáze EPSG obsahuje číselné kódy reprezentující
 jednotlivé definice souřadnicových systémů používaných v oboru geodézie a GIS 
 a že velice praktické rozhraní k této databázi lze nalézt na stránkách http://epsg.io.

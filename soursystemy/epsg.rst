@@ -1,4 +1,4 @@
-.. _epsg:
+.. _ss-epsg:
 
 EPSG
 ====

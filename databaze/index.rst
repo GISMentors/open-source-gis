@@ -17,12 +17,12 @@ uloženy a spravovány i atributové, textové, obrazové a jiné druhy dat. Už
 nebo geodata. Prostorové databáze se pak označují jako *geografické databáze* 
 nebo geodatabáze. Někdy se výraz geografické databáze používá jako synonym 
 pojmu prostorové databáze, ale není to správné, protože pojem prostorové databáze 
-má obecnější význam (Ďuračiová, 2014).
+má obecnější význam (*Ďuračiová, 2014*).
 Tabulka s prostorovým atributem (atribut obsahující geometrické data) se nazývá 
 *prostorová tabulka*. 
 
 .. figure:: images/db_table.png
-   :class: small
+   :class: middle
     
    Atributy prostorových dat (Zdroj: `www.indiana.edu <http://www.indiana.edu/~gisci/courses/g338/images/chapter2figs/fig2-2.gif>`_).
 
@@ -50,15 +50,19 @@ běžně implementovány přímo v relačních databázových systémech. Indexy
 urychlují vyhledávání dat a také urychlují provádění různých prostorových poptávek.
 Mezi indexové struktury pro prostorové data patří tzv. 
 `stromy <https://cs.wikipedia.org/wiki/Strom_(datov%C3%A1_struktura)>`_, například 
-`KD-stromy <https://en.wikipedia.org/wiki/K-d_tree>`_ (a), 
-`BSP-stromy <https://en.wikipedia.org/wiki/Binary_space_partitioning>`_ (b), 
-`R-stromy <https://en.wikipedia.org/wiki/R-tree>`_ (c), 
-`štvorstromy <https://en.wikipedia.org/wiki/Quadtree>`_ (d).
+(a) `KD-stromy <https://en.wikipedia.org/wiki/K-d_tree>`_ určené k ukládání bodů (uzlů), 
+(b) `BSP-stromy <https://en.wikipedia.org/wiki/Binary_space_partitioning>`_ 
+založené na rekurzivní dělení prostoru na dva polprostory, 
+(c) `R-stromy <https://en.wikipedia.org/wiki/R-tree>`_ založené na dekompozici 
+prostoru formou minimálních ohraničujících obdélníků, přičemž jednotlivé obdélníky 
+se mohou i vzájemně překrývat, nebo (d) 
+`štvorstromy <https://en.wikipedia.org/wiki/Quadtree>`_ založené na postupném 
+dělení prostoru na kvadranty.
 
 .. figure:: images/stromy.png
-   :class: small
+   :class: middle
     
-   Indexové struktury pro prostorová data.
+   Indexové struktury pro prostorová data (*Ďuračiová, 2014*).
 
 *Další témata:*
     

@@ -32,7 +32,6 @@ Text školení je licencován pod `Creative Commons Attribution-ShareAlike 4.0 I
 
 .. figure:: images/cc-by-sa.png 
    :width: 110px
-   :scale-latex: 100
               
 Verze textu školení: |release| (|today|)
 

@@ -15,9 +15,7 @@ http://opengeospatial.org/standards/wfs
 * Primárně pracuje s formátem GML, ale pokud to server podporuje, umožňuje i
   další
 
-Přílad:
-  AOPK WFS http://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?
-
+Přílad: ``AOPK WFS http://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?``
 
 WFS GetCapabilities
 ^^^^^^^^^^^^^^^^^^^

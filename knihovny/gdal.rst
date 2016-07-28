@@ -179,7 +179,7 @@ Podporované formáty zjistíte pomocí parametru `--formats`:
           SDTS (rov): SDTS Raster
           ...
 
-Syntaxe programu :program:`gdalwarp` (i u tohoto programu funguje
+Syntaxe programu :ref:`gdalwarp <gdalwarp>` (i u tohoto programu funguje
 parametr :option:`--help` a určitě se podívejte na manuálovou stránku
 programu ``man gdalarp``) je následující::
 
@@ -277,7 +277,7 @@ metadata v těchto datech přítomná.
 
 **gdaltransform**
 
-Funguje podobně jako program :ref:`cs2cs` knihovny Proj4, tj. transformuje
+Funguje podobně jako program :ref:`cs2cs <cs2cs>` knihovny Proj4, tj. transformuje
 souřadnice mezi souřadnicovými systémy.
 
 .. _gdal-translate:
@@ -285,7 +285,7 @@ souřadnice mezi souřadnicovými systémy.
 **gdal_translate**
 
 Převádí rastrová data mezi různými formáty. Na rozdíl od
-:ref:`gdalwarp` neumožňuje data transformovat do jiného souřadnicového
+:ref:`gdalwarp <gdalwarp>` neumožňuje data transformovat do jiného souřadnicového
 systému. Lze ale nastavit souřadnicový systém výstupních dat pomocí
 parametru :option:`-a_srs` (kdy nechodází k transformaci dat, ale
 pouze nastavení souřadnicového systému do metadat výstupního souboru).
@@ -541,14 +541,14 @@ souřadnice, vzdálenosti, staničení atd., to vše v lineární referenční s
 **ogr2ogr**
 
 Nástroj `ogr2ogr <http://www.gdal.org/ogr2ogr.html>`__ je obdobou
-rastrového :ref:`gdalwarp`, který umožňuje transformaci vektorových dat.
+rastrového :ref:`gdalwarp <gdalwarp>`, který umožňuje transformaci vektorových dat.
 
 Obecná syntaxe je:
 
     ogr2ogr [VOLBY] výstupní_soubor vstupní_soubor
 
-Stejně jako u `gdalwarp`, můžete podporované formáty vypsat pomocí parametru
-`--formats`:
+Stejně jako u :ref:`gdalwarp <gdalwarp>`, můžete podporované formáty vypsat 
+pomocí parametru `--formats`:
 
 .. code-block:: bash
     

@@ -1,4 +1,4 @@
-.. _řr-systemy:
+.. _sour-systemy:
 
 ********************
 Souřadnicové systémy

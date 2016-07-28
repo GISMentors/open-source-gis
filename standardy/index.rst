@@ -106,7 +106,7 @@ následujícího schematu:
 .. toctree::
    :maxdepth: 1
 
-   epsg
+   epsg-standardy
    iso
    ogc/index
    inspire

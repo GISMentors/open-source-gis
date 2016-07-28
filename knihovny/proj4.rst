@@ -76,5 +76,5 @@ pro určení zeměpisní šířky a délky, při zadání výchozího bodu, azim
 **proj a invproj**
 
 ... provádí transformaci souřadnicových systému z/do systému WGS84; funguje 
-podobně jako :ref:`cs2cs`, který ale umí transformovat mezi libovolnými 
+podobně jako :ref:`cs2cs <c2cs>`, který ale umí transformovat mezi libovolnými 
 souřadnicovými systémy.
