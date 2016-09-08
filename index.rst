@@ -1,12 +1,22 @@
 ################################
 Úvod do nástrojů Open Source GIS
 ################################
-Tento kurz obsahuje základní přehled nástrojů :wikipedia:`open source` 
-:wikipedia:`GIS` a vše potřebné, abyste mohli začít pracovat s volně dostupnými 
-nástroji GIS v českém (a slovenském) prostředí.
+
+.. only:: html
+
+   .. image:: images/logo_g.png
+      :width: 85px
+      :align: right
+
+Tento kurz poskytuje úvod do problematiky :wikipedia:`GIS`
+(*Geografických informačních systémů*). Praktická část kurzu je
+zaměřena na základní přehled volně dostupných nástrojů GIS (především
+:wikipedia:`open source`) a vše potřebné, abyste mohli začít pracovat
+s geografickými daty pomocí těchto nástrojů v českém (a slovenském)
+prostředí.
 
 .. warning:: :red:`Pracovní verze školení, která je aktuálně ve vývoji!`
-   
+
 *****
 Obsah
 *****
@@ -38,7 +48,7 @@ Verze textu školení: |release| (|today|)
 Autoři
 ------
 
-Za `GISMentors <http://www.gismentors.eu/>`_:
+Za `GISMentors <http://www.gismentors.cz/>`_:
 
 * `Jáchym Čepický <http://www.gismentors.cz/mentors/cepicky>`_ 
 * `Martin Landa <http://www.gismentors.cz/mentors/landa>`_ 
