@@ -9,7 +9,7 @@ from utils import get_month_year, get_year
 # -- General configuration ------------------------------------------------
 
 # General information about the project.
-project = u'Školení Open Source GIS'
+project = u'Školení Úvod do (Open Source) GIS'
 copyright = u'2014-%d by Jáchym Čepický a Martin Landa (GISMentors)' % get_year()
 
 # The version info for the project you're documenting, acts as replacement for
@@ -24,7 +24,7 @@ release = '%s alpha' % version
 # -- Options for HTML output ----------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'skoleni-open-source-gis'
+htmlhelp_basename = 'skoleni-uvod-do-open-source-gis'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
