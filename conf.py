@@ -62,10 +62,10 @@ texinfo_documents = [
 
 html_favicon = "images/favicon.ico"
 
-sys.path.append(os.path.join('..', 'sphinx-template'))
 from conf_base import *
 
 todo_include_todos = True
+html_use_index = True
 
-extensions = [ 'sphinx.ext.extlinks', 'sphinx.ext.todo', 'video', 'notes',
-               'sphinx.ext.mathjax']
+extensions += [ 'sphinx.ext.extlinks', 'sphinx.ext.todo', 'video', 'notes',
+               'sphinx.ext.mathjax', 'sphinxcontrib.aafig']

@@ -2,43 +2,60 @@
 
 OGC Web Map Service - WMS
 -------------------------
-`WMS <http://opengeospatial.org/standards/wms>`_ je asi nejrozšířenější
-standard. WMS slouží k popisu toho, jakým způsobem požaduje klient po serveru
-vygenerovat mapový náhled z dat uložených (z pohledu klienta) na serveru.
-Symbologii mapy lze do určité míry ovlivnit, vstupní data nikoliv.
 
-WMS definuje 3 typy *requestů* na server od klienta (většina služeb funguje
-podobně, proto se pokusíme WMS rozebrat podrobněji):
+.. index::
+   single: WMS; Web Map Service
+   pair: OGC OWS; WMS
+
+**OGC Web Map Service** (`WMS
+<http://opengeospatial.org/standards/wms>`_) je asi nejrozšířenější a
+nejpoužívanější standard OGC. OGC WMS slouží k popisu toho, jakým
+způsobem požaduje klient po serveru vygenerovat mapový náhled z dat
+uložených (z pohledu klienta) na serveru.  Symbologii mapy lze do
+určité míry ovlivnit, vstupní data nikoliv.
+
+OGC WMS definuje 3 typy dotazů, tzv. *requestů*:
 
 * **GetCapabilities**
 * **GetMap**
 * Nepovinný **GetFeatureInfo**
 
+.. note:: Většina webových služeb OGC funguje podobně, proto se
+          pokusíme WMS rozebrat podrobněji.
+
+.. index::
+   pair: WMS; GetCapabities
+
 .. _ogc-wms-capabilities:
 
 WMS GetCapabilities
 ^^^^^^^^^^^^^^^^^^^
-Jako příklad zvolíme službu ČUZK, poskytující letecké snímky, dostupnou na
+Jako příklad zvolíme službu ČÚZK, poskytující letecké ortofoto snímky, dostupnou na
 adrese:
 
 http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx
 
-Tzv. `Capabilities` dokument dostaneme po zavolání requestu *GetCapabilities*:
+Tzv. `Capabilities` dokument obdržíme pomocí dotazu *GetCapabilities*:
 
 http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=GetCapabilities
 
-Pokusíme se výše uvednou :wikipedia:`URL` blíže rozebrat::
+.. index:: URL
+           
+Pokusíme se výše uvednou :wikipedia:`URL` blíže rozebrat:
+
+::
 
     http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=GetCapabilities
                                                            ^          ^                 ^
     Adresa serveru ČUZK se službou leteckým snímků --------+          |                 |
     Specifikace požadované služby OGC WMS ----------------------------+                 |
-    Specifikace requestu GetCapabilities -----------------------------------------------+
+    Specifikace dotazu GetCapabilities -------------------------------------------------+
 
-Po zadání této adresy do prohlížeče server ČUZK vrátí dokument XML s
-*Capabilities* - schopnostmi serveru. V případě OGC WMS má 2 části (první část
-bývá pro všechny služby OGC OWS stejná nebo alespoň hodně podobná) - metadata
-serveru (v části *Service*) a informace o dostupných službách (*Capability*):
+Po zadání této adresy do webového prohlížeče server ČÚZK vrátí XML
+dokument popisující jeho schopnosti. V případě OGC WMS má 2 části
+(první část bývá pro všechny služby OGC OWS stejná nebo alespoň hodně
+podobná) - metadata serveru (v části *Service*) a informace o
+dostupných službách (*Capability*):
 
 .. code-block:: xml
     
@@ -67,11 +84,17 @@ serveru (v části *Service*) a informace o dostupných službách (*Capability*
         </Capability>
     </WMS_Capabilities>
 
+.. index::
+   pair: WMS; Service
+
 Service
 """""""
 V části dokumentu označené jako *Service* jsou uloženy metadata služby. Její
 *jméno*, *titulek* a širší popis, tzv. *abstrakt*. Dále zde nalezneme kontaktní
 informace na provozovatele služby, informace o poplatcích a omezeních přístupu.
+
+.. index::
+   pair: WMS; Capability
 
 Capability
 """"""""""
@@ -80,10 +103,14 @@ URL na jednotlivé dotazy (*GetCapabilities*, *GetMap* a *GetFeatureInfo*, kter�
 mohou být různé(!)) a seznam dostupných vrstev (ten může být hierarchicky
 zanořený).
 
-V tomto dokumentu také můžeme vidět obsáhlou část, kterou jsou metadata doplněna
-o atributy vyžadované směrnicí INSPIRE. V původní definici dokumentu toto
-vyžadováno není. INSPIRE tak pouze rozšiřuje existující standard (což považujeme
+Dokument také může obsahovat relativně obsáhlou část, kterou jsou
+metadata doplněna o atributy vyžadované směrnicí :doc:`INSPIRE
+<../inspire>`. V původní definici dokumentu toto vyžadováno
+není. INSPIRE tak pouze rozšiřuje existující standard (což považujeme
 za příhodné a elegantní řešení).
+
+.. index::
+   pair: WMS; Layer
 
 Layer
 """""
@@ -134,20 +161,26 @@ Podíváme se blíže na část `Layer`:
     </Layer>
     ...
 
-Každá vrstva je identifikovaná svým jménem (*Name*), má nadpis (*Title*) a může
-mít širší popis (*Abstract*). Za klíčovými slovy následuje seznam podporovaných
-souřadnicových systémů. Některé servery podporují ve výchozím nastavení "všechny", což
-značně komplikuje parserování podobných odpovědí.
+Každá vrstva je identifikovaná svým jménem (*Name*), má nadpis
+(*Title*) a může mít širší popis (*Abstract*). Za klíčovými slovy
+následuje seznam podporovaných souřadnicových systémů. Některé servery
+podporují ve výchozím nastavení "všechny", což značně komplikuje
+strojové zpracování podobných odpovědí.
 
 V další části lze dohledat hraniční souřadnice dat *BoundingBox*. *Attribution*
 pak obsahuje informace o licenci a copyrightu. Některé vrstvy nabízejí více
-možností, např. jak zobrazit symbologii (*Style*). Nakonec následují inforace o
-měřítcích, ve kterých se bude daná vrstva renderovat.
+možností, např. jak zobrazit symbologii (*Style*). Nakonec následují informace o
+měřítcích, ve kterých se bude daná vrstva vykreslovat.
+
+.. index::
+   pair: WMS; GetMap
 
 WMS GetMap
 ^^^^^^^^^^
-Po prostudování dokumentu *Capabilities* jsme schopni (nebo námi napsaný
-program) sestavit request *GetMap*, který vrátí mapu. WMS server vrací mapu na
+
+Po prostudování dokumentu *Capabilities* jsme schopni (nebo námi
+napsaný program) sestavit dotaz typu *GetMap*, který vrátí požadovaný
+mapový náhled na poskytovaná data. Výsledek WMS služba vratí na
 základě dotazu, ve kterém musí být specifikováno:
 
 * Identifikátor vrstev
@@ -170,8 +203,8 @@ základě dotazu, ve kterém musí být specifikováno:
     |   |   |   |   |   |   |   ^   crs=epsg:4326&
     |   |   |   |   |   |   |   |   ^   styles=
     |   |   |   |   |   |   |   |   |   ^
-    |   |   |   |   |   |   |   |   |   +- Legenda
-    |   |   |   |   |   |   |   |   +- Souř. systém
+    |   |   |   |   |   |   |   |   |   +- Legenda (symbologie)
+    |   |   |   |   |   |   |   |   +- Souřadnicový systém
     |   |   |   |   |   |   |   +- Hraniční souřadnice výřezu
     |   |   |   |   |   |   +- Velikost obrázku
     |   |   |   |   |   +- Formát výstupního obrázku
@@ -181,33 +214,42 @@ základě dotazu, ve kterém musí být specifikováno:
     |   +- Specifikace služby
     +- Server URL
 
+Příklad:
+    
 http://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/WMService.aspx?service=WMS&request=GetMap&version=1.3.0&layers=GR_ORTFOTORGB&format=image/jpeg&width=800&height=600&bbox=50.5,14.0,50.8,14.3&crs=epsg:4326&styles= 
 
 .. figure:: images/wms_ortofoto.jpg
     
-    Letecký snímek stažený ze služby OGC WMS ze serverů ČUZK
+    Letecký snímek získaný pomocí služby OGC WMS ze serverů ČUZK.
 
-.. note:: Všiměte si, že hraniční souřadnice jsou zadány ve formě `miny, minx,
+.. note:: Všiměte si, že hraniční souřadnice (*bbox*) jsou zadány ve formě `miny, minx,
     maxy, maxx` - což je v rozporu s obecně platným zápisem párů souřadnic `[x, y]`. 
 
-    To je způsobeno tím, že ve standardu WMS verze 1.3.0, se dbá na pořadí
-    souřadnic, *jak jsou definovány v souřadnicovém systému*. Systém WGS84
-    preferuje zápis v pořadí Y, X. Stejně tak např. INSPIREm předepsaný
-    ETRS (:epsg:`3035`). To samé by mohlo platit pro systém S-JTSK
-    (:epsg:`5514`), v praxi se ale pořadí os souřadnic `[x, y]` zachovává.
+    To je způsobeno tím, že ve standardu WMS verze 1.3.0 se dbá na
+    pořadí souřadnic, *jak jsou definovány v souřadnicovém
+    systému*. Systém WGS84 preferuje zápis v pořadí Y, X
+    (tj. zeměpisná šířka a délka). Stejné platí např. INSPIREm
+    předepsaný souřadnicnicový systém ETRS (:epsg:`3035`) či pro
+    systém S-JTSK (:epsg:`5514`). Viz kapitola
+    :doc:`../../soursystemy/index`. V praxi se ale pořadí os souřadnic
+    `[x, y]` zachovává.
 
     Jak lze tušit, způsobuje tato nekonzistence množství problémů v komunikaci
     mezi servery klienty, i vzhledem k tomu, že ve starších verzích standardu
     WMS byl zápis pořadí souřadnic *vždy* `[x, y]`.
 
+.. index::
+   pair: WMS; GetFeatureInfo
+
 WMS GetFeatureInfo
 ^^^^^^^^^^^^^^^^^^
 
-Pokud to daná vrstva na daném serveru podporuje, je možné se dotázat na hodnotu
-pixelu na daných souřadnicích. Zda-li je to možné, se dozvíme z atributu
-`queryable` u každé vrstvy. V případě této služby, není žádná vrstva
-dotazovatelná, ale zdá se, že služba nabízející databázi ZABAGED takovou
-dotazovatelnou vrstvu obsahuje:
+Pokud daná vrstva (*Layer*) tento dotaz podporuje, tak je možné se
+dotázat na hodnotu pixelu na daných souřadnicích. To zda je tento
+dotaz podporován zjistíme z atributu `queryable` u každé vrstvy. V
+případě výše uvedené služby, není žádná vrstva dotazovatelná (viz
+dokument *Capalities*). Služby nabízející náhled na datovou sadu ZABAGED
+nicméně takovou dotazovatelnou vrstvu obsahuje:
 
 http://geoportal.cuzk.cz/WMS_ZABAGED_PUB/WMService.aspx?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities
 
@@ -231,8 +273,8 @@ http://geoportal.cuzk.cz/WMS_ZABAGED_PUB/WMService.aspx?SERVICE=WMS&VERSION=1.3.
     </Layer>
     ...
 
-*GetFeatureInfo* request vyžaduje stejné parametry jako *GetMap*
-a k tomu ještě následující hodnoty:
+Dotaz typu *GetFeatureInfo* vyžaduje stejné parametry jako *GetMap* a
+k tomu ještě následující hodnoty:
 
 * `request=GetFeatureInfo` hodnota parametru `request` je samozřejmě změněna
 * `QUERY_LAYERS=GL_CA010` vrstvy o které se zajímáme
@@ -255,8 +297,12 @@ Odpověď ze serveru:
    +------+--------------+
    |VYSKA | 408          |
    +------+--------------+
+   | TYP  | ZM10         |
+   +------+--------------+        
 
-.. note:: Dotaz byl poskládán pomocí programu `QGIS
-    <http://www.qgis.org>`_. Odhadovat BBOX vrstvy a souřadnice
-    obrázku samozřejmě lze (po dopočítání rozlišení pixelu), ale
-    pomocí již napsaného software je to přesnější.
+.. index:: QGIS
+              
+.. note:: Dotaz byl poskládán pomocí programu :skoleni:`QGIS
+    <qgis-zacatecnik>`. Odhadovat BBOX vrstvy a souřadnice obrázku
+    samozřejmě lze (po dopočítání rozlišení pixelu), pomocí výše
+    uvedeného software je to ale přesnější.

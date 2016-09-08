@@ -3,26 +3,31 @@
 OGC Web Map Tiled Service - WMTS
 --------------------------------
 
-S příchodem `mapové aplikace firmy Google <http://maps.google.com>`_ se značně
-změnil přístup k servírování podkladových mapových kompozic. Uživatelé
-pochopili, že pro více-méně statická data (jako jsou letecké snímky či
-topografická mapa, atd.) je možné přegenerovat výslednou mapu do formy dlaždic,
-ty pak lze ze serveru odbavovat relativně rychle. Cenou za rychlost je omezení
-nabízených souřadnicových systémů (pro každý nabízený se musí vyrobit a udržovat celá
-dlaždicová cache zvlášť) a omezení dostupných měřítek na předem připravené
-kroky.
+S příchodem `mapové aplikace firmy Google <http://maps.google.com>`_
+se značně změnil přístup k poskytování podkladových mapových
+kompozic. Uživatelé pochopili, že pro více-méně statická data (jako
+jsou letecké snímky či topografická mapa, atd.) je možné předgenerovat
+výslednou mapu do formy dlaždic (anglicky *tile*), ty pak lze ze
+serveru odbavovat relativně rychle. Cenou za rychlost je omezení
+nabízených souřadnicových systémů (pro každý nabízený souřadnicový
+systém se musí vyrobit a udržovat celá dlaždicová sada zvlášť) a
+dostupných měřítek na předem připravené kroky.
 
 Odpovědí na tuto potřebu je specifikace `OGC WMTS
-<http://opengeospatial.org/standards/wmts>`_. Ta umožňuje definovat dostupné
-dlaždicové cache pro různá měřítka a souřadnicové systémy.
+<http://opengeospatial.org/standards/wmts>`_ (Web Map Tiled
+Service). Ta umožňuje definovat dostupné dlaždicové sady pro různá
+měřítka a souřadnicové systémy.
+
+.. index::
+   pair: WMTS; GetCapabities
 
 WMTS GetCapabilities
 ^^^^^^^^^^^^^^^^^^^^
 
-Podobně jako u :ref:`ogc-wms-capabilities`, má request *GetCapabilities* i služba
+Podobně jako u :ref:`ogc-wms-capabilities`, má dotaz typu *GetCapabilities* i služba
 WMTS. Otestujeme ji opět na serverech ČÚZK:
 
-http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=getcapabilities
+http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=WMTS&request=GetCapabilities
 
 Odpověď ze serveru má opět více částí:
 
@@ -34,14 +39,15 @@ Odpověď ze serveru má opět více částí:
         <ows:OperationsMetadata>...</ows:OperationsMetadata>
         <Contents>...</Contents>
     </Capabilities>
-
+   
 Vidíme, že výsledný dokument má 4 části:
 
-    * Identifikace služby
-    * Identifikace poskytovatele
-    * Metadata operací (requestů)
-    * Vlastní obsah služby
+    * Identifikace služby (*ServiceIdentification*)
+    * Identifikace poskytovatele (*ServiceProvider*)
+    * Metadata operací (requestů) (*OperationsMetadata*)
+    * Vlastní obsah služby (*Contents*)
 
+      
 ServiceIdenitication
 """"""""""""""""""""
 
@@ -62,9 +68,9 @@ ServiceIdenitication
     </ows:ServiceIdentification>
     ...
 
-Vidíme, že služba je podobně jako u WMS (a dalších služeb) dána svým
-identifikátorem (*Name*), nadpisem, abstraktem, klíčovými slovy, dostupnými
-verzemi, informacemi o poplatcích a licenci.
+Vidíme, že služba se chová podobně jako :doc:`OGC WMS <wms>`. Je dána svým
+identifikátorem (*Name*), nadpisem, abstraktem, klíčovými slovy,
+dostupnými verzemi, informacemi o poplatcích a licencí.
 
 ServiceProvider
 """""""""""""""
@@ -128,14 +134,14 @@ OperationsMetadata
     </ows:OperationsMetadata>
 
 *OperationsMetadata* popisuje adresy URL pro jednotlivé operace (requesty). Vidět
-můžeme detailní informace pro *GetCapabilities* a *GetTile* request.
+můžeme detailní informace pro dotazy typu *GetCapabilities* a *GetTile*.
 
 Contents
 """"""""
 
-Vlastní obsah služby budeme muset opět popsat po částech. Nejprve začínáme
-seznamem dostupných vrstev, jejich názvem, titulkem, abstraktem a hraničními
-souřadnicemi.
+Vlastní obsah služby popíšeme po jednotlivých částech. Nejprve
+začínáme seznamem dostupných vrstev, jejich názvem, titulkem,
+abstraktem a hraničními souřadnicemi.
 
 .. code-block:: xml
 
@@ -156,9 +162,9 @@ souřadnicemi.
             <Format>image/jpeg</Format>
 
 
-Každá vrstva odkazuje pomocí "Linků" na tzv *MatrixSet* připravené schema
-dlaždic. Pro každé měřítko a souřadnicový systém specifikuje, od jakého do
-jakého sloupečku a řádku v matici dlaždic jsou data přítomy:
+Každá vrstva odkazuje pomocí "Linků" na tzv. *MatrixSet* připraveného
+schématu dlaždic. Pro každé měřítko a souřadnicový systém specifikuje
+rozmezí sloupečků a řádků v matici dlaždic:
 
 .. code-block:: xml
 
@@ -185,8 +191,9 @@ jakého sloupečku a řádku v matici dlaždic jsou data přítomy:
             </TileMatrixSetLink>
         </Layer>
 
-Po seznamu vrstev následuje seznam tzv. *MatrixSetů* - připravených schemat
-dlaždicové cache. V našem příkladu si to ukážeme na jednom schematu - S-JTSK:
+Po seznamu vrstev následuje seznam tzv. *MatrixSetů* - připravených
+schémat dlaždicové sady. V našem příkladu si to ukážeme na schématu
+pro souřadnicový systém S-JTSK:
 
 .. code-block:: xml
 
@@ -199,7 +206,7 @@ dlaždicové cache. V našem příkladu si to ukážeme na jednom schematu - S-J
             <ows:SupportedCRS>EPSG:5514</ows:SupportedCRS>
 
 Po počátečních metadatech následuje definice levého-horního rohu, velikost
-dlaždice a počet sloupců/řádků matice:
+dlaždice a počet sloupců/řádků matice dlaždic:
 
 .. code-block:: xml
 
@@ -225,13 +232,16 @@ dlaždice a počet sloupců/řádků matice:
         </TileMatrixSet>
     </Contents>
 
-Na základě tohoto dokumentu, lze tedy zkonstruovat *GetTile* request na
-požadovanou dlaždici v požadovaném měřítku a na požadovném umístění:
-http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=gettile&version=1.0.0&layer=orto&format=image/jpg&TileMatrixSet=jtsk:epsg:5514&TileMatrix=14&TileRow=4001&TileCol=8191&style=
+Na základě tohoto dokumentu, lze tedy zkonstruovat dotaz typu
+*GetTile*, který vrátí požadovanou dlaždici v daném měřítku a
+umístění:
+
+http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=gettile&version=1.0.0&layer=orto&format=image/jpeg&TileMatrixSet=jtsk:epsg:5514&TileMatrix=14&TileRow=4001&TileCol=8191&style=default
 
 .. figure:: images/orto-epsg:5514-13-4001-8191.jpg
-
-    Dlaždice ze služby `ČUZK Ortofoto WMTS <http://geoportal.cuzk.cz/(S(vqbwo5id0qvp14kha13iwkqb))/Default.aspx?mode=TextMeta&side=wmts.uvod&metadataID=CZ-CUZK-WMTS-ORTOFOTO-P&metadataXSL=metadata.sluzba&head_tab=sekce-03-gp&menu=3151>`_ 
+   :class: tiny
+        
+   Dlaždice ze služby `ČUZK Ortofoto WMTS <http://geoportal.cuzk.cz/(S(vqbwo5id0qvp14kha13iwkqb))/Default.aspx?mode=TextMeta&side=wmts.uvod&metadataID=CZ-CUZK-WMTS-ORTOFOTO-P&metadataXSL=metadata.sluzba&head_tab=sekce-03-gp&menu=3151>`_.
 
 
 
