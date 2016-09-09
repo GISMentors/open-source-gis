@@ -7,18 +7,26 @@ http://opengeospatial.org/standards/wfs
 
 .. warning:: :red:`Obsahuje pouze osnovu kapitoly`
 
-* WMS vrací obrázky map, WFS slouží pro práci s "features" - vektorovými objekty
-* Pokud to server podporuje, je možné provádět některé prostorové operace na
-  straně serveru, stejně jako filtrovat podle požadavků klienta
-* WFS-T (transactional WFS) umožňuje editovat elementy na straně serveru,
+* :doc:`WMS <wms>` vrací mapový náhled na poskytovaná data, naproti
+  tomu WFS slouží pro práci s geografickými daty ve vektorové
+  reprezentaci (tzv. "features" - vektorové prvky)
+* Pokud to server podporuje, je možné provádět vybrané prostorové
+  operace na straně serveru, stejně tak jako filtrovat prvky (na
+  základě prostorového nebo atributového dotazu) podle požadavků
+  klienta
+* WFS-T (*Transactional WFS*) umožňuje editovat elementy na straně serveru,
   zamykat jednotlivé záznamy
-* Primárně pracuje s formátem GML, ale pokud to server podporuje, umožňuje i
-  další
+* WFS primárně pracuje s formátem :wikipedia-en:`GML <Geography Markup
+  Language>`, další formáty mohou být podporovány podle možností
+  serveru
 
-Přílad: ``AOPK WFS http://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?``
+Příklad:
+
+  http://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer
 
 WFS GetCapabilities
 ^^^^^^^^^^^^^^^^^^^
+
 https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getcapabilities
 
 .. code-block:: xml
@@ -45,7 +53,7 @@ https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServ
     </ows:OperationsMetadata>
 
 
-seznam dostupných prvků
+Seznam dostupných prvků
 
 .. code-block:: xml
 
@@ -130,23 +138,29 @@ Filtrovací operace podporované serverem
 Stáhnutí dat
 ------------
 
-Výchozí souř. systém (EPSG:5514)
-  https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD
+Výchozí souřadnicový systém (:epsg:`5514`)
 
-To samé jako WGS84
-(Pozor na pořadí souřadnic (viz Capabilities response) )
-  https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326
+https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD
+
+To samé jako WGS84 (pozor na pořadí souřadnic (viz *Capabilities response*)):
+
+https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326
 
 S prostorovým filtrem (zatím se nepodařilo zprovoznit):
-  https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&FILTER=<ogc:Filter><ogc:Within><ogc:PropertyName>SHAPE</ogc:PropertyName><gml:Envelope><gml:lowerCorner>48.4744444 12.7083628</gml:lowerCorner><gml:upperCorner>49.4017450 14.8397106</gml:upperCorner></gml:Envelope></ogc:Within></ogc:Filter>
+  
+https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&FILTER=<ogc:Filter><ogc:Within><ogc:PropertyName>SHAPE</ogc:PropertyName><gml:Envelope><gml:lowerCorner>48.4744444 12.7083628</gml:lowerCorner><gml:upperCorner>49.4017450 14.8397106</gml:upperCorner></gml:Envelope></ogc:Within></ogc:Filter>
 
 S atributovým filtrem:
 
-  https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&FILTER=<ogc:Filter><ogc:PropertyIsLike wildCard="%" singleChar="?" escapeChar="!"><ogc:PropertyName>NAZEV</ogc:PropertyName><ogc:Literal>Český kras</ogc:Literal></ogc:PropertyIsLike></ogc:Filter>' 
+https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&FILTER=<ogc:Filter><ogc:PropertyIsLike wildCard="%" singleChar="?" escapeChar="!"><ogc:PropertyName>NAZEV</ogc:PropertyName><ogc:Literal>Český kras</ogc:Literal></ogc:PropertyIsLike></ogc:Filter>' 
 
-Vhodný klient - QGIS::
+Vhodný klient - QGIS:
+
+::
   
   NAZEV LIKE 'Český les'
 
 .. figure:: images/wfs-filter.png
   :width: 600px
+
+  Ukázka aplikace WFS filtru v prostředí QGIS.
