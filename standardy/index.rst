@@ -30,7 +30,7 @@ v rámci tzv. *Open Geodata Interoperability Specification* (OGIS).
 veřejných institucí, univerzit i jednotlivců. Dnes OGC poskytuje více
 jako 35 implementačních standardů, které jsou **volně dostupné** a
 adresují různé výzvy ve vztahu k prostorovým datům.  Další organizace,
-například :ref:`ISO <iso>`, v České republice působící :ref:`ČSN
+například :doc:`ISO <iso>`, v České republice působící :ref:`ČSN
 <csn>` a podobně, se také nějakým způsobem dotýkají problematiky
 prostorových dat, často ale pouze přebírají standardy vydefinované na
 půdě OGC a zařazují je do svých schémat.
@@ -121,8 +121,8 @@ Standardy z pohledu otevřenosti a způsobu jejich vzniku
     stran, zároveň mohou být dále rozvíjeny. Příkladem těchto
     standardů jsou normy konzorcia :doc:`OGC <ogc/index>`.
 
-Další témata
-^^^^^^^^^^^^
+Přehled standardů
+^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1
