@@ -73,7 +73,8 @@ Tento způsob zápisu se nazývá *Key-Value-Pair* (KVP). Parametry dotazu
 jsou definovány přímo jako součást URL. Parametry začínají za znakem
 ``?`` a jsou od sebe odděleny znakem ``&``.
 
-*Nejdůležitější standardy OGC rozebereme v dalších částech:*
+Přehled nejdůležitější standardů OGC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 1

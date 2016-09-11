@@ -1,37 +1,46 @@
 .. _ogc-wfs:
 
+.. index::
+   single: WFS; Web Feature Service
+   pair: OGC OWS; WFS
+
 OGC Web Feature Service - WFS
 -----------------------------
 
-http://opengeospatial.org/standards/wfs
+Narozdíl od služeb :doc:`WMS <wms>` či :doc:`WMTS <wmts>`, které vrací
+mapový náhled na poskytovaná data, služba **OGC Web Feature Service**
+(`WFS <http://opengeospatial.org/standards/wfs>`_) slouží pro práci s
+geografickými daty ve vektorové reprezentaci (tzv. "features" -
+vektorové prvky). WFS primárně pracuje s formátem :doc:`gml`, další
+formáty mohou být podporovány podle možností serveru.
 
-.. warning:: :red:`Obsahuje pouze osnovu kapitoly`
+Pokud dané řešení podporuje, je možné provádět vybrané
+prostorové operace na straně serveru, stejně tak jako filtrovat prvky
+(na základě prostorového nebo atributového dotazu) podle požadavků
+klienta.
 
-* :doc:`WMS <wms>` vrací mapový náhled na poskytovaná data, naproti
-  tomu WFS slouží pro práci s geografickými daty ve vektorové
-  reprezentaci (tzv. "features" - vektorové prvky)
-* Pokud to server podporuje, je možné provádět vybrané prostorové
-  operace na straně serveru, stejně tak jako filtrovat prvky (na
-  základě prostorového nebo atributového dotazu) podle požadavků
-  klienta
-* WFS-T (*Transactional WFS*) umožňuje editovat elementy na straně serveru,
-  zamykat jednotlivé záznamy
-* WFS primárně pracuje s formátem :wikipedia-en:`GML <Geography Markup
-  Language>`, další formáty mohou být podporovány podle možností
-  serveru
+WFS poskytuje data v režimu čtení, nepodporuje tedy opačný směr toku
+dat, tj. od klienta na server. Tuto problematiku řeší navazující
+standard **WFS-T** (*Transactional WFS*), který tak umožňuje editovat
+elementy na straně serveru, zamykat jednotlivé záznamy a pod.
 
-Příklad:
-
-  http://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer
+.. index::
+   pair: WFS; GetCapabities
 
 WFS GetCapabilities
 ^^^^^^^^^^^^^^^^^^^
 
-https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getcapabilities
+Jako příklad použijeme WFS server `AOPK ČR <http://www.ochranaprirody.cz>`_:
+
+  http://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer
+
+Nejprve zjistíme vlastnosti serveru z tzv. *Capabilities* dokumentu:
+
+https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=GetCapabilities
 
 .. code-block:: xml
 
-  <wfs:WFS_Capabilities version="1.1.0" xsi:schemaLocation="http://w... >
+  <wfs:WFS_Capabilities version="2.0.0" xsi:schemaLocation="http://w... >
     <ows:ServiceIdentification>
         <ows:Title>Chráněná území</ows:Title>
         <ows:Abstract>Služba zpřístupňuje geografická data zvláště a smluvně chráněných území v České republice</ows:Abstract>
@@ -53,7 +62,7 @@ https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServ
     </ows:OperationsMetadata>
 
 
-Seznam dostupných prvků
+Seznam dostupných typů prvků najdeme v sekci *FeatureTypeList*:
 
 .. code-block:: xml
 
@@ -90,7 +99,7 @@ Seznam dostupných prvků
         ...
     </wfs:FeatureTypeList>
 
-Filtrovací operace podporované serverem
+Filtrovací operace podporované serverem jsou vypsány v sekci *Filter_Capabilities*:
 
 .. code-block:: xml
 
@@ -136,25 +145,84 @@ Filtrovací operace podporované serverem
     </wfs:WFS_Capabilities>
 
 Stáhnutí dat
-------------
+^^^^^^^^^^^^
 
-Výchozí souřadnicový systém (:epsg:`5514`)
+Stažení dat obstará dotaz typu *GetFeature*, kde navíc musíte
+specifikovat *typename*, tj. typ prvků, který chcete obdžet jako
+výsledek dotazu. Server vratí prvky ve výchozím datovém formátu
+(tj. :doc:`GML`) a souřadnicivém systému, v případě ukázkového serveru
+to je S-JTSK (:epsg:`5514`).
 
-https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD
+::
 
-To samé jako WGS84 (pozor na pořadí souřadnic (viz *Capabilities response*)):
+   https://gis.nature.cz/.../WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_ChranUzemi:...
+                                            |            |                   |
+   typ sluzby ------------------------------+            |                   |
+   dotaz typu GetFeature --------------------------------+                   |
+   specifikace typu prvku (typename)-----------------------------------------+
 
-https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326
+Příklad pro získání prvků velkoprošných chráněných území:
+   
+`https://gis.nature.cz/.../WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_... <https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD>`_
 
-S prostorovým filtrem (zatím se nepodařilo zprovoznit):
-  
-https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&FILTER=<ogc:Filter><ogc:Within><ogc:PropertyName>SHAPE</ogc:PropertyName><gml:Envelope><gml:lowerCorner>48.4744444 12.7083628</gml:lowerCorner><gml:upperCorner>49.4017450 14.8397106</gml:upperCorner></gml:Envelope></ogc:Within></ogc:Filter>
+Pokud si přejeme stáhnout data v jiném než výchozím souřadnicovém
+systému, můžeme jej definovat pomocí parametru *srsname*. Následuje
+příklad pro získání dat v souřadnicovém systému WGS-84 (:epsg:`4326`,
+pozor na pořadí souřadnic (viz *Capabilities response*)):
 
-S atributovým filtrem:
+`https://gis.nature.cz/.../WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_...&srsname=epsg:4326
+<https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326>`_
 
-https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=getfeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&FILTER=<ogc:Filter><ogc:PropertyIsLike wildCard="%" singleChar="?" escapeChar="!"><ogc:PropertyName>NAZEV</ogc:PropertyName><ogc:Literal>Český kras</ogc:Literal></ogc:PropertyIsLike></ogc:Filter>' 
+Filtrování dat
+~~~~~~~~~~~~~~
 
-Vhodný klient - QGIS:
+Následuje příklad stažení dat vybraných na základě **prostorového**
+filtru. Filtr je předán parametrem *filter* a definován dle standardu
+`OGC Filter Encoding
+<http://www.opengeospatial.org/standards/filter>`_. V našem připadě
+může vypadat následovně (v jedné řadce):
+
+.. code-block:: xml
+                
+   <ogc:Filter>
+      <ogc:Within>
+        <ogc:PropertyName>SHAPE</ogc:PropertyName>
+        <gml:Envelope>
+           <gml:lowerCorner>48.4744444 12.7083628</gml:lowerCorner>
+           <gml:upperCorner>49.4017450 14.8397106</gml:upperCorner>
+        </gml:Envelope>
+      </ogc:Within>
+   </ogc:Filter>
+
+.. warning:: Níže uvedené příklady berte prozatím pouze jako ilustrační,
+             server AOPK ČR působí, že prostorové filtrování v současné
+             době nepodporuje (viz sekce *Filter_Capabilities* v
+             dokumentu *Capabilities*).
+
+Vybereme tedy prvky, které leží uvnitř (*within*) daného minimálního
+ohraničujícího obdélníku:
+   
+`https://gis.nature.cz/.../WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_...&srsname=epsg:4326&filter=<ogc:Filter>... <https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&filter=%3Cogc:Filter%3E%3Cogc:Within%3E%3Cogc:PropertyName%3ESHAPE%3C/ogc:PropertyName%3E%3Cgml:Envelope%3E%3Cgml:lowerCorner%3E48.4744444 12.7083628%3C/gml:lowerCorner%3E%3Cgml:upperCorner%3E49.4017450 14.8397106%3C/gml:upperCorner%3E%3C/gml:Envelope%3E%3C/ogc:Within%3E%3C/ogc:Filter%3E>`_
+
+Podobně může být definován **atributový** filtr:
+
+.. code-block:: xml
+
+   <ogc:Filter>
+      <ogc:PropertyIsLike wildCard="%" singleChar="?" escapeChar="!">
+         <ogc:PropertyName>NAZEV</ogc:PropertyName>
+         <ogc:Literal>Český kras</ogc:Literal>
+      </ogc:PropertyIsLike>
+   </ogc:Filter>
+                
+kdy vybereme pouze prvky velkoplošných chraněných území, které mají
+atribut NAZEV s hodnotou "Český kras". Jinými slovy získáme všechny
+polygony, které definují CHKO Český kras:
+
+`https://gis.nature.cz/.../WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_...&srsname=epsg:4326&filter=<ogc:Filter><ogc:PropertyIsLike... <https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?server=WFS&request=GetFeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326&filter=%3Cogc:Filter%3E%3Cogc:PropertyIsLike wildCard="%" singleChar="?" escapeChar="!"%3E%3Cogc:PropertyName%3ENAZEV%3C/ogc:PropertyName%3E%3Cogc:Literal%3EČeský kras%3C/ogc:Literal%3E%3C/ogc:PropertyIsLike%3E%3C/ogc:Filter%3E'>`_
+   
+Filtrovat data poskytovaná službou WFS lze pohodlně ve vhodném
+desktopové klientovi, např. :skoleni:`QGIS <qgis-zacatecnik>`:
 
 ::
   
