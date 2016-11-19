@@ -8,12 +8,12 @@
       :width: 85px
       :align: right
 
-Tento kurz poskytuje úvod do problematiky :wikipedia:`GIS`
-(*Geografických informačních systémů*). Praktická část kurzu je
-zaměřena na základní přehled volně dostupných nástrojů GIS (především
-:wikipedia:`open source`) a vše potřebné, abyste mohli začít pracovat
-s geografickými daty pomocí těchto nástrojů v českém (a slovenském)
-prostředí.
+Tento kurz poskytuje úvod do problematiky GIS
+(:wikipedia:`Geografických informačních systémů <Geografický
+informační systém>`). Praktická část kurzu je zaměřena na základní
+přehled volně dostupných nástrojů (především :wikipedia:`open source`)
+GIS a vše potřebné, abyste mohli začít pracovat s geografickými daty
+pomocí těchto nástrojů v českém (a slovenském) prostředí.
 
 .. warning:: :red:`Pracovní verze školení, která je aktuálně ve vývoji!`
 
