@@ -1,48 +1,53 @@
-.. _sour-systemy:
-
 ********************
 Souřadnicové systémy
 ********************
+
+.. index::
+   pair: kartografické zobrazení; mapové zobrazení
 
 :wikipedia:`Mapové zobrazení`, resp. kartografická projekce je způsob, kterým
 se převádí zobrazení povrchu Země, případně jiného nebeského tělesa 
 z trojrozměrného zakřiveného povrchu referenčního elipsoidu či koule do roviny. 
 Výsledek takového geometrického nebo početního postupu nazýváme *mapa*.
 
-Protože povrch koule či elipsoidu není rozvinutelný do roviny, stejně jako nelze
-do roviny bez deformace rozvinout oloupanou slupku pomeranče, je zapotřebí
-jej převést na povrch geometrického objektu, jehož povrch do roviny
-rozvinutelný je. Takovými objekty jsou **válec**, **kužel** 
-a samozřejmě také **rovinná plocha** sama. Nejčastěji používaná zobrazování jsou 
-jednoduchá zobrazení *azimutální*, *kuželová* a *válcová*, 
-viz. :ref:`ukázka <j-zobrazeni>`. 
+Protože povrch koule či elipsoidu není rozvinutelný do roviny, stejně
+jako nelze do roviny bez deformace rozvinout oloupanou slupku
+pomeranče, je zapotřebí jej převést na povrch geometrického objektu,
+jehož povrch do roviny rozvinutelný je. Takovými objekty jsou
+**válec**, **kužel** a samozřejmě také **rovinná plocha**
+sama. Nejčastěji používaná zobrazování jsou jednoduchá zobrazení
+*azimutální*, *kuželová* a *válcová*, viz :num:`#j-zobrazeni`.
 
-Mapová zobrazení podle polohy osy zobrazovací plochy může být *normální* 
-(pólová) – osa válce nebo kužele je totožná s osou glóbu nebo se zobrazovací 
-rovina dotýká glóbu na jednom pólu, *příčná* (transverzální, rovníková) – osa 
-válce nebo kužele leží v rovině rovníku nebo se zobrazovací rovina dotýká 
-glóbu na rovníku a *obecná* (šikmá) – osa válce nebo kužele prochází středem 
-glóbu, ale nesplývá s jeho osou ani neleží na rovníku nebo se zobrazovací 
-rovina dotýká glóbu v libovolném bodě mezi pólem a rovníkem. 
+Mapová zobrazení podle polohy osy zobrazovací plochy může být
+*normální* (pólová) – osa válce nebo kužele je totožná s osou glóbu
+nebo-li zobrazovací rovina se dotýká glóbu na jednom pólu, *příčná*
+(transverzální, rovníková) – osa válce nebo kužele leží v rovině
+rovníku, nebo-li zobrazovací rovina se dotýká glóbu na rovníku a
+*obecná* (šikmá) – osa válce nebo kužele prochází středem glóbu, ale
+nesplývá s jeho osou ani neleží na rovníku, nebo-li zobrazovací rovina
+se dotýká glóbu v libovolném bodě mezi pólem a rovníkem.
 
 .. _j-zobrazeni:
 
 .. figure:: images/jednoducha-zobrazeni.gif
    :class: small
    
-   Přehled jednoduchých kartografických zobrazení spolu s polohou zobrazovací 
-   plochy (zdroj: `Geodetické a kartografické základy <http://transformace.webst.fd.cvut.cz/Iframe/Basics_iframe.htm>`_). 
+   Přehled jednoduchých kartografických zobrazení spolu s polohou
+   zobrazovací plochy (zdroj: `Geodetické a kartografické základy
+   <http://transformace.webst.fd.cvut.cz/Iframe/Basics_iframe.htm>`_).
 
-Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové 
-zkreslení části obsažených informací. Ve výsledném rovinném zobrazení nemohou být 
-současně zachovány všechny hlavní údaje jako délky, úhly a plochy. 
-**Vždy dochází ke zkreslení** některého z nich, případně všech. 
-Proto byla postupem času vyvinuta
-řada kartografických zobrazení, z nichž každé klade důraz na jiný z důležitých 
-údajů. Při vytváření map malých území (do několika set km²) je zkreslení téměř
-zanedbatelné, je-li však třeba zachytit na mapě větší oblast jako kraj, stát,
-světadíl, oceán či celou Zemi, je nutné pečlivě volit kartografické zobrazení 
-tak, aby odpovídalo účelu mapy.
+.. index:: zkreslení
+              
+Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové
+zkreslení části obsažených informací. Ve výsledném rovinném zobrazení
+nemohou být současně zachovány všechny hlavní údaje jako délky, úhly a
+plochy.  **Vždy dochází ke zkreslení** některého z nich, případně
+všech.  Proto byla postupem času vyvinuta řada kartografických
+zobrazení, z nichž každé klade důraz na jiný z důležitých údajů. Při
+vytváření map malých území (do několika set km²) je zkreslení téměř
+zanedbatelné, je-li však třeba zachytit na mapě větší oblast jako
+kraj, stát, světadíl, oceán či celou Zemi, je nutné pečlivě volit
+kartografické zobrazení tak, aby odpovídalo účelu mapy.
 
 .. figure:: ./images/tissot_world_from_space.png
    :class: small
@@ -65,7 +70,9 @@ tak, aby odpovídalo účelu mapy.
    Další možné zobrazení, všimněte si výrazného zkreslení úhlů v
    rozích mapy (zdroj: :wikipedia:`wikipedia <Mapové zobrazení>`).
 
-Z uvedeného vyplývá, že můžeme kartografického zobrazení rozdělit na
+.. index:: kartografické zobrazení
+              
+Z uvedeného vyplývá, že můžeme kartografická zobrazení rozdělit na
 základě charakteru zkreslení do několika skupin:
 
 * **délkojevná** (ekvidistantní) – nezkreslují vzdálenosti podél
@@ -82,16 +89,17 @@ základě charakteru zkreslení do několika skupin:
     :class: middle
 
     Příklady kartografických zobrazení podle vzhledu zobrazovací
-    plochy - azimutální, kuželová, válcová, ... (zdroj: :wikipedia:`Mapové zobrazení`).
+    plochy - azimutální, kuželová, válcová, ... (zdroj:
+    :wikipedia:`Mapové zobrazení`).
 
-*Další témata:*
+**Další témata**
 
 .. toctree::
    :maxdepth: 2
 
    souradnice
-   sjtsk
    mercatorovo-zobrazeni
+   sjtsk
    wgs84
    etrs89
    epsg

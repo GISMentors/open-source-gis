@@ -1,4 +1,4 @@
-.. _etrs89:
+.. index:: ETRS89
 
 ETRS89
 ======
