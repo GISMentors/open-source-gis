@@ -1,35 +1,37 @@
-.. _knihovna-proj4:
+.. index:: proj4
+           
+Knihovna Proj.4 pro transformaci souřadnic
+------------------------------------------
 
-Knihovna Proj.4
----------------
-
-`Proj.4 <https://trac.osgeo.org/proj/>`_ (Cartographic Projection Library) 
-je jedna ze základních knihoven
-využívaných v mnoha open source GIS projektech jako `GRASS GIS
+`Proj.4 <https://trac.osgeo.org/proj/>`_ (Cartographic Projection
+Library) je jedna ze základních knihoven využívaných v mnoha open
+source GIS projektech jako `GRASS GIS
 <http://www.gismentors.cz/skoleni/grass-gis/>`_, `QGIS
 <http://www.gismentors.cz/skoleni/qgis/>`_, `PostGIS
-<http://www.gismentors.cz/skoleni/PostGIS/>`_ a dalších. Má své
-klony v jazyce `JavaScript <http://proj4js.org/>`_, `PHP
+<http://www.gismentors.cz/skoleni/PostGIS/>`_ a dalších. Má své klony
+v jazyce `JavaScript <http://proj4js.org/>`_, `PHP
 <https://sourceforge.net/projects/proj4php/>`_
 (https://github.com/jachym/proj4php), `Python
-<https://github.com/jswhit/pyproj>`_ a dalších. Kromě možnosti používat tuto 
-knihovnu z různých programů, existují i užitečné nástroje v příkazové řádce, 
-například 
+<https://github.com/jswhit/pyproj>`_ a dalších. Kromě možnosti
+používat tuto knihovnu z různých programů, existují i užitečné
+nástroje v příkazové řádce:
 
 * :ref:`cs2cs <cs2cs>`, 
 * :ref:`geod a invgeod <geod-a-invgeod>`, 
 * :ref:`proj a invproj <proj-a-invproj>`.
 
+.. index:: cs2cs
+             
 .. _cs2cs:
 
 **cs2cs**
 
-... provádí transformaci mezi jednotlivými souřadnicovými systémy.
+Provádí transformaci souřadnic mezi jednotlivými souřadnicovými systémy.
 
 .. notecmd:: Použití 
 
-    - převod souřadnice ze souřadnicového systému S-JTSK (kód :epsg:`5514`
-    do WGS84 (:epsg:`4326`):
+    - převod souřadnice ze souřadnicového systému S-JTSK (kód
+      :epsg:`5514` do WGS84 (:epsg:`4326`):
               
     .. code-block:: bash
 
@@ -39,8 +41,9 @@ například
         12d48'25.16"E	49d27'8.146"N 559.261
 
     - místo EPSG kódu můžeme použít kompletní definici souřadnicového
-    systému; ukázka pro převod souřadnic z WGS84 na S-JTSK (z důvodu přesnějšího 
-    převodu používáme tzv. transformační parametry ``+towgs84``):
+      systému; ukázka pro převod souřadnic z WGS84 na S-JTSK (z důvodu
+      přesnějšího převodu používáme tzv. transformační parametry
+      ``+towgs84``):
 
     .. code-block:: bash
 
@@ -52,12 +55,17 @@ například
 
         -868208.54	-1095793.58 512.46
 
+.. index:: geod
+   pair: geod; invgeod
+
 .. _geod-a-invgeod:
 
 **geod a invgeod**
 
-... řeší tzv. základní geodetické `úlohy <http://gis.zcu.cz/studium/gen1/html/ch07s02.html>`_ 
-pro určení zeměpisní šířky a délky, při zadání výchozího bodu, azimutu, délky a naopak.
+Řeší tzv. základní `geodetické úlohy
+<http://gis.zcu.cz/studium/gen1/html/ch07s02.html>`__ pro určení
+zeměpisní šířky a délky, při zadání výchozího bodu, azimutu, délky a
+naopak.
 
 .. notecmd:: Použití 
 
@@ -71,10 +79,13 @@ pro určení zeměpisní šířky a délky, při zadání výchozího bodu, azim
 
         110d53'32.868"	-68d30'12.184"	270855.602
 
+.. index:: proj
+   pair: proj; invproj
+
 .. _proj-a-invproj:
 
 **proj a invproj**
 
-... provádí transformaci souřadnicových systému z/do systému WGS84; funguje 
-podobně jako :ref:`cs2cs <c2cs>`, který ale umí transformovat mezi libovolnými 
-souřadnicovými systémy.
+Provádí transformaci souřadnicových systému z/do systému
+:doc:`../soursystemy/wgs84`. Funguje podobně jako :ref:`cs2cs <cs2cs>`,
+který ale umí transformovat mezi libovolnými souřadnicovými systémy.

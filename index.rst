@@ -27,9 +27,9 @@ Obsah
    uvod
    soursystemy/index
    formaty/index
+   standardy/index
    knihovny/index
    databaze/index
-   standardy/index
    server/index
    desktop/index
    web/index

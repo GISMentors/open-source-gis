@@ -1,14 +1,16 @@
-.. _gdal-prevody-formaty:
+Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy
+--------------------------------------------------------------
 
-Knihovna GDAL pro převod mezi formáty
--------------------------------------
+.. index:: GDAL
+   pair: GDAL; OGR
 
-Programátorská knihovna `GDAL <http://gdal.org>`_ (Geospatial Data Abstraction 
-Library) se stará o práci s množstvím `rastrových <http://gdal.org/formats_list.html>`_ 
-i `vektorových <http://gdal.org/ogr_formats.html>`_ formátů používaných
-v GIS. GDAL je využíván celou řadou dalších programů jako základní
-knihovna (`GRASS GIS <http://grass.osgeo.org>`_, `QGIS
-<http://qgis.org>`_, ...), dokonce i v proprietárním produktu `ArcGIS
+Programátorská knihovna `GDAL <http://gdal.org>`_ (Geospatial Data
+Abstraction Library) je určena pro práci s množstvím `rastrových
+<http://gdal.org/formats_list.html>`_ i `vektorových
+<http://gdal.org/ogr_formats.html>`_ formátů používaných v GIS. GDAL
+je využíván celou řadou dalších programů jako základní knihovna
+(`GRASS GIS <http://grass.osgeo.org>`_, `QGIS <http://qgis.org>`_,
+...), dokonce i v proprietárním produktu `ArcGIS
 <http://www.arcgis.com>`_.
 
 .. note:: V dřívějšich verzích byla tato knihovna rozdělena na dvě
@@ -19,16 +21,16 @@ knihovna (`GRASS GIS <http://grass.osgeo.org>`_, `QGIS
 Knihovna je šířena s několika konzolovými programy, které můžeme
 použít na celou řadu operací. Detailnější práci s knihovnou z pohledu
 programátora rozebíráme v části věnované programovacímu jazyku
-:skoleni:`Python z pohledu GIS <geopython/>`.
-Existuje mnoho užitešných příkazů pro práci s rastrovými (:ref:`gdalinfo <gdalinfo>`, 
-:ref:`gdalsrsinfo <gdalsrsinfo>`, 
+:skoleni:`Python z pohledu GIS <geopython-pokrocily>`.  Knihovna GDAL
+kromě toho nabízí mnoho užitečných příkazů pro práci s rastrovými
+(:ref:`gdalinfo <gdalinfo>`, :ref:`gdalsrsinfo <gdalsrsinfo>`,
 :ref:`gdalwarp <gdalwarp>`, :ref:`gdaltransform <gdaltransform>`,
 :ref:`gdal_translate <gdal-translate>`, :ref:`gdaldem <gdaldem>`,
-:ref:`gdallocationinfo <gdallocationinfo>`, :ref:`gdalmanage <gdalmanage>`,
-:ref:`gdaladdo <gdaladdo>`, :ref:`gdal_contour <gdal-contour>`,
-:ref:`gdaltindex <gdaltindex>`) nebo vektorovými (:ref:`ogrinfo <ogrinfo>`, 
-:ref:`ogrtindex <ogrtindex>`, :ref:`ogrlineref <ogrlineref>`, 
-:ref:`ogr2ogr <ogr2ogr>`) daty.
+:ref:`gdallocationinfo <gdallocationinfo>`, :ref:`gdalmanage
+<gdalmanage>`, :ref:`gdaladdo <gdaladdo>`, :ref:`gdal_contour
+<gdal-contour>`, :ref:`gdaltindex <gdaltindex>`) nebo vektorovými
+(:ref:`ogrinfo <ogrinfo>`, :ref:`ogrtindex <ogrtindex>`,
+:ref:`ogrlineref <ogrlineref>`, :ref:`ogr2ogr <ogr2ogr>`) daty.
 
 Zde si představíme pouze některé příkazy, které jsou distribuovány spolu s
 knihovnou GDAL. Úplný seznam naleznete na 
@@ -38,23 +40,14 @@ a `www.gdal.org/ogr_utilities.html <http://www.gdal.org/ogr_utilities.html>`_.
 Příkazy pro práci s rastrovými daty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* :ref:`gdalinfo <gdalinfo>`, 
-* :ref:`gdalsrsinfo <gdalsrsinfo>`, 
-* :ref:`gdalwarp <gdalwarp>`, 
-* :ref:`gdaltransform <gdaltransform>`,
-* :ref:`gdal_translate <gdal-translate>`, 
-* :ref:`gdaldem <gdaldem>`,
-* :ref:`gdallocationinfo <gdallocationinfo>`, 
-* :ref:`gdalmanage <gdalmanage>`,
-* :ref:`gdaladdo <gdaladdo>`, 
-* :ref:`gdal_contour <gdal-contour>`,
-* :ref:`gdaltindex <gdaltindex>`.
-
+.. index:: gdalinfo
+             
 .. _gdalinfo:
 
 **gdalinfo**
 
-Příkaz `gdalinfo <http://www.gdal.org/gdalinfo.html>`__ umožňuje zobrazit některá metadat rastrových dat
+Příkaz `gdalinfo <http://www.gdal.org/gdalinfo.html>`__ umožňuje
+zobrazit některá metadat rastrových dat.
 
 .. notecmd:: Zobrazení metadat z rastrového souboru
 
@@ -102,14 +95,16 @@ Příkaz `gdalinfo <http://www.gdal.org/gdalinfo.html>`__ umožňuje zobrazit n�
         Band 2 Block=1287x1 Type=Float32, ColorInterp=Undefined
         Band 3 Block=1287x1 Type=Float32, ColorInterp=Undefined
 
+.. index:: gdalsrsinfo
+                   
 .. _gdalsrsinfo:
 
 **gdalsrsinfo**
 
 Pokud vám stačí pouze informace o použitém souřadnicovém systému, tak
-stačí použít příkaz `gdalsrsinfo <http://www.gdal.org/gdalsrsinfo.html>`__, 
-který vrátí definici
-souřadnicového systému rastru ve formátu knihovny :program:`Proj4` a v
+stačí použít příkaz `gdalsrsinfo
+<http://www.gdal.org/gdalsrsinfo.html>`__, který vrátí definici
+souřadnicového systému rastru ve formátu knihovny :doc:`Proj.4 <proj4>` a v
 tzv. Well Known Text (WKT) notaci:
 
 .. notecmd:: Zobrazení informace o souřadnicovém systému
@@ -143,13 +138,16 @@ tzv. Well Known Text (WKT) notaci:
             UNIT["metre",1,
                 AUTHORITY["EPSG","9001"]]]
 
+.. index:: gdalwarp
+                           
 .. _gdalwarp:
                 
 **gdalwarp**
  
-Asi nejpoužívanější příkaz je `gdalwarp <http://www.gdal.org/gdalwarp.html>`__.
-Tento příkaz má dvě funkce: práce se souřadnicovými systémy rastrových dat a jejich
-transformace mezi jednotlivými formáty.
+Asi nejpoužívanější příkaz je `gdalwarp
+<http://www.gdal.org/gdalwarp.html>`__.  Tento příkaz má dvě funkce:
+práce se souřadnicovými systémy rastrových dat a jejich transformace
+mezi jednotlivými formáty.
 
 Podporované formáty zjistíte pomocí parametru `--formats`:
 
@@ -213,12 +211,13 @@ souřadnicového  systému vypadá následovně:
 
 .. figure:: images/lsat7_2002_nir.png
 
-    Výsledný obrázek převodu rastrové mapy na formát BMP
+    Výsledný obrázek převodu rastrové mapy na formát BMP.
 
-.. note:: Vedle souboru `lsat7_2002_nir.bmp` vytvořil GDAL také souboru
-   `lsat7_2002_nir.bmp.aux.xml` obsahující metadata, mimo jiné i informace o
-   souřadnicovém systému. Pokud tento soubor smažete nebo změníte jeho jméno, dostanete
-   následující výstup, tj. bez informace o souřadnicovém systému.
+.. note:: Vedle souboru `lsat7_2002_nir.bmp` vytvořil GDAL také
+   souboru `lsat7_2002_nir.bmp.aux.xml` obsahující metadata, mimo jiné
+   i informace o souřadnicovém systému. Pokud tento soubor smažete
+   nebo změníte jeho jméno, dostanete následující výstup, tj. bez
+   informace o souřadnicovém systému.
 
    .. notecmd:: Ověření výsledného souboru pomocí gdalinfo
 
@@ -240,10 +239,11 @@ souřadnicového  systému vypadá následovně:
         Band 2 Block=1287x1 Type=Byte, ColorInterp=Green
         Band 3 Block=1287x1 Type=Byte, ColorInterp=Blue
 
-Dalším obvyklým krokem je transformace při změně souřadnicového systému (v našem případě
-zůstane vstupní formát GeoTIFF zachován i na výstupu). Při transformacích můžeme
-použít 2 parametry pro popis souřadnicových systémů ve vztahu ke vstupní resp. výstupní
-rastrové mapě:
+Dalším obvyklým krokem je transformace při změně souřadnicového
+systému (v našem případě zůstane vstupní formát GeoTIFF zachován i na
+výstupu). Při transformacích můžeme použít 2 parametry pro popis
+souřadnicových systémů ve vztahu ke vstupní resp. výstupní rastrové
+mapě:
 
 :option:`-s_srs`
     definice souř. systému vstupní dat (source)
@@ -259,7 +259,7 @@ metadata v těchto datech přítomná.
     nastavíme pouze souřadnicový systém pro výstupní data.  Zápis
     souřadnicového systému je totožný se zápisem pro knihovnu
     :program:`Proj.4`. My použijeme kód :epsg:`4326`, což je
-    souřadnicový systém WGS84.
+    souřadnicový systém :doc:`../soursystemy/wgs84`.
 
     .. code-block:: bash
 
@@ -271,25 +271,32 @@ metadata v těchto datech přítomná.
 
 .. figure:: images/lsat7_2002_nir-wgs84.png
 
-    Výsledek převodu rastrových dat do souřadnicového systému WGS84
+    Výsledek převodu rastrových dat do souřadnicového systému WGS84.
 
+.. index:: gdaltransform
+               
 .. _gdaltransform:
 
 **gdaltransform**
 
-Funguje podobně jako program :ref:`cs2cs <cs2cs>` knihovny Proj4, tj. transformuje
-souřadnice mezi souřadnicovými systémy.
+Funguje podobně jako program :ref:`cs2cs <cs2cs>` knihovny Proj4,
+tj. transformuje souřadnice mezi souřadnicovými systémy.
 
+.. index:: gdal-translate
+           
 .. _gdal-translate:
 
 **gdal_translate**
 
 Převádí rastrová data mezi různými formáty. Na rozdíl od
-:ref:`gdalwarp <gdalwarp>` neumožňuje data transformovat do jiného souřadnicového
-systému. Lze ale nastavit souřadnicový systém výstupních dat pomocí
-parametru :option:`-a_srs` (kdy nechodází k transformaci dat, ale
-pouze nastavení souřadnicového systému do metadat výstupního souboru).
+:ref:`gdalwarp <gdalwarp>` neumožňuje data transformovat do jiného
+souřadnicového systému. Lze ale nastavit souřadnicový systém
+výstupních dat pomocí parametru :option:`-a_srs` (kdy nechodází k
+transformaci dat, ale pouze nastavení souřadnicového systému do
+metadat výstupního souboru).
 
+.. index:: gdaldem
+           
 .. _gdaldem:
 
 **gdaldem**
@@ -297,30 +304,31 @@ pouze nastavení souřadnicového systému do metadat výstupního souboru).
 Nástroj `gdaldem <http://www.gdal.org/gdaldem.html>`__ vám pomůže zanalyzovat a
 vizualizovat digitální modely reliéfu (DMR). Ze vstupního DMR lze vygenerovat
 
-* Stínovaný reliéf
-* Mapu sklonu svahu
-* Mapu expozice
-* Barevný reliéf
+* stínovaný reliéf,
+* mapu sklonu svahu,
+* mapu expozice,
+* barevný reliéf,
 * a další ...
 
 .. notecmd:: Vytvoření mapy stínového reliéfu ze vstupního rastrového souboru
 
-    Zdroj dat: http://freegis.fsv.cvut.cz/gwiki/FreeGeoDataCZ
-
     .. code-block:: bash
 
-        gdaldem hillshade dem_srtm.tiff hillshade.tiff
+        gdaldem hillshade dem.tiff hillshade.tiff
 
 .. figure:: images/hillshade.png
 
-    Mapa stínovaného reliéfu vytvořená pomocí utility `gdaldem`
+    Mapa stínovaného reliéfu vytvořená pomocí utility `gdaldem`.
 
+.. index:: gdallocationinfo
+               
 .. _gdallocationinfo:
 
 **gdallocationinfo**
 
-Nástroj `gdallocationinfo <http://www.gdal.org/gdallocationinfo.html>`__ se umožňuje
-ptát se na hodnoty rastrových dat o daných rastrových souřadnicích.
+Nástroj `gdallocationinfo
+<http://www.gdal.org/gdallocationinfo.html>`__ se umožňuje ptát se na
+hodnoty rastrových dat o daných rastrových souřadnicích.
 
 .. notecmd:: Dotaz na hodnotu rastru podle souřadnic
 
@@ -339,6 +347,8 @@ ptát se na hodnoty rastrových dat o daných rastrových souřadnicích.
           Band 3:
             Value: 189
 
+.. index:: gdalmanage
+                       
 .. _gdalmanage:
 
 **gdalmanage**
@@ -368,15 +378,17 @@ přejmenování, mazání a kopírování.
         lsat7_2002_nir-wgs84.png: PNG
         lsat7_2002_nir-wgs84.tiff: GTiff
 
-:program:`gdalmanage` lze použít pro případné změny a mazání více
-souborových formátů (např. `*.tfw` soubory).
+.. note:: :program:`gdalmanage` lze použít pro případné změny a mazání
+          více souborových formátů (např. `*.tfw` soubory).
 
+.. index:: gdaladdo
+           
 .. _gdaladdo:
 
 **gdaladdo**
 
 Nástroj `gdaladdo <http://www.gdal.org/gdaladdo.html>`__ umožňuje
-pracovat s tzv. pyramidami -- zmenšenými kopiemi rastrových dat
+pracovat s tzv. pyramidami - zmenšenými kopiemi rastrových dat
 uložených přímo uvnitř anebo externě rastrového souboru. Ve výsledku
 bude práce s rastrem u malých měřítek výrazně rychlejší - vznikne v
 podstatě prostorový index rastrových dat (používá např.  QGIS pro
@@ -399,23 +411,27 @@ zobrazování rastrů).
 
         -rw-rw-r-- 1 user user 19M apr 18 00:00 lsat7_2002_nir.tiff
 
+.. index:: gdal-contour
+                   
 .. _gdal-contour:
 
 **gdal_contour**
 
-Nástoj `gdal_contour <http://www.gdal.org/gdal_contour.html>`__
-vytvoří vektorové vrstevnice ze vstupního digitálního modelu reliéfu
+Nástroj `gdal_contour <http://www.gdal.org/gdal_contour.html>`__
+vytvoří vektorové vrstevnice ze vstupního digitálního modelu reliéfu.
 
 .. notecmd:: Vytvoření vrstevnic
 
     .. code-block:: bash
 
-        gdal_contour -a elev dem_srtm.tiff vrstevnice.shp -i 10.0
+        gdal_contour -a elev dem.tiff vrstevnice.shp -i 10.0
 
 .. figure:: images/vrstevnice.png
 
-    Získané (a obarvené) vrstevnice
+    Získané (a obarvené) vrstevnice z DMT.
 
+.. index:: gdal-rasterize
+       
 .. _gdal-rasterize:
 
 **gdal_rasterize**
@@ -432,23 +448,22 @@ data z vektorové reprezentace do rastru).
 
         gdal_rasterize -a elev -of GeoTIFF -ot Byte -tr 10 10 -l vrstevnice vrstevnice.shp vrstevnice.tiff
 
+.. index:: gdaltindex
+                   
 .. _gdaltindex:
 
 **gdaltindex**
 
-Vytvoří tzv. tile-index vektorový soubor obsahující obalový polygon (obdélník)
-okolo každého rastrového souboru. Tento prostorový index lze pak použít do
-dalších operací v prostředí GDAL, stejně tak jako vrstvu v programu `MapServer
-<http://mapserver.org>`_.
+Vytvoří tzv. tile-index vektorový soubor obsahující obalový polygon
+(obdélník) okolo každého rastrového souboru. Tento prostorový index
+lze pak použít do dalších operací v prostředí GDAL, stejně tak jako
+vrstvu v programu :ref:`mapserver`.
 
 Příkazy pro práci s vektorovými daty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* :ref:`ogrinfo <ogrinfo>`, 
-* :ref:`ogrtindex <ogrtindex>`, 
-* :ref:`ogrlineref <ogrlineref>`, 
-* :ref:`ogr2ogr <ogr2ogr>`.
-
+.. index:: ogrinfo
+             
 .. _ogrinfo:
 
 **ogrinfo**
@@ -475,7 +490,7 @@ vypíše dostupné informace o vektorových datech.
     více dat (vrstev, tabulek) a jiné ne.
 
     Podrobnější informace o datovém modulu knihovny GDAL najdete ve
-    školení :skoleni:`GeoPython`.
+    školení :skoleni:`GeoPython pro pokročilé <geopython-pokrocily>`.
 
 .. notecmd:: Dotaz na metadata vektorového souboru
 
@@ -519,6 +534,8 @@ vypíše dostupné informace o vektorových datech.
     atributy: `ID` a `elev` (obsahující výšku nad mořem každé vrstevnice).
     Jedná se o soubor s liniovou geometrií.
 
+.. index:: ogrtindex
+               
 .. _ogrtindex:
 
 **ogrtindex**
@@ -528,6 +545,8 @@ programu `gdaltindex`. Máte-li adresář plný vektorových dlaždic a chcete-l
 nimy rychle pracovat, vytvoříte vektrový soubor s hranicemi těchto souborů a
 odkazem do adresářové struktury.
 
+.. index:: ogrlineref
+           
 .. _ogrlineref:
 
 **ogrlineref**
@@ -536,15 +555,20 @@ odkazem do adresářové struktury.
 souboru obsahujícím segmenty o daných délek. Umožňuje získávat jejich
 souřadnice, vzdálenosti, staničení atd., to vše v lineární referenční síti.
 
+.. index:: ogr2ogr
+           
 .. _ogr2ogr:
 
 **ogr2ogr**
 
 Nástroj `ogr2ogr <http://www.gdal.org/ogr2ogr.html>`__ je obdobou
-rastrového :ref:`gdalwarp <gdalwarp>`, který umožňuje transformaci vektorových dat.
+rastrového :ref:`gdalwarp <gdalwarp>`, který umožňuje transformaci
+vektorových dat.
 
 Obecná syntaxe je:
 
+::
+   
     ogr2ogr [VOLBY] výstupní_soubor vstupní_soubor
 
 Stejně jako u :ref:`gdalwarp <gdalwarp>`, můžete podporované formáty vypsat 
@@ -564,13 +588,16 @@ pomocí parametru `--formats`:
       -> "DGN" (read/write)
       ...
 
-Pro práci se souřadnicovými systémy opět můžeme použít některý z následujících parametrů:
+Pro práci se souřadnicovými systémy opět můžeme použít některý z
+následujících parametrů:
 
-* :option:`-a_srs` - přiřadí informaci o souřadnicovém systému do metadat výstupnímu souboru
-* :option:`-t_srs` - provode transformaci dat do souřadnicového systému výstupních dat
+* :option:`-a_srs` - přiřadí informaci o souřadnicovém systému do
+  metadat výstupnímu souboru
+* :option:`-t_srs` - provode transformaci dat do souřadnicového
+  systému výstupních dat
 * :option:`-s_srs` - nastaví souřadnicový systém vstupních dat
 
-Tyto parametry jsou kompatibilní se zápisem pro knihovnu Proj4.
+Tyto parametry jsou kompatibilní se zápisem pro knihovnu :doc:`Proj4 <proj4>`.
 
 .. notecmd:: Převod souboru vrstevnic ve formátu Esri Shapefile na formát KML
 
@@ -605,31 +632,4 @@ Tyto parametry jsou kompatibilní se zápisem pro knihovnu Proj4.
             UNIT["degree",0.0174532925199433,
                 AUTHORITY["EPSG","9108"]],
             AUTHORITY["EPSG","4326"]]
-        Name: String (0.0)
-        description: String (0.0)
-        timestamp: DateTime (0.0)
-        begin: DateTime (0.0)
-        end: DateTime (0.0)
-        altitudeMode: String (0.0)
-        tessellate: Integer (0.0)
-        extrude: Integer (0.0)
-        visibility: Integer (0.0)
-        drawOrder: Integer (0.0)
-        icon: String (0.0)
-        ID: Integer (0.0)
-        elev: Real (0.0)
-
-.. _gdal-transformace-souradnic:
-
-Knihovna GDAL pro transformaci souřadnic
-----------------------------------------
-
-Knihovna `GDAL <http://gdal.org>`_, resp. její nástroje, umožňuje transformovat 
-mezi jednotlivými souřadnicovými systémy celé datové sady.
-Je to knihovna překladů pro formáty rastrových geoprostorových dat, která je 
-šířena pod X/MIT typem Open Source licence konsorciem 
-:wikipedia:`Open Source Geospatial Foundation`. Jako knihovna přináší 
-tzv. single abstract data model pro aplikaci, která volá všechny podporované 
-formáty. Zároveň přichází s řadou užitečných utilit spouštěných z příkazového 
-řádku, sloužících pro převod dat a jejich zpracování (zdroj: 
-`EnviroGeoPortál <http://geo.enviroportal.sk/infrastruktra/komponenty-gis>`_).
+         ...
