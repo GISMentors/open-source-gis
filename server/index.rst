@@ -6,21 +6,23 @@ Server GIS
 
 .. warning:: :red:`Obsahuje pouze osnovu kapitoly`
 
-V současné době se systémy stavějí na principu *client - server*. Klient je
-program, který posílá prostřednictvím definovaného protokolu požadavky (žádá o
-službu) na server. Program server požadavky
-odbavuje, a posílá klientovi zpět požadovaná data.  Klient-server je síťová
-architektura, která odděluje klienta (často aplikaci s grafickým uživatelským
-rozhraním) a server, kteří spolu komunikují přes počítačovou síť.
+V současné době se počítačové systémy stavějí většinou na principu
+*klient - server*. Klient je program, který posílá prostřednictvím
+definovaného protokolu požadavky (žádá o službu) na server. Program
+server požadavky odbavuje, a posílá klientovi zpět požadovaná data.
+Klient-server je síťová architektura, která odděluje klienta (často
+aplikaci s grafickým uživatelským rozhraním) a server, kteří spolu
+komunikují přes počítačovou síť.
 
 .. figure:: ../images/Server-based-network.svg
 
-    Autor: User:Mauro Bieg – derived from the Image:Computer n screen.svg which is under the GNU LGPL, LGPL, https://commons.wikimedia.org/w/index.php?curid=2551745
+    Architektura server-klient. Zdroj: `wikipedia
+    <https://commons.wikimedia.org/w/index.php?curid=2551745>`__.
 
 **Výhody**
 
-Rozdělení systémů z jedné velké monolitické aplikace na klienty a více serverů
-vede ke
+Rozdělení systémů na bázi jedné velké monolitické aplikace na klienty
+a více serverů vede k:
 
 * rozdělení jednotlivých úloh
 * možnosti menších, ale specializovaných programů
@@ -28,19 +30,21 @@ vede ke
   to mělo fatální dopad na celek, snadnější údržba
 * propojovat navzájem nekompatibilní technologie prostřednictvím aplikačních
   rozhraní (API)
-* data uložená na serveru jsou relativně bezpečněji uložená, než data uložená na
-  klientu
+* data uložená na serveru jsou relativně bezpečněji uložená než data uložená na
+  klientovi
 * centrální úložiště vede k větší aktuálnosti dat
 
 **Nevýhody**
 
-* Dochází k velkému přetěžování sítě a k závislosti na síťové infrastruktuře
-  vůbec.
-* Architektura klient-server není tak robustní ve srovnání s P2P architekturou
-  (když každý klient se zároveň stává uzlem sítě).
+* dochází k velkému přetěžování sítě a k závislosti na síťové infrastruktuře
+  vůbec
+* architektura klient-server není tak robustní ve srovnání s
+  :wikipedia:`P2P` architekturou (když každý klient se zároveň stává
+  uzlem sítě)
 
 
 **Klient je**
+
 * aktivní
 * posílá žádosti 
 * čeká a dostává odpovědi
@@ -48,6 +52,7 @@ vede ke
 * obvykle komunikuje s koncovým uživatelem (má uživatelské rozhraní)
 
 **Server je**
+
 * pasivní
 * naslouchá na síti a reaguje na žádosti
 * obsluhuje požadavky
@@ -56,17 +61,20 @@ vede ke
 
 API
 ===
-Klient se serverem komunikuje vždy prostřednictvím definovaného aplikačního
-rozhraní - API (Application Interface). Je v podstatě jedno jak je API
-definováno, podstatné je, aby bylo stabilní a v čase neměnné tak, aby se
-jednotlivé části systému server-klient daly nahrazovat a měnit. 
+
+Klient se serverem komunikuje vždy prostřednictvím definovaného
+aplikačního rozhraní - :wikipedia:`API` (Application Programming
+Interface). Je v podstatě jedno jak je API definováno, podstatné je,
+aby bylo stabilní a v čase neměnné tak, aby se jednotlivé části
+systému server-klient daly nahrazovat a měnit.
 
 Vztah server-klient
 ===================
-Přidělené role **server** a **klient** nemusí mít programy bez výhradně. Jedná
-se **způsob, jakým vystupují na venek** a ne o **absolutní roli v rámci
-systému**. Serverová aplikace může (a často se tak děje) vystupovat jako klient
-vůči jiné serverové aplikaci. 
+
+Přidělené role server a klient nemusí mít programy bezvýhradně. Jedná
+se o *způsob, jakým vystupují navenek* a ne o *absolutní roli v
+rámci systému*. Serverová aplikace může (a často se tak děje)
+vystupovat jako klient vůči jiné serverové aplikaci.
 
 Například mapový server poskytující obrazové podkladové mapy může vystupovat
 jako klient vůči jinému serveru WFS, ze kterého si může stáhnout potřebná
@@ -89,10 +97,10 @@ správu *prostorových datových sad*.
 Servery specifické pro oblast GIS můžeme podle funkce a zaměření rozdělit do
 následujících skupin:
 
-* Servery pro správu a poskytování prostorových dat
-* Servery pro správu metadat
-* Processingové servery
-* Servery pro geotagging 
+* servery pro správu a poskytování prostorových dat
+* servery pro správu metadat
+* processingové servery
+* servery pro geotagging 
 
 V praxi se samozřejmě stává, že jeden projekt (produkt) umí najednou obsloužit
 více skupin požadavků (např. GeoServer je primárně určen pro poskytování dat, s
@@ -104,6 +112,7 @@ firmy ESRI je na tom podobně).
 
 Servery pro správu a poskytování prostorových dat - Mapové servery a senzorové servery
 --------------------------------------------------------------------------------------
+
 Jedná se o asi největší skupinu serverů, souhrnně se označují jako *mapové
 servery* či *mapservery*. Obecně se jedná o servery poskytující *prostorová data* na
 základě *požadavku* klienta.
