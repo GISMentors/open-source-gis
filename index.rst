@@ -31,6 +31,8 @@ Obsah
    knihovny/index
    databaze/index
    server/index
+   server/programy
+   server/mapserver
    desktop/index
    web/index
    python/index
