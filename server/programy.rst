@@ -1,7 +1,3 @@
-Přehled programů pro GIS server
-===============================
-
-
 MapServer
 ---------
 

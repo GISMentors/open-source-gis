@@ -1,8 +1,3 @@
-.. _mapserver:
-
-MapServer
-=========
-
 .. warning:: :red:`Kapitola je ve výstabě`
 
 `MapServer <http://mapserver.org>`__ je jeden z nejstarších programů sloužících k

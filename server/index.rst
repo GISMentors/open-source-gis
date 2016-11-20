@@ -1,5 +1,3 @@
-.. _server-gis:
-
 .. index:: standardy, server, klient
 
 **********
@@ -252,3 +250,19 @@ dovozují se jejich prostorová lokalizace (např. `Krkonoše <https://mapy.cz/s
 
 V následující části se podíváme na seznam některých otevřených programů pro
 řešení některých serverových úloh pro GIS.
+
+Přehled programů pro GIS server
+===============================
+
+.. toctree::
+   :maxdepth: 2
+
+   programy
+
+MapServer
+=========
+
+.. toctree::
+   :maxdepth: 2
+
+   mapserver
