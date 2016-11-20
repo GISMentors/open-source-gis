@@ -175,6 +175,9 @@ Open source není business model, ale *vývojový model*. Způsob práce se
 software předurčuje k tomu jakým způsobem probíhá komunikace mezi
 vývojáři a mezi uživateli a vývojáři.
 
+.. tip:: Blog GISMentors: `Otázka: Vieš čo je open source GIS?
+         <http://www.gismentors.cz/blog/otazka-vies-co-je-open-source-gis/>`__.
+         
 .. index:: komunita, mailing list, IRC
 
 Komunita

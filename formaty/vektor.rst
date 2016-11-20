@@ -288,6 +288,8 @@ zápis, což je výhodné při přenosech v prostředí Internetu. Stejně jako 
 využití formátů odvozených z XML, je i zde je možné zabezpečit správnost
 struktury dat to pomocí schémat.
 
+.. _json:
+
 :wikipedia-en:`JSON` je velice přívětivý k netypovým programovacím
 jazykům, je srozumitelný prostým lidským okem. Souřadnicový systém
 není v těchto formátech jak specifikovat, předpokládá se, že se jedná
