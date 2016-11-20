@@ -2,28 +2,30 @@ Převod dat
 ==========
 
 .. _rasterizace:
-   
+
+.. index:: Rasterizace
+           
 Rasterizace
 -----------
 
-Jak bylo napsáno výše, rastrovým pixelům můžeme přiřadit vždy pouze jeden
-atribut. Tímto atributem může být buď některý z číselných atributů nebo číselná
-reprezentace textového atributu vektorových objektů či nějaká geometrická
-veličina (plocha, délka, ...).
-V závislosti na prostorovém rozlišení se ztrácí přesnost vektorových dat a je
-nahrazena rozlišením rastrových dat. Data od určitého zvětšení vypadají
-"rozkostičkovaně".
+Jak bylo napsáno výše, rastrovým pixelům můžeme přiřadit vždy pouze
+jeden atribut. Tímto atributem může být buď některý z číselných
+atributů nebo číselná reprezentace textového atributu vektorových
+objektů či nějaká geometrická veličina (plocha, délka, ...).  V
+závislosti na prostorovém rozlišení se ztrácí přesnost vektorových dat
+a je nahrazena rozlišením rastrových dat. Data od určitého zvětšení
+vypadají "rozkostičkovaně".
 
 .. figure:: images/vect2rast-1.png
-   :class: small
 
-   Příklad rasterizace (příprava)
+   Příklad rasterizace (příprava).
 
 .. figure:: images/vect2rast-2.png
-   :class: small
 
-   Příklad rasterizace (výsledek)
+   Příklad rasterizace (výsledek).
 
+.. index:: Vektorizace
+              
 Vektorizace
 -----------
 
@@ -38,6 +40,6 @@ při převodu rastrových buněk na liniové objekty.
 .. figure:: images/rast2vect.jpg
    :class: small
 
-   Příklad vektorizace (zdroj: `Open Source GIS in Windows <http://o-gis.blogspot.sk/2008/09/rasterization-and-vectorization.html>`_).
+   Příklad vektorizace (zdroj: `Open Source GIS in Windows
+   <http://o-gis.blogspot.sk/2008/09/rasterization-and-vectorization.html>`_).
 
-.. tip:: Viz. také část :ref:`Knihovny <knihovny>`.

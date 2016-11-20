@@ -1,5 +1,5 @@
-.. _vektorova-data:
-
+.. index:: Vektorová data
+           
 Vektorová data
 ==============
 
@@ -11,19 +11,23 @@ diskrétní prvky. Prvky jsou podle svého charakteru reprezentovány jako
 .. figure:: images/vektor.png
    :class: middle
         
-   Vektorové prvky - bod, linie a polygon
+   Vektorové prvky - bod, linie a polygon.
 
-.. note:: V anglické literatuře je *vektorový prvek* označován jako *feature*.
-    Slovo *feature* je pak tradičně do češtiny překládáno jako *charakteristický
-    rys*, resp. *vlastnost objektu*.
-    Aby zmatení bylo dokonalé, v českých normách je anglické *feature* ve
+.. index::
+   pair: feature; vzhled jevu
+   pair: feature; prvek
+
+.. note:: V anglické literatuře je *vektorový prvek* označován jako
+    *feature*.  Slovo *feature* je pak tradičně do češtiny překládáno
+    jako *charakteristický rys*, resp. *vlastnost objektu*.  Aby
+    zmatení bylo dokonalé, v českých normách je anglické *feature* ve
     významu vektorového objektu v GIS překládáno jako *vzhled jevu*.
-    Závěr**: narazíte-li v anglické literatuře na slovo *feature* nebo v čekých
-    normách na *vzhled jevu*, vždy se jedná o **vektorový objekt** v GIS s
-    geometrií a atributy.
+    Závěr: narazíte-li v anglické literatuře na slovo *feature* a
+    v českých normách na *vzhled jevu*, vždy se jedná o *vektorový
+    prvek* v GIS s geometrií a atributy.
 
-Vektorová data jsou vhodná všude tam, kde se jedná o *diskrétní*
-objekty, jako ideální reprezentace nějakého fenoménu:
+Vektorová data jsou vhodná všude tam, kde se jedná o modelování
+*diskrétních* objektů, jako ideální reprezentace fenoménu reálného světa:
 
 * výskyt jedince sledovaného druhu (bod),
 * významný orientační prvek (bod),
@@ -38,51 +42,62 @@ objekty, jako ideální reprezentace nějakého fenoménu:
 .. figure:: images/vector-model-sfa.png
    :width: 350px
         
-   Ukázka vektorových dat *bod*, *linie* a *polygony*.
+   Ukázka vektorové reprezentace jevů realného světa - bod (významný
+   orientační prvek), linie (středová linie silnice) a *polygony*
+   (hranice půdního krytu).
 
-Vektorová data jsou většinou uložena ve formě uspořádaných dvojic souřadnic 
-:math:`x, y`.
-Linie a plocha je zapsána pomocí množiny těchto uspořádaných dvojic definující 
-jejich lomové body. Přesnost
-takto zadaných souřadnic tak může být teoreticky nekonečná (co umožní počítačové
-systémy).
+Vektorová data jsou většinou uložena ve formě uspořádaných dvojic
+souřadnic :math:`x, y`.  Linie a plocha je zapsána pomocí množiny
+těchto uspořádaných dvojic definující jejich lomové body. Přesnost
+takto zadaných souřadnic tak může být teoreticky nekonečná (co umožní
+počítačové systémy).
 
-Zvláštním případem jsou tzv. *multiprvky* (angl. *multipoints, multilinies,
-multipolygons*). Jde o vektorové objekty skládající se z více vzájemně
-nepropojených geometrických objektů. Například dálnice D8 je v úseku přes
-České středohoří přerušena - lze ji tak reprezentovat jako objekt
-*multiline* sestávající se ze dvou liniových geometrických elementů.
+.. index:: Multiprvky
+           
+Zvláštním případem jsou tzv. *multiprvky* (angl. *multipoints,
+multilinestrings, multipolygons*). Jde o vektorové prvky skládající se
+z více vzájemně nepropojených geometrických objektů. Například dálnice
+D8 je v úseku přes České středohoří přerušena - lze ji tak
+reprezentovat jako objekt *multiline* sestávající se ze dvou
+nesouvislých liniových geometrických elementů.
 
+.. index:: Atributy vektorových dat
+           
 Atributy vektorových dat
 ------------------------
 
-Kromě informace o *geometrických vlastnostech* prvků nesou vektorová data
-také popisnou informaci uloženou v *atributech*. Atributy
-jsou většinou zaznamenány do formy databázové tabulky. V závislosti na
-použitém software se jedná buď o souborý formát (například ``DBF`` u formátu 
-``Esri Shapefile``) nebo plnohodnotný databázový server (například ``PostgreSQL``).
+Kromě informace o *geometrických vlastnostech* prvků nesou vektorová
+data také popisnou informaci uloženou v *atributech*. Atributy jsou
+většinou zaznamenány do formy databázové tabulky. V závislosti na
+použitém software se jedná buď o souborý formát (například DBF u
+formátu :ref:`Esri Shapefile<shapefile>`) nebo plnohodnotný databázový
+server (například PostgreSQL).
 
 .. figure:: images/vector-attributes.png
     :class: middle
 
     Mapa velkoplošných chráněných území spolu s atributy uloženými v
-    databázi (zdroj: `AOPK OGC WFS Server
-    <https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer>`_)
+    atributové tabulce (zdroj: `AOPK OGC WFS Server
+    <https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer>`_).
 
 Geometrická a atributová složka bývají obvykle uloženy zvlášť a navzájem
 propojeny pomocí jednoznačného interního identifikátoru (tzv. *feature id*).
 
-Počet atributů vektorových prvků je teoreticky nekonečný. Pokud použijeme pro
-uložení atributů databázový systém, je možné s daty dále pracovat jako
+.. index:: Databáze
+           
+Počet atributů vektorových prvků je teoreticky nekonečný. Pokud
+použijeme pro uložení atributů databázový systém, je možné s daty dále
+pracovat pomocí standardních nástrojů databazových systémů jako je
+např. SQL (více ve školení :skoleni:`PostGIS pro začátečníky
+<postgis-zacatecnik/kapitoly/3_jazyk_sql.html>`).
 
-.. todo:: jako co?
-
-.. note:: Některé softwary, například databázový systém PostGIS nebo souborová 
-    databáze SpatialLite, ukládají geometrickou složku dat jako *jeden z atributů*
-    vektorového prvku. Data jsou uspořádána do klasické databázové tabulky,
-    geometrie je pouze další atribut - geometrie tak není od atributů nijak
-    oddělena. Příklad: výpis parcel s jejich identifikátorem, parcelním číslem 
-    a geometrií z databáze PostGIS:
+.. note:: Některé softwary, například databázový systém PostGIS nebo
+    souborová databáze SpatialLite, ukládají geometrickou složku dat
+    jako *jeden z atributů* vektorového prvku (viz kapitola
+    :doc:`../databaze/index`). Data jsou uspořádána do klasické
+    databázové tabulky, geometrie je pouze další atribut - geometrie
+    tak není od atributů nijak oddělena. Příklad: výpis parcel s
+    jejich identifikátorem, parcelním číslem a geometrií ve formě WKT:
     
     ::
           
@@ -95,45 +110,37 @@ uložení atributů databázový systém, je možné s daty dále pracovat jako
           +------------+------------------------------------------------------+--------+
           |2969999209  | POLYGON((-718640.439694238 -1037240.20878015,-718... | 1276   |
           +------------+------------------------------------------------------+--------+
-          |17076174010 | POLYGON((-722180.859702737 -1027388.94876021,-722... | 260    |
-          +------------+------------------------------------------------------+--------+
-          |3825204209  | POLYGON((-715023.709686742 -1038171.52878245,-715... | 483    |
-          +------------+------------------------------------------------------+--------+
-          |3010454209  | POLYGON((-718516.42969393 -1037654.72878097,-7185... | 4169   |
-          +------------+------------------------------------------------------+--------+
-          |3756714209  | POLYGON((-716647.359686897 -1063110.74883183,-716... | 353/11 |
-          +------------+------------------------------------------------------+--------+
-          |3789127209  | POLYGON((-728971.089716029 -1031879.47876821,-729... | 496/124|
-          +------------+------------------------------------------------------+--------+
-          |3060136209  | POLYGON((-733967.459726413 -1030652.32876515,-733... | 322/2  |
-          +------------+------------------------------------------------------+--------+
-          |3142451209  | POLYGON((-735750.959725715 -1066084.18883546,-735... | 205    |
-          +------------+------------------------------------------------------+--------+
 
+.. index:: Topologie
+                     
 Vektorová topologie
 -------------------
 
-:wikipedia:`Topologie` je vlastnost geometrií vektorových dat, pomocí které lze
-určit vztahy mezi jednotlivými prvky. Pomocí topologie lze popsat charakteristiky dvou vektorových prvků jako:
+:wikipedia:`Topologie` je vlastnost vektorových prvků, pomocí které
+lze určit jejich vzájemné prostorové vztahy. Pomocí topologie lze
+popsat charakteristiky dvou vektorových prvků jako:
 
 * prvek *leží v* jiném prvku,
 * prvek *se kříží s* jiným prvku,
 * prvek *je nalevo/napravo od* prvku,
-* prvek *je shodný s* prvkem.
+* prvek *je shodný s* prvkem a tak dále.
 
-Různé softwary a jejich formáty přistupují k topologii různě, dnes ale
+Softwary a jejich formáty přistupují k topologii různě, dnes ale
 převládá takový přístup, že data jsou uložena v *netopologickém*
-formátu jako tzv. *jednoduché prvky*, resp. *simple features* a topologické
-charakteristiky jsou počítány na vyžádání.
+formátu jako tzv. *jednoduché prvky*, resp. *simple features* a
+topologické charakteristiky jsou počítány na vyžádání.
 
-.. note:: `GRASS GIS <http://grass.osgeo.org>`_ naopak data vždy ukládá 
-	  v topologickém formátu.
-
+.. note:: Jiné softwary jako např. `GRASS GIS
+   <http://grass.osgeo.org>`_ naopak data vždy ukládá v topologickém
+   formátu (více ve :skoleni:`školení pro začátečníky
+   <grass-gis-zacatecnik/intro/vektor.html#topologicky-model>`).
           
 .. figure:: images/area-1-2.png
 
-   Ukázka topologického datové modelu
-   
+   Ukázka topologického datového modelu (uzly, hrany a plochy).
+
+.. index:: Topologické chyby
+              
 Nejsou-li data tzv. *topologicky čistá*, obsahují různě závažné *chyby
 topologie*. Například společná hranice dvou parcel není stejná, ale každá 
 parcela má lehce posunuté hraniční lomové body a tudíž dochází v některých 
@@ -148,44 +155,58 @@ naopak jejich přetažení. Většina pokročilích GIS obsahují nástroje pro
 .. figure:: images/v_clean_rmsa.png
    :class: small
 
-   Zdroje: `Digitalisation de cartes vectorielles <https://grass.osgeo.org/gdp/grass5tutor/HTML_fr/c925.html>`_ a `GRASS GIS Manual <https://grass.osgeo.org/grass64/manuals/v.clean.html>`_
+   Zdroje: Běžné chyby v topologii vektorových dat `Digitalisation de
+   cartes vectorielles
+   <https://grass.osgeo.org/gdp/grass5tutor/HTML_fr/c925.html>`_ a
+   `GRASS GIS Manual
+   <https://grass.osgeo.org/grass64/manuals/v.clean.html>`_.
 
+.. index:: Vektorové formáty
+      
 Vektorové formáty
 -----------------
 
-Mezi nejčastěji používané vektorové formáty v GIS patří 
+Mezi nejčastěji používané vektorové formáty v GIS patří:
 
-* Esri :wikipedia:`Shapefile`
-* :wikipedia:`KML`
-* :wikipedia-en:`GML`
-* :wikipedia-en:`GeoJSON`
+* *Esri Shapefile*
+* *KML*
+* *GML*
+* *GeoJSON*
 
-Formát, který by si zasloužil větší pozornost je :wikipedia-en:`OGC GeoPackage`.
+.. index:: GeoPackage
+             
+Formát, který by si zasloužil větší pozornost je standardizovaný
+formát :wikipedia-en:`OGC GeoPackage`.
 
 Vektorová data se také tradičně ukládají do prostorových databází (popsaných v
 :doc:`další části <../databaze/index>`).
 
-.. tip:: Více informace na školení :skoleni:`GeoPython <geopython>`.
-
+.. index:: Shapefile, SHP
+                
+.. _shapefile:
+         
 Formát Esri Shapefile
 ^^^^^^^^^^^^^^^^^^^^^
 
-Formát Esri Shapefile je tradičně nejpoužívanějším formátem pro vektorová data.
-Tento systém je dnes již zastaralý, nicméně pro některé jednodušší typy dat
-stále dostačující. Je podporován prakticky všemi nástroji GIS a ve své době se
-stal prakticky oborovým standardem. Důvodem je, že firma Esri uvolnila
-dokumentaci k tomuto formátu a jeho licence nezakazuje jeho implementaci v
-software, který by se mohl označit za konkureční.
+Formát Esri :wikipedia:`Shapefile` je tradičně nejpoužívanějším
+formátem pro vektorová data.  Tento datový formát je dnes již
+zastaralý, nicméně pro některé jednodušší typy dat stále
+dostačující. Je podporován prakticky všemi nástroji GIS a ve své době
+se stal prakticky oborovým standardem. Důvodem je, že firma Esri
+uvolnila dokumentaci k tomuto formátu a jeho licence nezakazuje jeho
+implementaci v software třetích stran.
 
-Data jsou uložena (minimálně) ve třech souborech, lišících se od sebe navzájem koncovkou:
+Vektorové prvky jsou v tomto formátu uloženy v netopologické formě,
+tj. například společná hranice dvou polygonů je uložena dvakrát,
+jednou jako součást prvního polygonu a podruhé jako součást druhého
+polygonu.
+
+Data jsou uložena (minimálně) ve třech souborech, lišících se od sebe
+navzájem koncovkou:
 
 * ``*.shp`` - geometrie (shape)
 * ``*.dbf`` - atributy (databáze)
 * ``*.shx`` - propojení geometrie a atributů (index)
-
-Data jsou uložena v netopologické formě, tj. například společná
-hranice dvou polygonů je uložena dvakrát, jednou jako součást prvního
-polygonu a podruhé jako součást druhého polygonu.
 
 .. note:: Souborů tvořící datovou vrstvu v tomto formátu může být
           potencionálně víc, např. soubor s koncovkou ``*.prj``
@@ -197,9 +218,10 @@ polygonu a podruhé jako součást druhého polygonu.
 
 Z dnešního pohledu obsahuje formát Shapefile několik slabých míst:
 
-* data nejsou uložena v jednom souboru, ale hned ve minimálně trojici (*shp+shx+dbf*). Různé
-  softwarové produkty si navíc přidávají vlastní metadatové soubory, které
-  nejsou součástí specifikace tohoto formátu.
+* data nejsou uložena v jednom souboru, ale minimálně ve trojici
+  (*shp+shx+dbf*) souborů. Různé softwarové produkty si navíc
+  přidávají vlastní metadatové soubory, které nejsou součástí
+  specifikace tohoto formátu.
 * Názvy atributů jsou omezeny pouze na deset znaků.
 * Data neobsahují informaci o znakové sadě (některé softwary tuto
   informaci zapisují do souboru s příponou ``*.cfg``, ale je to spíše
@@ -209,20 +231,22 @@ Z dnešního pohledu obsahuje formát Shapefile několik slabých míst:
 * Neumožňuje ukládat topologické informace o vzájemných vztazích mezi prvky
   geodat.
 * Každý soubor SHP umožňuje ukládat pouze jeden typ geometrie (bod,
-  linie, polygon)
-* Neumožňuje uložit stromovou strukturu dat
+  linie, polygon).
+* Neumožňuje uložit stromovou strukturu dat.
 
 **Důvody proč se Esri Shapefile stále používá**
 
-Je podporován prakticky všemy softwary
+* Je podporován prakticky všemy softwary.
 
+.. index:: KML
+             
 Formát KML
 ^^^^^^^^^^
 
 OGC :wikipedia:`KML` je určen především pro vizualizaci jednotlivých prvků
 geodat. Formát byl původně vyvinut firmou Google a je postavený na jazyce XML.
 Data v souborech KML, na rozdíl od GML (viz níže), umožňují použít pouze
-souřadnicový systém WGS 84.
+souřadnicový systém :doc:`../soursystemy/wgs84`.
 
 KML podporují produkty firmy Google, ale i řada služeb a programů třetích stran.
 Bývá často podporován moderními GPS přijímači. V minulosti býval nasazován ve
@@ -230,6 +254,9 @@ webových mapových aplikacích, protože je v porovnání s GML menší a obsah
 zmíněnou informaci o vizualizaci jednotlivých prvků geodat. Ačkoliv byl v době
 před cca 3 lety tento formát populární, dnes je často nahrazován formátem
 :ref:`GeoJSON <geojson>`.
+
+.. index:: GML
+   pair: GML; Geography Markup Language
 
 Formát GML
 ^^^^^^^^^^
@@ -240,13 +267,15 @@ textový formát založený na značkovacím jazyce XML, je proto interpretovate
 bez speciálního software.  Kromě standardizace na úrovni OGC je definován
 technickou normou ISO 19136.  Vzhledem k tomu je podporován většinou moderních
 GIS nástrojů. GML je také předepsaný technickými dokumenty INSPIRE a výchozím
-formátem služby WFS.
+formátem služby :doc:`WFS <../standardy/ogc/wfs>`.
 
 GML se používá jako univerzální formát pro data, která mohou mít i
 komplikovanější stromovou strukturu. Díky tomu, že je postaven na XML, je jeho
 strojové zpracování jednoduché i běžnými systémy, například pomocí transformace
 XSLT.
 
+.. index:: JSON, GeoJSON, TopoJSON
+   
 .. _geojson:
 
 Formáty GeoJSON a TopoJSON
@@ -259,10 +288,10 @@ zápis, což je výhodné při přenosech v prostředí Internetu. Stejně jako 
 využití formátů odvozených z XML, je i zde je možné zabezpečit správnost
 struktury dat to pomocí schémat.
 
-:wikipedia-en:`JSON` je velice přívětivý k netypovým programovacím jazykům, je srozumitelný
-prostým lidským okem. Souřadnicový systém není v těchto formátech jak
-specifikovat, předpokládá se, že se jedná o WGS 84. Data lze libovolným způsobem
-zanořovat a větvit.
+:wikipedia-en:`JSON` je velice přívětivý k netypovým programovacím
+jazykům, je srozumitelný prostým lidským okem. Souřadnicový systém
+není v těchto formátech jak specifikovat, předpokládá se, že se jedná
+o :doc:`../soursystemy/wgs84`. Data lze libovolným způsobem zanořovat a větvit.
 
 `GeoJSON <http://geojson.org>`__ je využíván u webových služeb pro svůj malý
 objem a jednoduchost. Je méně náročný na zpracování, což je vhodné zejména u
