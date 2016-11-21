@@ -112,9 +112,7 @@ Bezrozměrné objekty (0D) svou definovány svojí polohu, nedisponují
 délkou nebo plochou. Jednorozměné objekty (1D) mají konečnou délku,
 ale ne plochu, dvojrozměné objekty (2D) mají konečnou plochu.
 
-.. index::
-   pair: reprezentace geodat
-   see: geodata
+.. index:: reprezentace geodat
 
 .. index::
    pair: rastrová data; geodata
@@ -152,7 +150,7 @@ jejich vizualizaci. Rozlišuje se dvě základní reprezentace dat:
 se nejčastěji modeluje pomocí vektorového reprezentace dat. *Spojité fenomény* 
 jako například nadmořská výška, srážková mapa, teplotní mapa a podobně, se nejčastěji 
 modelují pomocí rastrové reprezentace dat. Obě reprezentace jsou blíže popsány 
-v částech :ref:`vektorová <vektorova-data>` a :ref:`rastrová <rastrova-data>` data.
+v částech :doc:`vektorová <formaty/vektor>` a :doc:`rastrová <formaty/rastr>` data.
 
 .. index:: open source
    pair: open source; otevřený software
