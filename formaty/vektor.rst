@@ -159,7 +159,7 @@ naopak jejich přetažení. Většina pokročilích GIS obsahují nástroje pro
    cartes vectorielles
    <https://grass.osgeo.org/gdp/grass5tutor/HTML_fr/c925.html>`_ a
    `GRASS GIS Manual
-   <https://grass.osgeo.org/grass64/manuals/v.clean.html>`_.
+   <https://grass.osgeo.org/grass72/manuals/v.clean.html>`_.
 
 .. index:: Vektorové formáty
       
