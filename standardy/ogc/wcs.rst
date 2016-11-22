@@ -1,7 +1,5 @@
-.. _ogc-wcs:
-
-OGC Web Coveradge Service - WCS
--------------------------------
+OGC Web Coverage Service - WCS
+------------------------------
 
 .. warning:: :red:`Obsahuje pouze osnovu kapitoly`
 

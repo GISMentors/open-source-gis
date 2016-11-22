@@ -1,5 +1,3 @@
-.. _ogc-wmts:
-
 OGC Web Map Tiled Service - WMTS
 --------------------------------
 

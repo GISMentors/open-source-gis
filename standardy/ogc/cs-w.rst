@@ -1,5 +1,3 @@
-.. _ogc-cs-w:
-
 OGC Catalogue Service for Web
 -----------------------------
 

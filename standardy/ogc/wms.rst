@@ -1,5 +1,3 @@
-.. _ogc-wms:
-
 OGC Web Map Service - WMS
 -------------------------
 

@@ -1,5 +1,3 @@
-.. _ogc-wfs:
-
 .. index::
    single: WFS; Web Feature Service
    pair: OGC OWS; WFS

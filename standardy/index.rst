@@ -1,5 +1,3 @@
-.. _standardy-gis:
-
 ***************
 Standardy v GIS
 ***************
