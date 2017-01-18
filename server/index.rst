@@ -280,11 +280,5 @@ Přehled programů pro GIS server
    :maxdepth: 2
 
    programy
-
-MapServer
-=========
-
-.. toctree::
-   :maxdepth: 2
-
    mapserver
+   pycsw

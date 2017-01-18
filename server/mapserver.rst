@@ -1,5 +1,8 @@
 .. warning:: :red:`Kapitola je ve výstabě`
 
+.. note:: Detailnější materiály k MapServeru vznikají na `našem GITHubu
+        <http://github.com/gismentors/mapserver/>`_
+
 `MapServer <http://mapserver.org>`__ je jeden z nejstarších programů
 sloužících k distirbuci geografických dat. Původně byl vývoj
 financován :wikipedia:`NASA` a odehrával se primárně na University of
