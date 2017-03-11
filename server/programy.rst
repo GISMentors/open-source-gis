@@ -55,4 +55,5 @@ CS-W
 * GeoNetwork Open Source http://geonetwork-opensource.org
 * PyCSW http://pycsw.org
 
+Více viz :ref:`pycsw`.
 
