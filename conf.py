@@ -68,4 +68,5 @@ todo_include_todos = True
 html_use_index = True
 
 extensions += [ 'sphinx.ext.extlinks', 'sphinx.ext.todo', 'video', 'notes',
-                'sphinx.ext.mathjax', 'sphinxcontrib.aafig', 'numfig']
+                'sphinx.ext.mathjax', 'numfig']
+#                'sphinx.ext.mathjax', 'sphinxcontrib.aafig', 'numfig']
