@@ -61,20 +61,7 @@ Jedním slovem nám standardy zajišťují **interoperabilitu** v rámci oboru.
 Z pohledu otevřenosti a formálnosti můžeme oborové standardy zatřídit do
 následujícího schématu:
 
-.. aafig::
-                                        de jure
-                                          o
-                                          |
-                                          |
-                                          |
-                                          |
-                  zavřené o---------------+----------------o otevřené
-                                          |
-                                          |
-                                          |
-                                          |
-                                          o
-                                        de facto
+.. figure:: images/standards-schema.png
 
 Standardy z pohledu otevřenosti a způsobu jejich vzniku
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
