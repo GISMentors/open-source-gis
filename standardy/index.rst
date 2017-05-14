@@ -23,7 +23,7 @@ v rámci tzv. *Open Geodata Interoperability Specification* (OGIS).
 
 .. index:: Open GIS
            
-**Open GIS** konzorcium bylo založeno v roce 1994 devěti členy. V současnosti (rok
+**Open GIS** konzorcium bylo založeno v roce 1994 devíti členy. V současnosti (rok
 2016) má jeho nástupce OGC více než 500 členů - komerčních firem,
 veřejných institucí, univerzit i jednotlivců. Dnes OGC poskytuje více
 jako 35 implementačních standardů, které jsou **volně dostupné** a
