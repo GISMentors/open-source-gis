@@ -32,6 +32,7 @@ Obsah
    databaze/index
    server/index
    desktop/index
+   sdi/index
    web/index
    python/index
 
