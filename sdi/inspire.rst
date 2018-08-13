@@ -23,7 +23,7 @@ Zpráva_Komise_ zmiňuje nedostatky prostorových dat a jejich databáze na vše
 * Existují kulturní, organizační, finanční a legální bariéry, které znemožňují
   nebo značně komplikují znovu použití existujících prostorových dat.
 
-.. figure:: https://image.slidesharecdn.com/inspireprinciplescomponentsandimplementation-131216042952-phpapp02/95/inspire-principles-components-and-implementation-14-1024.jpg?cb=1387169471
+.. figure:: images/inspire-principles-components-and-implementation-14-1024.jpg
     
     Architektura INSPIRE (Vlado Cetl,
     https://www.slideshare.net/inspireeu/inspire-principles-components-and-implementation)
