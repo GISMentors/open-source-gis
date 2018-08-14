@@ -19,7 +19,7 @@ dotýkající se glóbu na rovníku.
    (zdroj: `Geografická kartografie <https://web.natur.cuni.cz/~bayertom/Mmk/>`_).
 
 Po zobrazení povrchu koule na válec a po rozvinutí pláště válce do
-roviny vznikne pravoúhlá síť poledníků a rovnoběžek, viz. :ref:`ukázka
+roviny vznikne pravoúhlá síť poledníků a rovnoběžek, viz :ref:`ukázka
 zobrazení <ukazka-mercator>`. Poledníky jsou zobrazeny ve stejných
 rozestupech, zatímco vzájemná vzdálenost rovnoběžek směrem k pólům
 vzrůstá do nekonečna.

@@ -16,7 +16,8 @@ pomeranče, je zapotřebí jej převést na povrch geometrického objektu,
 jehož povrch do roviny rozvinutelný je. Takovými objekty jsou
 **válec**, **kužel** a samozřejmě také **rovinná plocha**
 sama. Nejčastěji používaná zobrazování jsou jednoduchá zobrazení
-*azimutální*, *kuželová* a *válcová*, viz :num:`#j-zobrazeni`.
+*azimutální*, *kuželová* a *válcová*, viz :ref:`Přehled jednoduchých kartografických 
+zobrazení spolu s polohou zobrazovací plochy <j-zobrazeni>`.
 
 Mapová zobrazení podle polohy osy zobrazovací plochy může být
 *normální* (pólová) – osa válce nebo kužele je totožná s osou glóbu
