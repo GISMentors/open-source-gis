@@ -11,7 +11,7 @@ potřebný k vybudování evropské infrastruktury prostorových informací.
 Východiska INSPIRE
 ------------------
 
-Zpráva_Komise_ zmiňuje nedostatky prostorových dat a jejich databáze na všech
+`Zpráva Komise`_ zmiňuje nedostatky prostorových dat a jejich databáze na všech
 úrovních veřejné správy:
 
 * Prostorová data jsou buď nekompletní nebo zcela chybí
@@ -25,13 +25,12 @@ Zpráva_Komise_ zmiňuje nedostatky prostorových dat a jejich databáze na vše
 
 .. figure:: images/inspire-principles-components-and-implementation-14-1024.jpg
     
-    Architektura INSPIRE (Vlado Cetl,
-    https://www.slideshare.net/inspireeu/inspire-principles-components-and-implementation)
+    Architektura INSPIRE (`Vlado Cetl <https://www.slideshare.net/inspireeu/inspire-principles-components-and-implementation>`_)
 
 Principy INSPIRE
 ----------------
 
-Mezi principy_, nakterých staví INSPIRE patří:
+Mezi `principy`_, nakterých staví INSPIRE patří:
 
 * Data musí být sbírána jednou a uchovávána tam, kde je jejich správa
   nejefektivnější
@@ -46,11 +45,11 @@ Mezi principy_, nakterých staví INSPIRE patří:
 Legislativa
 -----------
 
-Direktiva_INSPIRE_ vstoupila v platnost v roce 2007, jednotlivé státy ji museli
-implementovat do národních legislativ (ČR 103_2010_, SK 3_2010_). 
+`Direktiva INSPIRE`_ vstoupila v platnost v roce 2007, jednotlivé státy ji museli
+implementovat do národních legislativ (ČR `103/2010`_, SK `3/2010`_). 
 
 Evropská komise ještě předepisuje celou řadu Implementačních pravidel
-(Implementacni_pravidla_INSPIRE_) a to pro oblasti:
+(`Implementační pravidla INSPIRE`_) a to pro oblasti:
 
 * Metadata
 * Datové specifikace
@@ -63,7 +62,7 @@ Evropská komise ještě předepisuje celou řadu Implementačních pravidel
 Metadata
 ^^^^^^^^
 
-Metadata_implementacnin_pravidla_ jsou založeny na normách ISO 19115 (metadata
+`Metadata implementační pravidla`_ jsou založeny na normách ISO 19115 (metadata
 dat) a ISO 19119 (metadata služeb). Výstupní schema metadat pak je většinou XML soubor
 podle ISO 19139, ale existují a používají se i další výstupní schemata:
 
@@ -76,7 +75,7 @@ podle ISO 19139, ale existují a používají se i další výstupní schemata:
 
 Datové specifikace
 ^^^^^^^^^^^^^^^^^^
-Datove_specifikace_INSPIRE_ předepisují datové profily pro jednotlivá datová
+`Datové specifikace INSPIRE`_ předepisují datové profily pro jednotlivá datová
 témata. Jsou rozdělena do více Annexů:
 
 Annex 1:
@@ -129,7 +128,7 @@ datasetů.
 Síťové služby
 ^^^^^^^^^^^^^
 
-Síťové služby INSPIRE (Network_services_) jsou služby sloužící pro 
+Síťové služby INSPIRE (`Network services`_) jsou služby sloužící pro 
 
 * vyhledávání (discovery)
 * prohlížení (view)
@@ -145,22 +144,20 @@ reportování stavu implementace INSPIRE ve svých státech a jednotlivé organi
 musí implementovat nástroje pro monitorování služeb.
 
 
-.. _Zpráva_Komise: https://inspire.ec.europa.eu/reports/analysis_consultation_01092003.pdf
+.. _Zpráva Komise: https://inspire.ec.europa.eu/reports/analysis_consultation_01092003.pdf
 
 .. _principy: https://inspire.ec.europa.eu/inspire-principles/9
 
-.. _SDI: https://en.wikipedia.org/wiki/Spatial_data_infrastructure
+.. _Direktiva INSPIRE: https://inspire.ec.europa.eu/
 
-.. _Direktiva_INSPIRE: https://inspire.ec.europa.eu/
+.. _103/2010: https://www.zakonyprolidi.cz/cs/2010-103
 
-.. _103_2010: https://www.zakonyprolidi.cz/cs/2010-103
+.. _3/2010: http://www.epi.sk/zz/2010-3
 
-.. _3_2010: http://www.epi.sk/zz/2010-3
+.. _Implementační pravidla INSPIRE: https://inspire.ec.europa.eu/inspire-implementing-rules/51763
 
-.. _Implementacni_pravidla_INSPIRE: https://inspire.ec.europa.eu/inspire-implementing-rules/51763
+.. _Metadata implementační pravidla: http://inspire.ec.europa.eu/documents/Metadata/MD_IR_and_ISO_20131029.pdf
 
-.. _Metadata_implementacnin_pravidla: http://inspire.ec.europa.eu/documents/Metadata/MD_IR_and_ISO_20131029.pdf
+.. _Datové specifikace INSPIRE: https://inspire.ec.europa.eu/data-specifications/2892
 
-.. _Datove_specifikace_INSPIRE: https://inspire.ec.europa.eu/data-specifications/2892
-
-.. _Network_services: https://inspire.ec.europa.eu/network-services
+.. _Network services: https://inspire.ec.europa.eu/network-services

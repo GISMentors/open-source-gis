@@ -4,7 +4,7 @@
 Spatial data infrastructure - SDI
 *********************************
 
-SDI_ je datová infrastruktura a rámce pro geografická data, metadata, uživatele
+`SDI`_ je datová infrastruktura a rámce pro geografická data, metadata, uživatele
 a nástroje, které je navzájem propojují tak, aby se prostorová data mohla
 používat efektivním způsobem. 
 
@@ -54,3 +54,5 @@ Nástroje SDI
    :maxdepth: 2
 
    inspire
+
+.. _SDI: https://en.wikipedia.org/wiki/Spatial_data_infrastructure

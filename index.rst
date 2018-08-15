@@ -32,9 +32,10 @@ Obsah
    databaze/index
    server/index
    desktop/index
-   sdi/index
    web/index
    python/index
+   sdi/index
+   otevrena-data/index
 
 Licence dokumentu
 =================
