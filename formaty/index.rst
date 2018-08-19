@@ -1,3 +1,5 @@
+.. _reprezentacedat:
+
 ****************
 Reprezentace dat
 ****************

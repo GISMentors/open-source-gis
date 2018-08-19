@@ -1,3 +1,5 @@
+.. _prostorovedatabaze:
+
 *******************
 Prostorové databáze
 *******************
