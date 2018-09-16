@@ -10,7 +10,6 @@ Souřadnicové systémy
 :wikipedia:`Mapové zobrazení`, resp. kartografická projekce je způsob, kterým
 se převádí zobrazení povrchu Země, případně jiného nebeského tělesa 
 z trojrozměrného zakřiveného povrchu referenčního elipsoidu či koule do roviny. 
-Výsledek takového geometrického nebo početního postupu nazýváme *mapa*.
 
 Protože povrch koule či elipsoidu není rozvinutelný do roviny, stejně
 jako nelze do roviny bez deformace rozvinout oloupanou slupku
