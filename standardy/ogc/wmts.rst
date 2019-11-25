@@ -242,4 +242,8 @@ http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&request=gett
    Dlaždice ze služby `ČUZK Ortofoto WMTS <http://geoportal.cuzk.cz/(S(vqbwo5id0qvp14kha13iwkqb))/Default.aspx?mode=TextMeta&side=wmts.uvod&metadataID=CZ-CUZK-WMTS-ORTOFOTO-P&metadataXSL=metadata.sluzba&head_tab=sekce-03-gp&menu=3151>`_.
 
 
+.. task:: WMTS do QGIS
 
+    Přidejte vrstvu leteckého snímku z výše zmíněné WMTS služby do QGIS. V
+    dialogu :menuselection:`Vrstva --> Přidat vrstvu --> WMS/WMTS` přidejte
+    neprve novou `Službu` a následně načtěte její data.

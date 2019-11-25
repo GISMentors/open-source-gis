@@ -107,4 +107,12 @@ polární úhel :math:`\varepsilon` měřený od kladné větve osy :math:`x`
 
    Pravouhlé a polární souřadnice bodu v zobrazovací rovině.
 
+.. task:: Typy souřadnic
 
+    Při přepínání mapy v předchozím úkolu si můžete všimnout, že se čísla
+    ukazující pozici kurzoru myši mění. Někdy ukazují "stupně", jindy "metry.
+
+.. task:: Typu souřadnic II
+
+    V jakých jednotkách nejčastěji ukazuje pozici na mapě přístroj GPS? A v
+    jakých český Katastr nemovitostí?

@@ -111,6 +111,17 @@ např. SQL (více ve školení :skoleni:`PostGIS pro začátečníky
           |2969999209  | POLYGON((-718640.439694238 -1037240.20878015,-718... | 1276   |
           +------------+------------------------------------------------------+--------+
 
+.. task:: Vektorová data
+
+    V programu QGIS otevřete vektorovou vrstvu `shp/aopk/velkoplosna_chranena_uzemi.shp`
+
+    Pomocí nástroje lupy přibližujte zvětšení - na rozdíl o rastrové mapy
+    nejsou vidět jednotlivé pixely.
+
+    Zobrazte atributovou tabulku vrstvy (po kliknutí pravým tlačítkem myši v
+    přepínači vrstev). Zjistěte, jak spolu je spojena geometrie jednotlivých
+    prvků a jejich další popisné atributy.
+
 .. index:: Topologie
                      
 Vektorová topologie
@@ -168,18 +179,31 @@ Vektorové formáty
 
 Mezi nejčastěji používané vektorové formáty v GIS patří:
 
+* *OGC GeoPackage*
 * *Esri Shapefile*
 * *KML*
 * *GML*
 * *GeoJSON*
-
-.. index:: GeoPackage
-             
-Formát, který by si zasloužil větší pozornost je standardizovaný
-formát :wikipedia-en:`OGC GeoPackage`.
+* *GDB*
 
 Vektorová data se také tradičně ukládají do prostorových databází (popsaných v
 :doc:`další části <../databaze/index>`).
+
+.. index:: GeoPackage, GPKG
+
+.. _geopackage:
+         
+Formát OGC GeoPackage
+^^^^^^^^^^^^^^^^^^^^^
+             
+Formát, který by si zasloužil větší pozornost je standardizovaný
+formát :wikipedia-en:`OGC GeoPackage`. GeoPackage je postavený na souborové
+databázi `SQLite <http://sqlite.org>`_. Umožňuje ukládat jak vektorová, tak i
+rastrová data - dokáže uložit data i v "nadlaždicované" podobě. 
+
+GeoPackage je v současnosti nastupující formát, který adresuje většinu problémů
+nejčastěji používaného Shapefile (viz níže).
+
 
 .. index:: Shapefile, SHP
                 
@@ -308,3 +332,18 @@ jsou zapisovány v relativní poloze od daného počátku a v celých číslech 
 se přesnost). K úspoře datové velikosti vede také fakt, že např. hranice
 polygonů jsou uloženy pro dvě sousedící plochy pouze jednou (formát je tedy
 topologický).
+
+.. index:: Geodatabáze, GDB
+   
+.. _gdb:
+
+Formáty Esri GeoDatabase
+^^^^^^^^^^^^^^^^^^^^^^^^
+Tzv. (souborová) Geodatabáze, je proprietární formát firmy ESRI a využívá ho
+nejčastěji produkty této firmy, jako je ArcGIS.
+
+Pomocí otevřených nástrojů lze tyto soubory do vysoké míry číst a zobrazit a i
+ukládat. Pro ukládání je potřeba mít v systémy přítomnout speciální knihovnu od
+firmy ESRI.
+
+GeoDatabáze je často používaný výměnný formát dat v (české) veřejné správě.

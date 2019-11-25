@@ -16,4 +16,5 @@ ESRI
 MapBox
 ------
 * Vector tiles
+* MBTiles
 

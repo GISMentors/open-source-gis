@@ -304,3 +304,10 @@ Odpověď ze serveru:
     <qgis-zacatecnik>`. Odhadovat BBOX vrstvy a souřadnice obrázku
     samozřejmě lze (po dopočítání rozlišení pixelu), pomocí výše
     uvedeného software je to ale přesnější.
+
+
+.. task:: Přidání vrstvy do QGIS
+
+    Přidejte vrstvu leteckého snímku z výše zmíněné WMS služby do QGIS. V
+    dialogu :menuselection:`Vrstva --> Přidat vrstvu --> WMS/WMTS` přidejte
+    neprve novou `Službu` a následně načtěte její data.

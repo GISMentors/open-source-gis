@@ -43,3 +43,14 @@ při převodu rastrových buněk na liniové objekty.
    Příklad vektorizace (zdroj: `Open Source GIS in Windows
    <http://o-gis.blogspot.sk/2008/09/rasterization-and-vectorization.html>`_).
 
+
+.. task:: Rasterizace
+
+    Rasterizujte zobrazený soubor velkoplošných chráněných krajinných oblastí
+    (`shp/aopk/velkoplosna_chranena_uzemi.shp`) pomocí nástroje
+    :menuselection:`Rastr --> Převod --> Rasterizovat`
+
+    Zvolte pole `Kod` pro hodnoty pixelů, zvolte rozlišení 1000m, zvolte
+    hraniční souřadnice rastru podle vstupního vektorového souboru.
+
+    .. figure:: images/chko-rasterize.png

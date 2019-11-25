@@ -38,6 +38,7 @@ se dotýká glóbu v libovolném bodě mezi pólem a rovníkem.
    zobrazovací plochy (zdroj: `Geodetické a kartografické základy
    <http://transformace.webst.fd.cvut.cz/Iframe/Basics_iframe.htm>`_).
 
+
 .. index:: zkreslení
               
 Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové
@@ -93,6 +94,18 @@ základě charakteru zkreslení do několika skupin:
     Příklady kartografických zobrazení podle vzhledu zobrazovací
     plochy - azimutální, kuželová, válcová, ... (zdroj:
     :wikipedia:`Mapové zobrazení`).
+
+.. task:: Různé souřadnicové systémy
+
+        Otrevřete program QGIS, zobrazte rastrový soubor `dmt100.tif`
+        :menuselection:`Vrstva --> Přidat vrstvu --> Přidat rastrovou vrstvu`,
+
+        Vpravo-dole v okně QGIS můžete po dvojkliku na číslo EPSG měnit v dialogu
+        různé souřadnicové systémy. Dívejte se, co se děje s mapou, pokud
+        vyzkoušíte postupně sytémy EPSG:5514, EPSG:4326, EPSG:3857 a EPSG:3387.
+
+        .. figure:: images/projections_cr.jpeg
+                :class: middle
 
 **Další témata**
 

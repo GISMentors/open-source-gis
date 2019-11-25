@@ -30,11 +30,11 @@ WFS GetCapabilities
 
 Jako příklad použijeme WFS server `AOPK ČR <http://www.ochranaprirody.cz>`_:
 
-  http://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer
+  https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer
 
 Nejprve zjistíme vlastnosti serveru z tzv. *Capabilities* dokumentu:
 
-https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?service=WFS&request=GetCapabilities
+  https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer?request=GetCapabilities&service=WFS
 
 .. code-block:: xml
 
@@ -169,7 +169,7 @@ příklad pro získání dat v souřadnicovém systému WGS-84 (:epsg:`4326`,
 pozor na pořadí souřadnic (viz *Capabilities response*)):
 
 `https://gis.nature.cz/.../WFSServer?service=WFS&request=GetFeature&typename=UzemniOchrana_...&srsname=epsg:4326
-<https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?service=WFS&request=GetFeature&typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&srsname=epsg:4326>`_
+<https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer?service=WFS&request=GetFeature&typename=Aplikace_Opendata:Velkoplošná_zvláště_chráněná_území__VZCHÚ__&srsname=epsg:4326>`_
 
 Filtrování dat
 ~~~~~~~~~~~~~~

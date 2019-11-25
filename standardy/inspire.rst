@@ -14,5 +14,13 @@ INSPIRE
 * Harmonizace datových sad
 * Harmonizace služeb (postaveno na OGC OWS)
     * Discovery service (--> OGC CS-W)
-    * View service (--> OGC WMS)
-    * Download service (--> OGC WCS, WFS)
+    * View service (--> OGC WMS, WMTS)
+    * Download service (--> OGC WCS, WFS, Atom)
+
+Stahovací služby jsou nejčastěji implementovány prostřednictvím XML dokumentů
+`Atom <https://tools.ietf.org/html/rfc4287>`_. Tyto dokumenty pak odkazují na
+předgenerované soubory v rastrových i vektorových formátech. Použití GML není
+povinné.
+
+Prohlížecí služby jsou stále častěji implementovány prostřednictvím některé z
+dlaždicovacích služeb (WMTS, TMS).

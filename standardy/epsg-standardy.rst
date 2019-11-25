@@ -17,7 +17,7 @@ v oboru GIS.
 .. index::
    pair: knihovny; proj4
       
-V kapitole :doc:`../sour-systemy/index` se tímto datasetem zabýváme
+V kapitole :ref:`souradnicovesystemy` se tímto datasetem zabýváme
 podrobněji, viz. :ref:`EPSG <ss-epsg>`. Proto zde pouze zopakujeme, že
 databáze EPSG obsahuje číselné kódy reprezentující jednotlivé definice
 souřadnicových systémů používaných v oboru geodézie a GIS a že velice

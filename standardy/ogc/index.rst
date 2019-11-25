@@ -84,6 +84,8 @@ Přehled nejdůležitější standardů OGC
     wfs
     wcs
     wps
+    restapi
+    gpkg
     gml
     kml
     sos

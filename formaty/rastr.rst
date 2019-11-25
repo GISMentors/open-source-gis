@@ -74,6 +74,14 @@ informační tabulce, například:
 
 Více atributů většinou nelze rastrovým datům přiřazovat.
 
+.. task:: Rastrová data
+
+    V programu QGIS zobrazte rastrový soubor `dmt100.tif`. Použijte nástroj
+    lupy pro zvětšení a zvětšujte mapu, až uvidíte jednotlivé pixely.
+    
+    Pomocí nástroje identifikace můžete na jednotlivé pixely klikat a zjišťovat
+    tak jejich faktickou hodnotu.
+
 .. index:: Rastrové formáty
            
 Rastrové formáty
@@ -118,6 +126,10 @@ prostorové umístění a souřadnicový systém.
 
 **Některé speciality formátu GeoTIFF**
 
+*Souřadnicový sytém*
+
+    Do formátu GeoTIFF lze uložit informaci o souřadnicovém systému
+
 *Číselné formáty*
 
     Formát GeoTIFF umožňuje uložit data v celočíselné podobě nebo jako čísla s
@@ -152,3 +164,10 @@ prostorové umístění a souřadnicový systém.
     externím algoritmem. Více na toto téma píše např.  `Paul Ramsey ve
     svém blogu
     <http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html>`_.
+
+*Optimalizace pro web*
+
+    Existuje speciální varianta GeoTIFFu - `Cogeo <http://cogeo.org>`_ - Cloud
+    Optimized GeoTIFF, který je upraven pro rychlejší hostování dat na HTTP
+    serveru. Takto uložený GeoTIFF umožní pomocí protokolu HTTP GET vráti ze
+    serveru na klienta pouze určitou část dat.

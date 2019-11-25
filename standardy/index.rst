@@ -106,8 +106,8 @@ Standardy z pohledu otevřenosti a způsobu jejich vzniku
     stran, zároveň mohou být dále rozvíjeny. Příkladem těchto
     standardů jsou normy konzorcia :doc:`OGC <ogc/index>`.
 
-Přehled standardů
-^^^^^^^^^^^^^^^^^
+Přehled standardizačních autorit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

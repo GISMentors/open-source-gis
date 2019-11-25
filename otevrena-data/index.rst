@@ -57,3 +57,6 @@ lze proces otevírání dat rozdlit do následujících fází
 .. _pětistupňovou škálu otevřenosti dat: https://5stardata.info/
 .. _Portál poskytovatele otevřených dat: https://opendata.gov.cz/
 
+.. toctree::
+
+    zdroje
