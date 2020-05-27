@@ -4,4 +4,4 @@
 GeoPython
 *********
 
-Samostatné školení: :skoleni:`GeoPython <geopython>`.
+Samostatné školení: :skoleni:`GeoPython <geopython-zacatecnik>`.
