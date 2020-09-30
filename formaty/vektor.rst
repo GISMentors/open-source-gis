@@ -184,7 +184,7 @@ Mezi nejčastěji používané vektorové formáty v GIS patří:
 * *KML*
 * *GML*
 * *GeoJSON*
-* *GDB*
+* *Esri FileGDB*
 
 Vektorová data se také tradičně ukládají do prostorových databází (popsaných v
 :doc:`další části <../databaze/index>`).
@@ -337,8 +337,9 @@ topologický).
    
 .. _gdb:
 
-Formáty Esri GeoDatabase
-^^^^^^^^^^^^^^^^^^^^^^^^
+Formát Esri File GeoDatabase
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Tzv. (souborová) Geodatabáze, je proprietární formát firmy ESRI a využívá ho
 nejčastěji produkty této firmy, jako je ArcGIS.
 
