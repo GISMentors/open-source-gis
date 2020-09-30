@@ -182,7 +182,7 @@ Mezi nejčastěji používané vektorové formáty v GIS patří:
 * *OGC GeoPackage*
 * *Esri Shapefile*
 * *KML*
-* *GML*
+* *OGC GML*
 * *GeoJSON*
 * *Esri FileGDB*
 
@@ -282,8 +282,8 @@ před cca 3 lety tento formát populární, dnes je často nahrazován formátem
 .. index:: GML
    pair: GML; Geography Markup Language
 
-Formát GML
-^^^^^^^^^^
+Formát OGC GML
+^^^^^^^^^^^^^^
 
 OGC :wikipedia:`GML` (Geography Markup Language) jako otevřený standard je
 perspektivním formátem pro přenos vektorových dat. Jedná se o jednosouborový
