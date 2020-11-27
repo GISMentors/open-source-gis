@@ -34,8 +34,7 @@ kromě toho nabízí mnoho užitečných příkazů pro práci s rastrovými
 
 Zde si představíme pouze některé příkazy, které jsou distribuovány spolu s
 knihovnou GDAL. Úplný seznam naleznete na 
-`www.gdal.org/gdal_utilities.html <http://www.gdal.org/gdal_utilities.html>`_ 
-a `www.gdal.org/ogr_utilities.html <http://www.gdal.org/ogr_utilities.html>`_.
+`https://gdal.org/programs/index.html <https://gdal.org/programs/index.html>`_.
 
 Příkazy pro práci s rastrovými daty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
