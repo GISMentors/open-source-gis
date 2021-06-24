@@ -1,7 +1,7 @@
 .. _desktop-gis:
 
 ***********
-Destkop GIS
+Desktop GIS
 ***********
 
 .. warning:: :red:`Obsahuje pouze osnovu kapitoly`
@@ -18,17 +18,17 @@ QGIS
 Nejpopulárnější http://qgis.org
 
 
-uDig
+uDIG
 ====
 
 Java http://udig.refractions.net/
 
-Open Jump
+Open JUMP
 =========
 
 Java, hydrologie http://www.openjump.org/ 
 
-gvSig
+gvSIG
 =====
 
 Španělský projekt, několik forků http://www.gvsig.com/
