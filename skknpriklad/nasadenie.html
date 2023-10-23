@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Nasadenie nástroja &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Vstupné dáta" href="vstupne-data.html" />
+    <link rel="prev" title="Katastrálne dáta SR v GIS" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Katastrálne dáta SR v GIS"
+             accesskey="P">předchozí</a> |
+          <a href="vstupne-data.html" title="Vstupné dáta"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="nasadenie-nastroja">
+<span id="nasadenieskkn"></span><span id="index-0"></span><h1>Nasadenie nástroja<a class="headerlink" href="#nasadenie-nastroja" title="Permalink to this heading">¶</a></h1>
+<p>Viď. <a class="reference external" href="https://github.com/lfurtkevicova/kn-stuff/wiki/Nasadenie">Nasadenie</a> (<em>https://github.com/lfurtkevicova/kn-stuff/wiki/Nasadenie</em>)</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Predpoklad <a class="reference external" href="http://training.gismentors.eu/qgis-zacatecnik/instalace/index.html">QGIS</a>
+(<em>http://training.gismentors.eu/qgis-zacatecnik/instalace/index.html</em>), existujúca
+<a class="reference external" href="https://github.com/lfurtkevicova/kn-stuff/wiki/Databaza">databáza</a> (<em>https://github.com/lfurtkevicova/kn-stuff/wiki/Databaza</em>)
+a <a class="reference external" href="https://github.com/lfurtkevicova/kn-stuff/wiki/Vstupne-data">Vstupné dáta</a> (<em>https://github.com/lfurtkevicova/kn-stuff/wiki/Vstupne-data</em>)
+vo formáte <cite>*.vgi</cite> a <cite>*.dbf</cite>.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">postgres</span> <span class="pre">psql</span> <span class="pre">postgres;</span> <span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">postgres</span> <span class="pre">createdb</span> <span class="pre">kataster;</span> <span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">postgres</span> <span class="pre">createuser</span> <span class="pre">ludka;</span> <span class="pre">psql</span> <span class="pre">kataster</span></code></p>
+<p>V ďalšom kroku nasleduje vytvorenie geodatabázy z databázy <em>kataster</em>, rozšírenie pre topologické vektorové dáta, upgrade na vyššiu verziu PostGIS, pridanie vlastného súradnicového systému do tabuľky <cite>spatial_ref_sys</cite>, napr. <em>5514</em>, viď. <a class="reference external" href="https://github.com/lfurtkevicova/kn-stuff/wiki/Databaza">tu</a>.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Katastrálne dáta SR v GIS</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nasadenie nástroja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vstupne-data.html">Vstupné dáta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pouzitie.html">Použitie v praxi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Katastrálne dáta SR v GIS"
+              >předchozí</a> |
+            <a href="vstupne-data.html" title="Vstupné dáta"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

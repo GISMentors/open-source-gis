@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Knihovna Proj.4 pro transformaci souřadnic &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Prostorové databáze" href="../databaze/index.html" />
+    <link rel="prev" title="Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy" href="gdal.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="gdal.html" title="Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy"
+             accesskey="P">předchozí</a> |
+          <a href="../databaze/index.html" title="Prostorové databáze"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="knihovna-proj-4-pro-transformaci-souradnic">
+<span id="index-0"></span><h1>Knihovna Proj.4 pro transformaci souřadnic<a class="headerlink" href="#knihovna-proj-4-pro-transformaci-souradnic" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://trac.osgeo.org/proj/">Proj.4</a> (Cartographic Projection
+Library) je jedna ze základních knihoven využívaných v mnoha open
+source GIS projektech jako <a class="reference external" href="http://www.gismentors.cz/skoleni/grass-gis/">GRASS GIS</a>, <a class="reference external" href="http://www.gismentors.cz/skoleni/qgis/">QGIS</a>, <a class="reference external" href="http://www.gismentors.cz/skoleni/PostGIS/">PostGIS</a> a dalších. Má své klony
+v jazyce <a class="reference external" href="http://proj4js.org/">JavaScript</a>, <a class="reference external" href="https://sourceforge.net/projects/proj4php/">PHP</a>
+(<a class="reference external" href="https://github.com/jachym/proj4php">https://github.com/jachym/proj4php</a>), <a class="reference external" href="https://github.com/jswhit/pyproj">Python</a> a dalších. Kromě možnosti
+používat tuto knihovnu z různých programů, existují i užitečné
+nástroje v příkazové řádce:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cs2cs"><span class="std std-ref">cs2cs</span></a>,</p></li>
+<li><p><a class="reference internal" href="#geod-a-invgeod"><span class="std std-ref">geod a invgeod</span></a>,</p></li>
+<li><p><a class="reference internal" href="#proj-a-invproj"><span class="std std-ref">proj a invproj</span></a>.</p></li>
+</ul>
+<p id="cs2cs"><span id="index-1"></span><strong>cs2cs</strong></p>
+<p>Provádí transformaci souřadnic mezi jednotlivými souřadnicovými systémy.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Použití z příkazové řádky</p>
+<ul class="simple">
+<li><p>převod souřadnice ze souřadnicového systému S-JTSK (kód
+<a class="reference external" href="http://epsg.io/5514">EPSG:5514</a> do WGS84 (<a class="reference external" href="http://epsg.io/4326">EPSG:4326</a>):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;-868208.53 -1095793.57 512.30&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cs2cs<span class="w"> </span>+init<span class="o">=</span>epsg:5514<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+towgs84<span class="o">=</span><span class="m">570</span>.8,85.7,462.8,4.998,1.587,5.261,3.56<span class="w"> </span>+to<span class="w"> </span>+init<span class="o">=</span>epsg:4326
+
+12d48<span class="s1">&#39;25.16&quot;E   49d27&#39;</span><span class="m">8</span>.146<span class="s2">&quot;N 559.261</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>místo EPSG kódu můžeme použít kompletní definici souřadnicového
+systému; ukázka pro převod souřadnic z WGS84 na S-JTSK (z důvodu
+přesnějšího převodu používáme tzv. transformační parametry
+<code class="docutils literal notranslate"><span class="pre">+towgs84</span></code>):</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;12d48&#39;25.15992 49d27&#39;8.14571 559.417&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cs2cs<span class="w"> </span>+proj<span class="o">=</span>longlat<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+datum<span class="o">=</span>WGS84<span class="w"> </span>+to<span class="w"> </span>+proj<span class="o">=</span>krovak<span class="w"> </span>+lat_0<span class="o">=</span><span class="m">49</span>.5<span class="w"> </span>+lon_0<span class="o">=</span><span class="m">24</span>.83333333333333<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+alpha<span class="o">=</span><span class="m">30</span>.28813972222222<span class="w"> </span>+k<span class="o">=</span><span class="m">0</span>.9999<span class="w"> </span>+x_0<span class="o">=</span><span class="m">0</span><span class="w"> </span>+y_0<span class="o">=</span><span class="m">0</span><span class="w"> </span>+ellps<span class="o">=</span>bessel<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+pm<span class="o">=</span>greenwich<span class="w"> </span>+units<span class="o">=</span>m<span class="w"> </span>+no_defs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+towgs84<span class="o">=</span><span class="m">570</span>.8,85.7,462.8,4.998,1.587,5.261,3.56
+
+-868208.54<span class="w">      </span>-1095793.58<span class="w"> </span><span class="m">512</span>.46
+</pre></div>
+</div>
+</div>
+<p id="geod-a-invgeod"><span id="index-2"></span><strong>geod a invgeod</strong></p>
+<p>Řeší tzv. základní <a class="reference external" href="http://gis.zcu.cz/studium/gen1/html/ch07s02.html">geodetické úlohy</a> pro určení
+zeměpisní šířky a délky, při zadání výchozího bodu, azimutu, délky a
+naopak.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Použití z příkazové řádky</p>
+<ul class="simple">
+<li><p>výpočet azimutu a vzdálenosti mezi Prahou a Brnem:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>geod<span class="w"> </span>+ellps<span class="o">=</span>bessel<span class="w"> </span><span class="s">&lt;&lt;EOF -I +units=m</span>
+<span class="s">15d20&#39;55.444&quot;E47d43&#39;10.405&quot;N 14d28&#39;7.821&quot;E50d4&#39;2.641&quot;N</span>
+<span class="s">EOF</span>
+
+110d53<span class="s1">&#39;32.868&quot;  -68d30&#39;</span><span class="m">12</span>.184<span class="s2">&quot;  270855.602</span>
+</pre></div>
+</div>
+</div>
+<p id="proj-a-invproj"><span id="index-3"></span><strong>proj a invproj</strong></p>
+<p>Provádí transformaci souřadnicových systému z/do systému
+<a class="reference internal" href="../soursystemy/wgs84.html"><span class="doc">WGS84</span></a>. Funguje podobně jako <a class="reference internal" href="#cs2cs"><span class="std std-ref">cs2cs</span></a>,
+který ale umí transformovat mezi libovolnými souřadnicovými systémy.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Knihovny</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gdal.html">Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Knihovna Proj.4 pro transformaci souřadnic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="gdal.html" title="Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy"
+              >předchozí</a> |
+            <a href="../databaze/index.html" title="Prostorové databáze"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

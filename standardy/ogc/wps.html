@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>OGC Web Processing Service - WPS &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gismentors.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../../search.html" />
+    <link rel="next" title="OGC Rest API" href="restapi.html" />
+    <link rel="prev" title="OGC Web Coverage Service - WCS" href="wcs.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="wcs.html" title="OGC Web Coverage Service - WCS"
+             accesskey="P">předchozí</a> |
+          <a href="restapi.html" title="OGC Rest API"
+             accesskey="N">další</a> |
+          <a href="../../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ogc-web-processing-service-wps">
+<span id="ogc-wps"></span><h1>OGC Web Processing Service - WPS<a class="headerlink" href="#ogc-web-processing-service-wps" title="Permalink to this heading">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p><span class="red">Tato část je pahýl</span></p>
+</div>
+<p><a class="reference external" href="https://opengeospatial.org/standards/wps">OGC Web Processing service</a>
+umožňuje, aby server nabídnul určité předdefinované procesy - výpočetní operace
+nad daty - směrem ke klientským aplikacím.</p>
+<p>Druh výpočetních operací - tzv. <em>procesů</em> - není definovaný, každý server tak
+nabízí jiné. Server může nabízet jednoduché úlohy, jako je součet hodnot pixelů
+dvou rastrových map, nebo komplexní, jako je výpočet globální klimatické změny.</p>
+<p>WPS komunikuje na bázi XML dokumentů posílaných prostřednictvím HTTP POST
+requestů.</p>
+<p>Jsou definovány tři typy requestů:</p>
+<ul class="simple">
+<li><p>GetCapabilities - vrací XML dokument s metadaty služby a seznamem procesů</p></li>
+<li><p>DescribeProcess - vrací XML dokument s detailním popisem vstupních a
+výstupních datových typů pro vybraný proces</p></li>
+<li><p>Execute - spustí výpočet na serveru a předá mu vstupní data zaslaná klientem</p></li>
+</ul>
+<p>Jsou definovány 3 datové typy pro vstupy a výstupy z procesu:</p>
+<ul class="simple">
+<li><p>LiterlData - textové řetězce libovolné velikosti či datového typu</p></li>
+<li><p>ComplexData - rastrové nebo vektorové datasety</p></li>
+<li><p>BoundingBoxData - hraniční souřadnice zájmového území</p></li>
+</ul>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standardy v GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku">Standardy z pohledu otevřenosti a způsobu jejich vzniku</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#prehled-standardizacnich-autorit">Přehled standardizačních autorit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="wcs.html" title="OGC Web Coverage Service - WCS"
+              >předchozí</a> |
+            <a href="restapi.html" title="OGC Rest API"
+              >další</a> |
+            <a href="../../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

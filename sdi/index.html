@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Spatial data infrastructure - SDI &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="INSPIRE" href="inspire.html" />
+    <link rel="prev" title="GeoPython" href="../python/index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../python/index.html" title="GeoPython"
+             accesskey="P">předchozí</a> |
+          <a href="inspire.html" title="INSPIRE"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spatial-data-infrastructure-sdi">
+<span id="index-0"></span><h1>Spatial data infrastructure - SDI<a class="headerlink" href="#spatial-data-infrastructure-sdi" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_data_infrastructure">SDI</a> je datová infrastruktura a rámce pro geografická data, metadata, uživatele
+a nástroje, které je navzájem propojují tak, aby se prostorová data mohla
+používat efektivním způsobem.</p>
+<p>Data a metadata by neměla být uchovávána centrálně, ale tam, kde vznikají a
+systémy by měly být navzájem propojené.</p>
+<p>Každý takový uzel v rámci SDI je většinou tvořen systémem GIS.</p>
+<section id="softwareove-komponenty">
+<h2>Softwareové komponenty<a class="headerlink" href="#softwareove-komponenty" title="Permalink to this heading">¶</a></h2>
+<p>SDI musí uživateli umožnit nelézt, stáhnout prostorová data z repozitáře prostřednictvím
+poskytovatele služby.</p>
+<ul class="simple">
+<li><p>Softwarový klient pro zobrazení a dotazování prostorových dat</p></li>
+<li><p>Katalogový server (služba) pro nalézání metadat služeb a datových sad</p></li>
+<li><p>Mapový server pro sdílení dat přes Internet</p></li>
+<li><p>Processing server - projekce, transformace</p></li>
+<li><p>Datový repozitář kde budou data uložena, např. prostorová databáze</p></li>
+<li><p>GIS desktopový klient pro tvorbu a aktualizaci dat.</p></li>
+<li><p>Jednotlivé komponenty jsou spolu propojeny prostřednictvím API</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../_images/sdi.png" src="../_images/sdi.png" />
+</figure>
+<p>Naší snahou je budovat také SDI, ve kterém budou jednotlivé komponenty
+vyměnitelné. Toho lze dosáhnout zejména stabilním aplikačním rozhraním (API).</p>
+<section id="sdi-principy">
+<h3>SDI principy<a class="headerlink" href="#sdi-principy" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Systém pro nalézání datových sad a služeb</p></li>
+<li><p>Distribuce mapových náhledů a datových sad</p></li>
+<li><p>Možnost vyvolat výpočetní operaci na serveru</p></li>
+<li><p>Harmonizované datasety</p></li>
+</ul>
+</section>
+<section id="nastroje-sdi">
+<h3>Nástroje SDI<a class="headerlink" href="#nastroje-sdi" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Metadatový katalog prostorových dat</p></li>
+<li><p>Prohlížecí služby (OGC WMS, WMTS)</p></li>
+<li><p>Stahovací služby (OGC WFS, WCS, Atom, S3, …)</p></li>
+<li><p>Processingové služby (OGC WPS, …)</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="inspire.html">INSPIRE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inspire.html#vychodiska-inspire">Východiska INSPIRE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire.html#principy-inspire">Principy INSPIRE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire.html#legislativa">Legislativa</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Spatial data infrastructure - SDI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#softwareove-komponenty">Softwareové komponenty</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../python/index.html" title="GeoPython"
+              >předchozí</a> |
+            <a href="inspire.html" title="INSPIRE"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

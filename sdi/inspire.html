@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>INSPIRE &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Otevřená data - OpenData" href="../otevrena-data/index.html" />
+    <link rel="prev" title="Spatial data infrastructure - SDI" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Spatial data infrastructure - SDI"
+             accesskey="P">předchozí</a> |
+          <a href="../otevrena-data/index.html" title="Otevřená data - OpenData"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="inspire">
+<span id="index-0"></span><h1>INSPIRE<a class="headerlink" href="#inspire" title="Permalink to this heading">¶</a></h1>
+<p>INSPIRE (INfrastructure for SPatial InfoRmation in Europe) je iniciativou
+Evropské komise, která si klade za cíl vytvořit evropský legislativní rámec
+potřebný k vybudování evropské infrastruktury prostorových informací.</p>
+<section id="vychodiska-inspire">
+<h2>Východiska INSPIRE<a class="headerlink" href="#vychodiska-inspire" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://inspire.ec.europa.eu/reports/analysis_consultation_01092003.pdf">Zpráva Komise</a> zmiňuje nedostatky prostorových dat a jejich databáze na všech
+úrovních veřejné správy:</p>
+<ul class="simple">
+<li><p>Prostorová data jsou buď nekompletní nebo zcela chybí</p></li>
+<li><p>Popis (dokumentace) prostorových dat, pokud je vůbec dostupná, je často neúplná.</p></li>
+<li><p>Prostorové datasety nemohou být jednoduše kombinovány s dalšími prostorovými
+datasety.</p></li>
+<li><p>Systémy pro vyhledávání a zpřístupňování prostorových dat fungují pouze
+izolovaně a nejsou spolu navzájem kopatibilní.</p></li>
+<li><p>Existují kulturní, organizační, finanční a legální bariéry, které znemožňují
+nebo značně komplikují znovu použití existujících prostorových dat.</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<img alt="../_images/inspire-principles-components-and-implementation-14-1024.jpg" src="../_images/inspire-principles-components-and-implementation-14-1024.jpg" />
+<figcaption>
+<p><span class="caption-number">Obr. 56 </span><span class="caption-text">Architektura INSPIRE (<a class="reference external" href="https://www.slideshare.net/inspireeu/inspire-principles-components-and-implementation">Vlado Cetl</a>)</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="principy-inspire">
+<h2>Principy INSPIRE<a class="headerlink" href="#principy-inspire" title="Permalink to this heading">¶</a></h2>
+<p>Mezi <a class="reference external" href="https://inspire.ec.europa.eu/inspire-principles/9">principy</a>, nakterých staví INSPIRE patří:</p>
+<ul class="simple">
+<li><p>Data musí být sbírána jednou a uchovávána tam, kde je jejich správa
+nejefektivnější</p></li>
+<li><p>Musí být možné bezešvě kombinovat prostorové informace z různých datových
+zdrojů  v Evropě a sdílet je mezi mnoha uživateli a aplikacemi</p></li>
+<li><p>Geoprostorová informace potřebná na všech úrovních správy by měla být okamžitě
+dostupná</p></li>
+<li><p>Musí být jednoduché nalézt, jaké geoprostorové informace jsou dostupné, jak se
+mohou používat pro patřičnou potřebu, a za jakých podmínek smějí být
+používány.</p></li>
+</ul>
+</section>
+<section id="legislativa">
+<h2>Legislativa<a class="headerlink" href="#legislativa" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://inspire.ec.europa.eu/">Direktiva INSPIRE</a> vstoupila v platnost v roce 2007, jednotlivé státy ji museli
+implementovat do národních legislativ (ČR <a class="reference external" href="https://www.zakonyprolidi.cz/cs/2010-103">103/2010</a>, SK <a class="reference external" href="http://www.epi.sk/zz/2010-3">3/2010</a>).</p>
+<p>Evropská komise ještě předepisuje celou řadu Implementačních pravidel
+(<a class="reference external" href="https://inspire.ec.europa.eu/inspire-implementing-rules/51763">Implementační pravidla INSPIRE</a>) a to pro oblasti:</p>
+<ul class="simple">
+<li><p>Metadata</p></li>
+<li><p>Datové specifikace</p></li>
+<li><p>Síťové služby</p></li>
+<li><p>Data služby sdílecí služby</p></li>
+<li><p>Spatial data services</p></li>
+<li><p>Monitoring a Reporting</p></li>
+</ul>
+<section id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="http://inspire.ec.europa.eu/documents/Metadata/MD_IR_and_ISO_20131029.pdf">Metadata implementační pravidla</a> jsou založeny na normách ISO 19115 (metadata
+dat) a ISO 19119 (metadata služeb). Výstupní schema metadat pak je většinou XML soubor
+podle ISO 19139, ale existují a používají se i další výstupní schemata:</p>
+<ul class="simple">
+<li><p>Dublin Core</p></li>
+<li><p>ISO 19139</p></li>
+<li><p>FGDC CSDGM</p></li>
+<li><p>NASA DIF</p></li>
+<li><p>Atom</p></li>
+<li><p>GM03</p></li>
+</ul>
+</section>
+<section id="datove-specifikace">
+<h3>Datové specifikace<a class="headerlink" href="#datove-specifikace" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="https://inspire.ec.europa.eu/data-specifications/2892">Datové specifikace INSPIRE</a> předepisují datové profily pro jednotlivá datová
+témata. Jsou rozdělena do více Annexů:</p>
+<dl class="simple">
+<dt>Annex 1:</dt><dd><ul class="simple">
+<li><p>Addresses</p></li>
+<li><p>Administrative units</p></li>
+<li><p>Cadastral parcels</p></li>
+<li><p>Coordinate reference systems</p></li>
+<li><p>Geographical grid systems</p></li>
+<li><p>Geographical names</p></li>
+<li><p>Hydrography</p></li>
+<li><p>Protected sites</p></li>
+<li><p>Transport networks</p></li>
+</ul>
+</dd>
+<dt>Annex 2:</dt><dd><ul class="simple">
+<li><p>Elevation</p></li>
+<li><p>Geology</p></li>
+<li><p>Land cover</p></li>
+<li><p>Orthoimagery</p></li>
+</ul>
+</dd>
+<dt>Annex 3:</dt><dd><ul class="simple">
+<li><p>Agricultural and aquaculture facilities</p></li>
+<li><p>Area management / restriction / regulation zones &amp; reporting units</p></li>
+<li><p>Atmospheric conditions</p></li>
+<li><p>Bio-geographical regions</p></li>
+<li><p>Buildings</p></li>
+<li><p>Energy Resources</p></li>
+<li><p>Environmental monitoring Facilities</p></li>
+<li><p>Habitats and biotopes</p></li>
+<li><p>Human health and safety</p></li>
+<li><p>Land use</p></li>
+<li><p>Meteorological geographical features</p></li>
+<li><p>Mineral Resources</p></li>
+<li><p>Natural risk zones</p></li>
+<li><p>Oceanographic geographical features</p></li>
+<li><p>Population distribution and demography</p></li>
+<li><p>Production and industrial facilities</p></li>
+<li><p>Sea regions</p></li>
+<li><p>Soil</p></li>
+<li><p>Species distribution</p></li>
+<li><p>Statistical units</p></li>
+<li><p>Utility and governmental services</p></li>
+</ul>
+</dd>
+</dl>
+<p>Organizace jsou povinny poskytovat datové sady v soulady s Annexy 1-3 INSPIRE.
+Většinou za tímto účelem tvoří automatizované procesy, které z národních
+datových sad tvoří datové sady odpovídající profilu INSPIRE.</p>
+<p>INSPIRE nevyžaduje pořizování nových dat, pouze harmonizaci stávajících
+datasetů.</p>
+</section>
+<section id="sitove-sluzby">
+<h3>Síťové služby<a class="headerlink" href="#sitove-sluzby" title="Permalink to this heading">¶</a></h3>
+<p>Síťové služby INSPIRE (<a class="reference external" href="https://inspire.ec.europa.eu/network-services">Network services</a>) jsou služby sloužící pro</p>
+<ul class="simple">
+<li><p>vyhledávání (discovery)</p></li>
+<li><p>prohlížení (view)</p></li>
+<li><p>stahování (download)</p></li>
+<li><p>transformace (transformation)</p></li>
+</ul>
+<p>dat. Jsou postaveny na standardech OGC (CSW, WFS/WCS, WMS, WPS).</p>
+</section>
+<section id="monitoring-a-reporting">
+<h3>Monitoring a reporting<a class="headerlink" href="#monitoring-a-reporting" title="Permalink to this heading">¶</a></h3>
+<p>Národní organizace odpovědné za INSPIRE musí implementovat nástroje pro
+reportování stavu implementace INSPIRE ve svých státech a jednotlivé organizace
+musí implementovat nástroje pro monitorování služeb.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Spatial data infrastructure - SDI</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#softwareove-komponenty">Softwareové komponenty</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Spatial data infrastructure - SDI"
+              >předchozí</a> |
+            <a href="../otevrena-data/index.html" title="Otevřená data - OpenData"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

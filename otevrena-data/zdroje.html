@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Zdroje otevřených dat &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="prev" title="Otevřená data - OpenData" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Otevřená data - OpenData"
+             accesskey="P">předchozí</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="zdroje-otevrenych-dat">
+<span id="index-0"></span><h1>Zdroje otevřených dat<a class="headerlink" href="#zdroje-otevrenych-dat" title="Permalink to this heading">¶</a></h1>
+<section id="globalni-datove-zdroje">
+<h2>Globální datové zdroje<a class="headerlink" href="#globalni-datove-zdroje" title="Permalink to this heading">¶</a></h2>
+<dl>
+<dt><strong>OpenStreetMap</strong></dt><dd><p><a class="reference external" href="http://openstreetmap.org">OpenStreetMap</a> (<a class="reference external" href="http://openstreetmap.cz">česká stránka</a>) je globální vektorová datová sada tvořená
+komunitou přispěvatelů podobně jako <a class="reference external" href="http://wikipedia.org">Wikipedia</a>.</p>
+<p>Data pocházejí jak z ručních editací, tak z importů.</p>
+<p>To, co je vidět na hlavní webové stránce, je pouze část dat -
+kompletní data jsou uložena v databázi a lze se k nim dostat například
+prostřednictvím <a class="reference external" href="https://www.openstreetmap.org/export">exportů</a> nebo
+prostřednictvím <a class="reference external" href="https://lz4.overpass-api.de/">API</a>. Nejjednodušší
+cesta k datům z OSM je ve formě Shapefiles ze serveru
+<a class="reference external" href="http://download.geofabrik.de">http://download.geofabrik.de</a>.</p>
+<p>Datový model je detailě rozpracovaný v <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Map_Features">projektové wiki</a></p>
+</dd>
+<dt><strong>Satelitní snímky programu Copernicus</strong></dt><dd><p><a class="reference external" href="https://www.copernicus.eu">Program EU Copernicus</a> je program
+dálkového průzkumu Země (DPZ - Earth Observation - EO). V rámci
+programu jsou vypouštěny družice Sentinel 1-5, které mají různé
+charakteristiky (jsou určené ke sběrů různých typů dat o Zemi).</p>
+<dl class="simple">
+<dt>Sentinel 1:</dt><dd><p>Sentinel-1 pořizuje radarové snímky</p>
+</dd>
+<dt>Sentinel 2:</dt><dd><p>Sentinel-2 družice snímají různé vlnové délky světla odražené
+od Zemského povrchu. Vlnové délky jsou jak ve viditelné, tak v
+ultra-fialové a infra-červené části spektra.</p>
+</dd>
+<dt>Sentinel 3:</dt><dd><p>Družice Sentinel-3 má na své palubě několik typů senzorů pro
+měření teploty, výškoměr, mirkovlnný radiometr a další.
+Družice jsou určeny zejména pro sledování oceánů</p>
+</dd>
+<dt>Sentinel 4:</dt><dd><p>Soustředí se na měření koncentrací plynů a aerosolů v atmoséře
+a sbírá data o kvalitě ovzduší.</p>
+</dd>
+<dt>Sentinel 5:</dt><dd><p>Sbírá data v ultrafialovém spektru a zaměřuje se na kvalitu
+ovzduší, monitoring ozónové vrstvy,  a další.</p>
+</dd>
+</dl>
+<p>Data z družic Sentinel jsou dostupná zejména prostřednictvím tzv
+<a class="reference external" href="https://scihub.copernicus.eu/">Access Hubu</a> nebo prostřednictvím
+několika firem, které k datům přidávají svoje služby - tzv. <a class="reference external" href="https://scihub.copernicus.eu/">DIAS</a>.</p>
+</dd>
+<dt><strong>Aster - Digitální model terénu</strong></dt><dd><p>Globálních digitálních modelů terénu (povrchů) je několik, jeden z asi
+nejpovedenějších a nejčerstvějších je <a class="reference external" href="https://e4ftl01.cr.usgs.gov/ASTT/ASTGTM.003/">Aster verze 3</a>  (viz <a class="reference external" href="https://lpdaac.usgs.gov/news/nasa-and-meti-release-aster-global-dem-version-3/">NASA and METI Release ASTER Global DEM Version 3</a>). Data jsou odvozena ze stereoskopických družicových snímků a mají prostorové rozlišení 15m a pokrývají oblast mezi 83° sev. a jižní šířky.</p>
+</dd>
+<dt><strong>SRTM - Digitální model terénu</strong></dt><dd><p><a class="reference external" href="https://cgiarcsi.community/data/srtm-90m-digital-elevation-database-v4-1/">Shuttle Radar Topographic Mission</a> má rozlišení 90m, ale je sbírán radarovou technologí.</p>
+</dd>
+<dt><strong>Earth Explorer</strong></dt><dd><p>Americká služba <a class="reference external" href="https://earthexplorer.usgs.gov/">Earth Explorer</a> je
+portál pro vyhledávání a stahování datových různých globálních i čistě
+(US) Amerických datových zdrojů.</p>
+</dd>
+<dt><strong>Earth Explorer</strong></dt><dd><p>Americká služba <a class="reference external" href="https://earthexplorer.usgs.gov/">Earth Explorer</a> je
+portál pro vyhledávání a stahování datových různých globálních i čistě
+(US) Amerických datových zdrojů.</p>
+</dd>
+<dt><strong>Portál veřejně přístupných dat EU</strong></dt><dd><p>Podobně pro evropské datové zdroje je určen <a class="reference external" href="https://data.europa.eu/euodp/cs/home">Portál veřejně
+přístupných dat EU</a>.</p>
+</dd>
+</dl>
+</section>
+<section id="ceske-datove-zdroje">
+<h2>České datové zdroje<a class="headerlink" href="#ceske-datove-zdroje" title="Permalink to this heading">¶</a></h2>
+<p>Kromě výše zmíněných globálních zdrojů</p>
+<dl>
+<dt><strong>ArcČR 500</strong></dt><dd><p>Digitální vektorová geografická databáze České republiky ArcČR® 500 je vytvořena v podrobnosti měřítka 1 : 500 000. Jejím obsahem jsou přehledné geografické informace o České republice. Data vznikla ve spolupráci ARCDATA PRAHA, s.r.o., Zeměměřického úřadu a Českého statistického úřadu a jsou distribuována zdarma.
+<a class="reference external" href="https://www.arcdata.cz/produkty/geograficka-data/arccr-500">https://www.arcdata.cz/produkty/geograficka-data/arccr-500</a></p>
+</dd>
+<dt><strong>RUIAN</strong></dt><dd><blockquote>
+<div><p>Veřejný dálkový přístup k datům registru územní identifikace, adres a nemovitostí - RUIAN <a class="reference external" href="https://vdp.cuzk.cz/">https://vdp.cuzk.cz/</a></p>
+</div></blockquote>
+<p>Jedná se o veřejně přístupná aktulní i historická data katastru
+nemovitostí. - RUIAN</p>
+</dd>
+<dt><strong>Národní geoportál INSPIRE</strong></dt><dd><p>Národní Geoportál INSPIRE katalogizuje zejména data o životním
+prosředí (v souvislosti s legislativou INSIRE).
+<a class="reference external" href="http://geoportal.gov.cz">http://geoportal.gov.cz</a></p>
+</dd>
+<dt><strong>Služby ČUZK</strong></dt><dd><p>Český úřad zeměměřičský a katastrální nabízí celou řadu <a class="reference external" href="https://geoportal.cuzk.cz/(S(nidqwbun2yzvpxkkpld31hif))/Default.aspx?mode=TextMeta&amp;side=WMS.uvod&amp;text=WMS.uvod&amp;head_tab=sekce-03-gp&amp;menu=31">webových
+mapových služeb</a></p>
+</dd>
+<dt><strong>Dibavod</strong></dt><dd><p>DIgitální BÁze VOdohospodářských Dat (DIBAVOD) <a class="reference external" href="http://www.dibavod.cz/">http://www.dibavod.cz/</a></p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Otevřená data - OpenData</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#ti-hvezdickova-koncence">5ti hvězdičková koncence</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#publikace-otevrenych-dat">Publikace otevřených dat</a></li>
+</ul>
+</li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Otevřená data - OpenData"
+              >předchozí</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

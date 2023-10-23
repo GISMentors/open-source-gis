@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Otevřená data - OpenData &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Zdroje otevřených dat" href="zdroje.html" />
+    <link rel="prev" title="INSPIRE" href="../sdi/inspire.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../sdi/inspire.html" title="INSPIRE"
+             accesskey="P">předchozí</a> |
+          <a href="zdroje.html" title="Zdroje otevřených dat"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="otevrena-data-opendata">
+<span id="index-0"></span><h1>Otevřená data - OpenData<a class="headerlink" href="#otevrena-data-opendata" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://cs.wikipedia.org/wiki/Otev%C5%99en%C3%A1_data">Otevřená data</a> (anglicky Open data) jsou informace a data zveřejněná na
+internetu, která jsou úplná, snadno dostupná, strojově čitelná, používající
+standardy s volně dostupnou specifikací, zpřístupněná za jasně definovaných
+podmínek užití dat s minimem omezení a dostupná uživatelům při vynaložení minima
+možných nákladů. Jedná se například o jízdní řády, příjmy států, rozpočty,
+databáze, seznam poskytovatelů sociálních služeb, kalendář ministra nebo měření
+čistoty ovzduší. Pocházejí z univerzit, nevládních organizací, soukromých firem
+nebo veřejné správy.</p>
+<section id="ti-hvezdickova-koncence">
+<h2>5ti hvězdičková koncence<a class="headerlink" href="#ti-hvezdickova-koncence" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> sestavil <a class="reference external" href="https://5stardata.info/">pětistupňovou škálu otevřenosti dat</a> (<a class="reference external" href="http://5stardata.info">http://5stardata.info</a>).</p>
+<ol class="arabic simple">
+<li><p>★ Data, která nejsou ve strojově čitelném formátu (např. PDF, obrázek, scan, OGC WMS, …)</p></li>
+<li><p>★★ Data přístupná ve strojově čitelném formátu (např. XLS, MS Word, DWG, …)</p></li>
+<li><p>★★★  Data přístupná v otevřeném formátu se svobodnou specifikací (TXT, CSV, GeoPackage, ShapeFile, OGC WCS, OGC WFS)</p></li>
+<li><p>★★★★  Data, která kromě svobodné specifikace a jednoduché čitelnosti mají také vlastní URL adresu (OGC WFS)</p></li>
+<li><p>★★★★★  Data, která jsou kromě svobodné specifikace, jednoduché čitelnosti a vlastní URL adresy i systematicky propojená.</p></li>
+</ol>
+<p>Veřejná správa by měla usilovat o alespoň úroveň 3 hvězdiček, to zn. publikovat
+licenčně nezatížená data v otevřených formátech.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/5-star-steps.png" src="../_images/5-star-steps.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 57 </span><span class="caption-text"><a class="reference external" href="https://5stardata.info/">https://5stardata.info/</a></span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="publikace-otevrenych-dat">
+<h2>Publikace otevřených dat<a class="headerlink" href="#publikace-otevrenych-dat" title="Permalink to this heading">¶</a></h2>
+<p>Postup publikace a výběr dat v ČR detailně popisuje <a class="reference external" href="https://opendata.gov.cz/">Portál poskytovatele
+otevřených dat</a> (na Slovensku <a class="reference external" href="https://data.gov.sk/">Portál otvorených dát</a>).</p>
+<p>Podle <a class="reference external" href="https://opendata.gov.cz/standardy:vytvoreni-publikacniho-planu">Portálu poskytovatele</a>
+lze proces otevírání dat rozdlit do následujících fází</p>
+<ol class="arabic simple">
+<li><p>stanovení rolí pro otevírání dat</p></li>
+<li><p>ukotvení odpovědností a postupu publikace do interní legislativy</p></li>
+<li><p>vybrání datových sad k otevření (posouzení přínosů, rizik publikace)</p></li>
+<li><p>stanovení harmonogramu publikace (i s ohledem na technickou náročnost)</p></li>
+<li><p>schválení publikačního plánu vedením</p></li>
+<li><p>pravidelné vyhodnocování stavu publikace</p></li>
+</ol>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="zdroje.html">Zdroje otevřených dat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="zdroje.html#globalni-datove-zdroje">Globální datové zdroje</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zdroje.html#ceske-datove-zdroje">České datové zdroje</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Otevřená data - OpenData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ti-hvezdickova-koncence">5ti hvězdičková koncence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publikace-otevrenych-dat">Publikace otevřených dat</a></li>
+</ul>
+</li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../sdi/inspire.html" title="INSPIRE"
+              >předchozí</a> |
+            <a href="zdroje.html" title="Zdroje otevřených dat"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

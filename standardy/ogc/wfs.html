@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>OGC Web Feature Service - WFS &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gismentors.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../../search.html" />
+    <link rel="next" title="OGC Web Coverage Service - WCS" href="wcs.html" />
+    <link rel="prev" title="OGC Web Map Tiled Service - WMTS" href="wmts.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="wmts.html" title="OGC Web Map Tiled Service - WMTS"
+             accesskey="P">předchozí</a> |
+          <a href="wcs.html" title="OGC Web Coverage Service - WCS"
+             accesskey="N">další</a> |
+          <a href="../../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ogc-web-feature-service-wfs">
+<span id="index-0"></span><h1>OGC Web Feature Service - WFS<a class="headerlink" href="#ogc-web-feature-service-wfs" title="Permalink to this heading">¶</a></h1>
+<p>Narozdíl od služeb <a class="reference internal" href="wms.html"><span class="doc">WMS</span></a> či <a class="reference internal" href="wmts.html"><span class="doc">WMTS</span></a>, které vrací
+mapový náhled na poskytovaná data, služba <strong>OGC Web Feature Service</strong>
+(<a class="reference external" href="http://opengeospatial.org/standards/wfs">WFS</a>) slouží pro práci s
+geografickými daty ve vektorové reprezentaci (tzv. „features“ -
+vektorové prvky). WFS primárně pracuje s formátem <a class="reference internal" href="gml.html"><span class="doc">GML</span></a>, další
+formáty mohou být podporovány podle možností serveru.</p>
+<p>Pokud dané řešení podporuje, je možné provádět vybrané
+prostorové operace na straně serveru, stejně tak jako filtrovat prvky
+(na základě prostorového nebo atributového dotazu) podle požadavků
+klienta.</p>
+<p>WFS poskytuje data v režimu čtení, nepodporuje tedy opačný směr toku
+dat, tj. od klienta na server. Tuto problematiku řeší navazující
+standard <strong>WFS-T</strong> (<em>Transactional WFS</em>), který tak umožňuje editovat
+elementy na straně serveru, zamykat jednotlivé záznamy a pod.</p>
+<section id="wfs-getcapabilities">
+<span id="index-1"></span><h2>WFS GetCapabilities<a class="headerlink" href="#wfs-getcapabilities" title="Permalink to this heading">¶</a></h2>
+<p>Jako příklad použijeme WFS server <a class="reference external" href="http://www.ochranaprirody.cz">AOPK ČR</a>:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer">https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer</a></p>
+</div></blockquote>
+<p>Nejprve zjistíme vlastnosti serveru z tzv. <em>Capabilities</em> dokumentu:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer?request=GetCapabilities&amp;service=WFS">https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer?request=GetCapabilities&amp;service=WFS</a></p>
+</div></blockquote>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;wfs:WFS_Capabilities version=&quot;2.0.0&quot; xsi:schemaLocation=&quot;http://w... &gt;
+  &lt;ows:ServiceIdentification&gt;
+      &lt;ows:Title&gt;Chráněná území&lt;/ows:Title&gt;
+      &lt;ows:Abstract&gt;Služba zpřístupňuje geografická data zvláště a smluvně chráněných území v České republice&lt;/ows:Abstract&gt;
+      &lt;ows:Keywords&gt;
+          &lt;ows:Keyword&gt;Chráněné území&lt;/ows:Keyword&gt;
+      &lt;/ows:Keywords&gt;
+      &lt;ows:ServiceType&gt;WFS&lt;/ows:ServiceType&gt;
+      &lt;ows:ServiceTypeVersion&gt;1.1.0&lt;/ows:ServiceTypeVersion&gt;
+      &lt;ows:Fees&gt;žádné&lt;/ows:Fees&gt;
+      &lt;ows:AccessConstraints&gt;licence (CC BY 3.0 CZ): Uveďte původ&lt;/ows:AccessConstraints&gt;
+  &lt;/ows:ServiceIdentification&gt;
+  &lt;ows:ServiceProvider&gt;
+      &lt;ows:ProviderName&gt;Agentura ochrany přírody a krajiny České republiky&lt;/ows:ProviderName&gt;
+      &lt;ows:ProviderSite xlink:href=&quot;http://www.ochranaprirody.cz&quot;/&gt;
+      ...
+  &lt;/ows:ServiceProvider&gt;
+  &lt;ows:OperationsMetadata&gt;
+      ...
+  &lt;/ows:OperationsMetadata&gt;
+</pre></div>
+</div>
+<p>Seznam dostupných typů prvků najdeme v sekci <em>FeatureTypeList</em>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureTypeList&gt;</span>
+<span class="w">    </span><span class="nt">&lt;wfs:FeatureType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:Name&gt;</span>UzemniOchrana_ChranUzemi:Velkoplošné_zvláště_chráněné_území<span class="nt">&lt;/wfs:Name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:Title&gt;</span>Velkoplošné_zvláště_chráněné_území<span class="nt">&lt;/wfs:Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:DefaultSRS&gt;</span>urn:ogc:def:crs:EPSG:6.9:5514<span class="nt">&lt;/wfs:DefaultSRS&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:OtherSRS&gt;</span>urn:ogc:def:crs:EPSG:6.9:4326<span class="nt">&lt;/wfs:OtherSRS&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:OutputFormats&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:Format&gt;</span>text/xml;<span class="w"> </span>subType=gml/3.1.1/profiles/gmlsf/1.0.0/0<span class="nt">&lt;/wfs:Format&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/wfs:OutputFormats&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:WGS84BoundingBox&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:LowerCorner&gt;</span>12.135781691549301<span class="w"> </span>48.405980213444934<span class="nt">&lt;/ows:LowerCorner&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:UpperCorner&gt;</span>18.824874392730379<span class="w"> </span>51.278530725092587<span class="nt">&lt;/ows:UpperCorner&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ows:WGS84BoundingBox&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/wfs:FeatureType&gt;</span>
+<span class="w">    </span><span class="nt">&lt;wfs:FeatureType&gt;</span>
+<span class="w">    </span>...
+<span class="w">    </span><span class="nt">&lt;wfs:FeatureType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:Name&gt;</span>UzemniOchrana_ChranUzemi:Maloplošné_zvláště_chráněné_území__MZCHÚ_<span class="nt">&lt;/wfs:Name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:Title&gt;</span>Maloplošné_zvláště_chráněné_území__MZCHÚ_<span class="nt">&lt;/wfs:Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:DefaultSRS&gt;</span>urn:ogc:def:crs:EPSG:6.9:5514<span class="nt">&lt;/wfs:DefaultSRS&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:OtherSRS&gt;</span>urn:ogc:def:crs:EPSG:6.9:4326<span class="nt">&lt;/wfs:OtherSRS&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:OutputFormats&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wfs:Format&gt;</span>text/xml;<span class="w"> </span>subType=gml/3.1.1/profiles/gmlsf/1.0.0/0<span class="nt">&lt;/wfs:Format&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/wfs:OutputFormats&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:WGS84BoundingBox&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:LowerCorner&gt;</span>11.996206262583122<span class="w"> </span>48.270769845462425<span class="nt">&lt;/ows:LowerCorner&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:UpperCorner&gt;</span>18.952872493443596<span class="w"> </span>51.240248516869322<span class="nt">&lt;/ows:UpperCorner&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ows:WGS84BoundingBox&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/wfs:FeatureType&gt;</span>
+<span class="w">    </span><span class="nt">&lt;wfs:FeatureType&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/wfs:FeatureTypeList&gt;</span>
+</pre></div>
+</div>
+<p>Filtrovací operace podporované serverem jsou vypsány v sekci <em>Filter_Capabilities</em>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ogc:Filter_Capabilities&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ogc:Spatial_Capabilities&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:GeometryOperands&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:GeometryOperand&gt;</span>gml:Envelope<span class="nt">&lt;/ogc:GeometryOperand&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:GeometryOperand&gt;</span>gml:Point<span class="nt">&lt;/ogc:GeometryOperand&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:GeometryOperand&gt;</span>gml:Polygon<span class="nt">&lt;/ogc:GeometryOperand&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:GeometryOperand&gt;</span>gml:LineString<span class="nt">&lt;/ogc:GeometryOperand&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:GeometryOperands&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:SpatialOperators&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;BBOX&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Equals&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Disjoint&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Intersects&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Crosses&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Touches&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Within&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Contains&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:SpatialOperator</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Overlaps&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:SpatialOperators&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ogc:Spatial_Capabilities&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ogc:Scalar_Capabilities&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:LogicalOperators/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:ComparisonOperators&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>EqualTo<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>NotEqualTo<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>LessThan<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>GreaterThan<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>LessThanEqualTo<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>GreaterThanEqualTo<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>Like<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>Between<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:ComparisonOperator&gt;</span>NullCheck<span class="nt">&lt;/ogc:ComparisonOperator&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:ComparisonOperators&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ogc:Scalar_Capabilities&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ogc:Id_Capabilities&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:EID/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:FID/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ogc:Id_Capabilities&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ogc:Filter_Capabilities&gt;</span>
+<span class="nt">&lt;/wfs:WFS_Capabilities&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="stahnuti-dat">
+<h2>Stáhnutí dat<a class="headerlink" href="#stahnuti-dat" title="Permalink to this heading">¶</a></h2>
+<p>Stažení dat obstará dotaz typu <em>GetFeature</em>, kde navíc musíte
+specifikovat <em>typename</em>, tj. typ prvků, který chcete obdžet jako
+výsledek dotazu. Server vratí prvky ve výchozím datovém formátu
+(tj. <span class="xref std std-doc">GML</span>) a souřadnicivém systému, v případě ukázkového serveru
+to je S-JTSK (<a class="reference external" href="http://epsg.io/5514">EPSG:5514</a>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://gis.nature.cz/.../WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_ChranUzemi:...
+                                         |            |                   |
+typ sluzby ------------------------------+            |                   |
+dotaz typu GetFeature --------------------------------+                   |
+specifikace typu prvku (typename)-----------------------------------------+
+</pre></div>
+</div>
+<p>Příklad pro získání prvků velkoprošných chráněných území:</p>
+<p><a class="reference external" href="https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD">https://gis.nature.cz/…/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_…</a></p>
+<p>Pokud si přejeme stáhnout data v jiném než výchozím souřadnicovém
+systému, můžeme jej definovat pomocí parametru <em>srsname</em>. Následuje
+příklad pro získání dat v souřadnicovém systému WGS-84 (<a class="reference external" href="http://epsg.io/4326">EPSG:4326</a>,
+pozor na pořadí souřadnic (viz <em>Capabilities response</em>)):</p>
+<p><a class="reference external" href="https://gis.nature.cz/arcgis/services/Aplikace/Opendata/MapServer/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=Aplikace_Opendata:Velkoplošná_zvláště_chráněná_území__VZCHÚ__&amp;srsname=epsg:4326">https://gis.nature.cz/…/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_…&amp;srsname=epsg:4326</a></p>
+<section id="filtrovani-dat">
+<h3>Filtrování dat<a class="headerlink" href="#filtrovani-dat" title="Permalink to this heading">¶</a></h3>
+<p>Následuje příklad stažení dat vybraných na základě <strong>prostorového</strong>
+filtru. Filtr je předán parametrem <em>filter</em> a definován dle standardu
+<a class="reference external" href="http://www.opengeospatial.org/standards/filter">OGC Filter Encoding</a>. V našem připadě
+může vypadat následovně (v jedné řadce):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">   </span><span class="nt">&lt;ogc:Within&gt;</span>
+<span class="w">     </span><span class="nt">&lt;ogc:PropertyName&gt;</span>SHAPE<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">     </span><span class="nt">&lt;gml:Envelope&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gml:lowerCorner&gt;</span>48.4744444<span class="w"> </span>12.7083628<span class="nt">&lt;/gml:lowerCorner&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gml:upperCorner&gt;</span>49.4017450<span class="w"> </span>14.8397106<span class="nt">&lt;/gml:upperCorner&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/gml:Envelope&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/ogc:Within&gt;</span>
+<span class="nt">&lt;/ogc:Filter&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p>Níže uvedené příklady berte prozatím pouze jako ilustrační,
+server AOPK ČR působí, že prostorové filtrování v současné
+době nepodporuje (viz sekce <em>Filter_Capabilities</em> v
+dokumentu <em>Capabilities</em>).</p>
+</div>
+<p>Vybereme tedy prvky, které leží uvnitř (<em>within</em>) daného minimálního
+ohraničujícího obdélníku:</p>
+<p><a class="reference external" href="https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&amp;srsname=epsg:4326&amp;filter=%3Cogc:Filter%3E%3Cogc:Within%3E%3Cogc:PropertyName%3ESHAPE%3C/ogc:PropertyName%3E%3Cgml:Envelope%3E%3Cgml:lowerCorner%3E48.474444412.7083628%3C/gml:lowerCorner%3E%3Cgml:upperCorner%3E49.401745014.8397106%3C/gml:upperCorner%3E%3C/gml:Envelope%3E%3C/ogc:Within%3E%3C/ogc:Filter%3E">https://gis.nature.cz/…/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_…&amp;srsname=epsg:4326&amp;filter=&lt;ogc:Filter&gt;…</a></p>
+<p>Podobně může být definován <strong>atributový</strong> filtr:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">   </span><span class="nt">&lt;ogc:PropertyIsLike</span><span class="w"> </span><span class="na">wildCard=</span><span class="s">&quot;%&quot;</span><span class="w"> </span><span class="na">singleChar=</span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="na">escapeChar=</span><span class="s">&quot;!&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ogc:PropertyName&gt;</span>NAZEV<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ogc:Literal&gt;</span>Český<span class="w"> </span>kras<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/ogc:PropertyIsLike&gt;</span>
+<span class="nt">&lt;/ogc:Filter&gt;</span>
+</pre></div>
+</div>
+<p>kdy vybereme pouze prvky velkoplošných chraněných území, které mají
+atribut NAZEV s hodnotou „Český kras“. Jinými slovy získáme všechny
+polygony, které definují CHKO Český kras:</p>
+<p><a class="reference external" href="https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_ChranUzemi:Velkoplo%C5%A1n%C3%A9_zvl%C3%A1%C5%A1t%C4%9B_chr%C3%A1n%C4%9Bn%C3%A9_%C3%BAzem%C3%AD&amp;srsname=epsg:4326&amp;filter=%3Cogc:Filter%3E%3Cogc:PropertyIsLikewildCard=&quot;%&quot;singleChar=&quot;?&quot;escapeChar=&quot;!&quot;%3E%3Cogc:PropertyName%3ENAZEV%3C/ogc:PropertyName%3E%3Cogc:Literal%3EČeskýkras%3C/ogc:Literal%3E%3C/ogc:PropertyIsLike%3E%3C/ogc:Filter%3E'">https://gis.nature.cz/…/WFSServer?service=WFS&amp;request=GetFeature&amp;typename=UzemniOchrana_…&amp;srsname=epsg:4326&amp;filter=&lt;ogc:Filter&gt;&lt;ogc:PropertyIsLike…</a></p>
+<p>Filtrovat data poskytovaná službou WFS lze pohodlně ve vhodném
+desktopové klientovi, např. <a class="reference external" href="https://gismentors.github.io/qgis-zacatecnik">QGIS</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NAZEV</span> <span class="n">LIKE</span> <span class="s1">&#39;Český les&#39;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/wfs-filter.png"><img alt="../../_images/wfs-filter.png" src="../../_images/wfs-filter.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Ukázka aplikace WFS filtru v prostředí QGIS.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standardy v GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku">Standardy z pohledu otevřenosti a způsobu jejich vzniku</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#prehled-standardizacnich-autorit">Přehled standardizačních autorit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="wmts.html" title="OGC Web Map Tiled Service - WMTS"
+              >předchozí</a> |
+            <a href="wcs.html" title="OGC Web Coverage Service - WCS"
+              >další</a> |
+            <a href="../../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

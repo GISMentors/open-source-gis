@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Katastrálne dáta SR v GIS &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Nasadenie nástroja" href="nasadenie.html" />
+    <link rel="prev" title="Desktop GIS" href="../desktop/index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../desktop/index.html" title="Desktop GIS"
+             accesskey="P">předchozí</a> |
+          <a href="nasadenie.html" title="Nasadenie nástroja"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="katastralne-data-sr-v-gis">
+<span id="index-0"></span><h1>Katastrálne dáta SR v GIS<a class="headerlink" href="#katastralne-data-sr-v-gis" title="Permalink to this heading">¶</a></h1>
+<p>V predchádzajúcich kapitolách boli rozoberané súradnicové systémy, viď. <a class="reference internal" href="../soursystemy/index.html#souradnicovesystemy"><span class="std std-ref">Souřadnicové systémy</span></a>, dve základné reprezentácie dát v GIS, viď. <a class="reference internal" href="../formaty/index.html#reprezentacedat"><span class="std std-ref">Reprezentace dat</span></a>, priestorové databázy <a class="reference internal" href="../databaze/index.html#prostorovedatabaze"><span class="std std-ref">Prostorové databáze</span></a> a ďalšie. Všetky tieto znalosti sa dajú veľmi pekne a elegantne využiť aj pri práci s dátami slovenského katastra. Cieľom tejto kapitoly je predstaviť a ukázať možnosti pracovať so zásuvným modulom <em>SKKN tool</em>, resp. nástrojom <em>kataster-import</em>, nakoľko zásuvný modul <em>SKKN tool</em> aktuálne nie je funkčný. Samozrejme však plánujeme jeho aktualizáciu a opätovný chod.</p>
+<p>Nástroj <em>kataster-import</em> však funguje a dá sa plne využiť na konverziu a import grafických a popisných katastrálnych dát (KN) Slovenskej republiky (SR) do geografického informačného systému (GIS).</p>
+<p>Podrobná dokumentácia je na GitHube, viď. <a class="reference external" href="https://github.com/lfurtkevicova/kataster-import">lfurtkevicova/kataster-import</a> a pre plugin <em>SKKN tool</em> viď. <a class="reference external" href="https://github.com/lfurtkevicova/kn-stuff/wiki/SKKN-tool">SKKN tool</a> <em>ako nový zásuvný modul v QGIS</em> (<em>https://github.com/lfurtkevicova/kn-stuff/wiki/SKKN-tool</em>).</p>
+<p>Dnes existujú mnohé veľmi šikovné aplikácie ako napríklad tzv. <em>MAPKA</em> - <a class="reference external" href="https://zbgis.skgeodesy.sk/mkzbgis/sk/kataster?bm=zbgis&amp;z=8&amp;c=19.53000,48.80000#">Mapový klient ZBGIS</a> alebo interaktívna online mapa s vrstvami samospráv, obcí a miest, ktorá obsahuje aj ich územné plány, katastrálne dáta, zaujímavosti, atrakcie a vybavenosť <a class="reference external" href="https://mojamapa.sk/?lang=sk">Mojamapa.sk</a>. Tieto nástroje sú veľmi nápomocné, no ich funkčnosť je často limitovaná.</p>
+<p>Webová mapová aplikácia <em>Mapový klient ZBGIS</em> slúži na interaktívnu prácu s údajmi ZBGIS (základná báza údajov pre geografický informačný systém), digitálnymi údajmi KN, registrom adries, registrom pôdy LPIS, referenčnými geodetickými bodmi, rastrovými mapami z archívu ako aj s digitálnym modelom reliéfu (terénu), ortofotosnímkami a geografickými názvami. Je to skrátka komplexný nástroj, ktorý zobrazuje, vyhľadáva a analyzuje priestorové údaje.</p>
+<p>Ako často prezentuje aj Úrad geodézie, kartografie a katastra SR (UGKK), je možné pracovať s dátami z externých zdrojov vo formáte <em>SHP</em>, <em>DGN</em>, <em>DXF</em>, <em>GML</em>, <em>GPX</em> alebo formou webových mapových služieb <em>WMS</em>, <em>WMTS</em>. V aplikácii je možné vytvárať tlačové výstupy a exporty do formátu <em>PDF</em>, vykonávať základné analýzy nad mapou ako meranie dĺžky a plochy, zobrazenie výškového profilu, získanie súradníc bodov alebo informácie o objektoch z mapy.</p>
+<p>Mapový klient ZBGIS je dokonca optimalizovaný na použitie priamo v mobilných zariadeniach, t.j. tablet, smartfón vďaka čomu možno pracovať priamo v teréne. Tiež je možné na základe aktuálnej polohy mobilného zariadenia identifikovať objekty na mape, napríklad nehnuteľnosť (parcelu) a následne získať o nej detailné informácie ako parcelné číslo, vlastník, číslo listu vlastníctva, druh pozemku, súpisné číslo stavby a podobne. Viac <a class="reference external" href="https://www.geoportal.sk/sk/sluzby/aplikacie/mapovy-klient-zbgis/">tu</a>.</p>
+<p>Ak vyššie uvedené platí, má význam rozmýšľať o tom, ako dostať grafické a popisné dáta KN SR do QGISu?</p>
+<p>Určite áno! Napriek tomu, že sa to za posledné roky ohromne posunulo vpred, sme presvedčení, že QGIS dokáže držať svoje čestné miesto. Viac v časti <a class="reference internal" href="pouzitie.html#pouzitieskkn"><span class="std std-ref">Použitie v praxi</span></a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nasadenie.html">Nasadenie nástroja</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vstupne-data.html">Vstupné dáta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pouzitie.html">Použitie v praxi</a></li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Katastrálne dáta SR v GIS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nasadenie.html">Nasadenie nástroja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vstupne-data.html">Vstupné dáta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pouzitie.html">Použitie v praxi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../desktop/index.html" title="Desktop GIS"
+              >předchozí</a> |
+            <a href="nasadenie.html" title="Nasadenie nástroja"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

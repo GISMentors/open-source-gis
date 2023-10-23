@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>OGC Web Map Tiled Service - WMTS &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gismentors.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../../search.html" />
+    <link rel="next" title="OGC Web Feature Service - WFS" href="wfs.html" />
+    <link rel="prev" title="OGC Web Map Service - WMS" href="wms.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="wms.html" title="OGC Web Map Service - WMS"
+             accesskey="P">předchozí</a> |
+          <a href="wfs.html" title="OGC Web Feature Service - WFS"
+             accesskey="N">další</a> |
+          <a href="../../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ogc-web-map-tiled-service-wmts">
+<h1>OGC Web Map Tiled Service - WMTS<a class="headerlink" href="#ogc-web-map-tiled-service-wmts" title="Permalink to this heading">¶</a></h1>
+<p>S příchodem <a class="reference external" href="http://maps.google.com">mapové aplikace firmy Google</a>
+se značně změnil přístup k poskytování podkladových mapových
+kompozic. Uživatelé pochopili, že pro více-méně statická data (jako
+jsou letecké snímky či topografická mapa, atd.) je možné předgenerovat
+výslednou mapu do formy dlaždic (anglicky <em>tile</em>), ty pak lze ze
+serveru odbavovat relativně rychle. Cenou za rychlost je omezení
+nabízených souřadnicových systémů (pro každý nabízený souřadnicový
+systém se musí vyrobit a udržovat celá dlaždicová sada zvlášť) a
+dostupných měřítek na předem připravené kroky.</p>
+<p>Odpovědí na tuto potřebu je specifikace <a class="reference external" href="http://opengeospatial.org/standards/wmts">OGC WMTS</a> (Web Map Tiled
+Service). Ta umožňuje definovat dostupné dlaždicové sady pro různá
+měřítka a souřadnicové systémy.</p>
+<section id="wmts-getcapabilities">
+<span id="index-0"></span><h2>WMTS GetCapabilities<a class="headerlink" href="#wmts-getcapabilities" title="Permalink to this heading">¶</a></h2>
+<p>Podobně jako u <a class="reference internal" href="wms.html#ogc-wms-capabilities"><span class="std std-ref">WMS GetCapabilities</span></a>, má dotaz typu <em>GetCapabilities</em> i služba
+WMTS. Otestujeme ji opět na serverech ČÚZK:</p>
+<p><a class="reference external" href="http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=WMTS&amp;request=GetCapabilities">http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=WMTS&amp;request=GetCapabilities</a></p>
+<p>Odpověď ze serveru má opět více částí:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;Capabilities xsi:schemaLocation=&quot;http://www.opengis.net/wmts/1.0 ...&gt;
+    &lt;ows:ServiceIdentification&gt;...&lt;/ows:ServiceIdentification&gt;
+    &lt;ows:ServiceProvider&gt;...&lt;/ows:ServiceProvider&gt;
+    &lt;ows:OperationsMetadata&gt;...&lt;/ows:OperationsMetadata&gt;
+    &lt;Contents&gt;...&lt;/Contents&gt;
+&lt;/Capabilities&gt;
+</pre></div>
+</div>
+<p>Vidíme, že výsledný dokument má 4 části:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Identifikace služby (<em>ServiceIdentification</em>)</p></li>
+<li><p>Identifikace poskytovatele (<em>ServiceProvider</em>)</p></li>
+<li><p>Metadata operací (requestů) (<em>OperationsMetadata</em>)</p></li>
+<li><p>Vlastní obsah služby (<em>Contents</em>)</p></li>
+</ul>
+</div></blockquote>
+<section id="serviceidenitication">
+<h3>ServiceIdenitication<a class="headerlink" href="#serviceidenitication" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>...
+<span class="nt">&lt;ows:ServiceIdentification&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Title&gt;</span>Prohlížecí<span class="w"> </span>služba<span class="w"> </span>WMTS<span class="w"> </span>-<span class="w"> </span>Ortofoto<span class="w"> </span>ČR<span class="nt">&lt;/ows:Title&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Abstract&gt;</span>Prohlížecí<span class="w"> </span>služba<span class="w"> </span>WMTS-ORTOFOTO-P<span class="w"> </span>je<span class="w"> </span>poskytována<span class="w"> </span>...<span class="nt">&lt;/ows:Abstract&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Keywords&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Keyword&gt;</span>WMTS<span class="nt">&lt;/ows:Keyword&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Keyword&gt;</span>OTDF<span class="nt">&lt;/ows:Keyword&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ows:Keywords&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:ServiceType&gt;</span>OGC<span class="w"> </span>WMTS<span class="nt">&lt;/ows:ServiceType&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:ServiceTypeVersion&gt;</span>1.0.0<span class="nt">&lt;/ows:ServiceTypeVersion&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Fees&gt;</span>no<span class="w"> </span>conditions<span class="w"> </span>apply<span class="nt">&lt;/ows:Fees&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:AccessConstraints&gt;</span>http://geoportal.cuzk.cz/Dokumenty/Podminky_sluzby_CUZK.pdf<span class="nt">&lt;/ows:AccessConstraints&gt;</span>
+<span class="nt">&lt;/ows:ServiceIdentification&gt;</span>
+...
+</pre></div>
+</div>
+<p>Vidíme, že služba se chová podobně jako <a class="reference internal" href="wms.html"><span class="doc">OGC WMS</span></a>. Je dána svým
+identifikátorem (<em>Name</em>), nadpisem, abstraktem, klíčovými slovy,
+dostupnými verzemi, informacemi o poplatcích a licencí.</p>
+</section>
+<section id="serviceprovider">
+<h3>ServiceProvider<a class="headerlink" href="#serviceprovider" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>...
+<span class="nt">&lt;ows:ServiceProvider&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:ProviderName&gt;</span>Zeměměřický<span class="w"> </span>úřad<span class="nt">&lt;/ows:ProviderName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:ProviderSite</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://geoportal.cuzk.cz&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:ServiceContact&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:IndividualName&gt;</span>Srovnal<span class="w"> </span>Pavel,<span class="w"> </span>Mgr.<span class="nt">&lt;/ows:IndividualName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:PositionName/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:ContactInfo&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:Phone&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:Voice&gt;</span>+420<span class="w"> </span>000<span class="w"> </span>000<span class="w"> </span>000<span class="nt">&lt;/ows:Voice&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:Facsimile/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ows:Phone&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:Address&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:DeliveryPoint&gt;</span>Pod<span class="w"> </span>sídlištěm<span class="w"> </span>9<span class="nt">&lt;/ows:DeliveryPoint&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:City&gt;</span>Praha<span class="nt">&lt;/ows:City&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:AdministrativeArea/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:PostalCode&gt;</span>182<span class="w"> </span>11<span class="nt">&lt;/ows:PostalCode&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:Country&gt;</span>Česká<span class="w"> </span>republika<span class="nt">&lt;/ows:Country&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:ElectronicMailAddress&gt;</span>pavel.srovnal<span class="w"> </span>[zavináč]<span class="w"> </span>cuzk<span class="w"> </span>[tečka]<span class="w"> </span>cz<span class="nt">&lt;/ows:ElectronicMailAddress&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ows:Address&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ows:ContactInfo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ows:ServiceContact&gt;</span>
+<span class="nt">&lt;/ows:ServiceProvider&gt;</span>
+...
+</pre></div>
+</div>
+<p>Část <em>ServiceProvider</em> poskytuje adresu a další kontaktní informace na
+poskytovatele.</p>
+</section>
+<section id="operationsmetadata">
+<h3>OperationsMetadata<a class="headerlink" href="#operationsmetadata" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ows:OperationsMetadata&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Operation</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;GetCapabilities&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:DCP&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:HTTP&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:Get</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://geoportal-orto.cuzk.cz/WMTS_ORTOFOTO/service.svc/get?&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ows:HTTP&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ows:DCP&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:Parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;AcceptFormats&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:AllowedValues&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:Value&gt;</span>application/xml<span class="nt">&lt;/ows:Value&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:Value&gt;</span>text/xml<span class="nt">&lt;/ows:Value&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ows:AllowedValues&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ows:Parameter&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ows:Operation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Operation</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;GetTile&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:DCP&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:HTTP&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ows:Get</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://geoportal-orto.cuzk.cz/WMTS_ORTOFOTO/service.svc/get?&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ows:HTTP&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ows:DCP&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ows:Operation&gt;</span>
+<span class="nt">&lt;/ows:OperationsMetadata&gt;</span>
+</pre></div>
+</div>
+<p><em>OperationsMetadata</em> popisuje adresy URL pro jednotlivé operace (requesty). Vidět
+můžeme detailní informace pro dotazy typu <em>GetCapabilities</em> a <em>GetTile</em>.</p>
+</section>
+<section id="contents">
+<h3>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">¶</a></h3>
+<p>Vlastní obsah služby popíšeme po jednotlivých částech. Nejprve
+začínáme seznamem dostupných vrstev, jejich názvem, titulkem,
+abstraktem a hraničními souřadnicemi.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Contents&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Layer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:Title&gt;</span>Ortofoto<span class="w"> </span>ČR<span class="nt">&lt;/ows:Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:Abstract&gt;</span>Ortofoto<span class="w"> </span>ČR<span class="nt">&lt;/ows:Abstract&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:Keywords/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:Identifier&gt;</span>orto<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:WGS84BoundingBox&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:LowerCorner&gt;</span>12.066950249369<span class="w"> </span>48.535342162056<span class="nt">&lt;/ows:LowerCorner&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:UpperCorner&gt;</span>18.886701204096<span class="w"> </span>51.080141266427<span class="nt">&lt;/ows:UpperCorner&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ows:WGS84BoundingBox&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Style</span><span class="w"> </span><span class="na">isDefault=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:Identifier&gt;</span>default<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Style&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Format&gt;</span>image/png<span class="nt">&lt;/Format&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Format&gt;</span>image/jpeg<span class="nt">&lt;/Format&gt;</span>
+</pre></div>
+</div>
+<p>Každá vrstva odkazuje pomocí „Linků“ na tzv. <em>MatrixSet</em> připraveného
+schématu dlaždic. Pro každé měřítko a souřadnicový systém specifikuje
+rozmezí sloupečků a řádků v matici dlaždic:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&lt;TileMatrixSetLink&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TileMatrixSet&gt;</span>jtsk:epsg:5514<span class="nt">&lt;/TileMatrixSet&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TileMatrixSetLimits&gt;</span>
+<span class="w">            </span>...
+<span class="w">            </span><span class="nt">&lt;TileMatrixLimits&gt;</span>
+<span class="w">                </span><span class="nt">&lt;TileMatrix&gt;</span>5<span class="nt">&lt;/TileMatrix&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MinTileRow&gt;</span>0<span class="nt">&lt;/MinTileRow&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MaxTileRow&gt;</span>20<span class="nt">&lt;/MaxTileRow&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MinTileCol&gt;</span>0<span class="nt">&lt;/MinTileCol&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MaxTileCol&gt;</span>31<span class="nt">&lt;/MaxTileCol&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/TileMatrixLimits&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TileMatrixLimits&gt;</span>
+<span class="w">                </span><span class="nt">&lt;TileMatrix&gt;</span>6<span class="nt">&lt;/TileMatrix&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MinTileRow&gt;</span>0<span class="nt">&lt;/MinTileRow&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MaxTileRow&gt;</span>40<span class="nt">&lt;/MaxTileRow&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MinTileCol&gt;</span>0<span class="nt">&lt;/MinTileCol&gt;</span>
+<span class="w">                </span><span class="nt">&lt;MaxTileCol&gt;</span>62<span class="nt">&lt;/MaxTileCol&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/TileMatrixLimits&gt;</span>
+<span class="w">            </span>...
+<span class="w">        </span><span class="nt">&lt;/TileMatrixSetLimits&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/TileMatrixSetLink&gt;</span>
+<span class="nt">&lt;/Layer&gt;</span>
+</pre></div>
+</div>
+<p>Po seznamu vrstev následuje seznam tzv. <em>MatrixSetů</em> - připravených
+schémat dlaždicové sady. V našem příkladu si to ukážeme na schématu
+pro souřadnicový systém S-JTSK:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;TileMatrixSet&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:Identifier&gt;</span>jtsk:epsg:5514<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:BoundingBox&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:LowerCorner&gt;</span>-925000.000000000000<span class="w"> </span>-1444353.535999999800<span class="nt">&lt;/ows:LowerCorner&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ows:UpperCorner&gt;</span>-400646.464000000040<span class="w"> </span>-920000.000000000000<span class="nt">&lt;/ows:UpperCorner&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ows:BoundingBox&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ows:SupportedCRS&gt;</span>EPSG:5514<span class="nt">&lt;/ows:SupportedCRS&gt;</span>
+</pre></div>
+</div>
+<p>Po počátečních metadatech následuje definice levého-horního rohu, velikost
+dlaždice a počet sloupců/řádků matice dlaždic:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="nt">&lt;TileMatrix&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:Identifier&gt;</span>0<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ScaleDenominator&gt;</span>7315200<span class="nt">&lt;/ScaleDenominator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TopLeftCorner&gt;</span>-925000.000000000000<span class="w"> </span>-920000.000000000000<span class="nt">&lt;/TopLeftCorner&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TileWidth&gt;</span>256<span class="nt">&lt;/TileWidth&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TileHeight&gt;</span>256<span class="nt">&lt;/TileHeight&gt;</span>
+<span class="w">            </span><span class="nt">&lt;MatrixWidth&gt;</span>1<span class="nt">&lt;/MatrixWidth&gt;</span>
+<span class="w">            </span><span class="nt">&lt;MatrixHeight&gt;</span>1<span class="nt">&lt;/MatrixHeight&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/TileMatrix&gt;</span>
+<span class="w">        </span>...
+<span class="w">        </span><span class="nt">&lt;TileMatrix&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ows:Identifier&gt;</span>14<span class="nt">&lt;/ows:Identifier&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ScaleDenominator&gt;</span>446.484375<span class="nt">&lt;/ScaleDenominator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TopLeftCorner&gt;</span>-925000.000000000000<span class="w"> </span>-920000.000000000000<span class="nt">&lt;/TopLeftCorner&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TileWidth&gt;</span>256<span class="nt">&lt;/TileWidth&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TileHeight&gt;</span>256<span class="nt">&lt;/TileHeight&gt;</span>
+<span class="w">            </span><span class="nt">&lt;MatrixWidth&gt;</span>16384<span class="nt">&lt;/MatrixWidth&gt;</span>
+<span class="w">            </span><span class="nt">&lt;MatrixHeight&gt;</span>16384<span class="nt">&lt;/MatrixHeight&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/TileMatrix&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/TileMatrixSet&gt;</span>
+<span class="nt">&lt;/Contents&gt;</span>
+</pre></div>
+</div>
+<p>Na základě tohoto dokumentu, lze tedy zkonstruovat dotaz typu
+<em>GetTile</em>, který vrátí požadovanou dlaždici v daném měřítku a
+umístění:</p>
+<p><a class="reference external" href="http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&amp;request=gettile&amp;version=1.0.0&amp;layer=orto&amp;format=image/jpeg&amp;TileMatrixSet=jtsk:epsg:5514&amp;TileMatrix=14&amp;TileRow=4001&amp;TileCol=8191&amp;style=default">http://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?service=wmts&amp;request=gettile&amp;version=1.0.0&amp;layer=orto&amp;format=image/jpeg&amp;TileMatrixSet=jtsk:epsg:5514&amp;TileMatrix=14&amp;TileRow=4001&amp;TileCol=8191&amp;style=default</a></p>
+<figure class="align-center" id="id1">
+<img alt="../../_images/orto-epsg%3A5514-13-4001-8191.jpg" class="tiny" src="../../_images/orto-epsg%3A5514-13-4001-8191.jpg" />
+<figcaption>
+<p><span class="caption-number">Obr. 39 </span><span class="caption-text">Dlaždice ze služby <a class="reference external" href="http://geoportal.cuzk.cz/(S(vqbwo5id0qvp14kha13iwkqb))/Default.aspx?mode=TextMeta&amp;side=wmts.uvod&amp;metadataID=CZ-CUZK-WMTS-ORTOFOTO-P&amp;metadataXSL=metadata.sluzba&amp;head_tab=sekce-03-gp&amp;menu=3151">ČUZK Ortofoto WMTS</a>.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="task admonition">
+<p class="admonition-title">Úkol</p>
+<p>WMTS do QGIS</p>
+<p>Přidejte vrstvu leteckého snímku z výše zmíněné WMTS služby do QGIS. V
+dialogu <span class="menuselection">Vrstva ‣ Přidat vrstvu ‣ WMS/WMTS</span> přidejte
+neprve novou <cite>Službu</cite> a následně načtěte její data.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standardy v GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku">Standardy z pohledu otevřenosti a způsobu jejich vzniku</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#prehled-standardizacnich-autorit">Přehled standardizačních autorit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="wms.html" title="OGC Web Map Service - WMS"
+              >předchozí</a> |
+            <a href="wfs.html" title="OGC Web Feature Service - WFS"
+              >další</a> |
+            <a href="../../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

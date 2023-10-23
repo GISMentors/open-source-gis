@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Prostorové NoSQL databáze &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Server GIS" href="../server/index.html" />
+    <link rel="prev" title="Prostorové databáze založené na SQL" href="sql.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="sql.html" title="Prostorové databáze založené na SQL"
+             accesskey="P">předchozí</a> |
+          <a href="../server/index.html" title="Server GIS"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="prostorove-nosql-databaze">
+<span id="index-0"></span><h1>Prostorové NoSQL databáze<a class="headerlink" href="#prostorove-nosql-databaze" title="Permalink to this heading">¶</a></h1>
+<p>NoSQL poskytuje nové technologie pro správu dat, jejichž cílem je
+uspokojit rostoucí objem, rychlost a množství dat.  Segment NoSQL
+databází v současnosti významně roste a prospívá především v oblasti
+<em>big data</em> a <em>real-time webu</em>. Popularizace NoSQL v některých lidech
+vzbuzuje odpor, v jiných zase nekritické naděje. Často umožňují dotazy
+i v SQL (či podobném) jazyce.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/nosql.png" class="middle" src="../_images/nosql.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 50 </span><span class="caption-text">Zdroj: <a class="reference external" href="http://i2.wp.com/jennyxiaozhang.com/wp-content/uploads/2014/08/nosql-logos.png?w=400">What is NoSQL?</a>.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="couchdb">
+<span id="index-1"></span><h2>CouchDB<a class="headerlink" href="#couchdb" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="http://couchdb.apache.org/">CouchDB</a> je dokumentově orientovaná
+databáze, vyvíjená pod křídly <a class="reference external" href="http://cs.wikipedia.org/wiki/Apache Software Foundation">Apache Software Foundation</a>
+a nabízí některé zajímavé možnosti.  Kromě obvyklých NoSQL
+vymožeností, jako například snadná replikovatelnost a vysoká rychlost
+operací, ji můžeme využít, ve spojení s frameworkem CouchApp, i pro
+běh webových aplikací přímo v ní samotné.  Apache CouchDB je jeden z
+nových databázových systémů. Představuje hodně odlišný způsob ukládání
+dat. Způsob, který není výrazně lepší nebo horší než ty, co tu už byly
+– je to prostě jen jiný nástroj, jiný způsob přemýšlení o věcech.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/couchdb_logo.png"><img alt="../_images/couchdb_logo.png" src="../_images/couchdb_logo.png" style="width: 150px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 51 </span><span class="caption-text">Logo CouchDB (zdroj: <a class="reference external" href="https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/CouchDB.svg/964px-CouchDB.svg.png">wikimedia</a>).</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Viz. online překlad kompletního průvodce CouchDB od Martina
+Malého, <a class="reference external" href="https://www.zdrojak.cz/serialy/kompletni-pruvodce-po-couchdb/">Kompletní průvodce po CouchDB</a>.</p>
+</div>
+</section>
+<section id="cassandra">
+<span id="index-2"></span><h2>Cassandra<a class="headerlink" href="#cassandra" title="Permalink to this heading">¶</a></h2>
+<p>Návrh <a class="reference external" href="http://cs.wikipedia.org/wiki/Apache Cassandra">Apache Cassandra</a> se zaměřuje na snadné a spolehlivé
+propojování velkého množství počítačů, které vytvoří jednu
+distribuovanou vysoce výkonnou dobře horizontálně škálovatelnou
+databázi. Projekt zařadil <a class="reference external" href="http://cs.wikipedia.org/wiki/Apache Software Foundation">Apache Software Foundation</a> mezi
+své top-level projekty.  Cassandra je napsána v Javě. Její principy se
+neslučují s principy klasických SQL databází.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/cassandra_logo.png"><img alt="../_images/cassandra_logo.png" src="../_images/cassandra_logo.png" style="width: 150px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 52 </span><span class="caption-text">Logo Cassandra (zdroj: <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cassandra_logo.svg/500px-Cassandra_logo.svg.png">wikimedia</a>).</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Viz. online <a class="reference external" href="http://docs.datastax.com/en/archived/cassandra/0.6/docs/">dokumentaci</a>,
+uveřejněnou společností Riptano, která nabízí komerční podporu pro
+NoSQL databázi Cassandra nebo <a class="reference external" href="http://www.linuxsoft.cz/user_page.php?user_id=16648&amp;part=article">seriál o NoSQL databázi Cassandra</a>
+od Františka Bártíka v českém jazyku.</p>
+</div>
+</section>
+<section id="mongodb">
+<span id="index-3"></span><h2>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.mongodb.com">MongoDB</a> pracuje s daty ve formátu
+<a class="reference internal" href="../formaty/vektor.html#json"><span class="std std-ref">JSON</span></a>. Data jsou členěna do databází a databáze dále do
+collections.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/mongo_logo.png"><img alt="../_images/mongo_logo.png" src="../_images/mongo_logo.png" style="width: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 53 </span><span class="caption-text">Logo MongoDB (zdroj: <a class="reference external" href="https://en.wikipedia.org/wiki/MongoDB#/media/File:MongoDB-Logo.svg">wikimedia</a>).</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Blog GISMentors: <a class="reference external" href="http://www.gismentors.cz/blog/mongo-a-prostorova-data">Mongo a prostorová data</a></p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Prostorové databáze</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#prostorove-indexy">Prostorové indexy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="sql.html" title="Prostorové databáze založené na SQL"
+              >předchozí</a> |
+            <a href="../server/index.html" title="Server GIS"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

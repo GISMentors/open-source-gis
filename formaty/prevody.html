@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Převod dat &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Standardy v GIS" href="../standardy/index.html" />
+    <link rel="prev" title="Vektorová data" href="vektor.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="vektor.html" title="Vektorová data"
+             accesskey="P">předchozí</a> |
+          <a href="../standardy/index.html" title="Standardy v GIS"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="prevod-dat">
+<h1>Převod dat<a class="headerlink" href="#prevod-dat" title="Permalink to this heading">¶</a></h1>
+<span class="target" id="rasterizace"></span><section id="index-0">
+<span id="id1"></span><h2>Rasterizace<a class="headerlink" href="#index-0" title="Permalink to this heading">¶</a></h2>
+<p>Jak bylo napsáno výše, rastrovým pixelům můžeme přiřadit vždy pouze
+jeden atribut. Tímto atributem může být buď některý z číselných
+atributů nebo číselná reprezentace textového atributu vektorových
+objektů či nějaká geometrická veličina (plocha, délka, …).  V
+závislosti na prostorovém rozlišení se ztrácí přesnost vektorových dat
+a je nahrazena rozlišením rastrových dat. Data od určitého zvětšení
+vypadají „rozkostičkovaně“.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/vect2rast-1.png" src="../_images/vect2rast-1.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 34 </span><span class="caption-text">Příklad rasterizace (příprava).</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<img alt="../_images/vect2rast-2.png" src="../_images/vect2rast-2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 35 </span><span class="caption-text">Příklad rasterizace (výsledek).</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="vektorizace">
+<span id="index-1"></span><h2>Vektorizace<a class="headerlink" href="#vektorizace" title="Permalink to this heading">¶</a></h2>
+<p>Protože buňky rastrové mapy obsahují pouze jednu číselnou hodnotu, případně
+je tato hodnota asociována s textovou informací, obsahuje u vektorových prvků
+výsledná tabulka atributů pouze jeden sloupeček.
+V závislosti na zvoleném výstupním formátu dat, zda se jedná o data
+bodová, liniová nebo polygonová, se softwary pokouší ideální
+aproximovat a vyhlazovat kostrbatý tvar prvků, který by nutně vzniknul
+při převodu rastrových buněk na liniové objekty.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/rast2vect.jpg" class="small" src="../_images/rast2vect.jpg" />
+<figcaption>
+<p><span class="caption-number">Obr. 36 </span><span class="caption-text">Příklad vektorizace (zdroj: <a class="reference external" href="http://o-gis.blogspot.sk/2008/09/rasterization-and-vectorization.html">Open Source GIS in Windows</a>).</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="task admonition">
+<p class="admonition-title">Úkol</p>
+<p>Rasterizace</p>
+<p>Rasterizujte zobrazený soubor velkoplošných chráněných krajinných oblastí
+(<cite>shp/aopk/velkoplosna_chranena_uzemi.shp</cite>) pomocí nástroje
+<span class="menuselection">Rastr ‣ Převod ‣ Rasterizovat</span></p>
+<p>Zvolte pole <cite>Kod</cite> pro hodnoty pixelů, zvolte rozlišení 1000m, zvolte
+hraniční souřadnice rastru podle vstupního vektorového souboru.</p>
+<figure class="align-center">
+<img alt="../_images/chko-rasterize.png" src="../_images/chko-rasterize.png" />
+</figure>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reprezentace dat</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rastr.html">Rastrová data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vektor.html">Vektorová data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Převod dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="vektor.html" title="Vektorová data"
+              >předchozí</a> |
+            <a href="../standardy/index.html" title="Standardy v GIS"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

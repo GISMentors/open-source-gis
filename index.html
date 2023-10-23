@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Úvod do nástrojů Open Source GIS &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gismentors.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="genindex.html" />
+    <link rel="search" title="Vyhledávání" href="search.html" />
+    <link rel="next" title="Úvod" href="uvod.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="#">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="uvod.html" title="Úvod"
+             accesskey="N">další</a> |
+          <a href="genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="uvod-do-nastroju-open-source-gis">
+<h1>Úvod do nástrojů Open Source GIS<a class="headerlink" href="#uvod-do-nastroju-open-source-gis" title="Permalink to this heading">¶</a></h1>
+<a class="reference internal image-reference" href="_images/logo_g.png"><img alt="_images/logo_g.png" class="align-right" src="_images/logo_g.png" style="width: 85px;" /></a>
+<p>Tento kurz poskytuje úvod do problematiky GIS
+(<a class="reference external" href="http://cs.wikipedia.org/wiki/Geografický informační systém">Geografických informačních systémů</a>). Praktická část kurzu je zaměřena na základní
+přehled volně dostupných nástrojů (především <a class="reference external" href="http://cs.wikipedia.org/wiki/open source">open source</a>)
+GIS a vše potřebné, abyste mohli začít pracovat s geografickými daty
+pomocí těchto nástrojů v českém (a slovenském) prostředí.</p>
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p><span class="red">Pracovní verze školení, která je aktuálně ve vývoji!</span></p>
+</div>
+<section id="obsah">
+<h2>Obsah<a class="headerlink" href="#obsah" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="uvod.html">Úvod</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uvod.html#co-je-gis">Co je GIS?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uvod.html#co-je-open-source">Co je open source?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soursystemy/index.html">Souřadnicové systémy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="soursystemy/souradnice.html">Typy souřadnic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soursystemy/mercatorovo-zobrazeni.html">Mercatorovo zobrazení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soursystemy/sjtsk.html">S-JTSK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soursystemy/wgs84.html">WGS84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soursystemy/etrs89.html">ETRS89</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soursystemy/epsg.html">EPSG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soursystemy/jak-poznat-ss-dat.html">Jak poznat v jakém souřadnicovém systému jsou data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formaty/index.html">Reprezentace dat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="formaty/rastr.html">Rastrová data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formaty/vektor.html">Vektorová data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formaty/prevody.html">Převod dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standardy/index.html">Standardy v GIS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standardy/index.html#standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku">Standardy z pohledu otevřenosti a způsobu jejich vzniku</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standardy/index.html#prehled-standardizacnich-autorit">Přehled standardizačních autorit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="knihovny/index.html">Knihovny</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="knihovny/gdal.html">Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knihovny/proj4.html">Knihovna Proj.4 pro transformaci souřadnic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="databaze/index.html">Prostorové databáze</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="databaze/index.html#prostorove-indexy">Prostorové indexy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="server/index.html">Server GIS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="server/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server/index.html#vztah-server-klient">Vztah server-klient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server/index.html#ulohy-serveru-v-gis-systemech">Úlohy serverů v GIS systémech</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server/index.html#prehled-programu-pro-gis-server">Přehled programů pro GIS server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop GIS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="desktop/index.html#grass-gis">GRASS GIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop/index.html#qgis">QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop/index.html#udig">uDIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop/index.html#open-jump">Open JUMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop/index.html#gvsig">gvSIG</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="skknpriklad/index.html">Katastrálne dáta SR v GIS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="skknpriklad/nasadenie.html">Nasadenie nástroja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skknpriklad/vstupne-data.html">Vstupné dáta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skknpriklad/pouzitie.html">Použitie v praxi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="web/index.html">Open Source na Webu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="web/index.html#openlayers">OpenLayers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web/index.html#leaflet">Leaflet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdi/index.html">Spatial data infrastructure - SDI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdi/index.html#softwareove-komponenty">Softwareové komponenty</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otevrena-data/index.html">Otevřená data - OpenData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="otevrena-data/index.html#ti-hvezdickova-koncence">5ti hvězdičková koncence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otevrena-data/index.html#publikace-otevrenych-dat">Publikace otevřených dat</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="licence-dokumentu">
+<h3>Licence dokumentu<a class="headerlink" href="#licence-dokumentu" title="Permalink to this heading">¶</a></h3>
+<p>Text školení je licencován pod <a class="reference external" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc-by-sa.png"><img alt="_images/cc-by-sa.png" src="_images/cc-by-sa.png" style="width: 110px;" /></a>
+</figure>
+<p>Verze textu školení: 0.2 alpha (23.10.2023)</p>
+<section id="autori">
+<h4>Autoři<a class="headerlink" href="#autori" title="Permalink to this heading">¶</a></h4>
+<p>Za <a class="reference external" href="http://www.gismentors.cz/">GISMentors</a>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.gismentors.cz/mentors/cepicky">Jáchym Čepický</a></p></li>
+<li><p><a class="reference external" href="http://www.gismentors.cz/mentors/landa">Martin Landa</a></p></li>
+<li><p><a class="reference external" href="http://www.gismentors.cz/mentors/furtkevicova/">Ľudmila Furtkevičová</a></p></li>
+</ul>
+<p>Zdrojové texty školení jsou dostupné na adrese: <a class="reference external" href="https://github.com/GISMentors/open-source-gis">https://github.com/GISMentors/open-source-gis</a></p>
+</section>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="uvod.html" title="Úvod"
+              >další</a> |
+            <a href="genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

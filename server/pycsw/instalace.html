@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Instalace &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gismentors.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="instalace">
+<h1>Instalace<a class="headerlink" href="#instalace" title="Permalink to this heading">¶</a></h1>
+<section id="ze-zdrojovych-kodu">
+<h2>Ze zdrojových kódů<a class="headerlink" href="#ze-zdrojovych-kodu" title="Permalink to this heading">¶</a></h2>
+<p>Pycsw obsahuje rychlý návod na instalaci, který lze  zvládnout za pár minut.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Nastavit virtualní prostředí pro Python
+$ virtualenv pycsw &amp;&amp; cd pycsw &amp;&amp; . bin/activate
+
+# Stánout zdrojové kódy, nainstalovat závislosti
+$ git clone https://github.com/geopython/pycsw.git &amp;&amp; cd pycsw
+$ pip install -e . &amp;&amp; pip install -r requirements-standalone.txt
+
+# Vytvoření konfiguračního souboru a jeho nastavení
+$ cp default-sample.cfg default.cfg
+$ $EDITOR default.cfg
+
+# nastvit cesty v
+# - server.home
+# - repository.database
+# nastavit server.url na http://localhost:8000/
+
+# inicializovat databázi
+$ pycsw-admin.py -c setup_db -f default.cfg
+
+# Načíst metadatové záznamy (&#39;recordy&#39;) z připravených souborů XML v
+# daném adresáři
+$ pycsw-admin.py -c load_records -f default.cfg -p /path/to/xml/
+
+# Spuštění serveru
+$ python ./pycsw/wsgi.py
+
+# Testování serveru serveru
+$ curl http://localhost:8000/?service=CSW&amp;version=2.0.2&amp;request=GetCapabilities
+</pre></div>
+</div>
+</section>
+<section id="linux-z-balicku">
+<h2>Linux z balíčků<a class="headerlink" href="#linux-z-balicku" title="Permalink to this heading">¶</a></h2>
+<p>Pro distribuci Ubuntu existují balíčky:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install pycsw
+</pre></div>
+</div>
+</section>
+<section id="windows-and-pip">
+<h2>Windows and PIP<a class="headerlink" href="#windows-and-pip" title="Permalink to this heading">¶</a></h2>
+<p>Pro Windows buď použijte instalaci ze zdrojových kódů nebo prostřednictvím
+balíčkovače PIP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pycsw</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Úvod &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gismentors.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="genindex.html" />
+    <link rel="search" title="Vyhledávání" href="search.html" />
+    <link rel="next" title="Souřadnicové systémy" href="soursystemy/index.html" />
+    <link rel="prev" title="Úvod do nástrojů Open Source GIS" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Úvod do nástrojů Open Source GIS"
+             accesskey="P">předchozí</a> |
+          <a href="soursystemy/index.html" title="Souřadnicové systémy"
+             accesskey="N">další</a> |
+          <a href="genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="uvod">
+<h1>Úvod<a class="headerlink" href="#uvod" title="Permalink to this heading">¶</a></h1>
+<p>Úvodní kapitola nastiňuje motivaci, proč pracovat s nástroji open source GIS,
+poskytuje přehled zdrojů, odkazy na komunitní skupiny mezinárodní i národní.</p>
+<section id="co-je-gis">
+<span id="proc-gis"></span><h2>Co je GIS?<a class="headerlink" href="#co-je-gis" title="Permalink to this heading">¶</a></h2>
+<p id="index-0"><a class="reference external" href="http://cs.wikipedia.org/wiki/Geografický informační systém">Geografický informační systém</a> (GIS) je na počítačích
+založený informační systém pro získávání, ukládání, analýzu a
+vizualizaci dat, která mají prostorový vztah k povrchu Země. V této
+souvislosti mluvíme o geografických datech, zkráceně <em>geodatech</em>,
+angl. <em>geospatial data</em>, <em>geospatial information</em>.</p>
+<p>Počátek geoinformačních technologií a souvisejícího vědního oboru
+geoinformatiky sahá do 60. let 20. století. Tehdy se přišlo na to, že
+úkoly jako například plánování regionálního rozvoje území jsou jako
+stvořené pro geografické informační technologie.</p>
+<p>Prostorově orientovaný geografický informační systém shromažďuje a
+zpracovává data, poskytuje informace a poznatky vázané k místu vzniku
+jevu a jeho použití. Vyvinul se z map středních a malých
+měřítek. Obecně klade nižší požadavky na podrobnost a polohovou
+přesnost, naproti tomu je většinou důležitá aktuálnost dat.</p>
+<p>Možno říci, že GIS se skládá z:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>hardwaru,</p></li>
+<li><p>softwaru,</p></li>
+<li><p>dat,</p></li>
+<li><p>pracovníků (operátorů a uživatelů).</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-center" id="id2">
+<span id="gis-slozeni"></span><span id="index-1"></span><img alt="_images/gis-slozeni.svg" class="middle" src="_images/gis-slozeni.svg" /><figcaption>
+<p><span class="caption-number">Obr. 1 </span><span class="caption-text">Hlavní složky GIS.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>GIS využívá data z různých zdrojů jako digitální fotogrammetrie,
+dálkový průzkum Země (DPZ), geodézie a dalších. Pomocí dostupných
+softwarových a hardwarových prostředků umožňuje vytvářet digitální
+modely části zemského povrchu, geografické průzkumy, analýzy a
+statistiky. Takto vytvořený model lze pak využít například při
+evidenci katastru nemovitostí, předpovídání vývoje počasí, určování
+záplavových zón řek, výběru vhodné lokace pro čistírnu odpadních vod,
+plánování výstavby silnic, krizové řízení a podobně.</p>
+<section id="geodata-geoprvky">
+<span id="index-2"></span><span id="id1"></span><h3>Geodata, geoprvky<a class="headerlink" href="#geodata-geoprvky" title="Permalink to this heading">¶</a></h3>
+<p>Jak bylo již zmíněno, GIS pracuje s prostorovými (geografickými) daty,
+tzv. <em>geodaty</em>.  Ty se skládají z jednotlivých (geo)prvků. Každý
+<em>geoprvek</em> představuje model fenoménu reálného světa. Od jiných
+objektů jej lze rozlišit na základě prostorové polohy, tematických
+charakteristik, polohových vztahů k jiným geoprvkům a časových změn.</p>
+<p>Geoprvek je teda tvořen dvěma základními složkami:</p>
+<ul class="simple">
+<li><p><em>geometrickou</em> (informaci o tvaru, umístění na zemském povrchu),</p></li>
+<li><p><em>popisnou</em> (nejčastěji popisné vlastnosti každého prvku, tzv. <em>atributy</em>).</p></li>
+</ul>
+<p>Další složky popisují tzv. <em>topologii</em> (prostorový vztah k jiným
+geoprvkům), případně <em>dynamiku</em> (časové změny geoprvku).  Reprezentace
+reálného světa v GIS se od reality liší, jelikož tato interpretace
+vždy zahrnuje určitou míru abstrakce, která je pro zpracování v GIS
+nezbytná.</p>
+<figure class="align-center" id="id3">
+<span id="mira-abstrakce"></span><img alt="_images/mira-abstrakce.png" class="middle" src="_images/mira-abstrakce.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 2 </span><span class="caption-text">Digitální reprezentace reálného světa (zdroj: <a class="reference external" href="https://is.mendelu.cz/eknihovna/opory/index.pl?opora=5784">GIS v regionálním
+rozvoji</a>).</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p id="index-3">Důležitá je prostorová <em>dimenze geoprvků</em>, která charakterizuje jeho
+rozšíření v různých směrech prostoru. V GIS se můžeme setkat s
+následujícími pojmy:</p>
+<table class="border docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="5"><p>Prostorová dimenze geoprvků</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Modely</strong></p></td>
+<td><p><strong>0D</strong></p></td>
+<td><p><strong>1D</strong></p></td>
+<td><p><strong>2D</strong></p></td>
+<td><p><strong>3D</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>geometrický</p></td>
+<td><p>bod</p></td>
+<td><p>polylinie</p></td>
+<td><p>polygon</p></td>
+<td><p>těleso</p></td>
+</tr>
+<tr class="row-even"><td><p>topologický</p></td>
+<td><p>uzel</p></td>
+<td><p>hrana</p></td>
+<td><p>plocha</p></td>
+<td><p>polyhedron</p></td>
+</tr>
+<tr class="row-odd"><td><p>dynamický</p></td>
+<td colspan="4"><p>čas</p></td>
+</tr>
+</tbody>
+</table>
+<p>Bezrozměrné objekty (0D) svou definovány svojí polohu, nedisponují
+délkou nebo plochou. Jednorozměné objekty (1D) mají konečnou délku,
+ale ne plochu, dvojrozměné objekty (2D) mají konečnou plochu.</p>
+<span class="target" id="index-4"></span><span class="target" id="index-5"></span></section>
+<section id="reprezentace-dat">
+<span id="index-6"></span><h3>Reprezentace dat<a class="headerlink" href="#reprezentace-dat" title="Permalink to this heading">¶</a></h3>
+<p>Jak již bylo řečeno, pomocí nástrojů GIS vytváříme modely objektů
+(fenoménů) reálného světa. Je důležité správně určit datovou strukturu
+(reprezentaci dat) a navrhnout vhodnou kartografickou reprezentaci při
+jejich vizualizaci. Rozlišuje se dvě základní reprezentace dat:</p>
+<dl class="simple">
+<dt><strong>a) vektorová reprezentace</strong></dt><dd><p>prvek je popsán nejčastěji svým obrysem
+pomocí párů (ve 3D tripletů) souřadnic lomových bodů; nejčastěji
+si v rámci vektorového modelu vystačíme s body nebo liniemi a
+polygony</p>
+</dd>
+<dt><strong>b) rastrová reprezentace</strong></dt><dd><p>představuje nejčastěji uspořádanou matici
+hodnot (buňek), které označujeme jako pixely; buňky mohou být 3D,
+pak hovoříme o tzv. <em>voxelech</em> (<em>volume pixel</em>)</p>
+</dd>
+</dl>
+<figure class="align-center" id="id4">
+<span id="datovy-model"></span><img alt="_images/datovy-model.png" class="middle" src="_images/datovy-model.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 3 </span><span class="caption-text">Vektorová a rastrová reprezentace objektů (podle Voženílek, 1998).</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p><em>Diskrétní fenomény</em> jako například katastr, uliční síť nebo mapa výskytu vorvaňů,
+se nejčastěji modeluje pomocí vektorového reprezentace dat. <em>Spojité fenomény</em>
+jako například nadmořská výška, srážková mapa, teplotní mapa a podobně, se nejčastěji
+modelují pomocí rastrové reprezentace dat. Obě reprezentace jsou blíže popsány
+v částech <a class="reference internal" href="formaty/vektor.html"><span class="doc">vektorová</span></a> a <a class="reference internal" href="formaty/rastr.html"><span class="doc">rastrová</span></a> data.</p>
+</section>
+</section>
+<section id="co-je-open-source">
+<span id="index-7"></span><h2>Co je open source?<a class="headerlink" href="#co-je-open-source" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="http://cs.wikipedia.org/wiki/Otevřený software">Otevřený software</a> (open source) je počítačový software,
+jehož licence podle definice <a class="reference external" href="https://www.gnu.org/philosophy/free-sw.en.html">FSF</a> (Free Software
+Foundation, resp. Nadace svobodného software) umožňuje:</p>
+<ul class="simple">
+<li><p><strong>freedom 0</strong>: spouštět program jakýmkoli způsobem pro jakýkoliv účel,</p></li>
+<li><p><strong>freedom 1</strong>: modifikovat program, aby co nejlépe vyhovoval uživateli (pomoci sami sobě),</p></li>
+<li><p><strong>freedom 2</strong>: distribuovat kopie programu (pomoci přátelům, kolegům),</p></li>
+<li><p><strong>freedom 3</strong>: publikovat dokonalejší verzi i pro ostatní (pomoci vybudovat komunitu).</p></li>
+</ul>
+<p>Open source není business model, ale <em>vývojový model</em>. Způsob práce se
+software předurčuje k tomu jakým způsobem probíhá komunikace mezi
+vývojáři a mezi uživateli a vývojáři.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Blog GISMentors: <a class="reference external" href="http://www.gismentors.cz/blog/otazka-vies-co-je-open-source-gis/">Otázka: Vieš čo je open source GIS?</a>.</p>
+</div>
+<section id="komunita">
+<span id="index-8"></span><h3>Komunita<a class="headerlink" href="#komunita" title="Permalink to this heading">¶</a></h3>
+<p>U dobrých open source projektů existuje silná a zdravá komunita
+vývojářů a uživatelů. Rozhodovací procesy jsou otevřené a
+dokumentovatelé. Komunita je často prvním místem podpory, kterou může
+uživatel nebo začínající vývojář dostat. Často se řeší problémy a
+otázky, které by jinak zůstaly skryty.  Organizují se konference,
+<a class="reference external" href="http://cs.wikipedia.org/wiki/Sprint (software development)">code sprinty</a>, project
+steering setkání. Problémy se řeší veřejně na <a class="reference external" href="http://cs.wikipedia.org/wiki/Elektronická konference">mailing
+listech</a>, <a class="reference external" href="http://cs.wikipedia.org/wiki/IRC">IRC</a> a podobně.</p>
+<p>Další výhodou open source projektů je, že v případě jakýchkoliv
+problémů je odezva poměrně rychlá - hodně očí hodně najde.  Malé týmy
+pracují na menších projektech a hledají propojení většinou postavené
+na standardech (více v kapitole <a class="reference internal" href="standardy/index.html"><span class="doc">Standardy v GIS</span></a>). Tato spojení
+se děje spíše náhodně než plánovaně. V proprietárním GIS jsou
+jednotlivé komponety často více propojené. Což může být problém ve
+chvíli, kdy se při návrhu systému na něco zapomene. Potom je obtížnější
+daný systém o novou komponentu rozšířit.</p>
+</section>
+<section id="zpusob-financovani">
+<span id="index-9"></span><h3>Způsob financování<a class="headerlink" href="#zpusob-financovani" title="Permalink to this heading">¶</a></h3>
+<p>Nic není zadarmo, ani práce vývojářů otevřeného software. Protože
+každý může získat zdrojový kód, nelze stavět podnikání na prodeji
+krabicových verzí. Business model je častěji stavěn na poskytování
+podpory, služeb, plnění určitých úloh pomocí open source
+software. Cena za software není součástí plnění.</p>
+</section>
+<section id="osgeo-org">
+<span id="index-10"></span><h3>OSGeo.org<a class="headerlink" href="#osgeo-org" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="http://osgeo.org">Open Source Geospatial Foundation</a> je ve
+Spojených státech amerických registrovaná nezisková organizace, která
+se stará o podporu open source software projektů zaměřených na práci s
+geografickými daty. Podpora je právní, infrastrukturní i technická.
+Většina nejrozšířenějších open source GIS projektů je registrována
+jako tzv. <em>OSGeo Projekt</em>, což znamená, že prošly inkubační fází, která
+garantuje určitou kvalitu software, zrojový kód nezatížený patentovými
+spory a dostatečně velkou a zdravou komunitu okolo projektu.</p>
+<figure class="align-center" id="id5">
+<span id="osgeo-logo"></span><a class="reference internal image-reference" href="_images/osgeo-logo.png"><img alt="_images/osgeo-logo.png" src="_images/osgeo-logo.png" style="width: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 4 </span><span class="caption-text">Logo Open Source Geospatial Foundation.</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Další informace o OSGeo v kapitole <a class="reference internal" href="standardy/osgeo.html#osgeo-standardy"><span class="std std-ref">OSGeo - standardy</span></a>.</p>
+</div>
+</section>
+<section id="osgeo-cz">
+<span id="index-11"></span><h3>OSGeo.cz<a class="headerlink" href="#osgeo-cz" title="Permalink to this heading">¶</a></h3>
+<p>Občanské sdružení <a class="reference external" href="http://osgeo.cz">Otevřená GeoInfrastruktura</a> je v
+ČR registrované občanské sdružení, které se stará o podporu otevřeného
+software pro GIS a otevřených prostorových dat v České
+republice. Základními cíli sdružení jsou zejména:</p>
+<ul class="simple">
+<li><p>propagovat používání a vývoj nástrojů FOSS (Free and Open Source
+Software) pro geomatiku, geoinformatiku, geodézii a kartografii,</p></li>
+<li><p>podporovat tvorbu, sdílení a publikování volně dostupných a
+otevřených dat a informací, zejména geodat, v souladu s obecně
+uznávanými standardy,</p></li>
+<li><p>vyhledávat, aktivizovat a podporovat v České republice síly k
+naplňování těchto cílů.</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<span id="osgeo-cz-logo"></span><a class="reference internal image-reference" href="_images/osgeo-cz-logo.png"><img alt="_images/osgeo-cz-logo.png" src="_images/osgeo-cz-logo.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 5 </span><span class="caption-text">Logo občanského sdružení Otevřená GeoInfrastruktura České
+republiky.</span><a class="headerlink" href="#id6" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Úvod</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#co-je-gis">Co je GIS?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#co-je-open-source">Co je open source?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Úvod do nástrojů Open Source GIS"
+              >předchozí</a> |
+            <a href="soursystemy/index.html" title="Souřadnicové systémy"
+              >další</a> |
+            <a href="genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

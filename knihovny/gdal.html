@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Knihovna Proj.4 pro transformaci souřadnic" href="proj4.html" />
+    <link rel="prev" title="Knihovny" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Knihovny"
+             accesskey="P">předchozí</a> |
+          <a href="proj4.html" title="Knihovna Proj.4 pro transformaci souřadnic"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="knihovna-gdal-pro-prevod-mezi-formaty-a-souradnicovymi-systemy">
+<h1>Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy<a class="headerlink" href="#knihovna-gdal-pro-prevod-mezi-formaty-a-souradnicovymi-systemy" title="Permalink to this heading">¶</a></h1>
+<p id="index-0">Programátorská knihovna <a class="reference external" href="http://gdal.org">GDAL</a> (Geospatial Data
+Abstraction Library) je určena pro práci s množstvím <a class="reference external" href="http://gdal.org/formats_list.html">rastrových</a> i <a class="reference external" href="http://gdal.org/ogr_formats.html">vektorových</a> formátů používaných v GIS. GDAL
+je využíván celou řadou dalších programů jako základní knihovna
+(<a class="reference external" href="http://grass.osgeo.org">GRASS GIS</a>, <a class="reference external" href="http://qgis.org">QGIS</a>,
+…), dokonce i v proprietárním produktu <a class="reference external" href="http://www.arcgis.com">ArcGIS</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>V dřívějšich verzích byla tato knihovna rozdělena na dvě
+části. GDAL pracující s rastrovými daty a OGR pro vektorová
+data. Ve verzi 2.0 byly tyto dvě větve sloučeny. Stále však můžete
+narazit na označení části pro práci s vektory jako <em>OGR</em>.</p>
+</div>
+<p>Knihovna je šířena s několika konzolovými programy, které můžeme
+použít na celou řadu operací. Detailnější práci s knihovnou z pohledu
+programátora rozebíráme v části věnované programovacímu jazyku
+<a class="reference external" href="https://gismentors.github.io/geopython-pokrocily">Python z pohledu GIS</a>.  Knihovna GDAL
+kromě toho nabízí mnoho užitečných příkazů pro práci s rastrovými
+(<a class="reference internal" href="#gdalinfo"><span class="std std-ref">gdalinfo</span></a>, <a class="reference internal" href="#gdalsrsinfo"><span class="std std-ref">gdalsrsinfo</span></a>,
+<a class="reference internal" href="#gdalwarp"><span class="std std-ref">gdalwarp</span></a>, <a class="reference internal" href="#gdaltransform"><span class="std std-ref">gdaltransform</span></a>,
+<a class="reference internal" href="#gdal-translate"><span class="std std-ref">gdal_translate</span></a>, <a class="reference internal" href="#gdaldem"><span class="std std-ref">gdaldem</span></a>,
+<a class="reference internal" href="#gdallocationinfo"><span class="std std-ref">gdallocationinfo</span></a>, <a class="reference internal" href="#gdalmanage"><span class="std std-ref">gdalmanage</span></a>, <a class="reference internal" href="#gdaladdo"><span class="std std-ref">gdaladdo</span></a>, <a class="reference internal" href="#gdal-contour"><span class="std std-ref">gdal_contour</span></a>, <a class="reference internal" href="#gdaltindex"><span class="std std-ref">gdaltindex</span></a>) nebo vektorovými
+(<a class="reference internal" href="#ogrinfo"><span class="std std-ref">ogrinfo</span></a>, <a class="reference internal" href="#ogrtindex"><span class="std std-ref">ogrtindex</span></a>,
+<a class="reference internal" href="#ogrlineref"><span class="std std-ref">ogrlineref</span></a>, <a class="reference internal" href="#ogr2ogr"><span class="std std-ref">ogr2ogr</span></a>) daty.</p>
+<p>Zde si představíme pouze některé příkazy, které jsou distribuovány spolu s
+knihovnou GDAL. Úplný seznam naleznete na
+<a class="reference external" href="https://gdal.org/programs/index.html">https://gdal.org/programs/index.html</a>.</p>
+<section id="prikazy-pro-praci-s-rastrovymi-daty">
+<h2>Příkazy pro práci s rastrovými daty<a class="headerlink" href="#prikazy-pro-praci-s-rastrovymi-daty" title="Permalink to this heading">¶</a></h2>
+<p id="gdalinfo"><span id="index-1"></span><strong>gdalinfo</strong></p>
+<p>Příkaz <a class="reference external" href="http://www.gdal.org/gdalinfo.html">gdalinfo</a> umožňuje
+zobrazit některá metadat rastrových dat.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Zobrazení metadat z rastrového souboru z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalinfo<span class="w"> </span>lsat7_2002_nir.tiff
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Driver</span><span class="p">:</span> <span class="n">GTiff</span><span class="o">/</span><span class="n">GeoTIFF</span>
+<span class="n">Files</span><span class="p">:</span> <span class="n">lsat7_2002_nir</span><span class="o">.</span><span class="n">tiff</span>
+<span class="n">Size</span> <span class="ow">is</span> <span class="mi">1287</span><span class="p">,</span> <span class="mi">831</span>
+<span class="n">Coordinate</span> <span class="n">System</span> <span class="ow">is</span><span class="p">:</span>
+<span class="n">PROJCS</span><span class="p">[</span><span class="s2">&quot;Lambert Conformal Conic&quot;</span><span class="p">,</span>
+    <span class="n">GEOGCS</span><span class="p">[</span><span class="s2">&quot;NAD83&quot;</span><span class="p">,</span>
+        <span class="n">DATUM</span><span class="p">[</span><span class="s2">&quot;North_American_Datum_1983&quot;</span><span class="p">,</span>
+            <span class="n">SPHEROID</span><span class="p">[</span><span class="s2">&quot;GRS 1980&quot;</span><span class="p">,</span><span class="mi">6378137</span><span class="p">,</span><span class="mf">298.2572221010002</span><span class="p">,</span>
+                <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;7019&quot;</span><span class="p">]],</span>
+            <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;6269&quot;</span><span class="p">]],</span>
+        <span class="n">PRIMEM</span><span class="p">[</span><span class="s2">&quot;Greenwich&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">UNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="mf">0.0174532925199433</span><span class="p">],</span>
+        <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;4269&quot;</span><span class="p">]],</span>
+    <span class="n">PROJECTION</span><span class="p">[</span><span class="s2">&quot;Lambert_Conformal_Conic_2SP&quot;</span><span class="p">],</span>
+    <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;standard_parallel_1&quot;</span><span class="p">,</span><span class="mf">36.16666666666666</span><span class="p">],</span>
+    <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;standard_parallel_2&quot;</span><span class="p">,</span><span class="mf">34.33333333333334</span><span class="p">],</span>
+    <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;latitude_of_origin&quot;</span><span class="p">,</span><span class="mf">33.75</span><span class="p">],</span>
+    <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;central_meridian&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">79</span><span class="p">],</span>
+    <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;false_easting&quot;</span><span class="p">,</span><span class="mf">609601.22</span><span class="p">],</span>
+    <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;false_northing&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">UNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;9001&quot;</span><span class="p">]]]</span>
+<span class="n">Origin</span> <span class="o">=</span> <span class="p">(</span><span class="mf">630540.000000000000000</span><span class="p">,</span><span class="mf">226980.000000000000000</span><span class="p">)</span>
+<span class="n">Pixel</span> <span class="n">Size</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.000000000000000</span><span class="p">,</span><span class="o">-</span><span class="mf">10.000000000000000</span><span class="p">)</span>
+<span class="n">Metadata</span><span class="p">:</span>
+  <span class="n">AREA_OR_POINT</span><span class="o">=</span><span class="n">Area</span>
+<span class="n">Image</span> <span class="n">Structure</span> <span class="n">Metadata</span><span class="p">:</span>
+  <span class="n">INTERLEAVE</span><span class="o">=</span><span class="n">PIXEL</span>
+<span class="n">Corner</span> <span class="n">Coordinates</span><span class="p">:</span>
+<span class="n">Upper</span> <span class="n">Left</span>  <span class="p">(</span>  <span class="mf">630540.000</span><span class="p">,</span>  <span class="mf">226980.000</span><span class="p">)</span> <span class="p">(</span> <span class="mi">78</span><span class="n">d46</span><span class="s1">&#39; 6.04&quot;W, 35d47&#39;</span><span class="mf">45.23</span><span class="s2">&quot;N)</span>
+<span class="n">Lower</span> <span class="n">Left</span>  <span class="p">(</span>  <span class="mf">630540.000</span><span class="p">,</span>  <span class="mf">218670.000</span><span class="p">)</span> <span class="p">(</span> <span class="mi">78</span><span class="n">d46</span><span class="s1">&#39; 6.81&quot;W, 35d43&#39;</span><span class="mf">15.59</span><span class="s2">&quot;N)</span>
+<span class="n">Upper</span> <span class="n">Right</span> <span class="p">(</span>  <span class="mf">643410.000</span><span class="p">,</span>  <span class="mf">226980.000</span><span class="p">)</span> <span class="p">(</span> <span class="mi">78</span><span class="n">d37</span><span class="s1">&#39;33.46&quot;W, 35d47&#39;</span><span class="mf">43.96</span><span class="s2">&quot;N)</span>
+<span class="n">Lower</span> <span class="n">Right</span> <span class="p">(</span>  <span class="mf">643410.000</span><span class="p">,</span>  <span class="mf">218670.000</span><span class="p">)</span> <span class="p">(</span> <span class="mi">78</span><span class="n">d37</span><span class="s1">&#39;34.70&quot;W, 35d43&#39;</span><span class="mf">14.31</span><span class="s2">&quot;N)</span>
+<span class="n">Center</span>      <span class="p">(</span>  <span class="mf">636975.000</span><span class="p">,</span>  <span class="mf">222825.000</span><span class="p">)</span> <span class="p">(</span> <span class="mi">78</span><span class="n">d41</span><span class="s1">&#39;50.25&quot;W, 35d45&#39;</span><span class="mf">29.85</span><span class="s2">&quot;N)</span>
+<span class="n">Band</span> <span class="mi">1</span> <span class="n">Block</span><span class="o">=</span><span class="mi">1287</span><span class="n">x1</span> <span class="n">Type</span><span class="o">=</span><span class="n">Float32</span><span class="p">,</span> <span class="n">ColorInterp</span><span class="o">=</span><span class="n">Gray</span>
+<span class="n">Band</span> <span class="mi">2</span> <span class="n">Block</span><span class="o">=</span><span class="mi">1287</span><span class="n">x1</span> <span class="n">Type</span><span class="o">=</span><span class="n">Float32</span><span class="p">,</span> <span class="n">ColorInterp</span><span class="o">=</span><span class="n">Undefined</span>
+<span class="n">Band</span> <span class="mi">3</span> <span class="n">Block</span><span class="o">=</span><span class="mi">1287</span><span class="n">x1</span> <span class="n">Type</span><span class="o">=</span><span class="n">Float32</span><span class="p">,</span> <span class="n">ColorInterp</span><span class="o">=</span><span class="n">Undefined</span>
+</pre></div>
+</div>
+</div>
+<p id="gdalsrsinfo"><span id="index-2"></span><strong>gdalsrsinfo</strong></p>
+<p>Pokud vám stačí pouze informace o použitém souřadnicovém systému, tak
+stačí použít příkaz <a class="reference external" href="http://www.gdal.org/gdalsrsinfo.html">gdalsrsinfo</a>, který vrátí definici
+souřadnicového systému rastru ve formátu knihovny <a class="reference internal" href="proj4.html"><span class="doc">Proj.4</span></a> a v
+tzv. Well Known Text (WKT) notaci:</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Zobrazení informace o souřadnicovém systému z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalsrsinfo<span class="w"> </span>lsat7_2002_nir.tiff
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROJ</span><span class="mf">.4</span> <span class="p">:</span> <span class="s1">&#39;+proj=lcc +lat_1=36.16666666666666 +lat_2=34.33333333333334 +lat_0=33.75 +lon_0=-79</span>
+ <span class="o">+</span><span class="n">x_0</span><span class="o">=</span><span class="mf">609601.22</span> <span class="o">+</span><span class="n">y_0</span><span class="o">=</span><span class="mi">0</span> <span class="o">+</span><span class="n">datum</span><span class="o">=</span><span class="n">NAD83</span> <span class="o">+</span><span class="n">units</span><span class="o">=</span><span class="n">m</span> <span class="o">+</span><span class="n">no_defs</span> <span class="s1">&#39;</span>
+
+ <span class="n">OGC</span> <span class="n">WKT</span> <span class="p">:</span>
+ <span class="n">PROJCS</span><span class="p">[</span><span class="s2">&quot;Lambert Conformal Conic&quot;</span><span class="p">,</span>
+     <span class="n">GEOGCS</span><span class="p">[</span><span class="s2">&quot;NAD83&quot;</span><span class="p">,</span>
+         <span class="n">DATUM</span><span class="p">[</span><span class="s2">&quot;North_American_Datum_1983&quot;</span><span class="p">,</span>
+             <span class="n">SPHEROID</span><span class="p">[</span><span class="s2">&quot;GRS 1980&quot;</span><span class="p">,</span><span class="mi">6378137</span><span class="p">,</span><span class="mf">298.2572221010002</span><span class="p">,</span>
+                 <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;7019&quot;</span><span class="p">]],</span>
+             <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;6269&quot;</span><span class="p">]],</span>
+         <span class="n">PRIMEM</span><span class="p">[</span><span class="s2">&quot;Greenwich&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="n">UNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="mf">0.0174532925199433</span><span class="p">],</span>
+         <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;4269&quot;</span><span class="p">]],</span>
+     <span class="n">PROJECTION</span><span class="p">[</span><span class="s2">&quot;Lambert_Conformal_Conic_2SP&quot;</span><span class="p">],</span>
+     <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;standard_parallel_1&quot;</span><span class="p">,</span><span class="mf">36.16666666666666</span><span class="p">],</span>
+     <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;standard_parallel_2&quot;</span><span class="p">,</span><span class="mf">34.33333333333334</span><span class="p">],</span>
+     <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;latitude_of_origin&quot;</span><span class="p">,</span><span class="mf">33.75</span><span class="p">],</span>
+     <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;central_meridian&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">79</span><span class="p">],</span>
+     <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;false_easting&quot;</span><span class="p">,</span><span class="mf">609601.22</span><span class="p">],</span>
+     <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;false_northing&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+     <span class="n">UNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+         <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;9001&quot;</span><span class="p">]]]</span>
+</pre></div>
+</div>
+</div>
+<p id="gdalwarp"><span id="index-3"></span><strong>gdalwarp</strong></p>
+<p>Asi nejpoužívanější příkaz je <a class="reference external" href="http://www.gdal.org/gdalwarp.html">gdalwarp</a>.  Tento příkaz má dvě funkce:
+práce se souřadnicovými systémy rastrových dat a jejich transformace
+mezi jednotlivými formáty.</p>
+<p>Podporované formáty zjistíte pomocí parametru <cite>–formats</cite>:</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Podporované formáty knihovny gdal z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>--formats
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Supported</span> <span class="n">Formats</span><span class="p">:</span>
+  <span class="n">VRT</span> <span class="p">(</span><span class="n">rw</span><span class="o">+</span><span class="n">v</span><span class="p">):</span> <span class="n">Virtual</span> <span class="n">Raster</span>
+  <span class="n">GTiff</span> <span class="p">(</span><span class="n">rw</span><span class="o">+</span><span class="n">vs</span><span class="p">):</span> <span class="n">GeoTIFF</span>
+  <span class="n">NITF</span> <span class="p">(</span><span class="n">rw</span><span class="o">+</span><span class="n">vs</span><span class="p">):</span> <span class="n">National</span> <span class="n">Imagery</span> <span class="n">Transmission</span> <span class="n">Format</span>
+  <span class="n">RPFTOC</span> <span class="p">(</span><span class="n">rovs</span><span class="p">):</span> <span class="n">Raster</span> <span class="n">Product</span> <span class="n">Format</span> <span class="n">TOC</span> <span class="nb">format</span>
+  <span class="n">ECRGTOC</span> <span class="p">(</span><span class="n">rovs</span><span class="p">):</span> <span class="n">ECRG</span> <span class="n">TOC</span> <span class="nb">format</span>
+  <span class="n">HFA</span> <span class="p">(</span><span class="n">rw</span><span class="o">+</span><span class="n">v</span><span class="p">):</span> <span class="n">Erdas</span> <span class="n">Imagine</span> <span class="n">Images</span> <span class="p">(</span><span class="o">.</span><span class="n">img</span><span class="p">)</span>
+  <span class="n">SAR_CEOS</span> <span class="p">(</span><span class="n">rov</span><span class="p">):</span> <span class="n">CEOS</span> <span class="n">SAR</span> <span class="n">Image</span>
+  <span class="n">CEOS</span> <span class="p">(</span><span class="n">rov</span><span class="p">):</span> <span class="n">CEOS</span> <span class="n">Image</span>
+  <span class="n">JAXAPALSAR</span> <span class="p">(</span><span class="n">rov</span><span class="p">):</span> <span class="n">JAXA</span> <span class="n">PALSAR</span> <span class="n">Product</span> <span class="n">Reader</span> <span class="p">(</span><span class="n">Level</span> <span class="mf">1.1</span><span class="o">/</span><span class="mf">1.5</span><span class="p">)</span>
+  <span class="n">GFF</span> <span class="p">(</span><span class="n">rov</span><span class="p">):</span> <span class="n">Ground</span><span class="o">-</span><span class="n">based</span> <span class="n">SAR</span> <span class="n">Applications</span> <span class="n">Testbed</span> <span class="n">File</span> <span class="n">Format</span> <span class="p">(</span><span class="o">.</span><span class="n">gff</span><span class="p">)</span>
+  <span class="n">ELAS</span> <span class="p">(</span><span class="n">rw</span><span class="o">+</span><span class="n">v</span><span class="p">):</span> <span class="n">ELAS</span>
+  <span class="n">AIG</span> <span class="p">(</span><span class="n">rov</span><span class="p">):</span> <span class="n">Arc</span><span class="o">/</span><span class="n">Info</span> <span class="n">Binary</span> <span class="n">Grid</span>
+  <span class="n">AAIGrid</span> <span class="p">(</span><span class="n">rwv</span><span class="p">):</span> <span class="n">Arc</span><span class="o">/</span><span class="n">Info</span> <span class="n">ASCII</span> <span class="n">Grid</span>
+  <span class="n">GRASSASCIIGrid</span> <span class="p">(</span><span class="n">rov</span><span class="p">):</span> <span class="n">GRASS</span> <span class="n">ASCII</span> <span class="n">Grid</span>
+  <span class="n">SDTS</span> <span class="p">(</span><span class="n">rov</span><span class="p">):</span> <span class="n">SDTS</span> <span class="n">Raster</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<p>Syntaxe programu <a class="reference internal" href="#gdalwarp"><span class="std std-ref">gdalwarp</span></a> (i u tohoto programu funguje
+parametr <code class="xref std std-option docutils literal notranslate"><span class="pre">--help</span></code> a určitě se podívejte na manuálovou stránku
+programu <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">gdalarp</span></code>) je následující:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalwarp</span> <span class="p">[</span><span class="n">PŘEPÍNAČE</span> <span class="n">A</span> <span class="n">VOLBY</span><span class="p">]</span> <span class="n">zdrojový_soubor</span> <span class="n">výstupní_soubor</span>
+</pre></div>
+</div>
+<p>Transformace rastru ve formátu GeoTIFF do formátu Windows Bitmap při zachování
+souřadnicového  systému vypadá následovně:</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Transformace GDAL z GeoTIFF do BMP z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-of<span class="w"> </span>BMP<span class="w"> </span>lsat7_2002_nir.tiff<span class="w"> </span>lsat7_2002_nir.bmp
+
+Creating<span class="w"> </span>output<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>1287P<span class="w"> </span>x<span class="w"> </span>831L.
+ERROR<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>Attempt<span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>BMP<span class="w"> </span>dataset<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>illegal
+data<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">(</span>Float32<span class="o">)</span>,<span class="w"> </span>only<span class="w"> </span>Byte<span class="w"> </span>supported<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>format.
+</pre></div>
+</div>
+<p>Vidíme, že formát BMP nepodporuje zdrojová data - číslo s plovoucí
+desetinnou čárkou. Datový typ nastavíme pomocí parametru
+<code class="xref std std-option docutils literal notranslate"><span class="pre">-type</span></code> (samozřejmě tak přijdeme o hodnoty mimo rozsah
+tohoto datového typu).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-of<span class="w"> </span>BMP<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>lsat7_2002_nir.tiff<span class="w"> </span>lsat7_2002_nir.bmp
+
+Creating<span class="w"> </span>output<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>1287P<span class="w"> </span>x<span class="w"> </span>831L.
+Processing<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span>lsat7_2002_nir.tiff.
+<span class="m">0</span>...10...20...30...40...50...60...70...80...90...100<span class="w"> </span>-<span class="w"> </span><span class="k">done</span>.
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id1">
+<img alt="../_images/lsat7_2002_nir.png" src="../_images/lsat7_2002_nir.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 41 </span><span class="caption-text">Výsledný obrázek převodu rastrové mapy na formát BMP.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Vedle souboru <cite>lsat7_2002_nir.bmp</cite> vytvořil GDAL také
+souboru <cite>lsat7_2002_nir.bmp.aux.xml</cite> obsahující metadata, mimo jiné
+i informace o souřadnicovém systému. Pokud tento soubor smažete
+nebo změníte jeho jméno, dostanete následující výstup, tj. bez
+informace o souřadnicovém systému.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Ověření výsledného souboru pomocí gdalinfo z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalinfo lsat7_2002_nir.bmp
+
+Driver: BMP/MS Windows Device Independent Bitmap
+Files: lsat7_2002_nir.bmp
+Size is 1287, 831
+Coordinate System is `&#39;
+Corner Coordinates:
+Upper Left  (    0.0,    0.0)
+Lower Left  (    0.0,  831.0)
+Upper Right ( 1287.0,    0.0)
+Lower Right ( 1287.0,  831.0)
+Center      (  643.5,  415.5)
+Band 1 Block=1287x1 Type=Byte, ColorInterp=Red
+Band 2 Block=1287x1 Type=Byte, ColorInterp=Green
+Band 3 Block=1287x1 Type=Byte, ColorInterp=Blue
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dalším obvyklým krokem je transformace při změně souřadnicového
+systému (v našem případě zůstane vstupní formát GeoTIFF zachován i na
+výstupu). Při transformacích můžeme použít 2 parametry pro popis
+souřadnicových systémů ve vztahu ke vstupní resp. výstupní rastrové
+mapě:</p>
+<dl class="simple">
+<dt><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></dt><dd><p>definice souř. systému vstupní dat (source)</p>
+</dd>
+<dt><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></dt><dd><p>definice souř. systému výstupní dat (target)</p>
+</dd>
+</dl>
+<p>Tyto parametry mají větší prioritu při zpracování vstupních dat, než případná
+metadata v těchto datech přítomná.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Transformace rastrových dat do jiného souřadnicového systému z příkazové řádky</p>
+<p>Souřadnicový systém vstupních dat je známý, v našem příkladě
+nastavíme pouze souřadnicový systém pro výstupní data.  Zápis
+souřadnicového systému je totožný se zápisem pro knihovnu
+<strong class="program">Proj.4</strong>. My použijeme kód <a class="reference external" href="http://epsg.io/4326">EPSG:4326</a>, což je
+souřadnicový systém <a class="reference internal" href="../soursystemy/wgs84.html"><span class="doc">WGS84</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span>+init<span class="o">=</span>epsg:4326<span class="w"> </span>lsat7_2002_nir.tiff<span class="w"> </span>lsat7_2002_nir-wgs84.bmp
+
+Creating<span class="w"> </span>output<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>1359P<span class="w"> </span>x<span class="w"> </span>717L.
+Processing<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span>lsat7_2002_nir.tiff.
+<span class="m">0</span>...10...20...30...40...50...60...70...80...90...100<span class="w"> </span>-<span class="w"> </span><span class="k">done</span>.
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../_images/lsat7_2002_nir-wgs84.png" src="../_images/lsat7_2002_nir-wgs84.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 42 </span><span class="caption-text">Výsledek převodu rastrových dat do souřadnicového systému WGS84.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p id="gdaltransform"><span id="index-4"></span><strong>gdaltransform</strong></p>
+<p>Funguje podobně jako program <a class="reference internal" href="proj4.html#cs2cs"><span class="std std-ref">cs2cs</span></a> knihovny Proj4,
+tj. transformuje souřadnice mezi souřadnicovými systémy.</p>
+<p id="gdal-translate"><span id="index-5"></span><strong>gdal_translate</strong></p>
+<p>Převádí rastrová data mezi různými formáty. Na rozdíl od
+<a class="reference internal" href="#gdalwarp"><span class="std std-ref">gdalwarp</span></a> neumožňuje data transformovat do jiného
+souřadnicového systému. Lze ale nastavit souřadnicový systém
+výstupních dat pomocí parametru <code class="xref std std-option docutils literal notranslate"><span class="pre">-a_srs</span></code> (kdy nechodází k
+transformaci dat, ale pouze nastavení souřadnicového systému do
+metadat výstupního souboru).</p>
+<p id="gdaldem"><span id="index-6"></span><strong>gdaldem</strong></p>
+<p>Nástroj <a class="reference external" href="http://www.gdal.org/gdaldem.html">gdaldem</a> vám pomůže zanalyzovat a
+vizualizovat digitální modely reliéfu (DMR). Ze vstupního DMR lze vygenerovat</p>
+<ul class="simple">
+<li><p>stínovaný reliéf,</p></li>
+<li><p>mapu sklonu svahu,</p></li>
+<li><p>mapu expozice,</p></li>
+<li><p>barevný reliéf,</p></li>
+<li><p>a další …</p></li>
+</ul>
+<div class="notecmd admonition">
+<p class="admonition-title">Vytvoření mapy stínového reliéfu ze vstupního rastrového souboru z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaldem<span class="w"> </span>hillshade<span class="w"> </span>dem.tiff<span class="w"> </span>hillshade.tiff
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id3">
+<img alt="../_images/hillshade.png" src="../_images/hillshade.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 43 </span><span class="caption-text">Mapa stínovaného reliéfu vytvořená pomocí utility <cite>gdaldem</cite>.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p id="gdallocationinfo"><span id="index-7"></span><strong>gdallocationinfo</strong></p>
+<p>Nástroj <a class="reference external" href="http://www.gdal.org/gdallocationinfo.html">gdallocationinfo</a> se umožňuje ptát se na
+hodnoty rastrových dat o daných rastrových souřadnicích.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Dotaz na hodnotu rastru podle souřadnic z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdallocationinfo<span class="w"> </span>lsat7_2002_nir-wgs84.tiff<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">50</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Report</span><span class="p">:</span>
+  <span class="n">Location</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="n">P</span><span class="p">,</span><span class="mi">50</span><span class="n">L</span><span class="p">)</span>
+  <span class="n">Band</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">Value</span><span class="p">:</span> <span class="mi">110</span>
+  <span class="n">Band</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">Value</span><span class="p">:</span> <span class="mi">221</span>
+  <span class="n">Band</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="n">Value</span><span class="p">:</span> <span class="mi">189</span>
+</pre></div>
+</div>
+</div>
+<p id="gdalmanage"><span id="index-8"></span><strong>gdalmanage</strong></p>
+<p>Program <a class="reference external" href="http://www.gdal.org/gdalmanage.html">gdalmanage</a> umožňuje práci s
+rastrovými soubory na úrovni operačního systému, jejich identifikaci,
+přejmenování, mazání a kopírování.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Použití z příkazové řádky</p>
+<p>Obsah pracovního adresáře může vypadat z pohledu GDAL následovně:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalmanage<span class="w"> </span>identify<span class="w"> </span>*
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dem_srtm</span><span class="o">.</span><span class="n">tiff</span><span class="p">:</span> <span class="n">GTiff</span>
+<span class="n">hillshade</span><span class="o">.</span><span class="n">bmp</span><span class="p">:</span> <span class="n">BMP</span>
+<span class="n">hillshade</span><span class="o">.</span><span class="n">png</span><span class="p">:</span> <span class="n">PNG</span>
+<span class="n">hillshade</span><span class="o">.</span><span class="n">tiff</span><span class="p">:</span> <span class="n">GTiff</span>
+<span class="n">lsat7_2002_nir</span><span class="o">.</span><span class="n">bmp</span><span class="p">:</span> <span class="n">BMP</span>
+<span class="n">lsat7_2002_nir</span><span class="o">.</span><span class="n">png</span><span class="p">:</span> <span class="n">PNG</span>
+<span class="n">lsat7_2002_nir</span><span class="o">.</span><span class="n">tiff</span><span class="p">:</span> <span class="n">GTiff</span>
+<span class="n">lsat7_2002_nir</span><span class="o">-</span><span class="n">wgs84</span><span class="o">.</span><span class="n">bmp</span><span class="p">:</span> <span class="n">BMP</span>
+<span class="n">lsat7_2002_nir</span><span class="o">-</span><span class="n">wgs84</span><span class="o">.</span><span class="n">png</span><span class="p">:</span> <span class="n">PNG</span>
+<span class="n">lsat7_2002_nir</span><span class="o">-</span><span class="n">wgs84</span><span class="o">.</span><span class="n">tiff</span><span class="p">:</span> <span class="n">GTiff</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p><strong class="program">gdalmanage</strong> lze použít pro případné změny a mazání
+více souborových formátů (např. <cite>*.tfw</cite> soubory).</p>
+</div>
+<p id="gdaladdo"><span id="index-9"></span><strong>gdaladdo</strong></p>
+<p>Nástroj <a class="reference external" href="http://www.gdal.org/gdaladdo.html">gdaladdo</a> umožňuje
+pracovat s tzv. pyramidami - zmenšenými kopiemi rastrových dat
+uložených přímo uvnitř anebo externě rastrového souboru. Ve výsledku
+bude práce s rastrem u malých měřítek výrazně rychlejší - vznikne v
+podstatě prostorový index rastrových dat (používá např.  QGIS pro
+zobrazování rastrů).</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Vytvoření přehledových pyramid rastrového souboru z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ověření velikosti původního souboru</span>
+ls<span class="w"> </span>-lh<span class="w"> </span>lsat7_2002_nir.tiff
+
+-rw-rw-r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w"> </span>13M<span class="w"> </span>apr<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">00</span>:00<span class="w"> </span>lsat7_2002_nir.tiff
+
+<span class="c1"># vytvoření pyramid</span>
+gdaladdo<span class="w"> </span>lsat7_2002_nir.tiff<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span>
+
+<span class="c1"># opětovné ověření velikosti změněného souboru</span>
+ls<span class="w"> </span>-lh<span class="w"> </span>lsat7_2002_nir.tiff
+
+-rw-rw-r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w"> </span>19M<span class="w"> </span>apr<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">00</span>:00<span class="w"> </span>lsat7_2002_nir.tiff
+</pre></div>
+</div>
+</div>
+<p id="gdal-contour"><span id="index-10"></span><strong>gdal_contour</strong></p>
+<p>Nástroj <a class="reference external" href="http://www.gdal.org/gdal_contour.html">gdal_contour</a>
+vytvoří vektorové vrstevnice ze vstupního digitálního modelu reliéfu.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Vytvoření vrstevnic z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_contour<span class="w"> </span>-a<span class="w"> </span>elev<span class="w"> </span>dem.tiff<span class="w"> </span>vrstevnice.shp<span class="w"> </span>-i<span class="w"> </span><span class="m">10</span>.0
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../_images/vrstevnice.png" src="../_images/vrstevnice.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 44 </span><span class="caption-text">Získané (a obarvené) vrstevnice z DMT.</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p id="gdal-rasterize"><span id="index-11"></span><strong>gdal_rasterize</strong></p>
+<p>Nástroj <a class="reference external" href="http://www.gdal.org/gdal_rasterize.html">gdal_rasterize</a>
+provede <a class="reference internal" href="../formaty/prevody.html#rasterizace"><span class="std std-ref">rasterizaci</span></a> vektorových dat (tj. převede
+data z vektorové reprezentace do rastru).</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Převod vektorových vrstevnic na rastrová data z příkazové řádky</p>
+<p>Výstupní formát BMP, prostorové rozlišení 10m</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_rasterize<span class="w"> </span>-a<span class="w"> </span>elev<span class="w"> </span>-of<span class="w"> </span>GeoTIFF<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-tr<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span>vrstevnice<span class="w"> </span>vrstevnice.shp<span class="w"> </span>vrstevnice.tiff
+</pre></div>
+</div>
+</div>
+<p id="gdaltindex"><span id="index-12"></span><strong>gdaltindex</strong></p>
+<p>Vytvoří tzv. tile-index vektorový soubor obsahující obalový polygon
+(obdélník) okolo každého rastrového souboru. Tento prostorový index
+lze pak použít do dalších operací v prostředí GDAL, stejně tak jako
+vrstvu v programu <span class="xref std std-ref">mapserver</span>.</p>
+</section>
+<section id="prikazy-pro-praci-s-vektorovymi-daty">
+<h2>Příkazy pro práci s vektorovými daty<a class="headerlink" href="#prikazy-pro-praci-s-vektorovymi-daty" title="Permalink to this heading">¶</a></h2>
+<p id="ogrinfo"><span id="index-13"></span><strong>ogrinfo</strong></p>
+<p>Sesterským programem ke <strong class="program">gdalinfo</strong> je <strong class="program">ogrinfo</strong> -
+vypíše dostupné informace o vektorových datech.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>OGR pracuje na abstraktním datovém modelu</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><em>Zdroj</em> (data source)</dt><dd><ul>
+<li><dl class="simple">
+<dt><em>Vrstva</em> (layer)</dt><dd><ul>
+<li><p><em>Vektorový objekt</em> (feature)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>kde</p>
+<ul class="simple">
+<li><p>Zdrojem může být soubor, adresář nebo prostorová databáze</p></li>
+<li><p>Vrstvou může být tabulka v databázi nebo vlastní data v souboru</p></li>
+</ul>
+<p>Jsou-li data uložena v souboru, bývá název souboru a název vrstvy totožný.</p>
+<p>Toto na první pohled možná lehce matoucí uspořádání je způsobeno tím, že
+GDAL (resp. vektorová část OGR) se snaží přistupovat ke všem možným datovým
+zdrojům, z nichž některé umožňují do zdroje (souboru, databáze, …) uložit
+více dat (vrstev, tabulek) a jiné ne.</p>
+<p>Podrobnější informace o datovém modulu knihovny GDAL najdete ve
+školení <a class="reference external" href="https://gismentors.github.io/geopython-pokrocily">GeoPython pro pokročilé</a>.</p>
+</div>
+<div class="notecmd admonition">
+<p class="admonition-title">Dotaz na metadata vektorového souboru z příkazové řádky</p>
+<p>Necháme si vypsat informace o souboru <cite>vrstevnice.shp</cite> (pokud
+vynecháme parametr <cite>-so</cite> (summary only), vypíší se informace o
+každém vektorovém prvku):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>vrstevnice.shp<span class="w"> </span>vrstevnice<span class="w"> </span>-so
+
+INFO:<span class="w"> </span>Open<span class="w"> </span>of<span class="w"> </span><span class="sb">`</span>vrstevnice.shp<span class="s1">&#39;</span>
+<span class="s1">      using driver `ESRI Shapefile&#39;</span><span class="w"> </span>successful.
+
+Layer<span class="w"> </span>name:<span class="w"> </span>vrstevnice
+Geometry:<span class="w"> </span>Line<span class="w"> </span>String
+Feature<span class="w"> </span>Count:<span class="w"> </span><span class="m">175150</span>
+Extent:<span class="w"> </span><span class="o">(</span>-904049.056059,<span class="w"> </span>-1227170.827189<span class="o">)</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>-431499.549460,<span class="w"> </span>-935327.979496<span class="o">)</span>
+Layer<span class="w"> </span>SRS<span class="w"> </span>WKT:
+PROJCS<span class="o">[</span><span class="s2">&quot;Krovak&quot;</span>,
+<span class="w">    </span>GEOGCS<span class="o">[</span><span class="s2">&quot;GCS_bessel&quot;</span>,
+<span class="w">        </span>DATUM<span class="o">[</span><span class="s2">&quot;Militar_Geographische_Institut&quot;</span>,
+<span class="w">            </span>SPHEROID<span class="o">[</span><span class="s2">&quot;Bessel_1841&quot;</span>,6377397.155,299.1528128<span class="o">]]</span>,
+<span class="w">        </span>PRIMEM<span class="o">[</span><span class="s2">&quot;Greenwich&quot;</span>,0<span class="o">]</span>,
+<span class="w">        </span>UNIT<span class="o">[</span><span class="s2">&quot;Degree&quot;</span>,0.017453292519943295<span class="o">]]</span>,
+<span class="w">    </span>PROJECTION<span class="o">[</span><span class="s2">&quot;Krovak&quot;</span><span class="o">]</span>,
+<span class="w">    </span>PARAMETER<span class="o">[</span><span class="s2">&quot;latitude_of_center&quot;</span>,49.5<span class="o">]</span>,
+<span class="w">    </span>PARAMETER<span class="o">[</span><span class="s2">&quot;longitude_of_center&quot;</span>,24.8<span class="o">]</span>,
+<span class="w">    </span>PARAMETER<span class="o">[</span><span class="s2">&quot;azimuth&quot;</span>,0<span class="o">]</span>,
+<span class="w">    </span>PARAMETER<span class="o">[</span><span class="s2">&quot;pseudo_standard_parallel_1&quot;</span>,0<span class="o">]</span>,
+<span class="w">    </span>PARAMETER<span class="o">[</span><span class="s2">&quot;scale_factor&quot;</span>,0.9999<span class="o">]</span>,
+<span class="w">    </span>PARAMETER<span class="o">[</span><span class="s2">&quot;false_easting&quot;</span>,0<span class="o">]</span>,
+<span class="w">    </span>PARAMETER<span class="o">[</span><span class="s2">&quot;false_northing&quot;</span>,0<span class="o">]</span>,
+<span class="w">    </span>UNIT<span class="o">[</span><span class="s2">&quot;Meter&quot;</span>,1<span class="o">]]</span>
+ID:<span class="w"> </span>Integer<span class="w"> </span><span class="o">(</span><span class="m">8</span>.0<span class="o">)</span>
+elev:<span class="w"> </span>Real<span class="w"> </span><span class="o">(</span><span class="m">12</span>.3<span class="o">)</span>
+</pre></div>
+</div>
+<p>Vidíme, že vektorová data jsou v souřadnicovém systému S-JTSK,
+hraniční souřadnice jsou (-904049.056059, -1227170.827189) -
+(-431499.549460, -935327.979496) a atributová tabulka má 2
+atributy: <cite>ID</cite> a <cite>elev</cite> (obsahující výšku nad mořem každé vrstevnice).
+Jedná se o soubor s liniovou geometrií.</p>
+</div>
+<p id="ogrtindex"><span id="index-14"></span><strong>ogrtindex</strong></p>
+<p><a class="reference external" href="http://www.gdal.org/ogrtindex.html">ogrtindex</a> je sesterským programem k
+programu <cite>gdaltindex</cite>. Máte-li adresář plný vektorových dlaždic a chcete-li s
+nimy rychle pracovat, vytvoříte vektrový soubor s hranicemi těchto souborů a
+odkazem do adresářové struktury.</p>
+<p id="ogrlineref"><span id="index-15"></span><strong>ogrlineref</strong></p>
+<p><a class="reference external" href="http://www.gdal.org/ogrlineref.html">ogrlineref</a> slouží k tvorbě
+souboru obsahujícím segmenty o daných délek. Umožňuje získávat jejich
+souřadnice, vzdálenosti, staničení atd., to vše v lineární referenční síti.</p>
+<p id="ogr2ogr"><span id="index-16"></span><strong>ogr2ogr</strong></p>
+<p>Nástroj <a class="reference external" href="http://www.gdal.org/ogr2ogr.html">ogr2ogr</a> je obdobou
+rastrového <a class="reference internal" href="#gdalwarp"><span class="std std-ref">gdalwarp</span></a>, který umožňuje transformaci
+vektorových dat.</p>
+<p>Obecná syntaxe je:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="p">[</span><span class="n">VOLBY</span><span class="p">]</span> <span class="n">výstupní_soubor</span> <span class="n">vstupní_soubor</span>
+</pre></div>
+</div>
+<p>Stejně jako u <a class="reference internal" href="#gdalwarp"><span class="std std-ref">gdalwarp</span></a>, můžete podporované formáty vypsat
+pomocí parametru <cite>–formats</cite>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>--formats
+
+Supported<span class="w"> </span>Formats:
+<span class="w">  </span>-&gt;<span class="w"> </span><span class="s2">&quot;ESRI Shapefile&quot;</span><span class="w"> </span><span class="o">(</span>read/write<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span><span class="s2">&quot;MapInfo File&quot;</span><span class="w"> </span><span class="o">(</span>read/write<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span><span class="s2">&quot;UK .NTF&quot;</span><span class="w"> </span><span class="o">(</span><span class="nb">readonly</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span><span class="s2">&quot;SDTS&quot;</span><span class="w"> </span><span class="o">(</span><span class="nb">readonly</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span><span class="s2">&quot;TIGER&quot;</span><span class="w"> </span><span class="o">(</span>read/write<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span><span class="s2">&quot;S57&quot;</span><span class="w"> </span><span class="o">(</span>read/write<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span><span class="s2">&quot;DGN&quot;</span><span class="w"> </span><span class="o">(</span>read/write<span class="o">)</span>
+<span class="w">  </span>...
+</pre></div>
+</div>
+<p>Pro práci se souřadnicovými systémy opět můžeme použít některý z
+následujících parametrů:</p>
+<ul class="simple">
+<li><p><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_srs</span></code> - přiřadí informaci o souřadnicovém systému do
+metadat výstupnímu souboru</p></li>
+<li><p><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code> - provode transformaci dat do souřadnicového
+systému výstupních dat</p></li>
+<li><p><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code> - nastaví souřadnicový systém vstupních dat</p></li>
+</ul>
+<p>Tyto parametry jsou kompatibilní se zápisem pro knihovnu <a class="reference internal" href="proj4.html"><span class="doc">Proj4</span></a>.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Převod souboru vrstevnic ve formátu Esri Shapefile na formát KML z příkazové řádky</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-f<span class="w"> </span>KML<span class="w"> </span>-t_srs<span class="w"> </span>epsg:4326<span class="w"> </span>vrstevnice.kml<span class="w"> </span>vrstevnice.shp
+</pre></div>
+</div>
+<p>Výsledný soubor můžeme zkontrolovat pomocí <strong class="program">ogrinfo</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>vrstevnice.kml<span class="w"> </span>vrstevnice<span class="w"> </span>-so
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>INFO: Open of `vrstevnice.kml&#39;
+      using driver `LIBKML&#39; successful.
+
+Layer name: vrstevnice
+Geometry: Unknown (any)
+Feature Count: 175150
+Extent: (12.060792, 48.554130) - (18.825375, 51.055295)
+Layer SRS WKT:
+GEOGCS[&quot;WGS 84&quot;,
+    DATUM[&quot;WGS_1984&quot;,
+        SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,
+            AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+        TOWGS84[0,0,0,0,0,0,0],
+        AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+    PRIMEM[&quot;Greenwich&quot;,0,
+        AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+    UNIT[&quot;degree&quot;,0.0174532925199433,
+        AUTHORITY[&quot;EPSG&quot;,&quot;9108&quot;]],
+    AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]
+ ...
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Knihovny</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Knihovna GDAL pro převod mezi formáty a souřadnicovými systémy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj4.html">Knihovna Proj.4 pro transformaci souřadnic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Knihovny"
+              >předchozí</a> |
+            <a href="proj4.html" title="Knihovna Proj.4 pro transformaci souřadnic"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

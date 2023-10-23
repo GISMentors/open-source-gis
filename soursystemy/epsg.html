@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>EPSG &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Jak poznat v jakém souřadnicovém systému jsou data" href="jak-poznat-ss-dat.html" />
+    <link rel="prev" title="ETRS89" href="etrs89.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="etrs89.html" title="ETRS89"
+             accesskey="P">předchozí</a> |
+          <a href="jak-poznat-ss-dat.html" title="Jak poznat v jakém souřadnicovém systému jsou data"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="epsg">
+<span id="index-0"></span><h1>EPSG<a class="headerlink" href="#epsg" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="http://cs.wikipedia.org/wiki/European Petroleum Survey Group">European Petroleum Survey Group</a> byla od roku 1986 do roku
+2005 vědecká organizace s vazbou k evropskému naftovému průmyslu. Od
+roku 2005 se pod <a class="reference external" href="http://www.epsg.org/">EPSG</a> rozumí dataset
+spravovaný nástupnickou organizací <a class="reference external" href="http://www.iogp.org/">IOGP</a> (The
+International Association of Oil &amp; Gas producers).</p>
+<p>Jde o databázi zemských elipsoidů, geodetických dat, zeměpisných a
+kartografických souřadnicových systémů, měrných jednotek a podobně.
+Každé kartografické zobrazení, resp. souřadnicový systém má dán
+jedinečný kód.  Tento kód je celé nezáporné číslo vyjma nuly, které se
+v databázi nesmí opakovat. Například <a class="reference external" href="http://epsg.io/4326">EPSG:4326</a> vyjadřuje
+souřadnicový systém <a class="reference internal" href="wgs84.html"><span class="doc">WGS84</span></a> o souřadnicích zeměpisné šířky a
+délky v celých stupních s Greenwichem jako nultým poledníkem.
+Databáze je podporována a rozšířena ve všech programech pracujících s
+geografickými daty. Oficiální stránka této databáze je <a class="reference external" href="http://epsg.org">www.epsg.org</a>, transformaci mezi různými souřadnicovými systémy
+lze zkoušet na <a class="reference external" href="http://www.epsg-registry.org">www.epsg-registry.org</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Nejnovější přehled včetně exportu do různých formátů naleznete na
+stránce <a class="reference external" href="http://epsg.io">http://epsg.io</a></p>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../_images/epsg_page.png" class="middle" src="../_images/epsg_page.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 20 </span><span class="caption-text">Hlavní stránka <a class="reference external" href="https://epsg.io/">epsg.io</a>.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="vyznamne-kody-epsg">
+<h2>Významné kódy EPSG<a class="headerlink" href="#vyznamne-kody-epsg" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="http://epsg.io/3857">EPSG:3857</a></p>
+<blockquote>
+<div><p>sférické <a class="reference internal" href="mercatorovo-zobrazeni.html"><span class="doc">Mercatorovo zobrazení</span></a>, používaný například
+<a class="reference external" href="http://cs.wikipedia.org/wiki/Google">Google</a>, <a class="reference external" href="http://cs.wikipedia.org/wiki/Bing">Bing</a>, <a class="reference external" href="http://cs.wikipedia.org/wiki/OpenStreetMap">OpenStreetMap</a></p>
+</div></blockquote>
+<p><a class="reference external" href="http://epsg.io/4326">EPSG:4326</a></p>
+<blockquote>
+<div><p><a class="reference internal" href="wgs84.html"><span class="doc">WGS84</span></a>, souřadnicový systém používaný mimo jiné v
+zařízeních GPS, zeměpisné souřadnice</p>
+</div></blockquote>
+<p><a class="reference external" href="http://epsg.io/5513">EPSG:5513</a></p>
+<blockquote>
+<div><p>systém <a class="reference internal" href="sjtsk.html"><span class="doc">S-JTSK</span></a>, jih <span class="math notranslate nohighlight">\(x\)</span> / západ <span class="math notranslate nohighlight">\(y\)</span> (<em>S-JTSK /
+Krovak</em>), definováno od nultého poledníku Greenwich, kladné
+souřadnice</p>
+</div></blockquote>
+<p><a class="reference external" href="http://epsg.io/5514">EPSG:5514</a></p>
+<blockquote>
+<div><p>systém <a class="reference internal" href="sjtsk.html"><span class="doc">S-JTSK</span></a>, východ <span class="math notranslate nohighlight">\(x\)</span> / sever <span class="math notranslate nohighlight">\(y\)</span> (<em>S-JTSK /
+Krovak East North</em>), definováno od nultého poledníku Greenwich,
+záporné souřadnice</p>
+</div></blockquote>
+</section>
+<section id="kody-se-kterymi-se-take-muzete-setkat">
+<h2>Kódy, se kterými se také můžete setkat<a class="headerlink" href="#kody-se-kterymi-se-take-muzete-setkat" title="Permalink to this heading">¶</a></h2>
+<p>Tyto kódy jsou zastarelé a neměli by se používat.</p>
+<p><a class="reference external" href="http://epsg.io/2065">EPSG:2065</a></p>
+<blockquote>
+<div><p>systém <a class="reference internal" href="sjtsk.html"><span class="doc">S-JTSK</span></a>, jih <span class="math notranslate nohighlight">\(x\)</span> / západ <span class="math notranslate nohighlight">\(y\)</span> (S-JTSK /
+Krovak), definováno od Ferrova poledníku, kladné souřadnice; někdy
+se chybně využívá jako ekvivalent <a class="reference external" href="http://epsg.io/5514">EPSG:5514</a> (S-JTSK / Krovak
+East North); tyto systémy však nejsou ekvivaletní a tento kód by
+se takto používat neměl</p>
+</div></blockquote>
+<p><a class="reference external" href="http://epsg.io/5221">EPSG:5221</a></p>
+<blockquote>
+<div><p>systém <a class="reference internal" href="sjtsk.html"><span class="doc">S-JTSK</span></a>, východ <span class="math notranslate nohighlight">\(x\)</span> / sever <span class="math notranslate nohighlight">\(y\)</span> (S-JTSK
+/ Krovak East North), definováno od Ferrova poledníku, záporné
+souřadnice</p>
+</div></blockquote>
+<p><a class="reference external" href="http://epsg.io/102067">EPSG:102067</a></p>
+<blockquote>
+<div><p>systém <a class="reference internal" href="sjtsk.html"><span class="doc">S-JTSK</span></a>, východ <span class="math notranslate nohighlight">\(x\)</span> / sever <span class="math notranslate nohighlight">\(y\)</span>
+(S-JTSK / Krovak East North), kód využívaný v softwarech firmy
+ESRI, často přejímaný do jiných softwarů; provizorní náhrada,
+dokud kód <a class="reference external" href="http://epsg.io/5514">EPSG:5514</a> nebyl oficiálně přidán do databáze EPSG;
+dnes je již zastaralý a není nutné jej využívat</p>
+</div></blockquote>
+<p><a class="reference external" href="http://epsg.io/900913">EPSG:900913</a></p>
+<blockquote>
+<div><p>alternativní zápis Mercatorova zobrazení využívané v Google Maps;
+číslo <span class="math notranslate nohighlight">\(900913\)</span> představuje grafickou podobu slova <em>google</em>;
+dnes již není nutné, lepší je využívat oficiální kód <a class="reference external" href="http://epsg.io/3857">EPSG:3857</a></p>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Důležité</p>
+<p>V oblasti užití dat v geografických informačních
+systémech není užíván EPSG <a class="reference external" href="http://epsg.io/2065">EPSG:2065</a> S-JTSK/Krovak s kladnými
+souřadnicemi v pořadí jih <span class="math notranslate nohighlight">\(x\)</span>, západ <span class="math notranslate nohighlight">\(y\)</span>, který naopak
+užívají geodeti pro měření v terénu a zobrazují pak ve svých
+měřických výstupech kladné souřadnice <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>. Pokud
+je tento výstup použit přímo jako zdroj pro GIS aplikaci či
+mapovou službu, data se nezobrazí správně, neboť aplikace jsou
+naprogramovány na užití Křovákova zobrazení se <strong>zápornými</strong>
+souřadnicemi.  Vztah mezi souřadnicemi „záporného“ <span class="math notranslate nohighlight">\(x\)</span>,
+<span class="math notranslate nohighlight">\(y\)</span> a „kladného“ <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> Křováka, tedy mezi
+<a class="reference external" href="http://epsg.io/5514">EPSG:5514</a> a <a class="reference external" href="http://epsg.io/5513">EPSG:5513</a>, je <strong>x = -y a y = -x</strong>.</p>
+</div>
+<figure class="align-center" id="id3">
+<span id="srovnani-epsg"></span><img alt="../_images/srovnani_epsg.png" class="middle" src="../_images/srovnani_epsg.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 21 </span><span class="caption-text">Srovnání některých EPSG kódů - Mercator, WGS84, S-JTSK Krovak a
+S-JTSK Krovak East North (zdroj: <a class="reference external" href="https://epsg.io/">epsg.io</a>).</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Souřadnicové systémy</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="souradnice.html">Typy souřadnic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mercatorovo-zobrazeni.html">Mercatorovo zobrazení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sjtsk.html">S-JTSK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wgs84.html">WGS84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="etrs89.html">ETRS89</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EPSG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jak-poznat-ss-dat.html">Jak poznat v jakém souřadnicovém systému jsou data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="etrs89.html" title="ETRS89"
+              >předchozí</a> |
+            <a href="jak-poznat-ss-dat.html" title="Jak poznat v jakém souřadnicovém systému jsou data"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

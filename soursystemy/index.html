@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Souřadnicové systémy &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Typy souřadnic" href="souradnice.html" />
+    <link rel="prev" title="Úvod" href="../uvod.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../uvod.html" title="Úvod"
+             accesskey="P">předchozí</a> |
+          <a href="souradnice.html" title="Typy souřadnic"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="souradnicove-systemy">
+<span id="souradnicovesystemy"></span><h1>Souřadnicové systémy<a class="headerlink" href="#souradnicove-systemy" title="Permalink to this heading">¶</a></h1>
+<p id="index-0"><a class="reference external" href="http://cs.wikipedia.org/wiki/Mapové zobrazení">Mapové zobrazení</a>, resp. kartografická projekce je způsob, kterým
+se převádí zobrazení povrchu Země, případně jiného nebeského tělesa
+z trojrozměrného zakřiveného povrchu referenčního elipsoidu či koule do roviny.</p>
+<p>Protože povrch koule či elipsoidu není rozvinutelný do roviny, stejně
+jako nelze do roviny bez deformace rozvinout oloupanou slupku
+pomeranče, je zapotřebí jej převést na povrch geometrického objektu,
+jehož povrch do roviny rozvinutelný je. Takovými objekty jsou
+<strong>válec</strong>, <strong>kužel</strong> a samozřejmě také <strong>rovinná plocha</strong>
+sama. Nejčastěji používaná zobrazování jsou jednoduchá zobrazení
+<em>azimutální</em>, <em>kuželová</em> a <em>válcová</em>, viz <a class="reference internal" href="#j-zobrazeni"><span class="std std-ref">Přehled jednoduchých kartografických
+zobrazení spolu s polohou zobrazovací plochy</span></a>.</p>
+<p>Mapová zobrazení podle polohy osy zobrazovací plochy může být
+<em>normální</em> (pólová) – osa válce nebo kužele je totožná s osou glóbu
+nebo-li zobrazovací rovina se dotýká glóbu na jednom pólu, <em>příčná</em>
+(transverzální, rovníková) – osa válce nebo kužele leží v rovině
+rovníku, nebo-li zobrazovací rovina se dotýká glóbu na rovníku a
+<em>obecná</em> (šikmá) – osa válce nebo kužele prochází středem glóbu, ale
+nesplývá s jeho osou ani neleží na rovníku, nebo-li zobrazovací rovina
+se dotýká glóbu v libovolném bodě mezi pólem a rovníkem.</p>
+<figure class="align-center" id="id1">
+<span id="j-zobrazeni"></span><img alt="../_images/jednoducha-zobrazeni.gif" class="small" src="../_images/jednoducha-zobrazeni.gif" />
+<figcaption>
+<p><span class="caption-number">Obr. 6 </span><span class="caption-text">Přehled jednoduchých kartografických zobrazení spolu s polohou
+zobrazovací plochy (zdroj: <a class="reference external" href="http://transformace.webst.fd.cvut.cz/Iframe/Basics_iframe.htm">Geodetické a kartografické základy</a>).</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p id="index-1">Převod kulové plochy do roviny ze své podstaty vždy přináší tvarové
+zkreslení části obsažených informací. Ve výsledném rovinném zobrazení
+nemohou být současně zachovány všechny hlavní údaje jako délky, úhly a
+plochy.  <strong>Vždy dochází ke zkreslení</strong> některého z nich, případně
+všech.  Proto byla postupem času vyvinuta řada kartografických
+zobrazení, z nichž každé klade důraz na jiný z důležitých údajů. Při
+vytváření map malých území (do několika set km²) je zkreslení téměř
+zanedbatelné, je-li však třeba zachytit na mapě větší oblast jako
+kraj, stát, světadíl, oceán či celou Zemi, je nutné pečlivě volit
+kartografické zobrazení tak, aby odpovídalo účelu mapy.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/tissot_world_from_space.png" class="small" src="../_images/tissot_world_from_space.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 7 </span><span class="caption-text">Kontrolní kruhy rozmístěné pravidelně na povrchu Země (zdroj:
+<a class="reference external" href="http://cs.wikipedia.org/wiki/Mapové zobrazení">wikipedia</a>).</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<span id="ukazka-mercator"></span><img alt="../_images/tissot_mercator.png" class="small" src="../_images/tissot_mercator.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 8 </span><span class="caption-text">Ukázka Mercatorova kartografické zobrazení. Všimněte si výrazného
+zkreslení vzdáleností v oblasti pólů (zdroj: <a class="reference external" href="http://cs.wikipedia.org/wiki/Mapové zobrazení">wikipedia</a>).</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<img alt="../_images/tissot_robinson.png" class="small" src="../_images/tissot_robinson.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 9 </span><span class="caption-text">Další možné zobrazení, všimněte si výrazného zkreslení úhlů v
+rozích mapy (zdroj: <a class="reference external" href="http://cs.wikipedia.org/wiki/Mapové zobrazení">wikipedia</a>).</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p id="index-2">Z uvedeného vyplývá, že můžeme kartografická zobrazení rozdělit na
+základě charakteru zkreslení do několika skupin:</p>
+<ul class="simple">
+<li><p><strong>délkojevná</strong> (ekvidistantní) – nezkreslují vzdálenosti podél
+určitého systému čar (netýká se všech délek),</p></li>
+<li><p><strong>plochojevná</strong> (ekvivalentní) – zachovávají poměry ploch, silně
+jsou však zkresleny úhly,</p></li>
+<li><p><strong>úhlojevná</strong> (konformní) – věrně zachycují úhly, ale silně
+zkreslují plochy,</p></li>
+<li><p><strong>vyrovnávací</strong> (kompenzační) – kompromisní zobrazení s mírným
+zkreslením úhlů i ploch; do této kategorie lze počítat i mnohá
+zobrazení délkojevná.</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<img alt="../_images/netzentwuerfe.png" class="middle" src="../_images/netzentwuerfe.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 10 </span><span class="caption-text">Příklady kartografických zobrazení podle vzhledu zobrazovací
+plochy - azimutální, kuželová, válcová, … (zdroj:
+<a class="reference external" href="http://cs.wikipedia.org/wiki/Mapové zobrazení">Mapové zobrazení</a>).</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="task admonition">
+<p class="admonition-title">Úkol</p>
+<p>Různé souřadnicové systémy</p>
+<p>Otrevřete program QGIS, zobrazte rastrový soubor <cite>dmt100.tif</cite>
+<span class="menuselection">Vrstva ‣ Přidat vrstvu ‣ Přidat rastrovou vrstvu</span>,</p>
+<p>Vpravo-dole v okně QGIS můžete po dvojkliku na číslo EPSG měnit v dialogu
+různé souřadnicové systémy. Dívejte se, co se děje s mapou, pokud
+vyzkoušíte postupně sytémy EPSG:5514, EPSG:4326, EPSG:3857 a EPSG:3387.</p>
+<figure class="align-center">
+<img alt="../_images/projections_cr.jpeg" class="middle" src="../_images/projections_cr.jpeg" />
+</figure>
+</div>
+<p><strong>Další témata</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="souradnice.html">Typy souřadnic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mercatorovo-zobrazeni.html">Mercatorovo zobrazení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sjtsk.html">S-JTSK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wgs84.html">WGS84</a></li>
+<li class="toctree-l1"><a class="reference internal" href="etrs89.html">ETRS89</a></li>
+<li class="toctree-l1"><a class="reference internal" href="epsg.html">EPSG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="epsg.html#vyznamne-kody-epsg">Významné kódy EPSG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epsg.html#kody-se-kterymi-se-take-muzete-setkat">Kódy, se kterými se také můžete setkat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jak-poznat-ss-dat.html">Jak poznat v jakém souřadnicovém systému jsou data</a></li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Souřadnicové systémy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="souradnice.html">Typy souřadnic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mercatorovo-zobrazeni.html">Mercatorovo zobrazení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sjtsk.html">S-JTSK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wgs84.html">WGS84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="etrs89.html">ETRS89</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epsg.html">EPSG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jak-poznat-ss-dat.html">Jak poznat v jakém souřadnicovém systému jsou data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../uvod.html" title="Úvod"
+              >předchozí</a> |
+            <a href="souradnice.html" title="Typy souřadnic"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

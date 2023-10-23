@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Standardy v GIS &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="EPSG" href="epsg-standardy.html" />
+    <link rel="prev" title="Převod dat" href="../formaty/prevody.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../formaty/prevody.html" title="Převod dat"
+             accesskey="P">předchozí</a> |
+          <a href="epsg-standardy.html" title="EPSG"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="standardy-v-gis">
+<h1>Standardy v GIS<a class="headerlink" href="#standardy-v-gis" title="Permalink to this heading">¶</a></h1>
+<p id="index-0">GIS se jako obor etabloval v 80. letech 20 století. Za tu dobu se v
+praxi prosadila celá řada oborových <strong>de-facto</strong> standardů,
+t.j. standardů prosazených tržní silou, ale formálně
+nepotvrzených. Jako příklad můžeme zmínit Esri <a class="reference external" href="http://cs.wikipedia.org/wiki/Shapefile">Shapefile</a>
+nebo v poslední době populární Google <a class="reference external" href="http://cs.wikipedia.org/wiki/KML">KML</a> (který byl ale
+na rozdíl od Shapefile později standardizován konsorciem OGC).</p>
+<p>V roce 1992 bylo ve Spojených státech amerických založeno sdružení
+<em>Open GRASS Foundation</em> (OGF). Cílem sdružení bylo mimo jiné i hledání
+koncensu při řešení společných problémů v rámci komunity uživatelů
+softwaru <a class="reference external" href="https://gismentors.github.io/grass-gis-zacatecnik">GRASS</a>. Na základech OGF bylo v
+roce 1994 formováno konzorcium <em>Open GIS</em>, dnes nazývané <a class="reference external" href="http://opengeospatial.org">Open
+Geospatial Consortium</a> (OGC) s cílem hledat
+způsoby, jakými by mohly systémy GIS komunikovat prostřednictvím
+počítačových sítí, pokud by využívali otevřených rozhraní definovaných
+v rámci tzv. <em>Open Geodata Interoperability Specification</em> (OGIS).</p>
+<p id="index-1"><strong>Open GIS</strong> konzorcium bylo založeno v roce 1994 devíti členy. V současnosti (rok
+2016) má jeho nástupce OGC více než 500 členů - komerčních firem,
+veřejných institucí, univerzit i jednotlivců. Dnes OGC poskytuje více
+jako 35 implementačních standardů, které jsou <strong>volně dostupné</strong> a
+adresují různé výzvy ve vztahu k prostorovým datům.  Další organizace,
+například <a class="reference internal" href="iso.html"><span class="doc">ISO</span></a>, v České republice působící <a class="reference internal" href="csn.html#csn"><span class="std std-ref">ČSN</span></a> a podobně, se také nějakým způsobem dotýkají problematiky
+prostorových dat, často ale pouze přebírají standardy vydefinované na
+půdě OGC a zařazují je do svých schémat.</p>
+<p>Pokud pracujete delší dobu v nějakém oboru, natož v oboru zabývajícím se IT,
+brzy zjistíte, že standardy jsou vždy:</p>
+<ul class="simple">
+<li><p><strong>zastaralé</strong>, absolutně nereflektující současnou míru poznání a současně
+používané technologie,</p></li>
+<li><p><strong>nevyhovující</strong> vašemu problému, který chcete aktuálně řešit,</p></li>
+<li><p><strong>zbytečně komplikované</strong>, stačilo by to přeci udělat daleko jednodušeji.</p></li>
+</ul>
+<p>Toho si všiml i autor komixu <a class="reference external" href="http://xkcd.com">XKCD</a> - každý si myslí, že umí
+vytvořit lepší standard, než je ten stávající:</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/standards.png" src="../_images/standards.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 37 </span><span class="caption-text">Zdroj: <a class="reference external" href="https://xkcd.com/927/">https://xkcd.com/927/</a></span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Standardy však každému oboru přinášejí několik pozitivních aspektů, jsou-li
+uplatňovány dobře:</p>
+<ul class="simple">
+<li><p>komunikaci mezi softwarovými systémy,</p></li>
+<li><p>sdílení mezi softwarovými systémy,</p></li>
+<li><p>nahraditelnost a zastupitelnost softwarových řešení.</p></li>
+</ul>
+<p id="index-2">Jedním slovem nám standardy zajišťují <strong>interoperabilitu</strong> v rámci oboru.
+Z pohledu otevřenosti a formálnosti můžeme oborové standardy zatřídit do
+následujícího schématu:</p>
+<figure class="align-center">
+<img alt="../_images/standards-schema.png" src="../_images/standards-schema.png" />
+</figure>
+<section id="standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku">
+<h2>Standardy z pohledu otevřenosti a způsobu jejich vzniku<a class="headerlink" href="#standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku" title="Permalink to this heading">¶</a></h2>
+<dl class="simple" id="index-3">
+<dt><strong>Uzavřené de-facto standardy</strong></dt><dd><p>Jsou asi nejméně vhodným příkladem následování. V oboru GIS se s těmito
+standardy příliš často nesetkáváme, jsou však známy případy de-facto
+standardů, jejichž licence přímo zabraňovala jejich implementaci v
+nástrojích třetích stran. Takové standardy brzdí inovaci a není možné s nimi
+být interoperabilní v softwarech třetích stran.</p>
+</dd>
+</dl>
+<p><strong>Otevřené de-facto standardy</strong></p>
+<blockquote>
+<div><p>Příkladem takového standardu může být formát Esri
+<a class="reference external" href="http://cs.wikipedia.org/wiki/Shapefile">Shapefile</a>. Ten nikdy nebyl formalizován mimo firmu
+<a class="reference external" href="http://cs.wikipedia.org/wiki/Esri">Esri</a>, ta ale nekladla žádné překážky v jeho
+implementaci v softwarech třetích stran. Formát se již dále
+nevyvíjí, takže brzdí inovace, interoperabilita je však zaručena
+dostatečně.</p>
+</div></blockquote>
+<p id="index-4"><strong>Uzavřené de-jure standardy</strong></p>
+<blockquote>
+<div><p>Standardy, které nějakým způsobem vylučují část veřejnosti se
+podílet na jejich vývoji. Tím mohou být např. technické normy
+<a class="reference internal" href="iso.html"><span class="doc">ISO</span></a> nebo různé zákoné normy.  Příkladem může být
+evropská směrnice <a class="reference internal" href="inspire.html"><span class="doc">INSPIRE</span></a>. Interpoerabilita je
+zajištěna do té míry, do jaké je vynutitelné právo s těmito
+normami spojené. Inovace často vázne (což ostatně můžeme sledovat
+na směrnici INSPIRE).</p>
+</div></blockquote>
+<p><strong>Otevřené de-jure standardy</strong></p>
+<blockquote>
+<div><p>Jsou pravěpodobně nejideálnějším stavem. Formálně potvrzené normy,
+na kterých se dohodla komunita uživatelů a vývojářů, mají největší
+podporu, nic nebrání jejich implementaci do softwarů různých
+stran, zároveň mohou být dále rozvíjeny. Příkladem těchto
+standardů jsou normy konzorcia <a class="reference internal" href="ogc/index.html"><span class="doc">OGC</span></a>.</p>
+</div></blockquote>
+</section>
+<section id="prehled-standardizacnich-autorit">
+<h2>Přehled standardizačních autorit<a class="headerlink" href="#prehled-standardizacnich-autorit" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="epsg-standardy.html">EPSG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iso.html">ISO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ogc/index.html">OGC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspire.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csn.html">ČSN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="osgeo.html">OSGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firmy.html">Firemní standardy</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Standardy v GIS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku">Standardy z pohledu otevřenosti a způsobu jejich vzniku</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prehled-standardizacnich-autorit">Přehled standardizačních autorit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../formaty/prevody.html" title="Převod dat"
+              >předchozí</a> |
+            <a href="epsg-standardy.html" title="EPSG"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

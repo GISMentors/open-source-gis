@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>OGC &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gismentors.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../../search.html" />
+    <link rel="next" title="OGC Web Map Service - WMS" href="wms.html" />
+    <link rel="prev" title="ISO" href="../iso.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../iso.html" title="ISO"
+             accesskey="P">předchozí</a> |
+          <a href="wms.html" title="OGC Web Map Service - WMS"
+             accesskey="N">další</a> |
+          <a href="../../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ogc">
+<span id="id1"></span><h1>OGC<a class="headerlink" href="#ogc" title="Permalink to this heading">¶</a></h1>
+<p id="index-0"><strong>Open Geospatial Consortium</strong> (<a class="reference external" href="http://opengeospatial.org">OGC</a>) je mezinárodní
+standardizační organizace pro
+oblast prostorových dat a služeb, která funguje na relativně otevřené bázi
+(poplatky za členství nejsou nijak přemrštěné). Standardy jsou vyvíjeny v rámci
+relativně otevřeného procesu. Po svém schválení jsou bez omezení
+dostupné všem a jsou v praxi vždy implementovány.</p>
+<p>Jednotlivé pracovní skupiny pracují na problémech, které identifikovaly jako
+potřebné. OGC standardizuje oblast <em>datových formátů</em>, ale především <em>webových
+služeb</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p><a class="reference external" href="http://cs.wikipedia.org/wiki/Webová služba">Webová služba</a> je služba popsaná formátem
+<a class="reference external" href="http://cs.wikipedia.org/wiki/WSDL">WSDL</a> (<em>Web Services Description Language</em>), se kterou
+lze automaticky interagovat pomocí vlastního software. <em>Webová
+služba OGC</em> je naproti tomu na XML založený komunikační protokol,
+který ovšem nemá s výše zmíněnou „obecně programátorskou
+technologií“ mnoho společného.</p>
+</div>
+<p>Některé standardy byly akceptovány i organizací <a class="reference internal" href="../iso.html"><span class="doc">ISO</span></a>. Seznam standardů OGC lze nalézt na stránce
+<a class="reference external" href="http://opengeospatial.org/standards">http://opengeospatial.org/standards</a>.</p>
+<span class="target" id="ogc-ows"></span><section id="index-1">
+<span id="id2"></span><h2>OGC OWS<a class="headerlink" href="#index-1" title="Permalink to this heading">¶</a></h2>
+<p><strong>OGC Open Web Services</strong> (OGC OWS) je soubor standardů komunikační
+protokolů postavených na značkovacím jazyku <a class="reference external" href="http://cs.wikipedia.org/wiki/XML">XML</a>
+popisujících komunikaci mezi serverem a klientem.  Server nabízí
+prostřednictvím služeb data, vykreslené mapové dlaždice či výpočetní služby, na které
+klient může dosáhnout. Vlastnosti společné všem službám lze nalézt ve
+specifikaci <a class="reference external" href="http://www.opengeospatial.org/standards/common">Web Service Common</a>.  Ta popisuje
+zejména XML kódování metadat dalších webových služeb a některé
+společné charakteristiky (např. definici minimálního ohraničujícího
+obdélníku (<cite>BoundingBox</cite>), …).</p>
+<p>Snad všechny standardy podporují více typů dotazů klienta na server
+(tzv.  <em>requestů</em>). Základním dotazem je vždy dotaz
+<em>GetCapabilities</em> - server v odpovědi zformátované jako dokument XML
+vrátí metadata, o jeho provozovateli a dostupných službách. Další typy
+dotazy se liší podle dané služby, viz níže.</p>
+<p>U většiny dotazů je potřeba specifikovat i verzi standardu, na základě
+kterého se má klient se serverem „domluvit“. Tento parametr
+(<em>version</em>) není ale u dotazu <em>GetCapabilities</em> povinný.</p>
+<p>Formát dotazu <em>GeoCapabilities</em> vypadá následovně:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://foo.bar/cgi-bin/service?service=WMS&amp;request=GetCapabilities&amp;version=1.3.0
+                              ^         ^                 ^               ^
+                              |         |                 |               |
+Adresa serveru a služby ------+         |                 |               |
+Specifikace  požadované služby ---------+                 |               |
+Specifikace dotazu ---------------------------------------+               |
+Případné další parametry (zde jako příklad verze standardu) --------------+
+</pre></div>
+</div>
+<p>Tento způsob zápisu se nazývá <em>Key-Value-Pair</em> (KVP). Parametry dotazu
+jsou definovány přímo jako součást URL. Parametry začínají za znakem
+<code class="docutils literal notranslate"><span class="pre">?</span></code> a jsou od sebe odděleny znakem <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.</p>
+<section id="prehled-nejdulezitejsi-standardu-ogc">
+<h3>Přehled nejdůležitější standardů OGC<a class="headerlink" href="#prehled-nejdulezitejsi-standardu-ogc" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wms.html">OGC Web Map Service - WMS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wmts.html">OGC Web Map Tiled Service - WMTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wfs.html">OGC Web Feature Service - WFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcs.html">OGC Web Coverage Service - WCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wps.html">OGC Web Processing Service - WPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi.html">OGC Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpkg.html">OGC GeoPackage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gml.html">GML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kml.html">KML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sos.html">OGC Sensor Observation Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cs-w.html">OGC Catalogue Service for Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simplefeatures.html">Simple Features</a></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standardy v GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#standardy-z-pohledu-otevrenosti-a-zpusobu-jejich-vzniku">Standardy z pohledu otevřenosti a způsobu jejich vzniku</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#prehled-standardizacnich-autorit">Přehled standardizačních autorit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../iso.html" title="ISO"
+              >předchozí</a> |
+            <a href="wms.html" title="OGC Web Map Service - WMS"
+              >další</a> |
+            <a href="../../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Prostorové databáze &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Prostorové databáze založené na SQL" href="sql.html" />
+    <link rel="prev" title="Knihovna Proj.4 pro transformaci souřadnic" href="../knihovny/proj4.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../knihovny/proj4.html" title="Knihovna Proj.4 pro transformaci souřadnic"
+             accesskey="P">předchozí</a> |
+          <a href="sql.html" title="Prostorové databáze založené na SQL"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="prostorove-databaze">
+<span id="prostorovedatabaze"></span><h1>Prostorové databáze<a class="headerlink" href="#prostorove-databaze" title="Permalink to this heading">¶</a></h1>
+<p>Prostorové databáze jsou databáze, v nichž jsou uložena i prostorové
+data, resp. informace o objektech reálného světa reprezentované
+prostorovými daty.  Jak bylo již zmíněno v části <a class="reference internal" href="../uvod.html#geodata-geoprvky"><span class="std std-ref">geodata,
+geoprvky</span></a>, prostorová data obsahují formální
+polohovou referenci a zpravidla bývají vyjádřené i pomocí geometrické,
+topologické a popisné složky popisu.</p>
+<p>Výhodou prostorových databází je, že spolu s prostorovými daty v nich
+mohou být uložena a spravována i atributové, textové, obrazové a další
+podobné informace. Už <a class="reference internal" href="../uvod.html#proc-gis"><span class="std std-ref">víme</span></a>, že pokud jsou prostorová
+data vztažená k povrchu Země, označují se jako geografická data nebo
+geodata. Prostorové databáze se pak označují jako <em>geografické
+databáze</em> nebo geodatabáze. Někdy se výraz geografické databáze
+používá jako synonym pojmu prostorové databáze, ale není to správné,
+protože pojem prostorové databáze má obecnější význam (<em>Ďuračiová,
+2014</em>).  Tabulka s prostorovým atributem (atribut obsahující
+geometrické data) se nazývá <em>prostorová tabulka</em>.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/db_table.png" class="middle" src="../_images/db_table.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 45 </span><span class="caption-text">Atributy prostorových dat (Zdroj: <a class="reference external" href="http://www.indiana.edu/~gisci/courses/g338/images/chapter2figs/fig2-2.gif">www.indiana.edu</a>).</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Protože prostorové tabulky reprezentují jak ​​metrické, tak i
+topologické vztahy příslušných objektů, jejichž struktura je podstatně
+složitější než struktura klasických vazeb v relačních databázích, mají
+i jiné specifické vlastnosti než konvenční atributové
+tabulky. Požadavek na jejich zajištění nedovoluje běžným způsobem
+využívat klasické relační databázové systémy, které jsou pro ostatní
+(neprostorové) datové typy a databáze nejpoužívanější.  Mezi specifika
+patří i implementace speciálních prostorových indexů (kromě indexů i
+složitější struktura prostorových dat a nutnost rozšíření standardního
+dotazovacího jazyka v příslušných databázích o možnost práce s
+prostorovými daty).</p>
+<section id="prostorove-indexy">
+<span id="index-0"></span><h2>Prostorové indexy<a class="headerlink" href="#prostorove-indexy" title="Permalink to this heading">¶</a></h2>
+<p>Indexy jsou v databázových systémech důležitou součástí. Kromě podpory
+prostorových datových typů a funkcí hraje podpora speciálních
+indexových struktur pro prostorové data významnou roli. Indexové
+struktury pro prostorová data se liší od konvenčního způsobu vytváření
+indexů (<a class="reference external" href="http://cs.wikipedia.org/wiki/B-strom">B-stromy</a>, <a class="reference external" href="http://cs.wikipedia.org/wiki/B+ strom">B+ stromy</a>, <a class="reference external" href="http://en.wikipedia.org/wiki/Linearhashing">lineární hašování</a>,
+atd).  Prostorová data vyžadují použití specifických postupů
+indexování, které nejsou běžně implementovány přímo v relačních
+databázových systémech. Indexy obecně urychlují vyhledávání dat a také
+provádění různých prostorových poptávek.  Mezi indexové struktury pro
+prostorové data patří tzv. <a class="reference external" href="http://cs.wikipedia.org/wiki/Strom_(datová struktura)">stromy</a>, například (a) <a class="reference external" href="http://en.wikipedia.org/wiki/K-d_tree">KD-stromy</a>
+určené k ukládání bodů (uzlů), (b) <a class="reference external" href="http://en.wikipedia.org/wiki/Binary space partitioning">BSP-stromy</a> založené na rekurzivní dělení prostoru na dva poloprostory,
+(c) <a class="reference external" href="http://en.wikipedia.org/wiki/R-tree">R-stromy</a> založené na dekompozici prostoru
+formou minimálních ohraničujících obdélníků, přičemž jednotlivé
+obdélníky se mohou i vzájemně překrývat, nebo (d)
+<a class="reference external" href="http://en.wikipedia.org/wiki/Quadtree">kvadrátové stromy</a> založené na postupném
+dělení prostoru na kvadranty.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/stromy.png" class="middle" src="../_images/stromy.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text">Indexové struktury pro prostorová data (<em>Ďuračiová, 2014</em>).</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Další témata</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">Prostorové databáze založené na SQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sql.html#postgis">PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sql.html#spatialite">SpatiaLite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nosql.html">Prostorové NoSQL databáze</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nosql.html#couchdb">CouchDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nosql.html#cassandra">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nosql.html#mongodb">MongoDB</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Prostorové databáze</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prostorove-indexy">Prostorové indexy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../knihovny/proj4.html" title="Knihovna Proj.4 pro transformaci souřadnic"
+              >předchozí</a> |
+            <a href="sql.html" title="Prostorové databáze založené na SQL"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

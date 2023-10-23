@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Vektorová data &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Převod dat" href="prevody.html" />
+    <link rel="prev" title="Rastrová data" href="rastr.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="rastr.html" title="Rastrová data"
+             accesskey="P">předchozí</a> |
+          <a href="prevody.html" title="Převod dat"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="vektorova-data">
+<span id="index-0"></span><h1>Vektorová data<a class="headerlink" href="#vektorova-data" title="Permalink to this heading">¶</a></h1>
+<p><strong>Vektorová data</strong> (<a class="reference external" href="http://en.wikipedia.org/wiki/Vector graphics">Vector graphics</a>) jsou souborem
+geometrických elementů, reprezentující fenomény reálného světa jako
+diskrétní prvky. Prvky jsou podle svého charakteru reprezentovány jako
+<em>bod</em>, <em>linie</em> nebo <em>polygon</em>.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/vektor.png" class="middle" src="../_images/vektor.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 29 </span><span class="caption-text">Vektorové prvky - bod, linie a polygon.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note" id="index-1">
+<p class="admonition-title">Poznámka</p>
+<p>V anglické literatuře je <em>vektorový prvek</em> označován jako
+<em>feature</em>.  Slovo <em>feature</em> je pak tradičně do češtiny překládáno
+jako <em>charakteristický rys</em>, resp. <em>vlastnost objektu</em>.  Aby
+zmatení bylo dokonalé, v českých normách je anglické <em>feature</em> ve
+významu vektorového objektu v GIS překládáno jako <em>vzhled jevu</em>.
+Závěr: narazíte-li v anglické literatuře na slovo <em>feature</em> a
+v českých normách na <em>vzhled jevu</em>, vždy se jedná o <em>vektorový
+prvek</em> v GIS s geometrií a atributy.</p>
+</div>
+<p>Vektorová data jsou vhodná všude tam, kde se jedná o modelování
+<em>diskrétních</em> objektů, jako ideální reprezentace fenoménu reálného světa:</p>
+<ul class="simple">
+<li><p>výskyt jedince sledovaného druhu (bod),</p></li>
+<li><p>významný orientační prvek (bod),</p></li>
+<li><p>středová linie silnice, silniční síť (linie),</p></li>
+<li><p>průběh elektrického vedení (linie),</p></li>
+<li><p>říční síť, dráhy povrchového odtoku (linie),</p></li>
+<li><p>hranice parcel katastru nemovitostí (polygon),</p></li>
+<li><p>hranice vodních ploch (polygon),</p></li>
+<li><p>hranice půdního krytu (polygon),</p></li>
+<li><p>…</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/vector-model-sfa.png"><img alt="../_images/vector-model-sfa.png" src="../_images/vector-model-sfa.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 30 </span><span class="caption-text">Ukázka vektorové reprezentace jevů realného světa - bod (významný
+orientační prvek), linie (středová linie silnice) a <em>polygony</em>
+(hranice půdního krytu).</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Vektorová data jsou většinou uložena ve formě uspořádaných dvojic
+souřadnic <span class="math notranslate nohighlight">\(x, y\)</span>.  Linie a plocha je zapsána pomocí množiny
+těchto uspořádaných dvojic definující jejich lomové body. Přesnost
+takto zadaných souřadnic tak může být teoreticky nekonečná (co umožní
+počítačové systémy).</p>
+<p id="index-2">Zvláštním případem jsou tzv. <em>multiprvky</em> (angl. <em>multipoints,
+multilinestrings, multipolygons</em>). Jde o vektorové prvky skládající se
+z více vzájemně nepropojených geometrických objektů. Například dálnice
+D8 je v úseku přes České středohoří přerušena - lze ji tak
+reprezentovat jako objekt <em>multiline</em> sestávající se ze dvou
+nesouvislých liniových geometrických elementů.</p>
+<section id="atributy-vektorovych-dat">
+<span id="index-3"></span><h2>Atributy vektorových dat<a class="headerlink" href="#atributy-vektorovych-dat" title="Permalink to this heading">¶</a></h2>
+<p>Kromě informace o <em>geometrických vlastnostech</em> prvků nesou vektorová
+data také popisnou informaci uloženou v <em>atributech</em>. Atributy jsou
+většinou zaznamenány do formy databázové tabulky. V závislosti na
+použitém software se jedná buď o souborý formát (například DBF u
+formátu <a class="reference internal" href="#shapefile"><span class="std std-ref">Esri Shapefile</span></a>) nebo plnohodnotný databázový
+server (například PostgreSQL).</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/vector-attributes.png" class="middle" src="../_images/vector-attributes.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 31 </span><span class="caption-text">Mapa velkoplošných chráněných území spolu s atributy uloženými v
+atributové tabulce (zdroj: <a class="reference external" href="https://gis.nature.cz/arcgis/services/UzemniOchrana/ChranUzemi/MapServer/WFSServer">AOPK OGC WFS Server</a>).</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Geometrická a atributová složka bývají obvykle uloženy zvlášť a navzájem
+propojeny pomocí jednoznačného interního identifikátoru (tzv. <em>feature id</em>).</p>
+<p id="index-4">Počet atributů vektorových prvků je teoreticky nekonečný. Pokud
+použijeme pro uložení atributů databázový systém, je možné s daty dále
+pracovat pomocí standardních nástrojů databazových systémů jako je
+např. SQL (více ve školení <a class="reference external" href="https://gismentors.github.io/postgis-zacatecnik/kapitoly/3_jazyk_sql.html">PostGIS pro začátečníky</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Některé softwary, například databázový systém PostGIS nebo
+souborová databáze SpatialLite, ukládají geometrickou složku dat
+jako <em>jeden z atributů</em> vektorového prvku (viz kapitola
+<a class="reference internal" href="../databaze/index.html"><span class="doc">Prostorové databáze</span></a>). Data jsou uspořádána do klasické
+databázové tabulky, geometrie je pouze další atribut - geometrie
+tak není od atributů nijak oddělena. Příklad: výpis parcel s
+jejich identifikátorem, parcelním číslem a geometrií ve formě WKT:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+------------+------------------------------------------------------+--------+</span>
+<span class="o">|</span>    <span class="n">fid</span>     <span class="o">|</span>                       <span class="n">geometry</span>                       <span class="o">|</span>  <span class="n">cislo</span> <span class="o">|</span>
+<span class="o">+============+======================================================+========+</span>
+<span class="o">|</span><span class="mi">45496175010</span> <span class="o">|</span> <span class="n">POLYGON</span><span class="p">((</span><span class="o">-</span><span class="mf">728524.789710812</span> <span class="o">-</span><span class="mf">1066515.49883718</span><span class="p">,</span><span class="o">-</span><span class="mf">728.</span><span class="o">..</span> <span class="o">|</span> <span class="mi">515</span>    <span class="o">|</span>
+<span class="o">+------------+------------------------------------------------------+--------+</span>
+<span class="o">|</span><span class="mi">2982799209</span>  <span class="o">|</span> <span class="n">POLYGON</span><span class="p">((</span><span class="o">-</span><span class="mf">723694.909701298</span> <span class="o">-</span><span class="mf">1063302.12883134</span><span class="p">,</span><span class="o">-</span><span class="mf">723.</span><span class="o">..</span> <span class="o">|</span> <span class="mi">1331</span><span class="o">/</span><span class="mi">10</span><span class="o">|</span>
+<span class="o">+------------+------------------------------------------------------+--------+</span>
+<span class="o">|</span><span class="mi">2969999209</span>  <span class="o">|</span> <span class="n">POLYGON</span><span class="p">((</span><span class="o">-</span><span class="mf">718640.439694238</span> <span class="o">-</span><span class="mf">1037240.20878015</span><span class="p">,</span><span class="o">-</span><span class="mf">718.</span><span class="o">..</span> <span class="o">|</span> <span class="mi">1276</span>   <span class="o">|</span>
+<span class="o">+------------+------------------------------------------------------+--------+</span>
+</pre></div>
+</div>
+</div>
+<div class="task admonition">
+<p class="admonition-title">Úkol</p>
+<p>Vektorová data</p>
+<p>V programu QGIS otevřete vektorovou vrstvu <cite>shp/aopk/velkoplosna_chranena_uzemi.shp</cite></p>
+<p>Pomocí nástroje lupy přibližujte zvětšení - na rozdíl o rastrové mapy
+nejsou vidět jednotlivé pixely.</p>
+<p>Zobrazte atributovou tabulku vrstvy (po kliknutí pravým tlačítkem myši v
+přepínači vrstev). Zjistěte, jak spolu je spojena geometrie jednotlivých
+prvků a jejich další popisné atributy.</p>
+</div>
+</section>
+<section id="vektorova-topologie">
+<span id="index-5"></span><h2>Vektorová topologie<a class="headerlink" href="#vektorova-topologie" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="http://cs.wikipedia.org/wiki/Topologie">Topologie</a> je vlastnost vektorových prvků, pomocí které
+lze určit jejich vzájemné prostorové vztahy. Pomocí topologie lze
+popsat charakteristiky dvou vektorových prvků jako:</p>
+<ul class="simple">
+<li><p>prvek <em>leží v</em> jiném prvku,</p></li>
+<li><p>prvek <em>se kříží s</em> jiným prvku,</p></li>
+<li><p>prvek <em>je nalevo/napravo od</em> prvku,</p></li>
+<li><p>prvek <em>je shodný s</em> prvkem a tak dále.</p></li>
+</ul>
+<p>Softwary a jejich formáty přistupují k topologii různě, dnes ale
+převládá takový přístup, že data jsou uložena v <em>netopologickém</em>
+formátu jako tzv. <em>jednoduché prvky</em>, resp. <em>simple features</em> a
+topologické charakteristiky jsou počítány na vyžádání.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Jiné softwary jako např. <a class="reference external" href="http://grass.osgeo.org">GRASS GIS</a> naopak data vždy ukládá v topologickém
+formátu (více ve <a class="reference external" href="https://gismentors.github.io/grass-gis-zacatecnik/intro/vektor.html#topologicky-model">školení pro začátečníky</a>).</p>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../_images/area-1-2.png" src="../_images/area-1-2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 32 </span><span class="caption-text">Ukázka topologického datového modelu (uzly, hrany a plochy).</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p id="index-6">Nejsou-li data tzv. <em>topologicky čistá</em>, obsahují různě závažné <em>chyby
+topologie</em>. Například společná hranice dvou parcel není stejná, ale každá
+parcela má lehce posunuté hraniční lomové body a tudíž dochází v některých
+místech k nedotažení společné hranice, na jiných místech zase obě parcely
+do sebe zasahují. Dalšími chybami mohou být nedotažení lomových bodů nebo
+naopak jejich přetažení. Většina pokročilích GIS obsahují nástroje pro
+<em>čištění topologie</em>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/overshoot.png"><img alt="../_images/overshoot.png" src="../_images/overshoot.png" style="width: 400px;" /></a>
+</figure>
+<figure class="align-center" id="id5">
+<img alt="../_images/v_clean_rmsa.png" class="small" src="../_images/v_clean_rmsa.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 33 </span><span class="caption-text">Zdroje: Běžné chyby v topologii vektorových dat <a class="reference external" href="https://grass.osgeo.org/gdp/grass5tutor/HTML_fr/c925.html">Digitalisation de
+cartes vectorielles</a> a
+<a class="reference external" href="https://grass.osgeo.org/grass72/manuals/v.clean.html">GRASS GIS Manual</a>.</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="vektorove-formaty">
+<span id="index-7"></span><h2>Vektorové formáty<a class="headerlink" href="#vektorove-formaty" title="Permalink to this heading">¶</a></h2>
+<p>Mezi nejčastěji používané vektorové formáty v GIS patří:</p>
+<ul class="simple">
+<li><p><em>OGC GeoPackage</em></p></li>
+<li><p><em>Esri Shapefile</em></p></li>
+<li><p><em>KML</em></p></li>
+<li><p><em>OGC GML</em></p></li>
+<li><p><em>GeoJSON</em></p></li>
+<li><p><em>Esri FileGDB</em></p></li>
+</ul>
+<p>Vektorová data se také tradičně ukládají do prostorových databází (popsaných v
+<a class="reference internal" href="../databaze/index.html"><span class="doc">další části</span></a>).</p>
+<section id="format-ogc-geopackage">
+<span id="geopackage"></span><span id="index-8"></span><h3>Formát OGC GeoPackage<a class="headerlink" href="#format-ogc-geopackage" title="Permalink to this heading">¶</a></h3>
+<p>Formát, který by si zasloužil větší pozornost je standardizovaný
+formát <a class="reference external" href="http://en.wikipedia.org/wiki/OGC GeoPackage">OGC GeoPackage</a>. GeoPackage je postavený na souborové
+databázi <a class="reference external" href="http://sqlite.org">SQLite</a>. Umožňuje ukládat jak vektorová, tak i
+rastrová data - dokáže uložit data i v „nadlaždicované“ podobě.</p>
+<p>GeoPackage je v současnosti nastupující formát, který adresuje většinu problémů
+nejčastěji používaného Shapefile (viz níže).</p>
+</section>
+<section id="format-esri-shapefile">
+<span id="shapefile"></span><span id="index-9"></span><h3>Formát Esri Shapefile<a class="headerlink" href="#format-esri-shapefile" title="Permalink to this heading">¶</a></h3>
+<p>Formát Esri <a class="reference external" href="http://cs.wikipedia.org/wiki/Shapefile">Shapefile</a> je tradičně nejpoužívanějším
+formátem pro vektorová data.  Tento datový formát je dnes již
+zastaralý, nicméně pro některé jednodušší typy dat stále
+dostačující. Je podporován prakticky všemi nástroji GIS a ve své době
+se stal prakticky oborovým standardem. Důvodem je, že firma Esri
+uvolnila dokumentaci k tomuto formátu a jeho licence nezakazuje jeho
+implementaci v software třetích stran.</p>
+<p>Vektorové prvky jsou v tomto formátu uloženy v netopologické formě,
+tj. například společná hranice dvou polygonů je uložena dvakrát,
+jednou jako součást prvního polygonu a podruhé jako součást druhého
+polygonu.</p>
+<p>Data jsou uložena (minimálně) ve třech souborech, lišících se od sebe
+navzájem koncovkou:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*.shp</span></code> - geometrie (shape)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*.dbf</span></code> - atributy (databáze)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*.shx</span></code> - propojení geometrie a atributů (index)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Souborů tvořící datovou vrstvu v tomto formátu může být
+potencionálně víc, např. soubor s koncovkou <code class="docutils literal notranslate"><span class="pre">*.prj</span></code>
+obsahující informace o souřadnicovém systému ve formě Esri
+WKT, <code class="docutils literal notranslate"><span class="pre">*.cfg</span></code> s informací o kódování atributových dat a
+další.</p>
+</div>
+<p><strong>Důvody proč dnes již Esri Shapefile nepoužívat</strong></p>
+<p>Z dnešního pohledu obsahuje formát Shapefile několik slabých míst:</p>
+<ul class="simple">
+<li><p>data nejsou uložena v jednom souboru, ale minimálně ve trojici
+(<em>shp+shx+dbf</em>) souborů. Různé softwarové produkty si navíc
+přidávají vlastní metadatové soubory, které nejsou součástí
+specifikace tohoto formátu.</p></li>
+<li><p>Názvy atributů jsou omezeny pouze na deset znaků.</p></li>
+<li><p>Data neobsahují informaci o znakové sadě (některé softwary tuto
+informaci zapisují do souboru s příponou <code class="docutils literal notranslate"><span class="pre">*.cfg</span></code>, ale je to spíše
+vyjímka), což vede k problémům při automatické konverzi dat a
+používání na různých operačních systémech.</p></li>
+<li><p>Velikost souborů je maximálně 2GB.</p></li>
+<li><p>Neumožňuje ukládat topologické informace o vzájemných vztazích mezi prvky
+geodat.</p></li>
+<li><p>Každý soubor SHP umožňuje ukládat pouze jeden typ geometrie (bod,
+linie, polygon).</p></li>
+<li><p>Neumožňuje uložit stromovou strukturu dat.</p></li>
+</ul>
+<p><strong>Důvody proč se Esri Shapefile stále používá</strong></p>
+<ul class="simple">
+<li><p>Je podporován prakticky všemy softwary.</p></li>
+</ul>
+</section>
+<section id="format-kml">
+<span id="index-10"></span><h3>Formát KML<a class="headerlink" href="#format-kml" title="Permalink to this heading">¶</a></h3>
+<p>OGC <a class="reference external" href="http://cs.wikipedia.org/wiki/KML">KML</a> je určen především pro vizualizaci jednotlivých prvků
+geodat. Formát byl původně vyvinut firmou Google a je postavený na jazyce XML.
+Data v souborech KML, na rozdíl od GML (viz níže), umožňují použít pouze
+souřadnicový systém <a class="reference internal" href="../soursystemy/wgs84.html"><span class="doc">WGS84</span></a>.</p>
+<p>KML podporují produkty firmy Google, ale i řada služeb a programů třetích stran.
+Bývá často podporován moderními GPS přijímači. V minulosti býval nasazován ve
+webových mapových aplikacích, protože je v porovnání s GML menší a obsahuje
+zmíněnou informaci o vizualizaci jednotlivých prvků geodat. Ačkoliv byl v době
+před cca 3 lety tento formát populární, dnes je často nahrazován formátem
+<a class="reference internal" href="#geojson"><span class="std std-ref">GeoJSON</span></a>.</p>
+</section>
+<section id="format-ogc-gml">
+<span id="index-11"></span><h3>Formát OGC GML<a class="headerlink" href="#format-ogc-gml" title="Permalink to this heading">¶</a></h3>
+<p>OGC <a class="reference external" href="http://cs.wikipedia.org/wiki/GML">GML</a> (Geography Markup Language) jako otevřený standard je
+perspektivním formátem pro přenos vektorových dat. Jedná se o jednosouborový
+textový formát založený na značkovacím jazyce XML, je proto interpretovatelný i
+bez speciálního software.  Kromě standardizace na úrovni OGC je definován
+technickou normou ISO 19136.  Vzhledem k tomu je podporován většinou moderních
+GIS nástrojů. GML je také předepsaný technickými dokumenty INSPIRE a výchozím
+formátem služby <a class="reference internal" href="../standardy/ogc/wfs.html"><span class="doc">WFS</span></a>.</p>
+<p>GML se používá jako univerzální formát pro data, která mohou mít i
+komplikovanější stromovou strukturu. Díky tomu, že je postaven na XML, je jeho
+strojové zpracování jednoduché i běžnými systémy, například pomocí transformace
+XSLT.</p>
+</section>
+<section id="formaty-geojson-a-topojson">
+<span id="geojson"></span><span id="index-12"></span><h3>Formáty GeoJSON a TopoJSON<a class="headerlink" href="#formaty-geojson-a-topojson" title="Permalink to this heading">¶</a></h3>
+<p>Populárními formáty se v poslední době stávají formáty odvozené z formátu JSON,
+především GeoJSON a TopoJSON. Formáty JSON mají své uplatnění především mezi
+webovými technologiemi. Oproti formátům odvozených z XML (GML, KML) mají kratší
+zápis, což je výhodné při přenosech v prostředí Internetu. Stejně jako při
+využití formátů odvozených z XML, je i zde je možné zabezpečit správnost
+struktury dat to pomocí schémat.</p>
+<p id="json"><a class="reference external" href="http://en.wikipedia.org/wiki/JSON">JSON</a> je velice přívětivý k netypovým programovacím
+jazykům, je srozumitelný prostým lidským okem. Souřadnicový systém
+není v těchto formátech jak specifikovat, předpokládá se, že se jedná
+o <a class="reference internal" href="../soursystemy/wgs84.html"><span class="doc">WGS84</span></a>. Data lze libovolným způsobem zanořovat a větvit.</p>
+<p><a class="reference external" href="http://geojson.org">GeoJSON</a> je využíván u webových služeb pro svůj malý
+objem a jednoduchost. Je méně náročný na zpracování, což je vhodné zejména u
+webových prohlížečů. U uživatelů mimo svět GIS je oblíbený, protože jeho
+strukturu je možné rychle pochopit a připravit vlastní parser.</p>
+<p><a class="reference external" href="https://github.com/mbostock/topojson">TopoJSON</a> je druhým formátem odvozeným
+z formátu JSON, který ale zatím nenabyl takové popularity jako GeoJSON. Hlavním
+úkolem formátu TopoJSON je minimalizace datového toku mezi webovým serverem a
+klientem. Formát je částečně ztrátový, neboť souřadnice bodů a lomových bodů
+jsou zapisovány v relativní poloze od daného počátku a v celých číslech (ztrácí
+se přesnost). K úspoře datové velikosti vede také fakt, že např. hranice
+polygonů jsou uloženy pro dvě sousedící plochy pouze jednou (formát je tedy
+topologický).</p>
+</section>
+<section id="format-esri-file-geodatabase">
+<span id="gdb"></span><span id="index-13"></span><h3>Formát Esri File GeoDatabase<a class="headerlink" href="#format-esri-file-geodatabase" title="Permalink to this heading">¶</a></h3>
+<p>Tzv. (souborová) Geodatabáze, je proprietární formát firmy ESRI a využívá ho
+nejčastěji produkty této firmy, jako je ArcGIS.</p>
+<p>Pomocí otevřených nástrojů lze tyto soubory do vysoké míry číst a zobrazit a i
+ukládat. Pro ukládání je potřeba mít v systémy přítomnout speciální knihovnu od
+firmy ESRI.</p>
+<p>GeoDatabáze je často používaný výměnný formát dat v (české) veřejné správě.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../soursystemy/index.html">Souřadnicové systémy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reprezentace dat</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rastr.html">Rastrová data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vektorová data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prevody.html">Převod dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="rastr.html" title="Rastrová data"
+              >předchozí</a> |
+            <a href="prevody.html" title="Převod dat"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

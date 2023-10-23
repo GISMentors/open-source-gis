@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>S-JTSK &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="WGS84" href="wgs84.html" />
+    <link rel="prev" title="Mercatorovo zobrazení" href="mercatorovo-zobrazeni.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="mercatorovo-zobrazeni.html" title="Mercatorovo zobrazení"
+             accesskey="P">předchozí</a> |
+          <a href="wgs84.html" title="WGS84"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="s-jtsk">
+<span id="index-0"></span><h1>S-JTSK<a class="headerlink" href="#s-jtsk" title="Permalink to this heading">¶</a></h1>
+<p>Nejpoužívanější souřadnicový systém v České republice <a class="reference external" href="http://freegis.fsv.cvut.cz/gwiki/S-JTSK">Systém Jednotné
+Trigonometrické Sítě Katastrální</a> používá tzv. Křovákovo
+zobrazení. Jde o dvojité konformní kuželové zobrazení v obecné poloze,
+které v roce 1922 navrhl Ing. <a class="reference external" href="http://cs.wikipedia.org/wiki/Josef Křovák">Josef Křovák</a>.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/krovakovo_zobrazeni.png"><img alt="../_images/krovakovo_zobrazeni.png" src="../_images/krovakovo_zobrazeni.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 17 </span><span class="caption-text">Křovákovo zobrazení (zdroj: <a class="reference external" href="http://freegis.fsv.cvut.cz/gwiki/S-JTSK">Portál FreeGIS</a>).</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Transformace elipsoidických souřadnic <span class="math notranslate nohighlight">\(\varphi,\lambda\)</span> na
+pravoúhlé rovinné souřadnice <span class="math notranslate nohighlight">\(x, y\)</span> (viz kapitola
+<a class="reference internal" href="souradnice.html"><span class="doc">Typy souřadnic</span></a>) se provádí ve čtyřech krocích. Spočívá ze zobrazení
+elipsoidu na kulovou plochu, z transformace zeměpisných sférických
+souřadnic na sférické kartografické souřadnice na kulové ploše, ze
+zmenšení kulové plochy (kvůli zmenšení zkreslení z + 24 cm na +14 cm)
+a její konformního zobrazení na dotykový kužel v obecné poloze a
+nakonec z rozvinutí plochy dotykového kužele do roviny.  Česká
+republika leží celá ve třetím kvadrantu (první kvadrant geodetického
+souřadnicového systému, kladná osa <span class="math notranslate nohighlight">\(x\)</span> směřuje dolů, kladná osa
+<span class="math notranslate nohighlight">\(y\)</span> do leva).</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/krovakovo_zobrazeni_kroky.png" class="middle" src="../_images/krovakovo_zobrazeni_kroky.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Transformace v krocích - elipsoidické, sférické, kartografické,
+polární a rovinné souřadnice (zdroj: podle <a class="reference external" href="http://www.sazp.sk/slovak/struktura/ceev/DPZ/EDU/c002.htm">SAŽP</a>).</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>V geografických informačních systémech se často používá
+forma převedená do matematického třetího kvadrantu, osy jsou potom
+prohozené a souřadnice záporné.</p>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Souřadnicové systémy</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="souradnice.html">Typy souřadnic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mercatorovo-zobrazeni.html">Mercatorovo zobrazení</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">S-JTSK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wgs84.html">WGS84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="etrs89.html">ETRS89</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epsg.html">EPSG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jak-poznat-ss-dat.html">Jak poznat v jakém souřadnicovém systému jsou data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="mercatorovo-zobrazeni.html" title="Mercatorovo zobrazení"
+              >předchozí</a> |
+            <a href="wgs84.html" title="WGS84"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

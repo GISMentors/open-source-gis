@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Typy souřadnic &#8212; Školení Úvod do (Open Source) GIS</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Mercatorovo zobrazení" href="mercatorovo-zobrazeni.html" />
+    <link rel="prev" title="Souřadnicové systémy" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení Úvod do (Open Source) GIS</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Souřadnicové systémy"
+             accesskey="P">předchozí</a> |
+          <a href="mercatorovo-zobrazeni.html" title="Mercatorovo zobrazení"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="typy-souradnic">
+<span id="index-0"></span><h1>Typy souřadnic<a class="headerlink" href="#typy-souradnic" title="Permalink to this heading">¶</a></h1>
+<p>Poloha bodu na referenční ploše je vyjádřena pomocí souřadnic. S
+uvažováním trojrozměrného prostoru se v geodetické a kartografické
+praxi nejčastěji používají:</p>
+<p id="index-1"><strong>Kartézské prostorové souřadnice</strong> <span class="math notranslate nohighlight">\(x,y,z\)</span></p>
+<p>Prostorová pravoúhlá souřadnicová soustava má začátek ve středu
+referenčního tělesa (sféra, elipsoid), osa <span class="math notranslate nohighlight">\(z\)</span> prochází osou
+rotace a osa <span class="math notranslate nohighlight">\(x\)</span> průsečnicí roviny rovníku a roviny základního
+poledníku. Osa <span class="math notranslate nohighlight">\(y\)</span> je kolmá na osy <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p id="index-2"><strong>Zeměpisné souřadnice</strong> <span class="math notranslate nohighlight">\(\varphi,\lambda\)</span> na referenčním elipsoidu</p>
+<p>Elipsoidická šířka <span class="math notranslate nohighlight">\(\varphi\)</span> je definována jako úhel normály
+elipsoidu daným bodem s rovinou rovníku, kladná je na sever od
+rovníku, t.j. severní polokoule <span class="math notranslate nohighlight">\(\varphi =\)</span> <code class="docutils literal notranslate"><span class="pre">&lt;0°,</span> <span class="pre">90°&gt;</span></code> a
+jižní polokoule <span class="math notranslate nohighlight">\(\varphi =\)</span> <code class="docutils literal notranslate"><span class="pre">&lt;0°,</span> <span class="pre">-90°&gt;</span></code>. Elipsidická délka
+<span class="math notranslate nohighlight">\(\lambda\)</span> je definováná jako úhel roviny určené daným bodem a
+zemskou osou s rovinou určenou zemskou osou a základním bodem
+(například Greenwich), kladná je na východ, t.j. <span class="math notranslate nohighlight">\(\lambda =\)</span>
+<code class="docutils literal notranslate"><span class="pre">&lt;0°,</span> <span class="pre">360°&gt;</span></code> nebo východní polokoule <span class="math notranslate nohighlight">\(\lambda =\)</span> <code class="docutils literal notranslate"><span class="pre">&lt;0°,</span>
+<span class="pre">180°&gt;</span></code>, západní polokoule <span class="math notranslate nohighlight">\(\lambda =\)</span> <code class="docutils literal notranslate"><span class="pre">&lt;0°,</span> <span class="pre">-180°&gt;</span></code>.</p>
+<figure class="align-center" id="id1">
+<span id="xyz"></span><a class="reference internal image-reference" href="../_images/souradnice_oxyz.png"><img alt="../_images/souradnice_oxyz.png" src="../_images/souradnice_oxyz.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 11 </span><span class="caption-text">Kartézské a zeměpisné souřadnice na referenčním elipsoidu (zdroj:
+<a class="reference external" href="https://web.natur.cuni.cz/~bayertom/Mmk">Matematické metody v kartografii</a>).</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Zeměpisné souřadnice</strong> <span class="math notranslate nohighlight">\(U,V\)</span> na referenční sféře</p>
+<p>Zeměpisné souřadnice <span class="math notranslate nohighlight">\(U,V\)</span> na referenční sféře jsou definovány
+stejně jako na referenčním elipsoidu.</p>
+<figure class="align-center" id="id2">
+<span id="uv"></span><a class="reference internal image-reference" href="../_images/souradnice_uv.png"><img alt="../_images/souradnice_uv.png" src="../_images/souradnice_uv.png" style="width: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 12 </span><span class="caption-text">Zeměpisné souřadnice na referenční sféře (zdroj: <a class="reference external" href="http://www.svf.stuba.sk/docs//dokumenty/skripta/metody_zobrazovania/index1.html">Metódy
+zobrazovania</a>).</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Kartografické souřadnice</strong> <span class="math notranslate nohighlight">\(Š,D\)</span> na referenční sféře</p>
+<p>Kartografické souřadnice se používají proto, aby se obraz referenční
+plochy co nejvíce přimykal ke zvolenému území. Důsledkem jsou nižší
+hodnoty kartografických zkreslení. Osa zobrazovací plochy není
+rovnoběžná se zemskou osou.  Souřadnice jsou vztaženy ke
+kartografickému pólu, který se zpravidla označuje jako <span class="math notranslate nohighlight">\(K\)</span>.
+Kartografická šířka <span class="math notranslate nohighlight">\(Š\)</span> se měří od kartografického rovníku. Je
+definována analogicky jako zeměpisná šířka <span class="math notranslate nohighlight">\(\varphi\)</span>,
+resp. <span class="math notranslate nohighlight">\(U\)</span>.  Kartografická délka <span class="math notranslate nohighlight">\(D\)</span> se měří od zeměpisného
+poledníku procházejícího kartografickým (a severním) pólem, definována
+je analogicky jako zeměpisná délka <span class="math notranslate nohighlight">\(\lambda\)</span>, resp. <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<figure class="align-center" id="id3">
+<span id="sd"></span><a class="reference internal image-reference" href="../_images/souradnice_sd.png"><img alt="../_images/souradnice_sd.png" src="../_images/souradnice_sd.png" style="width: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 13 </span><span class="caption-text">Kartografické souřadnice na referenční sféře.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Pravoúhlé souřadnice</strong> <span class="math notranslate nohighlight">\(x,y\)</span> v zobrazovací rovině</p>
+<p>Pravoúhlá souřadnicová soustava je dána začátkem soustavy v bodě
+<span class="math notranslate nohighlight">\(O\)</span> a osami <span class="math notranslate nohighlight">\(x\)</span> a <span class="math notranslate nohighlight">\(y\)</span>. Kvadranty se pak číslují od
+kladné poloosy <span class="math notranslate nohighlight">\(x\)</span> proti směru otáčení hodinových ručiček jako
+<em>první</em> až <em>čtvrtý</em>.  Obě souřadnice bodů v prvním kvadrantu jsou tedy
+kladné, ve třetím kvadrantu obě záporné.</p>
+<figure class="align-center" id="id4">
+<span id="oxy"></span><img alt="../_images/souradnice_oxy.png" class="small" src="../_images/souradnice_oxy.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 14 </span><span class="caption-text">Pravoúhlé souřadnice bodu v zobrazovací rovině a kvadranty I, II,
+III a IV.</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Polární souřadnice</strong> <span class="math notranslate nohighlight">\(\rho,\varepsilon\)</span> v zobrazovací rovině</p>
+<p>Polární souřadnicová soustava je dána začátkem soustavy v bodě
+<span class="math notranslate nohighlight">\(V\)</span> a polárnimi souřadnicemi <span class="math notranslate nohighlight">\(\rho\)</span> a
+<span class="math notranslate nohighlight">\(\varepsilon\)</span>. Polární poloměr <span class="math notranslate nohighlight">\(\rho\)</span> je vzdálenost bodu
+od začátku soustavy <span class="math notranslate nohighlight">\(V\)</span> a polární úhel <span class="math notranslate nohighlight">\(\varepsilon\)</span> je
+měřený od záporného směru osy <span class="math notranslate nohighlight">\(x\)</span>.  Po ztotožněni začátků
+pravoúhlé a polární soustavy souřadnic <span class="math notranslate nohighlight">\(V\)</span> a <span class="math notranslate nohighlight">\(O\)</span> je
+polární úhel <span class="math notranslate nohighlight">\(\varepsilon\)</span> měřený od kladné větve osy <span class="math notranslate nohighlight">\(x\)</span>
+(<em>Vajsáblová, 2013</em>).</p>
+<figure class="align-center" id="id5">
+<span id="vxy"></span><a class="reference internal image-reference" href="../_images/souradnice_vxy.png"><img alt="../_images/souradnice_vxy.png" src="../_images/souradnice_vxy.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Obr. 15 </span><span class="caption-text">Pravouhlé a polární souřadnice bodu v zobrazovací rovině.</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="task admonition">
+<p class="admonition-title">Úkol</p>
+<p>Typy souřadnic</p>
+<p>Při přepínání mapy v předchozím úkolu si můžete všimnout, že se čísla
+ukazující pozici kurzoru myši mění. Někdy ukazují „stupně“, jindy „metry.</p>
+</div>
+<div class="task admonition">
+<p class="admonition-title">Úkol</p>
+<p>Typu souřadnic II</p>
+<p>V jakých jednotkách nejčastěji ukazuje pozici na mapě přístroj GPS? A v
+jakých český Katastr nemovitostí?</p>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../uvod.html">Úvod</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Souřadnicové systémy</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Typy souřadnic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mercatorovo-zobrazeni.html">Mercatorovo zobrazení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sjtsk.html">S-JTSK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wgs84.html">WGS84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="etrs89.html">ETRS89</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epsg.html">EPSG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jak-poznat-ss-dat.html">Jak poznat v jakém souřadnicovém systému jsou data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../formaty/index.html">Reprezentace dat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standardy/index.html">Standardy v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knihovny/index.html">Knihovny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databaze/index.html">Prostorové databáze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skknpriklad/index.html">Katastrálne dáta SR v GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Open Source na Webu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">GeoPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdi/index.html">Spatial data infrastructure - SDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../otevrena-data/index.html">Otevřená data - OpenData</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Souřadnicové systémy"
+              >předchozí</a> |
+            <a href="mercatorovo-zobrazeni.html" title="Mercatorovo zobrazení"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014-2023 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
