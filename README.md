@@ -1,7 +1,7 @@
 Školení Úvod do Open Source GIS
 ===============================
 
-http://training.gismentors.eu/open-source-gis
+https://gismentors.github.io/open-source-gis/
 
 Licence
 -------
