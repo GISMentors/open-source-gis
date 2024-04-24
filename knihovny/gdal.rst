@@ -445,7 +445,7 @@ data z vektorové reprezentace do rastru).
 
     .. code-block:: bash
 
-        gdal_rasterize -a elev -of GeoTIFF -ot Byte -tr 10 10 -l vrstevnice vrstevnice.shp vrstevnice.tiff
+        gdal_rasterize -a elev -of GTiff -ot Byte -tr 10 10 vrstevnice.shp vrstevnice.tiff
 
 .. index:: gdaltindex
                    
