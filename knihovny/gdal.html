@@ -269,7 +269,7 @@ metadata v těchto datech přítomná.</p>
 <p>Souřadnicový systém vstupních dat je známý, v našem příkladě
 nastavíme pouze souřadnicový systém pro výstupní data.  Zápis
 souřadnicového systému je totožný se zápisem pro knihovnu
-<strong class="program">Proj.4</strong>. My použijeme kód <a class="reference external" href="http://epsg.io/4326">EPSG:4326</a>, což je
+<strong class="program">Proj.4</strong>. My použijeme kód <a class="reference external" href="https://epsg.io/4326">EPSG:4326</a>, což je
 souřadnicový systém <a class="reference internal" href="../soursystemy/wgs84.html"><span class="doc">WGS84</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span>+init<span class="o">=</span>epsg:4326<span class="w"> </span>lsat7_2002_nir.tiff<span class="w"> </span>lsat7_2002_nir-wgs84.bmp
 
@@ -410,7 +410,7 @@ data z vektorové reprezentace do rastru).</p>
 <div class="notecmd admonition">
 <p class="admonition-title">Převod vektorových vrstevnic na rastrová data z příkazové řádky</p>
 <p>Výstupní formát BMP, prostorové rozlišení 10m</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_rasterize<span class="w"> </span>-a<span class="w"> </span>elev<span class="w"> </span>-of<span class="w"> </span>GeoTIFF<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-tr<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>-l<span class="w"> </span>vrstevnice<span class="w"> </span>vrstevnice.shp<span class="w"> </span>vrstevnice.tiff
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_rasterize<span class="w"> </span>-a<span class="w"> </span>elev<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-tr<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>vrstevnice.shp<span class="w"> </span>vrstevnice.tiff
 </pre></div>
 </div>
 </div>
@@ -633,7 +633,7 @@ GEOGCS[&quot;WGS 84&quot;,
         <div class="right">
           
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2014-2023 GISMentors.
+        &#169; Copyright 2014-2024 GISMentors.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
         </div>
